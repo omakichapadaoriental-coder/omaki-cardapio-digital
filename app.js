@@ -623,22 +623,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isTemaki) {
       modalSpecialContent.innerHTML = `
-        <p class="section-hint">Personalize o preparo do seu Temaki:</p>
-        <div class="special-custom-list">
-          <label class="complement-item special-check-item">
-            <div class="complement-left">
-              <input type="checkbox" id="checkTemakiFried">
-              <span class="complement-name">Empanar Temaki (Frito e crocante)</span>
-            </div>
-            <span class="complement-price">+ ${formatMoney(9.00)}</span>
-          </label>
-          <label class="complement-item special-check-item">
-            <div class="complement-left">
-              <input type="checkbox" id="checkTemakiNoRice">
-              <span class="complement-name">Substituir arroz por salmão (Sem arroz)</span>
-            </div>
-            <span class="complement-price">+ ${formatMoney(16.00)}</span>
-          </label>
+        <div class="special-custom-group">
+          <div class="special-group-header">
+            <h4>Preparo do Temaki</h4>
+            <span class="optional-tag">Opcional</span>
+          </div>
+          <p class="section-hint">Personalize a textura e o acabamento do seu Temaki:</p>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+            <label class="poke-extra-protein-card" id="cardTemakiFried">
+              <div class="protein-left">
+                <input type="checkbox" id="checkTemakiFried">
+                <span class="poke-chip-indicator"></span>
+                <div class="protein-info">
+                  <span class="protein-title">Empanar Temaki</span>
+                  <span class="protein-sub">Frito na hora, quente e super crocante</span>
+                </div>
+              </div>
+              <span class="protein-price">+ ${formatMoney(9.00)}</span>
+            </label>
+            <label class="poke-extra-protein-card" id="cardTemakiNoRice">
+              <div class="protein-left">
+                <input type="checkbox" id="checkTemakiNoRice">
+                <span class="poke-chip-indicator"></span>
+                <div class="protein-info">
+                  <span class="protein-title">Substituir arroz por salmão</span>
+                  <span class="protein-sub">Sem arroz (100% recheio nobre de salmão)</span>
+                </div>
+              </div>
+              <span class="protein-price">+ ${formatMoney(16.00)}</span>
+            </label>
+          </div>
         </div>
       `;
 
@@ -648,85 +662,132 @@ document.addEventListener('DOMContentLoaded', () => {
       if (friedCb) {
         friedCb.addEventListener('change', () => {
           selectedSpecialOptions.temakiFried = friedCb.checked;
+          const card = document.getElementById('cardTemakiFried');
+          if (card) card.classList.toggle('selected', friedCb.checked);
           updateModalTotal();
         });
       }
       if (noRiceCb) {
         noRiceCb.addEventListener('change', () => {
           selectedSpecialOptions.temakiNoRice = noRiceCb.checked;
+          const card = document.getElementById('cardTemakiNoRice');
+          if (card) card.classList.toggle('selected', noRiceCb.checked);
           updateModalTotal();
         });
       }
     } else if (isPoke) {
-      const toppings = dish.pokeToppings || ['Cebolinha', 'Manga', 'Pepino fatiado', 'Tomate cereja', 'Avocado', 'Crispy couve', 'Crispy batata', 'Gergelim', 'Gengibre', 'Cenoura', 'Alga', 'Crispy de Harumaki'];
+      const toppings = dish.pokeToppings || ['Cebolinha', 'Manga', 'Pepino fatiado', 'Tomate cereja', 'Avocado', 'Crispy de couve', 'Crispy de Batata', 'Gergelim', 'Gengibre', 'Cenoura', 'Alga', 'Crispy de Harumaki'];
       const sauces = dish.pokeSauces || ['Molho especial trufado', 'Molho especial do Chef', 'Molho Tataki', 'Molho Tarê', 'Shoyu Tradicional'];
 
       let pokeHtml = `
-        <p class="section-hint"><strong>Escolha até 6 acompanhamentos:</strong></p>
-        <div class="poke-grid-toppings">
+        <div class="special-custom-group">
+          <div class="special-group-header">
+            <h4>Acompanhamentos</h4>
+            <span class="special-badge-counter" id="pokeToppingsCounter">0 de 6 selecionados</span>
+          </div>
+          <p class="section-hint">Selecione até 6 acompanhamentos inclusos para seu Poke:</p>
+          <div class="poke-chips-grid">
       `;
-      toppings.forEach((top, idx) => {
+      toppings.forEach(top => {
         pokeHtml += `
-          <label class="poke-tag-checkbox">
+          <label class="poke-chip">
             <input type="checkbox" name="pokeTop" value="${top}">
-            <span>${top}</span>
+            <span class="poke-chip-indicator"></span>
+            <span class="poke-chip-label">${top}</span>
           </label>
         `;
       });
       pokeHtml += `
+          </div>
         </div>
-        <p class="section-hint" style="margin-top:12px;"><strong>Escolha 1 molho do Chef:</strong></p>
-        <div class="poke-grid-sauces">
+
+        <div class="special-custom-group">
+          <div class="special-group-header">
+            <h4>Molho do Chef</h4>
+            <span class="required-tag" style="background:#8b1e3f; color:#fff; font-size:0.68rem; padding:2px 8px; border-radius:4px; font-weight:700;">1 incluso</span>
+          </div>
+          <p class="section-hint">Escolha o molho artesanal de finalização:</p>
+          <div class="poke-chips-grid">
       `;
       sauces.forEach((sc, idx) => {
         pokeHtml += `
-          <label class="poke-tag-radio">
+          <label class="poke-chip radio-chip ${idx === 0 ? 'selected' : ''}">
             <input type="radio" name="pokeSauce" value="${sc}" ${idx === 0 ? 'checked' : ''}>
-            <span>${sc}</span>
+            <span class="poke-chip-indicator radio"></span>
+            <span class="poke-chip-label">${sc}</span>
           </label>
         `;
       });
       pokeHtml += `
+          </div>
         </div>
-        <div style="margin-top:14px;">
-          <label class="complement-item special-check-item">
-            <div class="complement-left">
+
+        <div class="special-custom-group">
+          <div class="special-group-header">
+            <h4>Proteína Extra</h4>
+            <span class="optional-tag">Opcional</span>
+          </div>
+          <label class="poke-extra-protein-card" id="cardPokeDoubleProtein">
+            <div class="protein-left">
               <input type="checkbox" id="checkPokeDoubleProtein">
-              <span class="complement-name">Dobrar Proteína (+80g de peixe nobre)</span>
+              <span class="poke-chip-indicator"></span>
+              <div class="protein-info">
+                <span class="protein-title">Dobrar Proteína</span>
+                <span class="protein-sub">+80g de peixe nobre fresco</span>
+              </div>
             </div>
-            <span class="complement-price">+ ${formatMoney(25.00)}</span>
+            <span class="protein-price">+ ${formatMoney(25.00)}</span>
           </label>
         </div>
       `;
 
       modalSpecialContent.innerHTML = pokeHtml;
       selectedSpecialOptions.pokeSauce = sauces[0];
+      selectedSpecialOptions.pokeToppings = [];
 
-      // Topping limit logic (max 6)
+      // Topping limit logic (max 6) with luxury counter & highlights
       const topInputs = modalSpecialContent.querySelectorAll('input[name="pokeTop"]');
+      const counterEl = document.getElementById('pokeToppingsCounter');
+
       topInputs.forEach(inp => {
         inp.addEventListener('change', () => {
+          const parentLabel = inp.closest('.poke-chip');
           const checked = Array.from(topInputs).filter(i => i.checked);
           if (checked.length > 6) {
             inp.checked = false;
+            if (parentLabel) parentLabel.classList.remove('selected');
             showCustomAlert('Limite Atingido', 'Você pode selecionar no máximo 6 acompanhamentos inclusos para o seu Poke.');
             return;
           }
+
+          if (parentLabel) parentLabel.classList.toggle('selected', inp.checked);
           selectedSpecialOptions.pokeToppings = checked.map(i => i.value);
+
+          if (counterEl) {
+            counterEl.textContent = `${checked.length} de 6 selecionados`;
+            counterEl.classList.toggle('full', checked.length === 6);
+          }
         });
       });
 
+      // Sauce selection logic
       const sauceInputs = modalSpecialContent.querySelectorAll('input[name="pokeSauce"]');
       sauceInputs.forEach(inp => {
         inp.addEventListener('change', () => {
+          modalSpecialContent.querySelectorAll('.radio-chip').forEach(el => el.classList.remove('selected'));
+          const parentLabel = inp.closest('.radio-chip');
+          if (parentLabel) parentLabel.classList.add('selected');
           if (inp.checked) selectedSpecialOptions.pokeSauce = inp.value;
         });
       });
 
+      // Double protein logic
       const doubleProt = document.getElementById('checkPokeDoubleProtein');
+      const cardProt = document.getElementById('cardPokeDoubleProtein');
       if (doubleProt) {
         doubleProt.addEventListener('change', () => {
           selectedSpecialOptions.pokeDoubleProtein = doubleProt.checked;
+          if (cardProt) cardProt.classList.toggle('selected', doubleProt.checked);
           updateModalTotal();
         });
       }

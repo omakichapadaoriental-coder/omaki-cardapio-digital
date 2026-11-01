@@ -1605,3 +1605,222 @@ select:focus {
   20%, 60% { transform: translateX(-6px); }
   40%, 80% { transform: translateX(6px); }
 }
+
+/* ==========================================================================
+   POKE & SPECIAL CUSTOMIZATION LUXURY SYSTEM (NOIR & GOLD)
+   ========================================================================== */
+.special-custom-group {
+  margin-bottom: 20px;
+}
+
+.special-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.special-group-header h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.special-badge-counter {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  background: rgba(229, 192, 123, 0.12);
+  color: var(--accent-gold);
+  border: 1px solid rgba(229, 192, 123, 0.35);
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+}
+
+.special-badge-counter.full {
+  background: var(--accent-wine);
+  color: #fff;
+  border-color: var(--accent-gold);
+}
+
+.poke-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+@media (min-width: 520px) {
+  .poke-chips-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.poke-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(17, 24, 39, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.poke-chip:hover {
+  background: rgba(25, 34, 53, 0.95);
+  border-color: rgba(229, 192, 123, 0.4);
+}
+
+.poke-chip input[type="checkbox"],
+.poke-chip input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.poke-chip-indicator {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  background: rgba(7, 10, 17, 0.8);
+}
+
+.poke-chip-indicator.radio {
+  border-radius: 50%;
+}
+
+.poke-chip.selected,
+.poke-chip:has(input:checked) {
+  background: rgba(139, 30, 63, 0.22);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(229, 192, 123, 0.18);
+}
+
+.poke-chip.selected .poke-chip-indicator,
+.poke-chip input:checked ~ .poke-chip-indicator {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold);
+}
+
+.poke-chip.selected .poke-chip-indicator::after,
+.poke-chip input:checked ~ .poke-chip-indicator::after {
+  content: '✓';
+  color: #070a11;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.poke-chip.radio-chip.selected .poke-chip-indicator::after,
+.poke-chip.radio-chip input:checked ~ .poke-chip-indicator::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #070a11;
+}
+
+.poke-chip-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 1.25;
+}
+
+.poke-chip.selected .poke-chip-label,
+.poke-chip:has(input:checked) .poke-chip-label {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Poke Extra Protein & Temaki Custom Cards */
+.poke-extra-protein-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(17, 24, 39, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.poke-extra-protein-card:hover {
+  background: rgba(25, 34, 53, 0.95);
+  border-color: rgba(229, 192, 123, 0.4);
+}
+
+.poke-extra-protein-card:has(input:checked),
+.poke-extra-protein-card.selected {
+  background: rgba(139, 30, 63, 0.22);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(229, 192, 123, 0.18);
+}
+
+.poke-extra-protein-card input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.poke-extra-protein-card:has(input:checked) .poke-chip-indicator,
+.poke-extra-protein-card.selected .poke-chip-indicator {
+  border-color: var(--accent-gold);
+  background: var(--accent-gold);
+}
+
+.poke-extra-protein-card:has(input:checked) .poke-chip-indicator::after,
+.poke-extra-protein-card.selected .poke-chip-indicator::after {
+  content: '✓';
+  color: #070a11;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.protein-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.protein-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.protein-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.protein-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.protein-price {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+

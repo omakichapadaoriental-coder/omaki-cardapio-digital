@@ -154,7 +154,7 @@
       "portion": "2 un",
       "page": "Pág 1",
       "price": 33.9,
-      "photo": "assets/images/1__Harumaki.jpg"
+      "photo": "assets/images/raw_harumaki.png"
     },
     {
       "num": 2,
@@ -202,7 +202,7 @@
       "portion": "6 un",
       "page": "Pág 1",
       "price": 43.9,
-      "photo": "assets/images/2__Guioza.jpg"
+      "photo": "assets/images/raw_guioza.jpeg"
     },
     {
       "num": 6,
@@ -226,7 +226,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 64.9,
-      "photo": "assets/images/5__Tataki.jpg"
+      "photo": "assets/images/raw_tataki.jpeg"
     },
     {
       "num": 8,
@@ -238,7 +238,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 62.9,
-      "photo": "assets/images/5__Tataki.jpg"
+      "photo": "assets/images/raw_tataki.jpeg"
     },
     {
       "num": 9,
@@ -250,7 +250,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 61.9,
-      "photo": "assets/images/5__Tataki.jpg"
+      "photo": "assets/images/raw_tataki.jpeg"
     },
     {
       "num": 10,
@@ -262,7 +262,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 56.9,
-      "photo": "assets/images/5__Tataki.jpg"
+      "photo": "assets/images/raw_tataki.jpeg"
     },
     {
       "num": 11,
@@ -274,7 +274,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 55.9,
-      "photo": "assets/images/5__Tataki.jpg"
+      "photo": "assets/images/raw_tataki.jpeg"
     },
     {
       "num": 12,
@@ -286,7 +286,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 58.9,
-      "photo": "assets/images/6__Ceviche.jpg"
+      "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
       "num": 13,
@@ -298,7 +298,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 55.9,
-      "photo": "assets/images/6__Ceviche.jpg"
+      "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
       "num": 14,
@@ -310,7 +310,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 54.9,
-      "photo": "assets/images/6__Ceviche.jpg"
+      "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
       "num": 15,
@@ -322,7 +322,7 @@
       "portion": "200g",
       "page": "Pág 1",
       "price": 51.9,
-      "photo": "assets/images/6__Ceviche.jpg"
+      "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
       "num": 16,
@@ -334,7 +334,7 @@
       "portion": "6 un",
       "page": "Pág 1",
       "price": 54.9,
-      "photo": "assets/images/3__Camar_o_Imperial.jpg"
+      "photo": "assets/images/raw_camarao_imperial.png"
     },
     {
       "num": 17,
@@ -346,7 +346,7 @@
       "portion": "6 un",
       "page": "Pág 1",
       "price": 52.9,
-      "photo": "assets/images/3__Camar_o_Imperial.jpg"
+      "photo": "assets/images/raw_camarao_imperial.png"
     },
     {
       "num": 18,
@@ -358,7 +358,7 @@
       "portion": "12 fatias",
       "page": "Pág 2",
       "price": 58.9,
-      "photo": "assets/images/7__Carpaccio.jpg"
+      "photo": "assets/images/raw_carpaccio.jpeg"
     },
     {
       "num": 19,
@@ -370,7 +370,7 @@
       "portion": "12 fatias",
       "page": "Pág 2",
       "price": 56.9,
-      "photo": "assets/images/7__Carpaccio.jpg"
+      "photo": "assets/images/raw_carpaccio.jpeg"
     },
     {
       "num": 20,
@@ -382,7 +382,7 @@
       "portion": "12 fatias",
       "page": "Pág 2",
       "price": 54.9,
-      "photo": "assets/images/7__Carpaccio.jpg"
+      "photo": "assets/images/raw_carpaccio.jpeg"
     },
     {
       "num": 21,
@@ -394,7 +394,7 @@
       "portion": "Porção",
       "page": "Pág 2",
       "price": 56.9,
-      "photo": "assets/images/17__Elegancia_do_oriente.jpg"
+      "photo": "assets/images/raw_oishi.jpeg"
     },
     {
       "num": 22,
@@ -406,7 +406,7 @@
       "portion": "Porção",
       "page": "Pág 2",
       "price": 54.9,
-      "photo": "assets/images/17__Elegancia_do_oriente.jpg"
+      "photo": "assets/images/raw_oishi.jpeg"
     },
     {
       "num": 23,
@@ -418,7 +418,7 @@
       "portion": "200g",
       "page": "Pág 2",
       "price": 48.9,
-      "photo": "assets/images/shimeji_manteiga.png"
+      "photo": "assets/images/raw_kobachi.jpeg"
     },
     {
       "num": 24,
@@ -430,7 +430,7 @@
       "portion": "200ml",
       "page": "Pág 2",
       "price": 25.9,
-      "photo": "assets/images/shimeji_manteiga.png"
+      "photo": "assets/images/raw_kobachi.jpeg"
     },
     {
       "num": 25,
@@ -442,7 +442,7 @@
       "portion": "150g",
       "page": "Pág 2",
       "price": 24.9,
-      "photo": "assets/images/shimeji_manteiga.png"
+      "photo": "assets/images/raw_kobachi.jpeg"
     },
     {
       "num": 26,
@@ -454,7 +454,7 @@
       "portion": "6 un",
       "page": "Pág 2",
       "price": 39.9,
-      "photo": "assets/images/12__Gunkan.jpg"
+      "photo": "assets/images/raw_gunkan.png"
     },
     {
       "num": 27,
@@ -466,7 +466,7 @@
       "portion": "6 un",
       "page": "Pág 2",
       "price": 39.9,
-      "photo": "assets/images/12__Gunkan.jpg"
+      "photo": "assets/images/raw_gunkan.png"
     },
     {
       "num": 28,
@@ -478,7 +478,7 @@
       "portion": "6 un",
       "page": "Pág 2",
       "price": 39.9,
-      "photo": "assets/images/12__Gunkan.jpg"
+      "photo": "assets/images/raw_gunkan.png"
     },
     {
       "num": 29,
@@ -490,7 +490,7 @@
       "portion": "6 un",
       "page": "Pág 2",
       "price": 38.9,
-      "photo": "assets/images/12__Gunkan.jpg"
+      "photo": "assets/images/raw_gunkan.png"
     },
     {
       "num": 30,
@@ -502,7 +502,7 @@
       "portion": "10 un",
       "page": "Pág 2",
       "price": 47.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
       "num": 31,
@@ -514,7 +514,7 @@
       "portion": "10 un",
       "page": "Pág 2",
       "price": 46.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
       "num": 32,
@@ -526,7 +526,7 @@
       "portion": "10 un",
       "page": "Pág 2",
       "price": 45.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
       "num": 33,
@@ -538,7 +538,7 @@
       "portion": "10 un",
       "page": "Pág 2",
       "price": 45.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
       "num": 34,
@@ -550,7 +550,7 @@
       "portion": "10 un",
       "page": "Pág 2",
       "price": 42.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
       "num": 35,
@@ -562,7 +562,7 @@
       "portion": "10 un",
       "page": "Pág 2",
       "price": 41.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
       "num": 36,
@@ -574,7 +574,7 @@
       "portion": "10 un",
       "page": "Pág 2",
       "price": 41.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
       "num": 37,
@@ -586,7 +586,7 @@
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 54.9,
-      "photo": "assets/images/esp_40_tesouro_chef.jpg"
+      "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
       "num": 38,
@@ -598,7 +598,7 @@
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 53.9,
-      "photo": "assets/images/esp_40_tesouro_chef.jpg"
+      "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
       "num": 39,
@@ -610,7 +610,7 @@
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 52.9,
-      "photo": "assets/images/esp_40_tesouro_chef.jpg"
+      "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
       "num": 40,
@@ -622,7 +622,7 @@
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 57.9,
-      "photo": "assets/images/esp_40_tesouro_chef.jpg"
+      "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
       "num": 41,
@@ -634,7 +634,7 @@
       "portion": "10 un",
       "page": "Pág 3",
       "price": 58.9,
-      "photo": "assets/images/esp_41_elegancia_oriente.jpg"
+      "photo": "assets/images/raw_esp_41_elegancia.jpeg"
     },
     {
       "num": 42,
@@ -646,7 +646,7 @@
       "portion": "10 un",
       "page": "Pág 3",
       "price": 58.9,
-      "photo": "assets/images/esp_42_salmao_avocado_morango.jpg"
+      "photo": "assets/images/raw_esp_42_morango.jpeg"
     },
     {
       "num": 43,
@@ -658,7 +658,7 @@
       "portion": "10 un",
       "page": "Pág 3",
       "price": 57.9,
-      "photo": "assets/images/esp_43_salmao_trufado.jpg"
+      "photo": "assets/images/raw_esp_43_trufado.jpeg"
     },
     {
       "num": 44,
@@ -670,7 +670,7 @@
       "portion": "10 un",
       "page": "Pág 3",
       "price": 56.9,
-      "photo": "assets/images/esp_44_salmao_umeboshi.jpg"
+      "photo": "assets/images/raw_esp_44_chef.jpeg"
     },
     {
       "num": 45,
@@ -682,7 +682,7 @@
       "portion": "10 un",
       "page": "Pág 4",
       "price": 57.9,
-      "photo": "assets/images/esp_45_ebi_avocado.jpg"
+      "photo": "assets/images/raw_esp_45_ebi_avocado.jpeg"
     },
     {
       "num": 46,
@@ -694,7 +694,7 @@
       "portion": "10 un",
       "page": "Pág 4",
       "price": 55.9,
-      "photo": "assets/images/esp_46_skin_salmao.jpg"
+      "photo": "assets/images/raw_esp_46_skin_salmao.jpeg"
     },
     {
       "num": 47,
@@ -706,7 +706,7 @@
       "portion": "2 un",
       "page": "Pág 4",
       "price": 48.9,
-      "photo": "assets/images/esp_47_joy_macaricado.jpg"
+      "photo": "assets/images/raw_esp_47_joy_macaricado.jpeg"
     },
     {
       "num": 48,
@@ -718,7 +718,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 66.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 49,
@@ -730,7 +730,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 66.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 50,
@@ -742,7 +742,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 65.9,
-      "photo": "assets/images/esp_50_supremo_salmao.png"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 51,
@@ -754,7 +754,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 51.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 52,
@@ -766,7 +766,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 48.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 53,
@@ -778,7 +778,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 48.9,
-      "photo": "assets/images/Temaki_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 54,
@@ -790,7 +790,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 47.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 55,
@@ -802,7 +802,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 47.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 56,
@@ -814,7 +814,7 @@
       "portion": "180g",
       "page": "Pág 4",
       "price": 46.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/raw_temaki.png"
     },
     {
       "num": 57,
@@ -826,7 +826,7 @@
       "portion": "25 peças",
       "page": "Pág 5",
       "price": 141.9,
-      "photo": "assets/images/combo_1_chef.jpg"
+      "photo": "assets/images/raw_combo_1_chef.jpeg"
     },
     {
       "num": 58,
@@ -838,7 +838,7 @@
       "portion": "35 peças",
       "page": "Pág 5",
       "price": 161.9,
-      "photo": "assets/images/combo_4_chef.jpg"
+      "photo": "assets/images/raw_combo_4_chef.jpeg"
     },
     {
       "num": 59,
@@ -850,7 +850,7 @@
       "portion": "40 peças",
       "page": "Pág 5",
       "price": 205.9,
-      "photo": "assets/images/combo_5_chef.jpg"
+      "photo": "assets/images/raw_combo_5_chef.jpeg"
     },
     {
       "num": 60,
@@ -862,7 +862,7 @@
       "portion": "60 peças",
       "page": "Pág 5",
       "price": 320.9,
-      "photo": "assets/images/combo_6_chef.jpg"
+      "photo": "assets/images/raw_combo_8_chef.png"
     },
     {
       "num": 61,
@@ -874,7 +874,7 @@
       "portion": "2 un",
       "page": "Pág 5",
       "price": 59.9,
-      "photo": "assets/images/24__Big_Hot.jpg"
+      "photo": "assets/images/raw_bighot.png"
     },
     {
       "num": 62,
@@ -886,7 +886,7 @@
       "portion": "2 un",
       "page": "Pág 5",
       "price": 58.9,
-      "photo": "assets/images/24__Big_Hot.jpg"
+      "photo": "assets/images/raw_bighot.png"
     },
     {
       "num": 63,
@@ -898,7 +898,7 @@
       "portion": "2 un",
       "page": "Pág 5",
       "price": 57.9,
-      "photo": "assets/images/24__Big_Hot.jpg"
+      "photo": "assets/images/raw_bighot.png"
     },
     {
       "num": 64,
@@ -910,7 +910,7 @@
       "portion": "10 un",
       "page": "Pág 6",
       "price": 56.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg"
+      "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
       "num": 65,
@@ -922,7 +922,7 @@
       "portion": "10 un",
       "page": "Pág 6",
       "price": 48.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg"
+      "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
       "num": 66,
@@ -934,7 +934,7 @@
       "portion": "10 un",
       "page": "Pág 6",
       "price": 48.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg"
+      "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
       "num": 67,
@@ -946,7 +946,7 @@
       "portion": "10 un",
       "page": "Pág 6",
       "price": 48.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg"
+      "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
       "num": 68,
@@ -958,7 +958,7 @@
       "portion": "10 un",
       "page": "Pág 6",
       "price": 47.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg"
+      "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
       "num": 69,
@@ -970,7 +970,7 @@
       "portion": "10 un",
       "page": "Pág 6",
       "price": 46.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg"
+      "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
       "num": 70,
@@ -982,7 +982,7 @@
       "portion": "5 fatias",
       "page": "Pág 6",
       "price": 42.9,
-      "photo": "assets/images/4__Sashimis_Tradicionais.jpg"
+      "photo": "assets/images/raw_sashimi_tradicional.png"
     },
     {
       "num": 71,
@@ -994,7 +994,7 @@
       "portion": "5 fatias",
       "page": "Pág 6",
       "price": 38.9,
-      "photo": "assets/images/4__Sashimis_Tradicionais.jpg"
+      "photo": "assets/images/raw_sashimi_tradicional.png"
     },
     {
       "num": 72,
@@ -1006,7 +1006,7 @@
       "portion": "5 fatias",
       "page": "Pág 6",
       "price": 36.9,
-      "photo": "assets/images/4__Sashimis_Tradicionais.jpg"
+      "photo": "assets/images/raw_sashimi_tradicional.png"
     },
     {
       "num": 73,
@@ -1018,7 +1018,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 36.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/raw_joy_tradicional.jpeg"
     },
     {
       "num": 74,
@@ -1030,7 +1030,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 36.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/raw_joy_tradicional.jpeg"
     },
     {
       "num": 75,
@@ -1042,7 +1042,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 36.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/raw_joy_tradicional.jpeg"
     },
     {
       "num": 76,
@@ -1054,7 +1054,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 35.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/raw_joy_tradicional.jpeg"
     },
     {
       "num": 77,
@@ -1066,7 +1066,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 35.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/raw_joy_tradicional.jpeg"
     },
     {
       "num": 78,
@@ -1078,7 +1078,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 32.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/raw_joy_tradicional.jpeg"
     },
     {
       "num": 79,
@@ -1090,7 +1090,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 48.9,
-      "photo": "assets/images/11__Eby_Fry.jpg"
+      "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
       "num": 80,
@@ -1102,7 +1102,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 47.9,
-      "photo": "assets/images/11__Eby_Fry.jpg"
+      "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
       "num": 81,
@@ -1114,7 +1114,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 46.9,
-      "photo": "assets/images/11__Eby_Fry.jpg"
+      "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
       "num": 82,
@@ -1126,7 +1126,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 44.9,
-      "photo": "assets/images/11__Eby_Fry.jpg"
+      "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
       "num": 83,
@@ -1138,7 +1138,7 @@
       "portion": "6 un",
       "page": "Pág 6",
       "price": 43.9,
-      "photo": "assets/images/11__Eby_Fry.jpg"
+      "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
       "num": 84,
@@ -1150,7 +1150,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 49.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
       "num": 85,
@@ -1162,7 +1162,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 46.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
       "num": 86,
@@ -1174,7 +1174,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 45.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
       "num": 87,
@@ -1186,7 +1186,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 44.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
       "num": 88,
@@ -1198,7 +1198,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 42.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
       "num": 89,
@@ -1210,7 +1210,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 49.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
       "num": 90,
@@ -1222,7 +1222,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 46.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
       "num": 91,
@@ -1234,7 +1234,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 45.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
       "num": 92,
@@ -1246,7 +1246,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 44.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
       "num": 93,
@@ -1258,7 +1258,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 44.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
       "num": 94,
@@ -1270,7 +1270,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 42.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
       "num": 95,
@@ -1282,7 +1282,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 50.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_joy.jpeg"
     },
     {
       "num": 96,
@@ -1294,7 +1294,7 @@
       "portion": "10 un",
       "page": "Pág 7",
       "price": 49.9,
-      "photo": "assets/images/14__Uramaki.jpg"
+      "photo": "assets/images/raw_uramaki_joy.jpeg"
     },
     {
       "num": 97,
@@ -1306,7 +1306,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 43.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 98,
@@ -1318,7 +1318,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 36.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 99,
@@ -1330,7 +1330,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 36.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 100,
@@ -1342,7 +1342,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 35.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 101,
@@ -1354,7 +1354,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 33.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 102,
@@ -1366,7 +1366,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 35.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 103,
@@ -1378,7 +1378,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 34.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 104,
@@ -1390,7 +1390,7 @@
       "portion": "4 un",
       "page": "Pág 7",
       "price": 34.9,
-      "photo": "assets/images/16__Niguiri.jpg"
+      "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
       "num": 105,
@@ -1402,7 +1402,7 @@
       "portion": "300g",
       "page": "Pág 8",
       "price": 71.9,
-      "photo": "assets/images/Poke.jpg"
+      "photo": "assets/images/raw_poke.jpeg"
     },
     {
       "num": 106,
@@ -1414,7 +1414,7 @@
       "portion": "300g",
       "page": "Pág 8",
       "price": 70.9,
-      "photo": "assets/images/Poke.jpg"
+      "photo": "assets/images/raw_poke.jpeg"
     },
     {
       "num": 107,
@@ -1426,7 +1426,7 @@
       "portion": "300g",
       "page": "Pág 8",
       "price": 67.9,
-      "photo": "assets/images/Poke.jpg"
+      "photo": "assets/images/raw_poke.jpeg"
     },
     {
       "num": 108,
@@ -1438,7 +1438,7 @@
       "portion": "300g",
       "page": "Pág 8",
       "price": 65.9,
-      "photo": "assets/images/Poke.jpg"
+      "photo": "assets/images/raw_poke.jpeg"
     },
     {
       "num": 109,
@@ -1450,7 +1450,7 @@
       "portion": "300g",
       "page": "Pág 8",
       "price": 64.9,
-      "photo": "assets/images/Poke.jpg"
+      "photo": "assets/images/raw_poke.jpeg"
     },
     {
       "num": 110,
@@ -1462,7 +1462,7 @@
       "portion": "300g",
       "page": "Pág 8",
       "price": 61.9,
-      "photo": "assets/images/Poke.jpg"
+      "photo": "assets/images/raw_poke.jpeg"
     },
     {
       "num": 111,
@@ -1786,7 +1786,7 @@
       "portion": "200g",
       "page": "Pág 8",
       "price": 76.9,
-      "photo": "assets/images/teppan_yaki.jpg"
+      "photo": "assets/images/raw_teppan.jpeg"
     },
     {
       "num": 138,
@@ -1798,7 +1798,7 @@
       "portion": "200g",
       "page": "Pág 8",
       "price": 75.9,
-      "photo": "assets/images/teppan_yaki.jpg"
+      "photo": "assets/images/raw_teppan.jpeg"
     },
     {
       "num": 139,
@@ -1810,7 +1810,7 @@
       "portion": "200g",
       "page": "Pág 8",
       "price": 39.9,
-      "photo": "assets/images/teppan_yaki.jpg"
+      "photo": "assets/images/raw_teppan.jpeg"
     },
     {
       "num": 140,
@@ -1822,7 +1822,7 @@
       "portion": "400g",
       "page": "Pág 8",
       "price": 61.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
       "num": 141,
@@ -1834,7 +1834,7 @@
       "portion": "400g",
       "page": "Pág 8",
       "price": 58.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
       "num": 142,
@@ -1846,7 +1846,7 @@
       "portion": "400g",
       "page": "Pág 8",
       "price": 57.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
       "num": 143,
@@ -1858,7 +1858,7 @@
       "portion": "400g",
       "page": "Pág 8",
       "price": 54.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
       "num": 144,
@@ -1870,7 +1870,7 @@
       "portion": "400g",
       "page": "Pág 8",
       "price": 45.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
       "num": 145,
@@ -2266,7 +2266,7 @@
       "portion": "40 peças",
       "page": "Pág 10",
       "price": 132.0,
-      "photo": "assets/images/combo_177_omaki_40pc.jpg"
+      "photo": "assets/images/raw_combo_177_omaki.png"
     },
     {
       "num": 178,
@@ -2278,7 +2278,7 @@
       "portion": "40 peças",
       "page": "Pág 10",
       "price": 118.0,
-      "photo": "assets/images/combo_178_chapada_40pc.jpg"
+      "photo": "assets/images/raw_combo_178_chapada.jpeg"
     },
     {
       "num": 179,
@@ -2290,7 +2290,7 @@
       "portion": "36 peças",
       "page": "Pág 10",
       "price": 107.0,
-      "photo": "assets/images/combo_179_oriental_36pc.jpg"
+      "photo": "assets/images/raw_combo_179_oriental.jpeg"
     },
     {
       "num": 180,
@@ -2302,7 +2302,7 @@
       "portion": "30 peças",
       "page": "Pág 10",
       "price": 119.0,
-      "photo": "assets/images/combo_180_guia_30pc.jpg"
+      "photo": "assets/images/raw_combo_180_guia.jpeg"
     },
     {
       "num": null,
@@ -2314,7 +2314,7 @@
       "portion": "25 pçs",
       "page": "Pág 11",
       "price": 138.9,
-      "photo": "assets/images/combo_camarao_imperial_25pc.jpg",
+      "photo": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
       "isNew": true
     },
     {
@@ -2327,7 +2327,7 @@
       "portion": "30 pçs",
       "page": "Pág 11",
       "price": 144.9,
-      "photo": "assets/images/combo_camarao_30pc.jpg",
+      "photo": "assets/images/raw_combo_camarao_30pc.jpeg",
       "isNew": true
     },
     {
@@ -2340,7 +2340,7 @@
       "portion": "28 pçs",
       "page": "Pág 11",
       "price": 136.9,
-      "photo": "assets/images/combo_joy_28pc.jpg",
+      "photo": "assets/images/raw_combo_joy_28pc.jpeg",
       "isNew": true
     },
     {
@@ -2353,7 +2353,7 @@
       "portion": "28 pçs",
       "page": "Pág 11",
       "price": 138.9,
-      "photo": "assets/images/combo_misto_28pc.jpg",
+      "photo": "assets/images/raw_combo_misto_28pc.jpeg",
       "isNew": true
     },
     {
@@ -2366,7 +2366,7 @@
       "portion": "30 pçs",
       "page": "Pág 12",
       "price": 129.9,
-      "photo": "assets/images/combo_salmao_30pc.jpg",
+      "photo": "assets/images/raw_combo_salmao_30pc.jpeg",
       "isNew": true
     },
     {
@@ -2379,7 +2379,7 @@
       "portion": "30 pçs",
       "page": "Pág 12",
       "price": 129.9,
-      "photo": "assets/images/combo_hot_30pc.jpg",
+      "photo": "assets/images/raw_combo_hot_30pc.jpeg",
       "isNew": true
     },
     {
@@ -2392,7 +2392,7 @@
       "portion": "28 pçs",
       "page": "Pág 12",
       "price": 126.9,
-      "photo": "assets/images/combo_hossomaki_28pc.jpg",
+      "photo": "assets/images/raw_combo_hossomaki_28pc.jpeg",
       "isNew": true
     }
   ],
@@ -2404,8 +2404,8 @@
       "name": "Harumakis Crocantes",
       "category": "Harumakis",
       "portion": "2 un",
-      "photo": "assets/images/harumaki.jpg",
-      "image": "assets/images/harumaki.jpg",
+      "photo": "assets/images/raw_harumaki.png",
+      "image": "assets/images/raw_harumaki.png",
       "description": "Rolinho primavera crocante frito na hora. Escolha o recheio.",
       "price": 27.9,
       "priceLabel": "A partir de R$ 27,90",
@@ -2458,8 +2458,8 @@
       "name": "Guioza",
       "category": "Entradas",
       "portion": "6 un",
-      "photo": "assets/images/2__Guioza.jpg",
-      "image": "assets/images/2__Guioza.jpg",
+      "photo": "assets/images/raw_guioza.jpeg",
+      "image": "assets/images/raw_guioza.jpeg",
       "description": "Guioza bovino/suíno no vapor e selado",
       "price": 43.9,
       "priceLabel": "R$ 43,90",
@@ -2475,7 +2475,7 @@
         "portion": "6 un",
         "page": "Pág 1",
         "price": 43.9,
-        "photo": "assets/images/2__Guioza.jpg"
+        "photo": "assets/images/raw_guioza.jpeg"
       }
     },
     {
@@ -2514,8 +2514,8 @@
       "name": "Tatakis Especiais",
       "category": "Tatakis",
       "portion": "200g",
-      "photo": "assets/images/tataki.jpg",
-      "image": "assets/images/tataki.jpg",
+      "photo": "assets/images/raw_tataki.jpeg",
+      "image": "assets/images/raw_tataki.jpeg",
       "description": "Salmão fresco com raspas de limão, azeite, shoyu e temperos do Chef. Escolha o sabor.",
       "price": 55.9,
       "priceLabel": "A partir de R$ 55,90",
@@ -2575,8 +2575,8 @@
       "name": "Ceviches Tradicionais",
       "category": "Ceviches",
       "portion": "200g",
-      "photo": "assets/images/ceviche.jpg",
-      "image": "assets/images/ceviche.jpg",
+      "photo": "assets/images/raw_ceviche.jpeg",
+      "image": "assets/images/raw_ceviche.jpeg",
       "description": "Cubos marinados em molho cítrico especial da casa e cebola roxa. Escolha a sua combinação.",
       "price": 51.9,
       "priceLabel": "A partir de R$ 51,90",
@@ -2627,8 +2627,8 @@
       "name": "Camarão Imperial Crocante",
       "category": "Camarão Imperial",
       "portion": "6 un",
-      "photo": "assets/images/camarao_imperial.jpg",
-      "image": "assets/images/camarao_imperial.jpg",
+      "photo": "assets/images/raw_camarao_imperial.png",
+      "image": "assets/images/raw_camarao_imperial.png",
       "description": "Camarões empanados super crocantes com molho especial. Escolha a finalização.",
       "price": 52.9,
       "priceLabel": "A partir de R$ 52,90",
@@ -2661,8 +2661,8 @@
       "name": "Carpaccios Nobres",
       "category": "Carpaccios",
       "portion": "12 fatias",
-      "photo": "assets/images/carpaccio.jpg",
-      "image": "assets/images/carpaccio.jpg",
+      "photo": "assets/images/raw_carpaccio.jpeg",
+      "image": "assets/images/raw_carpaccio.jpeg",
       "description": "Finas fatias com azeite, flor de sal, limão e especiarias. Escolha o corte.",
       "price": 54.9,
       "priceLabel": "A partir de R$ 54,90",
@@ -2704,8 +2704,8 @@
       "name": "Oishi Especial",
       "category": "Oishi",
       "portion": "230g",
-      "photo": "assets/images/oishi.jpg",
-      "image": "assets/images/oishi.jpg",
+      "photo": "assets/images/raw_oishi.jpeg",
+      "image": "assets/images/raw_oishi.jpeg",
       "description": "Especialidade da casa com peixes nobres e molhos especiais. Escolha a combinação.",
       "price": 54.9,
       "priceLabel": "A partir de R$ 54,90",
@@ -2738,8 +2738,8 @@
       "name": "Kobachi — Entradas Japonesas",
       "category": "Entradas",
       "portion": "Porção",
-      "photo": "assets/images/shimeji_manteiga.png",
-      "image": "assets/images/shimeji_manteiga.png",
+      "photo": "assets/images/raw_kobachi.jpeg",
+      "image": "assets/images/raw_kobachi.jpeg",
       "description": "Porções tradicionais japonesas: Shimeji na manteiga, Missoshiru artesanal ou Sunomono refrescante.",
       "price": 24.9,
       "priceLabel": "A partir de R$ 24,90",
@@ -2781,8 +2781,8 @@
       "name": "Gunkans",
       "category": "Gunkans",
       "portion": "6 un",
-      "photo": "assets/images/gunkan.jpg",
-      "image": "assets/images/gunkan.jpg",
+      "photo": "assets/images/raw_gunkan.png",
+      "image": "assets/images/raw_gunkan.png",
       "description": "Todos levam tártare de salmão, arroz e cream cheese Philadelphia. Escolha o acabamento.",
       "price": 38.9,
       "priceLabel": "A partir de R$ 38,90",
@@ -2833,8 +2833,8 @@
       "name": "Futomaki Vegano e Vegetariano",
       "category": "Veganos e Vegetarianos",
       "portion": "10 un",
-      "photo": "assets/images/futomaki_vegano.jpg",
-      "image": "assets/images/futomaki_vegano.jpg",
+      "photo": "assets/images/raw_futomaki_vegano.jpeg",
+      "image": "assets/images/raw_futomaki_vegano.jpeg",
       "description": "Opções leves e frescas com ou sem Philadelphia. Escolha o sabor.",
       "price": 41.9,
       "priceLabel": "A partir de R$ 41,90",
@@ -2912,8 +2912,8 @@
       "name": "Sashimis Especiais",
       "category": "Especiais do Chef",
       "portion": "10 fatias",
-      "photo": "assets/images/esp_40_tesouro_chef.jpg",
-      "image": "assets/images/esp_40_tesouro_chef.jpg",
+      "photo": "assets/images/raw_sashimi_especial.jpeg",
+      "image": "assets/images/raw_sashimi_especial.jpeg",
       "description": "Lâminas nobres de salmão com molhos autorais do sushiman.",
       "price": 52.9,
       "priceLabel": "A partir de R$ 52,90",
@@ -2966,8 +2966,8 @@
       "name": "Uramaki elegância do oriente",
       "category": "Especiais do Chef",
       "portion": "10 un",
-      "photo": "assets/images/esp_41_elegancia_oriente.jpg",
-      "image": "assets/images/esp_41_elegancia_oriente.jpg",
+      "photo": "assets/images/raw_esp_41_elegancia.jpeg",
+      "image": "assets/images/raw_esp_41_elegancia.jpeg",
       "description": "Salmão empanado, alho-poró, limão siciliano, azeite trufado, tarê, molho de ostra, cebolinha",
       "price": 58.9,
       "priceLabel": "R$ 58,90",
@@ -2983,7 +2983,7 @@
         "portion": "10 un",
         "page": "Pág 3",
         "price": 58.9,
-        "photo": "assets/images/esp_41_elegancia_oriente.jpg"
+        "photo": "assets/images/raw_esp_41_elegancia.jpeg"
       }
     },
     {
@@ -2995,8 +2995,8 @@
       "name": "Uramaki salmão, avocado geleia de morango com gari",
       "category": "Especiais do Chef",
       "portion": "10 un",
-      "photo": "assets/images/esp_42_salmao_avocado_morango.jpg",
-      "image": "assets/images/esp_42_salmao_avocado_morango.jpg",
+      "photo": "assets/images/raw_esp_42_morango.jpeg",
+      "image": "assets/images/raw_esp_42_morango.jpeg",
       "description": "Salmão, avocado, geleia de morango com gengibre em conserva (gari)",
       "price": 58.9,
       "priceLabel": "R$ 58,90",
@@ -3012,7 +3012,7 @@
         "portion": "10 un",
         "page": "Pág 3",
         "price": 58.9,
-        "photo": "assets/images/esp_42_salmao_avocado_morango.jpg"
+        "photo": "assets/images/raw_esp_42_morango.jpeg"
       }
     },
     {
@@ -3024,8 +3024,8 @@
       "name": "Uramaki salmão, azeite trufado limão siciliano e flor de sal",
       "category": "Especiais do Chef",
       "portion": "10 un",
-      "photo": "assets/images/esp_43_salmao_trufado.jpg",
-      "image": "assets/images/esp_43_salmao_trufado.jpg",
+      "photo": "assets/images/raw_esp_43_trufado.jpeg",
+      "image": "assets/images/raw_esp_43_trufado.jpeg",
       "description": "Salmão maçaricado, azeite trufado, raspas de limão siciliano e flor de sal",
       "price": 57.9,
       "priceLabel": "R$ 57,90",
@@ -3041,7 +3041,7 @@
         "portion": "10 un",
         "page": "Pág 3",
         "price": 57.9,
-        "photo": "assets/images/esp_43_salmao_trufado.jpg"
+        "photo": "assets/images/raw_esp_43_trufado.jpeg"
       }
     },
     {
@@ -3053,8 +3053,8 @@
       "name": "Uramaki de salmão, com umeboshi e avocado",
       "category": "Especiais do Chef",
       "portion": "10 un",
-      "photo": "assets/images/esp_44_salmao_umeboshi.jpg",
-      "image": "assets/images/esp_44_salmao_umeboshi.jpg",
+      "photo": "assets/images/raw_esp_44_chef.jpeg",
+      "image": "assets/images/raw_esp_44_chef.jpeg",
       "description": "Salmão, pasta de umeboshi tradicional e fatias de avocado",
       "price": 56.9,
       "priceLabel": "R$ 56,90",
@@ -3070,7 +3070,7 @@
         "portion": "10 un",
         "page": "Pág 3",
         "price": 56.9,
-        "photo": "assets/images/esp_44_salmao_umeboshi.jpg"
+        "photo": "assets/images/raw_esp_44_chef.jpeg"
       }
     },
     {
@@ -3082,8 +3082,8 @@
       "name": "Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim",
       "category": "Especiais do Chef",
       "portion": "10 un",
-      "photo": "assets/images/esp_45_ebi_avocado.jpg",
-      "image": "assets/images/esp_45_ebi_avocado.jpg",
+      "photo": "assets/images/raw_esp_45_ebi_avocado.jpeg",
+      "image": "assets/images/raw_esp_45_ebi_avocado.jpeg",
       "description": "Camarão ebi, avocado, cobertura de salmão, tarê, molho ostra, cebolinha e gergelim",
       "price": 57.9,
       "priceLabel": "R$ 57,90",
@@ -3099,7 +3099,7 @@
         "portion": "10 un",
         "page": "Pág 4",
         "price": 57.9,
-        "photo": "assets/images/esp_45_ebi_avocado.jpg"
+        "photo": "assets/images/raw_esp_45_ebi_avocado.jpeg"
       }
     },
     {
@@ -3111,8 +3111,8 @@
       "name": "Uramaki skin salmão, cebolinha flor de sal e furikake",
       "category": "Especiais do Chef",
       "portion": "10 un",
-      "photo": "assets/images/esp_46_skin_salmao.jpg",
-      "image": "assets/images/esp_46_skin_salmao.jpg",
+      "photo": "assets/images/raw_esp_46_skin_salmao.jpeg",
+      "image": "assets/images/raw_esp_46_skin_salmao.jpeg",
       "description": "Pele de salmão grelhada crocante, cebolinha, flor de sal e furikake",
       "price": 55.9,
       "priceLabel": "R$ 55,90",
@@ -3128,7 +3128,7 @@
         "portion": "10 un",
         "page": "Pág 4",
         "price": 55.9,
-        "photo": "assets/images/esp_46_skin_salmao.jpg"
+        "photo": "assets/images/raw_esp_46_skin_salmao.jpeg"
       }
     },
     {
@@ -3140,8 +3140,8 @@
       "name": "Joy salmão maçaricado, Philadelphia, azeite trufado, geleia de pimenta e queensberry",
       "category": "Especiais do Chef",
       "portion": "2 un",
-      "photo": "assets/images/esp_47_joy_macaricado.jpg",
-      "image": "assets/images/esp_47_joy_macaricado.jpg",
+      "photo": "assets/images/raw_esp_47_joy_macaricado.jpeg",
+      "image": "assets/images/raw_esp_47_joy_macaricado.jpeg",
       "description": "Lâmina de salmão maçaricado, cream cheese, azeite trufado, geleia de pimenta e Queensberry",
       "price": 48.9,
       "priceLabel": "R$ 48,90",
@@ -3157,7 +3157,7 @@
         "portion": "2 un",
         "page": "Pág 4",
         "price": 48.9,
-        "photo": "assets/images/esp_47_joy_macaricado.jpg"
+        "photo": "assets/images/raw_esp_47_joy_macaricado.jpeg"
       }
     },
     {
@@ -3167,8 +3167,8 @@
       "name": "Temakis Tradicionais & Especiais",
       "category": "Temakis",
       "portion": "180g",
-      "photo": "assets/images/esp_50_supremo_salmao.png",
-      "image": "assets/images/esp_50_supremo_salmao.png",
+      "photo": "assets/images/raw_temaki.png",
+      "image": "assets/images/raw_temaki.png",
       "description": "Todos levam cream cheese Philadelphia e alga crocante. Escolha o recheio.",
       "price": 46.9,
       "priceLabel": "A partir de R$ 46,90",
@@ -3266,8 +3266,8 @@
       "name": "Combo 1 - 25 peças",
       "category": "Combos do Chef",
       "portion": "25 peças",
-      "photo": "assets/images/combo_1_chef.jpg",
-      "image": "assets/images/combo_1_chef.jpg",
+      "photo": "assets/images/raw_combo_1_chef.jpeg",
+      "image": "assets/images/raw_combo_1_chef.jpeg",
       "description": "05 Shakemaki Salmão, 05 Uramaki Salmão, 03 Niguiri Salmão, 02 Niguiri Salmão Geleia Pimenta, 05 Sashimi Salmão, 05 Sashimi Tilápia c/ Limão",
       "price": 141.9,
       "priceLabel": "R$ 141,90",
@@ -3283,7 +3283,7 @@
         "portion": "25 peças",
         "page": "Pág 5",
         "price": 141.9,
-        "photo": "assets/images/combo_1_chef.jpg"
+        "photo": "assets/images/raw_combo_1_chef.jpeg"
       }
     },
     {
@@ -3295,8 +3295,8 @@
       "name": "Combo 4 - 35 peças",
       "category": "Combos do Chef",
       "portion": "35 peças",
-      "photo": "assets/images/combo_4_chef.jpg",
-      "image": "assets/images/combo_4_chef.jpg",
+      "photo": "assets/images/raw_combo_4_chef.jpeg",
+      "image": "assets/images/raw_combo_4_chef.jpeg",
       "description": "10 Shakemaki Salmão, 05 Uramaki Salmão, 05 Joy Cebolinha, 05 Hossomaki Salmão/Philadelphia, 05 Niguiri Salmão, 05 Niguiri Tilápia Limão/Geleia",
       "price": 161.9,
       "priceLabel": "R$ 161,90",
@@ -3312,7 +3312,7 @@
         "portion": "35 peças",
         "page": "Pág 5",
         "price": 161.9,
-        "photo": "assets/images/combo_4_chef.jpg"
+        "photo": "assets/images/raw_combo_4_chef.jpeg"
       }
     },
     {
@@ -3324,8 +3324,8 @@
       "name": "Combo 5 - 40 peças",
       "category": "Combos do Chef",
       "portion": "40 peças",
-      "photo": "assets/images/combo_5_chef.jpg",
-      "image": "assets/images/combo_5_chef.jpg",
+      "photo": "assets/images/raw_combo_5_chef.jpeg",
+      "image": "assets/images/raw_combo_5_chef.jpeg",
       "description": "10 Uramaki Salmão, 05 Sashimi Salmão, 05 Sashimi Salmão Maçaricado, 05 Joy Philadelphia, 05 Uramaki Joy Camarão Imperial, 05 Niguiri Salmão, 05 Shakemaki",
       "price": 205.9,
       "priceLabel": "R$ 205,90",
@@ -3341,7 +3341,7 @@
         "portion": "40 peças",
         "page": "Pág 5",
         "price": 205.9,
-        "photo": "assets/images/combo_5_chef.jpg"
+        "photo": "assets/images/raw_combo_5_chef.jpeg"
       }
     },
     {
@@ -3353,8 +3353,8 @@
       "name": "Combo 8 - 60 peças",
       "category": "Combos do Chef",
       "portion": "60 peças",
-      "photo": "assets/images/combo_6_chef.jpg",
-      "image": "assets/images/combo_6_chef.jpg",
+      "photo": "assets/images/raw_combo_8_chef.png",
+      "image": "assets/images/raw_combo_8_chef.png",
       "description": "10 Sashimi Salmão, 10 Joy Alho-poró, 10 Uramaki Salmão, 05 Sashimi Anchova, 05 Uramaki Joy Salmão Furikake, 05 Shakemaki, 05 Uramaki Joy Camarão Imperial, 05 Niguiri Salmão, 05 Niguiri Tilápia",
       "price": 320.9,
       "priceLabel": "R$ 320,90",
@@ -3370,7 +3370,7 @@
         "portion": "60 peças",
         "page": "Pág 5",
         "price": 320.9,
-        "photo": "assets/images/combo_6_chef.jpg"
+        "photo": "assets/images/raw_combo_8_chef.png"
       }
     },
     {
@@ -3380,8 +3380,8 @@
       "name": "Big Hot",
       "category": "Big Hot",
       "portion": "2 un",
-      "photo": "assets/images/bighot.jpg",
-      "image": "assets/images/bighot.jpg",
+      "photo": "assets/images/raw_bighot.png",
+      "image": "assets/images/raw_bighot.png",
       "description": "Hot rolls gigantes empanados e fritos, finalizados com tarê e cebolinha.",
       "price": 57.9,
       "priceLabel": "A partir de R$ 57,90",
@@ -3423,8 +3423,8 @@
       "name": "Hot Rolls",
       "category": "Hot Rolls",
       "portion": "10 un",
-      "photo": "assets/images/hotroll.jpg",
-      "image": "assets/images/hotroll.jpg",
+      "photo": "assets/images/raw_hotroll.jpeg",
+      "image": "assets/images/raw_hotroll.jpeg",
       "description": "Rolls empanados e crocantes com cream cheese Philadelphia. Escolha o recheio e finalização.",
       "price": 46.9,
       "priceLabel": "A partir de R$ 46,90",
@@ -3493,8 +3493,8 @@
       "name": "Sashimis Tradicionais",
       "category": "Sashimis Tradicionais",
       "portion": "5 un",
-      "photo": "assets/images/sashimi_tradicional.jpg",
-      "image": "assets/images/sashimi_tradicional.jpg",
+      "photo": "assets/images/raw_sashimi_tradicional.png",
+      "image": "assets/images/raw_sashimi_tradicional.png",
       "description": "Fatias frescas de salmão e tilápia fresca com flor de sal e limão.",
       "price": 36.9,
       "priceLabel": "A partir de R$ 36,90",
@@ -3536,8 +3536,8 @@
       "name": "Joys Tradicionais (Sem Arroz)",
       "category": "Joys Tradicionais",
       "portion": "6 un",
-      "photo": "assets/images/joy_tradicional.jpg",
-      "image": "assets/images/joy_tradicional.jpg",
+      "photo": "assets/images/raw_joy_tradicional.jpeg",
+      "image": "assets/images/raw_joy_tradicional.jpeg",
       "description": "Fatias nobres de salmão maçaricado ou fresco enrolados com Philadelphia.",
       "price": 32.9,
       "priceLabel": "A partir de R$ 32,90",
@@ -3606,8 +3606,8 @@
       "name": "Joy Ebi Fry",
       "category": "Joy Ebi Fry",
       "portion": "6 un",
-      "photo": "assets/images/joy_ebifry.jpg",
-      "image": "assets/images/joy_ebifry.jpg",
+      "photo": "assets/images/raw_joy_ebifry.png",
+      "image": "assets/images/raw_joy_ebifry.png",
       "description": "Contém salmão, camarão empanado crocante e Philadelphia. Escolha o topping.",
       "price": 43.9,
       "priceLabel": "A partir de R$ 43,90",
@@ -3667,8 +3667,8 @@
       "name": "Hossomakis",
       "category": "Hossomakis",
       "portion": "10 un",
-      "photo": "assets/images/hossomaki.jpg",
-      "image": "assets/images/hossomaki.jpg",
+      "photo": "assets/images/raw_hossomaki.jpeg",
+      "image": "assets/images/raw_hossomaki.jpeg",
       "description": "Uramakis finos com alga nori por fora. Escolha o recheio.",
       "price": 42.9,
       "priceLabel": "A partir de R$ 42,90",
@@ -3728,8 +3728,8 @@
       "name": "Uramakis Tradicionais",
       "category": "Uramakis",
       "portion": "10 un",
-      "photo": "assets/images/uramaki_tradicional.jpg",
-      "image": "assets/images/uramaki_tradicional.jpg",
+      "photo": "assets/images/raw_uramaki_tradicional.jpeg",
+      "image": "assets/images/raw_uramaki_tradicional.jpeg",
       "description": "Arroz temperado por fora e gergelim. Todos vêm com cream cheese Philadelphia.",
       "price": 42.9,
       "priceLabel": "A partir de R$ 42,90",
@@ -3798,8 +3798,8 @@
       "name": "Uramakis Joy Especiais",
       "category": "Uramakis",
       "portion": "10 un",
-      "photo": "assets/images/uramaki_joy.jpg",
-      "image": "assets/images/uramaki_joy.jpg",
+      "photo": "assets/images/raw_uramaki_joy.jpeg",
+      "image": "assets/images/raw_uramaki_joy.jpeg",
       "description": "Envoltos em salmão fresco maçaricado, geleia de pimenta e furikake.",
       "price": 49.9,
       "priceLabel": "A partir de R$ 49,90",
@@ -3832,8 +3832,8 @@
       "name": "Niguiris",
       "category": "Niguiris",
       "portion": "4 un",
-      "photo": "assets/images/niguiri.jpg",
-      "image": "assets/images/niguiri.jpg",
+      "photo": "assets/images/raw_niguiri.jpeg",
+      "image": "assets/images/raw_niguiri.jpeg",
       "description": "Bolinho de arroz japonês coberto com lâmina de peixe selecionado.",
       "price": 33.9,
       "priceLabel": "A partir de R$ 33,90",
@@ -3920,8 +3920,8 @@
       "name": "Monte seu Poke (300g)",
       "category": "Pokes",
       "portion": "300g",
-      "photo": "assets/images/poke.jpg",
-      "image": "assets/images/poke.jpg",
+      "photo": "assets/images/raw_poke.jpeg",
+      "image": "assets/images/raw_poke.jpeg",
       "description": "80g de proteína nobre + escolha até 6 acompanhamentos + escolha 1 molho.",
       "price": 61.9,
       "priceLabel": "A partir de R$ 61,90",
@@ -4085,8 +4085,8 @@
       "name": "Teppan Yaki (400g)",
       "category": "Teppan Yaki",
       "portion": "400g",
-      "photo": "assets/images/teppan.jpg",
-      "image": "assets/images/teppan.jpg",
+      "photo": "assets/images/raw_teppan.jpeg",
+      "image": "assets/images/raw_teppan.jpeg",
       "description": "200g de proteína nobre grelhada com legumes refogados na chapa e arroz gohan.",
       "price": 39.9,
       "priceLabel": "A partir de R$ 39,90",
@@ -4128,8 +4128,8 @@
       "name": "Yakisoba Tradicional (400g)",
       "category": "Yakisobas",
       "portion": "400g",
-      "photo": "assets/images/yakisoba.jpg",
-      "image": "assets/images/yakisoba.jpg",
+      "photo": "assets/images/raw_yakisoba.jpeg",
+      "image": "assets/images/raw_yakisoba.jpeg",
       "description": "Macarrão artesanal, legumes selecionados refogados e molho especial do Chef.",
       "price": 45.9,
       "priceLabel": "A partir de R$ 45,90",
@@ -4543,8 +4543,8 @@
       "name": "Combo Omaki - 40 peças",
       "category": "Combos Promocionais",
       "portion": "40 peças",
-      "photo": "assets/images/combo_177_omaki_40pc.jpg",
-      "image": "assets/images/combo_177_omaki_40pc.jpg",
+      "photo": "assets/images/raw_combo_177_omaki.png",
+      "image": "assets/images/raw_combo_177_omaki.png",
       "description": "04 Sashimi salmão, 02 Joy cebolinha, 04 Niguiri salmão, 05 Uramaki joy salmão geleia de pimenta, 05 Uramaki joy camarão geleia de pimenta, 10 Uramaki skin, 10 Uramaki salmão",
       "price": 132.0,
       "priceLabel": "R$ 132,00",
@@ -4560,7 +4560,7 @@
         "portion": "40 peças",
         "page": "Pág 10",
         "price": 132.0,
-        "photo": "assets/images/combo_177_omaki_40pc.jpg"
+        "photo": "assets/images/raw_combo_177_omaki.png"
       }
     },
     {
@@ -4572,8 +4572,8 @@
       "name": "Combo Chapada - 40 peças",
       "category": "Combos Promocionais",
       "portion": "40 peças",
-      "photo": "assets/images/combo_178_chapada_40pc.jpg",
-      "image": "assets/images/combo_178_chapada_40pc.jpg",
+      "photo": "assets/images/raw_combo_178_chapada.jpeg",
+      "image": "assets/images/raw_combo_178_chapada.jpeg",
       "description": "10 Hossomaki, 10 Uramaki skin, 10 Uramaki salmão, 05 Hot poró, 05 Hot Filadélfia",
       "price": 118.0,
       "priceLabel": "R$ 118,00",
@@ -4589,7 +4589,7 @@
         "portion": "40 peças",
         "page": "Pág 10",
         "price": 118.0,
-        "photo": "assets/images/combo_178_chapada_40pc.jpg"
+        "photo": "assets/images/raw_combo_178_chapada.jpeg"
       }
     },
     {
@@ -4601,8 +4601,8 @@
       "name": "Combo Oriental - 36 peças",
       "category": "Combos Promocionais",
       "portion": "36 peças",
-      "photo": "assets/images/combo_179_oriental_36pc.jpg",
-      "image": "assets/images/combo_179_oriental_36pc.jpg",
+      "photo": "assets/images/raw_combo_179_oriental.jpeg",
+      "image": "assets/images/raw_combo_179_oriental.jpeg",
       "description": "04 Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
       "price": 107.0,
       "priceLabel": "R$ 107,00",
@@ -4618,7 +4618,7 @@
         "portion": "36 peças",
         "page": "Pág 10",
         "price": 107.0,
-        "photo": "assets/images/combo_179_oriental_36pc.jpg"
+        "photo": "assets/images/raw_combo_179_oriental.jpeg"
       }
     },
     {
@@ -4630,8 +4630,8 @@
       "name": "Combo do Guia - 30 peças",
       "category": "Combos Promocionais",
       "portion": "30 peças",
-      "photo": "assets/images/combo_180_guia_30pc.jpg",
-      "image": "assets/images/combo_180_guia_30pc.jpg",
+      "photo": "assets/images/raw_combo_180_guia.jpeg",
+      "image": "assets/images/raw_combo_180_guia.jpeg",
       "description": "04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão, 10 Uramaki salmão, 10 Uramaki skin",
       "price": 119.0,
       "priceLabel": "R$ 119,00",
@@ -4647,7 +4647,7 @@
         "portion": "30 peças",
         "page": "Pág 10",
         "price": 119.0,
-        "photo": "assets/images/combo_180_guia_30pc.jpg"
+        "photo": "assets/images/raw_combo_180_guia.jpeg"
       }
     },
     {
@@ -4659,8 +4659,8 @@
       "name": "Combo Camarão Imperial - 25 Peças",
       "category": "Combos Promocionais",
       "portion": "25 pçs",
-      "photo": "assets/images/combo_camarao_imperial_25pc.jpg",
-      "image": "assets/images/combo_camarao_imperial_25pc.jpg",
+      "photo": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
+      "image": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
       "description": "05 Uramaki joy camarão c/ geleia de pimenta e furikake, 04 Camarão imperial, 04 Sashimis salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha e Philadelphia, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
       "price": 138.9,
       "priceLabel": "R$ 138,90",
@@ -4676,7 +4676,7 @@
         "portion": "25 pçs",
         "page": "Pág 11",
         "price": 138.9,
-        "photo": "assets/images/combo_camarao_imperial_25pc.jpg",
+        "photo": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
         "isNew": true
       }
     },
@@ -4689,8 +4689,8 @@
       "name": "Combo Camarão - 30 Peças",
       "category": "Combos Promocionais",
       "portion": "30 pçs",
-      "photo": "assets/images/combo_camarao_30pc.jpg",
-      "image": "assets/images/combo_camarao_30pc.jpg",
+      "photo": "assets/images/raw_combo_camarao_30pc.jpeg",
+      "image": "assets/images/raw_combo_camarao_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 04 Camarão imperial.",
       "price": 144.9,
       "priceLabel": "R$ 144,90",
@@ -4706,7 +4706,7 @@
         "portion": "30 pçs",
         "page": "Pág 11",
         "price": 144.9,
-        "photo": "assets/images/combo_camarao_30pc.jpg",
+        "photo": "assets/images/raw_combo_camarao_30pc.jpeg",
         "isNew": true
       }
     },
@@ -4719,8 +4719,8 @@
       "name": "Combo Joy - 28 Peças",
       "category": "Combos Promocionais",
       "portion": "28 pçs",
-      "photo": "assets/images/combo_joy_28pc.jpg",
-      "image": "assets/images/combo_joy_28pc.jpg",
+      "photo": "assets/images/raw_combo_joy_28pc.jpeg",
+      "image": "assets/images/raw_combo_joy_28pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy salmão geleia pimenta furikake, 05 Uramaki joy camarão geleia pimenta furikake, 04 Sashimis salmão, 04 Joy cebolinha.",
       "price": 136.9,
       "priceLabel": "R$ 136,90",
@@ -4736,7 +4736,7 @@
         "portion": "28 pçs",
         "page": "Pág 11",
         "price": 136.9,
-        "photo": "assets/images/combo_joy_28pc.jpg",
+        "photo": "assets/images/raw_combo_joy_28pc.jpeg",
         "isNew": true
       }
     },
@@ -4749,8 +4749,8 @@
       "name": "Combo Misto - 28 Peças",
       "category": "Combos Promocionais",
       "portion": "28 pçs",
-      "photo": "assets/images/combo_misto_28pc.jpg",
-      "image": "assets/images/combo_misto_28pc.jpg",
+      "photo": "assets/images/raw_combo_misto_28pc.jpeg",
+      "image": "assets/images/raw_combo_misto_28pc.jpeg",
       "description": "05 Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 02 Niguiri salmão.",
       "price": 138.9,
       "priceLabel": "R$ 138,90",
@@ -4766,7 +4766,7 @@
         "portion": "28 pçs",
         "page": "Pág 11",
         "price": 138.9,
-        "photo": "assets/images/combo_misto_28pc.jpg",
+        "photo": "assets/images/raw_combo_misto_28pc.jpeg",
         "isNew": true
       }
     },
@@ -4779,8 +4779,8 @@
       "name": "Combo Salmão - 30 Peças",
       "category": "Combos Promocionais",
       "portion": "30 pçs",
-      "photo": "assets/images/combo_salmao_30pc.jpg",
-      "image": "assets/images/combo_salmao_30pc.jpg",
+      "photo": "assets/images/raw_combo_salmao_30pc.jpeg",
+      "image": "assets/images/raw_combo_salmao_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 10 Hossomaki Philadelphia, 04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão.",
       "price": 129.9,
       "priceLabel": "R$ 129,90",
@@ -4796,7 +4796,7 @@
         "portion": "30 pçs",
         "page": "Pág 12",
         "price": 129.9,
-        "photo": "assets/images/combo_salmao_30pc.jpg",
+        "photo": "assets/images/raw_combo_salmao_30pc.jpeg",
         "isNew": true
       }
     },
@@ -4809,8 +4809,8 @@
       "name": "Combo Hot - 30 Peças",
       "category": "Combos Promocionais",
       "portion": "30 pçs",
-      "photo": "assets/images/combo_hot_30pc.jpg",
-      "image": "assets/images/combo_hot_30pc.jpg",
+      "photo": "assets/images/raw_combo_hot_30pc.jpeg",
+      "image": "assets/images/raw_combo_hot_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 05 Hot couve crispy, 05 Hot Philadelphia.",
       "price": 129.9,
       "priceLabel": "R$ 129,90",
@@ -4826,7 +4826,7 @@
         "portion": "30 pçs",
         "page": "Pág 12",
         "price": 129.9,
-        "photo": "assets/images/combo_hot_30pc.jpg",
+        "photo": "assets/images/raw_combo_hot_30pc.jpeg",
         "isNew": true
       }
     },
@@ -4839,8 +4839,8 @@
       "name": "Combo Hossomaki - 28 Peças",
       "category": "Combos Promocionais",
       "portion": "28 pçs",
-      "photo": "assets/images/combo_hossomaki_28pc.jpg",
-      "image": "assets/images/combo_hossomaki_28pc.jpg",
+      "photo": "assets/images/raw_combo_hossomaki_28pc.jpeg",
+      "image": "assets/images/raw_combo_hossomaki_28pc.jpeg",
       "description": "10 Hossomaki Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
       "price": 126.9,
       "priceLabel": "R$ 126,90",
@@ -4856,7 +4856,7 @@
         "portion": "28 pçs",
         "page": "Pág 12",
         "price": 126.9,
-        "photo": "assets/images/combo_hossomaki_28pc.jpg",
+        "photo": "assets/images/raw_combo_hossomaki_28pc.jpeg",
         "isNew": true
       }
     }
