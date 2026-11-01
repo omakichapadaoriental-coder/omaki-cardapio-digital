@@ -1500,27 +1500,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  function updateModalHeaderWithOption(opt) {
-
+    function updateModalHeaderWithOption(opt) {
     if (!opt) return;
-
     if (modalItemPrice) modalItemPrice.textContent = formatMoney(opt.price);
-
     if (modalItemNum) {
-
       modalItemNum.textContent = opt.num ? `#${String(opt.num).padStart(3, '0')}` : '✨ PROMO';
-
       modalItemNum.style.background = 'rgba(7, 10, 17, 0.9)';
-
       modalItemNum.style.borderColor = 'var(--accent-gold)';
-
       modalItemNum.style.color = 'var(--accent-gold)';
-
     }
-
+    if (modalItemPortion) {
+      const portionText = opt.portion || (currentModalDish ? currentModalDish.portion : '');
+      if (portionText) {
+        modalItemPortion.textContent = portionText;
+        modalItemPortion.style.display = 'inline-block';
+      } else {
+        modalItemPortion.style.display = 'none';
+      }
+    }
   }
-
-
 
   function renderSpecialCustomizations(dish) {
 

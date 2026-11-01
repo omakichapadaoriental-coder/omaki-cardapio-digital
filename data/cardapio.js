@@ -2832,7 +2832,7 @@ window.OMAKI_DATA = {
       "title": "Kobachi — Entradas Japonesas",
       "name": "Kobachi — Entradas Japonesas",
       "category": "Entradas",
-      "portion": "Porção",
+      "portion": "200g",
       "photo": "assets/images/raw_kobachi.jpeg",
       "image": "assets/images/raw_kobachi.jpeg",
       "description": "Porções tradicionais japonesas: Shimeji na manteiga, Missoshiru artesanal ou Sunomono refrescante.",
@@ -2847,7 +2847,7 @@ window.OMAKI_DATA = {
           "code": "023",
           "name": "Shimeji",
           "fullName": "Shimeji",
-          "description": "Shimeji na manteiga com shoyu e cebolinha",
+          "description": "Shimeji na manteiga com shoyu e cebolinha (200g)",
           "price": 48.9,
           "portion": "200g"
         },
@@ -2856,7 +2856,7 @@ window.OMAKI_DATA = {
           "code": "024",
           "name": "Missoshiru 200ml",
           "fullName": "Missoshiru 200ml",
-          "description": "Caldo de soja missô com tofu e cebolinha",
+          "description": "Caldo tradicional de soja missô com tofu e cebolinha (200ml)",
           "price": 25.9,
           "portion": "200ml"
         },
@@ -2865,9 +2865,9 @@ window.OMAKI_DATA = {
           "code": "025",
           "name": "Sunomono",
           "fullName": "Sunomono",
-          "description": "Salada de pepino agridoce com gergelim",
+          "description": "Salada tradicional de pepino agridoce com gergelim (200g)",
           "price": 24.9,
-          "portion": "150g"
+          "portion": "200g"
         }
       ],
       "complements": [
@@ -2877,7 +2877,8 @@ window.OMAKI_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "portionBadge": "200g"
     },
     {
       "id": "gunkan_group",
