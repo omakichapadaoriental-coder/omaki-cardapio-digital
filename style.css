@@ -1994,7 +1994,28 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 10px;
   margin-bottom: 8px;
+}
+
+.special-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.special-tag-required {
+  background: var(--accent-wine);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  line-height: 1.2;
 }
 
 .special-group-header h4 {
@@ -2008,6 +2029,8 @@ select:focus {
   font-size: 0.72rem;
   font-weight: 700;
   padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
   background: rgba(229, 192, 123, 0.12);
   color: var(--accent-gold);
   border: 1px solid rgba(229, 192, 123, 0.35);

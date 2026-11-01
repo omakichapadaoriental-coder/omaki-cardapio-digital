@@ -1639,8 +1639,11 @@ document.addEventListener('DOMContentLoaded', () => {
       let pokeHtml = `
         <div class="special-custom-group" id="pokeToppingsSection">
           <div class="special-group-header">
-            <h4>Acompanhamentos</h4>
-            <span class="special-badge-counter required" id="pokeToppingsCounter">0 de 6 inclusos (Obrigatório)</span>
+            <div class="special-title-wrap">
+              <h4>Acompanhamentos</h4>
+              <span class="special-tag-required">Obrigatório</span>
+            </div>
+            <span class="special-badge-counter required" id="pokeToppingsCounter">0 de 6</span>
           </div>
           <p class="section-hint">Escolha 6 acompanhamentos inclusos (obrigatório; você pode repetir opções; adicionais por +R$ 8,00 cada além do 6º):</p>
           <div class="poke-chips-grid">
@@ -1666,8 +1669,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="special-custom-group" id="pokeSaucesSection">
           <div class="special-group-header">
-            <h4>Molho do Chef</h4>
-            <span class="special-badge-counter required" id="pokeSaucesCounter">0 de 1 incluso (Obrigatório)</span>
+            <div class="special-title-wrap">
+              <h4>Molho do Chef</h4>
+              <span class="special-tag-required">Obrigatório</span>
+            </div>
+            <span class="special-badge-counter required" id="pokeSaucesCounter">0 de 1</span>
           </div>
           <p class="section-hint">Escolha 1 molho incluso (obrigatório; você pode adicionar mais por +R$ 9,00 cada além do 1º):</p>
           <div class="poke-chips-grid">
@@ -1724,18 +1730,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (topCounterEl) {
           if (total === 0) {
             topCounterEl.className = 'special-badge-counter required';
-            topCounterEl.textContent = '0 de 6 inclusos (Obrigatório)';
+            topCounterEl.textContent = '0 de 6';
           } else if (total < 6) {
-            const faltam = 6 - total;
             topCounterEl.className = 'special-badge-counter required';
-            topCounterEl.textContent = `${total} de 6 (Faltam ${faltam})`;
+            topCounterEl.textContent = `${total} de 6`;
           } else if (total === 6) {
             topCounterEl.className = 'special-badge-counter ready';
-            topCounterEl.textContent = '✓ 6 de 6 inclusos';
+            topCounterEl.textContent = '✓ 6 de 6';
           } else {
             const extras = total - 6;
             topCounterEl.className = 'special-badge-counter ready';
-            topCounterEl.textContent = `${total} itens (6 inclusos + ${extras} extra: +${formatMoney(extras * 8.00)})`;
+            topCounterEl.textContent = `${total} (+${extras} extra)`;
           }
         }
         updateModalTotal();
@@ -1792,14 +1797,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sauceCounterEl) {
           if (total === 0) {
             sauceCounterEl.className = 'special-badge-counter required';
-            sauceCounterEl.textContent = '0 de 1 incluso (Obrigatório)';
+            sauceCounterEl.textContent = '0 de 1';
           } else if (total === 1) {
             sauceCounterEl.className = 'special-badge-counter ready';
             sauceCounterEl.textContent = '✓ 1 incluso';
           } else {
             const extras = total - 1;
             sauceCounterEl.className = 'special-badge-counter ready';
-            sauceCounterEl.textContent = `${total} molhos (1 incluso + ${extras} extra: +${formatMoney(extras * 9.00)})`;
+            sauceCounterEl.textContent = `${total} (+${extras} extra)`;
           }
         }
         updateModalTotal();
