@@ -517,52 +517,95 @@
 
 
 
-          <!-- Disposable / Utensils -->
+          <!-- Disposable / Utensils & Sauces -->
+          <h4 class="form-section-title">2. Descartáveis & Molhos Sachê (Gratuitos)</h4>
+          <p class="form-section-sub">Escolha apenas o que for utilizar para evitar desperdício:</p>
 
-          <h4 class="form-section-title">2. Acompanhamentos & Descartáveis (Cortesia)</h4>
-
-          <div class="form-row-compact">
-
-            <div class="form-group">
-
-              <label for="orderHashis">Pares de Hashi</label>
-
-              <select id="orderHashis">
-
-                <option value="1 par" selected>1 par</option>
-
-                <option value="2 pares">2 pares</option>
-
-                <option value="3 pares">3 pares</option>
-
-                <option value="4 pares">4 pares</option>
-
-                <option value="5 ou mais">5 ou mais pares</option>
-
-                <option value="Não preciso">Não preciso</option>
-
-              </select>
-
+          <div class="disposables-list">
+            <!-- Hashis (máx 4) -->
+            <div class="disposable-item">
+              <div class="disposable-info">
+                <span class="disposable-icon">🥢</span>
+                <div>
+                  <div class="disposable-name">Hashis descartáveis</div>
+                  <div class="disposable-limit">Até 4 pares</div>
+                </div>
+              </div>
+              <div class="disposable-stepper">
+                <button type="button" class="disp-step-btn" data-action="dec" data-target="dispHashis" aria-label="Diminuir">-</button>
+                <span class="disp-qty-display" id="dispHashisDisplay">Não preciso</span>
+                <button type="button" class="disp-step-btn" data-action="inc" data-target="dispHashis" aria-label="Aumentar">+</button>
+                <input type="hidden" id="orderHashis" value="0">
+              </div>
             </div>
 
-            <div class="form-group">
-
-              <label for="orderWasabiGari">Wasabi & Gengibre</label>
-
-              <select id="orderWasabiGari">
-
-                <option value="Sim (Ambos)" selected>Sim (Ambos)</option>
-
-                <option value="Apenas Wasabi">Apenas Wasabi</option>
-
-                <option value="Apenas Gengibre">Apenas Gengibre</option>
-
-                <option value="Não (Dispensar)">Não (Dispensar)</option>
-
-              </select>
-
+            <!-- Guardanapos (máx 4) -->
+            <div class="disposable-item">
+              <div class="disposable-info">
+                <span class="disposable-icon">🧻</span>
+                <div>
+                  <div class="disposable-name">Guardanapos</div>
+                  <div class="disposable-limit">Até 4 un</div>
+                </div>
+              </div>
+              <div class="disposable-stepper">
+                <button type="button" class="disp-step-btn" data-action="dec" data-target="dispNapkins" aria-label="Diminuir">-</button>
+                <span class="disp-qty-display" id="dispNapkinsDisplay">Não preciso</span>
+                <button type="button" class="disp-step-btn" data-action="inc" data-target="dispNapkins" aria-label="Aumentar">+</button>
+                <input type="hidden" id="orderNapkins" value="0">
+              </div>
             </div>
 
+            <!-- Sachê de Shoyu (máx 8) -->
+            <div class="disposable-item">
+              <div class="disposable-info">
+                <span class="disposable-icon">🍶</span>
+                <div>
+                  <div class="disposable-name">Sachê de Shoyu</div>
+                  <div class="disposable-limit">Até 8 un</div>
+                </div>
+              </div>
+              <div class="disposable-stepper">
+                <button type="button" class="disp-step-btn" data-action="dec" data-target="dispShoyu" aria-label="Diminuir">-</button>
+                <span class="disp-qty-display" id="dispShoyuDisplay">Não quero</span>
+                <button type="button" class="disp-step-btn" data-action="inc" data-target="dispShoyu" aria-label="Aumentar">+</button>
+                <input type="hidden" id="orderShoyu" value="0">
+              </div>
+            </div>
+
+            <!-- Sachê de Tarê (máx 8) -->
+            <div class="disposable-item">
+              <div class="disposable-info">
+                <span class="disposable-icon">🍯</span>
+                <div>
+                  <div class="disposable-name">Sachê de Tarê</div>
+                  <div class="disposable-limit">Até 8 un</div>
+                </div>
+              </div>
+              <div class="disposable-stepper">
+                <button type="button" class="disp-step-btn" data-action="dec" data-target="dispTare" aria-label="Diminuir">-</button>
+                <span class="disp-qty-display" id="dispTareDisplay">Não quero</span>
+                <button type="button" class="disp-step-btn" data-action="inc" data-target="dispTare" aria-label="Aumentar">+</button>
+                <input type="hidden" id="orderTare" value="0">
+              </div>
+            </div>
+
+            <!-- Sachê de Wasabi (máx 8) -->
+            <div class="disposable-item">
+              <div class="disposable-info">
+                <span class="disposable-icon">🌿</span>
+                <div>
+                  <div class="disposable-name">Sachê de Wasabi</div>
+                  <div class="disposable-limit">Até 8 un</div>
+                </div>
+              </div>
+              <div class="disposable-stepper">
+                <button type="button" class="disp-step-btn" data-action="dec" data-target="dispWasabi" aria-label="Diminuir">-</button>
+                <span class="disp-qty-display" id="dispWasabiDisplay">Não quero</span>
+                <button type="button" class="disp-step-btn" data-action="inc" data-target="dispWasabi" aria-label="Aumentar">+</button>
+                <input type="hidden" id="orderWasabi" value="0">
+              </div>
+            </div>
           </div>
 
 

@@ -3023,3 +3023,109 @@ option {
 .split-pill-btn.active .pill-txt {
   color: var(--accent-gold);
 }
+
+/* ==========================================================================
+   DISPOSABLES & SAUCE SACHETS STEPPERS
+   ========================================================================== */
+
+.form-section-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: -6px;
+  margin-bottom: 12px;
+}
+
+.disposables-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.disposable-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 14px;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.disposable-item.has-qty {
+  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.disposable-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.disposable-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.disposable-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.disposable-limit {
+  font-size: 0.70rem;
+  color: var(--text-muted);
+}
+
+.disposable-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(7, 10, 17, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 3px 6px;
+  flex-shrink: 0;
+}
+
+.disp-step-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.disp-step-btn:hover {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #070a11;
+}
+
+.disp-qty-display {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #94a3b8;
+  min-width: 82px;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.disposable-item.has-qty .disp-qty-display {
+  color: var(--accent-gold);
+}

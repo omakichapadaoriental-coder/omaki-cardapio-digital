@@ -2920,11 +2920,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+      // Descartáveis & Sachês
+      const hQty = parseInt(document.getElementById('orderHashis')?.value || '0', 10);
+      const nQty = parseInt(document.getElementById('orderNapkins')?.value || '0', 10);
+      const sQty = parseInt(document.getElementById('orderShoyu')?.value || '0', 10);
+      const tQty = parseInt(document.getElementById('orderTare')?.value || '0', 10);
+      const wQty = parseInt(document.getElementById('orderWasabi')?.value || '0', 10);
+
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-
-      msg += `${WA_ICONS.hashis} *Hashis:* ${hashis}\n`;
-
-      msg += `${WA_ICONS.wasabi} *Wasabi & Gengibre:* ${wasabiGari}\n`;
+      msg += `🥢 *DESCARTÁVEIS & SACHÊS:*\n`;
+      msg += `• Hashis: ${hQty > 0 ? `${hQty} ${hQty === 1 ? 'par' : 'pares'}` : 'Não preciso'}\n`;
+      msg += `• Guardanapos: ${nQty > 0 ? `${nQty} un` : 'Não preciso'}\n`;
+      msg += `• Sachê de Shoyu: ${sQty > 0 ? `${sQty} un` : 'Não quero'}\n`;
+      msg += `• Sachê de Tarê: ${tQty > 0 ? `${tQty} un` : 'Não quero'}\n`;
+      msg += `• Sachê de Wasabi: ${wQty > 0 ? `${wQty} un` : 'Não quero'}\n`;
 
       if (selectedPayment === 'Dividido') {
         msg += `${WA_ICONS.card} *Pagamento:* Dividido em 2 formas:\n`;
@@ -3100,6 +3109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- BOOTSTRAP INITIALIZATION ---
 
+  initDisposables();
   initCategories();
 
   renderMenu('', 'all');
@@ -3113,3 +3123,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+  // --- DESCARTÁVEIS & SACHÊS STEPPERS ---
+  function initDisposables() {
+    const limits = {
+      dispHashis: { max: 4, zeroTxt: 'Não preciso', unit: 'par', unitPlural: 'pares', inputId: 'orderHashis' },
+      dispNapkins: { max: 4, zeroTxt: 'Não preciso', unit: 'un', unitPlural: 'un', inputId: 'orderNapkins' },
+      dispShoyu: { max: 8, zeroTxt: 'Não quero', unit: 'un', unitPlural: 'un', inputId: 'orderShoyu' },
+      dispTare: { max: 8, zeroTxt: 'Não quero', unit: 'un', unitPlural: 'un', inputId: 'orderTare' },
+      dispWasabi: { max: 8, zeroTxt: 'Não quero', unit: 'un', unitPlural: 'un', inputId: 'orderWasabi' }
+    };
+
+    document.querySelectorAll('.disp-step-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target;
+        const action = btn.dataset.action;
+        const config = limits[target];
+        if (!config) return;
+
+        const input = document.getElementById(config.inputId);
+        const display = document.getElementById(target + 'Display');
+        const itemWrap = btn.closest('.disposable-item');
+        if (!input || !display) return;
+
+        let cur = parseInt(input.value, 10) || 0;
+        if (action === 'inc' && cur < config.max) {
+          cur++;
+        } else if (action === 'dec' && cur > 0) {
+          cur--;
+        }
+
+        input.value = cur;
+        if (cur === 0) {
+          display.textContent = config.zeroTxt;
+          if (itemWrap) itemWrap.classList.remove('has-qty');
+        } else {
+          const u = cur === 1 ? config.unit : config.unitPlural;
+          display.textContent = `${cur} ${u}`;
+          if (itemWrap) itemWrap.classList.add('has-qty');
+        }
+      });
+    });
+  }
