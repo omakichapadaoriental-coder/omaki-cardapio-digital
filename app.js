@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentModalDish = null;
   let currentSelectedOption = null;
   let currentModalQty = 1;
-  let selectedComplements = new Set();
+  let selectedComplements = {};
   let selectedSpecialOptions = {
     temakiFried: false,
     temakiNoRice: false,
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!itemModal) return;
     currentModalDish = dish;
     currentModalQty = 1;
-    selectedComplements.clear();
+    selectedComplements = {};
     selectedSpecialOptions = {
       temakiFried: false,
       temakiNoRice: false,
@@ -561,34 +561,69 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle Special Customization (Temakis & Pokes)
     renderSpecialCustomizations(dish);
 
-    // Complements List
-    if (modalComplementsList) {
-      modalComplementsList.innerHTML = '';
-      data.complements.forEach(cmp => {
-        const row = document.createElement('label');
-        row.className = 'complement-item';
-        row.innerHTML = `
-          <div class="complement-left">
-            <input type="checkbox" value="${cmp.id}">
-            <span class="complement-name">${cmp.name}</span>
-          </div>
-          <span class="complement-price">+ ${formatMoney(cmp.price)}</span>
-        `;
+    // Complements List (Hide for beverages, and provide quantity stepper)
+    const modalComplementsSection = document.getElementById('modalComplementsSection');
+    const isBeverage = dish.category.includes('Bebida') || dish.category.includes('Cerveja') || dish.category.includes('Refrigerante') || dish.category.includes('Suco') || dish.category.includes('Sakê') || dish.id === 'sucos_group' || dish.id === 'cervejas_group' || dish.id === 'refrigerantes_group' || dish.id === 'sake_group';
 
-        const cb = row.querySelector('input');
-        cb.addEventListener('change', () => {
-          if (cb.checked) {
-            selectedComplements.add(cmp.id);
+    const dishCompIds = dish.complements || [];
+    const availableComps = (data.complements || []).filter(c => dishCompIds.includes(c.id));
+
+    if (isBeverage || availableComps.length === 0) {
+      if (modalComplementsSection) modalComplementsSection.style.display = 'none';
+      if (modalComplementsList) modalComplementsList.innerHTML = '';
+    } else {
+      if (modalComplementsSection) modalComplementsSection.style.display = 'block';
+      if (modalComplementsList) {
+        modalComplementsList.innerHTML = '';
+        availableComps.forEach(cmp => {
+          const row = document.createElement('div');
+          row.className = 'complement-item';
+          row.id = `comp-row-${cmp.id}`;
+          row.innerHTML = `
+            <div class="complement-left">
+              <span class="complement-name">${cmp.name}</span>
+              <span class="complement-price">+ ${formatMoney(cmp.price)}</span>
+            </div>
+            <div class="complement-stepper">
+              <button type="button" class="comp-stepper-btn comp-btn-minus" data-id="${cmp.id}" aria-label="Diminuir">−</button>
+              <span class="comp-qty-value" id="comp-qty-${cmp.id}">0</span>
+              <button type="button" class="comp-stepper-btn comp-btn-plus" data-id="${cmp.id}" aria-label="Aumentar">+</button>
+            </div>
+          `;
+
+          const minusBtn = row.querySelector('.comp-btn-minus');
+          const plusBtn = row.querySelector('.comp-btn-plus');
+          const qtySpan = row.querySelector('.comp-qty-value');
+
+          minusBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let current = selectedComplements[cmp.id] || 0;
+            if (current > 0) {
+              current--;
+              if (current === 0) {
+                delete selectedComplements[cmp.id];
+                row.classList.remove('selected');
+              } else {
+                selectedComplements[cmp.id] = current;
+              }
+              qtySpan.textContent = current;
+              updateModalTotal();
+            }
+          });
+
+          plusBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let current = selectedComplements[cmp.id] || 0;
+            current++;
+            selectedComplements[cmp.id] = current;
             row.classList.add('selected');
-          } else {
-            selectedComplements.delete(cmp.id);
-            row.classList.remove('selected');
-          }
-          updateModalTotal();
-        });
+            qtySpan.textContent = current;
+            updateModalTotal();
+          });
 
-        modalComplementsList.appendChild(row);
-      });
+          modalComplementsList.appendChild(row);
+        });
+      }
     }
 
     updateModalTotal();
@@ -875,11 +910,14 @@ document.addEventListener('DOMContentLoaded', () => {
       basePrice += (selectedSpecialOptions.pokeSauces.length - 1) * 9.00;
     }
 
-    // Complements
+    // Complements with multiple quantities
     let compTotal = 0;
-    selectedComplements.forEach(cmpId => {
-      const cmp = data.complements.find(c => c.id === cmpId);
-      if (cmp) compTotal += cmp.price;
+    Object.keys(selectedComplements).forEach(cmpId => {
+      const qty = selectedComplements[cmpId] || 0;
+      if (qty > 0) {
+        const cmp = data.complements.find(c => c.id === cmpId);
+        if (cmp) compTotal += cmp.price * qty;
+      }
     });
 
     const singleTotal = basePrice + compTotal;
@@ -950,12 +988,21 @@ document.addEventListener('DOMContentLoaded', () => {
         };
       }
 
-      // Collect selected complements
+      // Collect selected complements with quantities
       const complements = [];
-      selectedComplements.forEach(cmpId => {
-        const cmp = data.complements.find(c => c.id === cmpId);
-        if (cmp) {
-          complements.push({ id: cmp.id, name: cmp.name, price: cmp.price });
+      Object.keys(selectedComplements).forEach(cmpId => {
+        const qty = selectedComplements[cmpId] || 0;
+        if (qty > 0) {
+          const cmp = data.complements.find(c => c.id === cmpId);
+          if (cmp) {
+            complements.push({
+              id: cmp.id,
+              num: cmp.num,
+              name: cmp.name,
+              price: cmp.price,
+              qty: qty
+            });
+          }
         }
       });
 
@@ -1252,16 +1299,19 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `${WA_ICONS.cart} *ITENS DO PEDIDO:*\n\n`;
 
       cart.forEach(entry => {
-        const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}]` : '[PROMO]';
+        const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}] ` : '';
         let itemPriceUnit = entry.item.price;
         (entry.complements || []).forEach(c => itemPriceUnit += c.price);
         const totalLine = itemPriceUnit * entry.qty;
 
-        msg += `• *${entry.qty}x ${itemTag} ${entry.item.name}* — ${formatMoney(totalLine)}\n`;
+        msg += `• *${entry.qty}x ${itemTag}${entry.item.name}* — ${formatMoney(totalLine)}\n`;
 
         if (entry.complements && entry.complements.length > 0) {
           entry.complements.forEach(c => {
-            msg += `   └ ${WA_ICONS.plus} _${c.name}_ (+${formatMoney(c.price)})\n`;
+            const cQty = c.qty || 1;
+            const linePrice = c.price * cQty;
+            const prefix = cQty > 1 ? `${cQty}x ` : '';
+            msg += `   └ ${WA_ICONS.plus} _${prefix}${c.name}_ (+${formatMoney(linePrice)})\n`;
           });
         }
 

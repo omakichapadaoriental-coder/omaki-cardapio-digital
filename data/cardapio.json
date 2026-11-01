@@ -3469,7 +3469,7 @@
       "portion": "25 peças",
       "photo": "assets/images/raw_combo_1_chef.jpeg",
       "image": "assets/images/raw_combo_1_chef.jpeg",
-      "description": "Shakemaki Salmão, 05 Uramaki Salmão, 03 Niguiri Salmão, 02 Niguiri Salmão Geleia Pimenta, 05 Sashimi Salmão, 05 Sashimi Tilápia c/ Limão",
+      "description": "05 Sashimis de Salmão, 05 Sashimis de tilápia com limão, 05 Shakemaki - Salmão, 05 Uramaki de salmão, 03 Niguiri de salmão, 02 Niguiri de salmão e geleia de pimenta",
       "price": 141.9,
       "priceLabel": "R$ 141,90",
       "page": "Pág 5",
@@ -3506,7 +3506,7 @@
       "portion": "35 peças",
       "photo": "assets/images/raw_combo_4_chef.jpeg",
       "image": "assets/images/raw_combo_4_chef.jpeg",
-      "description": "Shakemaki Salmão, 05 Uramaki Salmão, 05 Joy Cebolinha, 05 Hossomaki Salmão/Philadelphia, 05 Niguiri Salmão, 05 Niguiri Tilápia Limão/Geleia",
+      "description": "10 Shakemaki - Salmão, 05 Uramaki de salmão, 05 Joy de cebolinha, 05 Hossomaki, salmão e Philadelphia, 05 Niguiri de salmão, 05 Niguiri de tilápia com limão e geleia de pimenta",
       "price": 161.9,
       "priceLabel": "R$ 161,90",
       "page": "Pág 5",
@@ -3543,7 +3543,7 @@
       "portion": "40 peças",
       "photo": "assets/images/raw_combo_5_chef.jpeg",
       "image": "assets/images/raw_combo_5_chef.jpeg",
-      "description": "Uramaki Salmão, 05 Sashimi Salmão, 05 Sashimi Salmão Maçaricado, 05 Joy Philadelphia, 05 Uramaki Joy Camarão Imperial, 05 Niguiri Salmão, 05 Shakemaki",
+      "description": "10 Uramaki de salmão, 05 Sashimis de salmão, 05 Sashimis de salmão maçaricado, 05 Joy com Philadelphia, 05 Uramaki joy de camarão imperial, 05 Niguiri de salmão, 05 Shakemaki - Salmão",
       "price": 205.9,
       "priceLabel": "R$ 205,90",
       "page": "Pág 5",
@@ -3580,7 +3580,7 @@
       "portion": "60 peças",
       "photo": "assets/images/real_combo_8_chef.png",
       "image": "assets/images/real_combo_8_chef.png",
-      "description": "Sashimi Salmão, 10 Joy Alho-poró, 10 Uramaki Salmão, 05 Sashimi Anchova, 05 Uramaki Joy Salmão Furikake, 05 Shakemaki, 05 Uramaki Joy Camarão Imperial, 05 Niguiri Salmão, 05 Niguiri Tilápia",
+      "description": "10 Sashimi de salmão, 10 Joy com alho-poró, 10 Uramaki de salmão, 05 Sashimi de anchova defumada, 05 Uramaki joy salmão com furikake, 05 Shakemaki - salmão, 05 Uramaki joy camarão imperial, 05 Niguiri de salmão, 05 Niguiri de tilápia com limão",
       "price": 320.9,
       "priceLabel": "R$ 320,90",
       "page": "Pág 5",
@@ -4634,14 +4634,7 @@
           "portion": "330ml"
         }
       ],
-      "complements": [
-        "cmp-131-teriaky",
-        "cmp-132-alho-poro",
-        "cmp-133-geleia-pimenta",
-        "cmp-134-gari",
-        "cmp-135-gergelim",
-        "cmp-136-shot-limao"
-      ]
+      "complements": []
     },
     {
       "id": "sake_group",
@@ -4723,14 +4716,7 @@
           "portion": "740ml"
         }
       ],
-      "complements": [
-        "cmp-131-teriaky",
-        "cmp-132-alho-poro",
-        "cmp-133-geleia-pimenta",
-        "cmp-134-gari",
-        "cmp-135-gergelim",
-        "cmp-136-shot-limao"
-      ]
+      "complements": []
     },
     {
       "id": "refrigerantes_group",
@@ -4830,14 +4816,7 @@
           "portion": "500ml"
         }
       ],
-      "complements": [
-        "cmp-131-teriaky",
-        "cmp-132-alho-poro",
-        "cmp-133-geleia-pimenta",
-        "cmp-134-gari",
-        "cmp-135-gergelim",
-        "cmp-136-shot-limao"
-      ]
+      "complements": []
     },
     {
       "id": "cervejas_group",
@@ -4928,14 +4907,7 @@
           "portion": "600ml"
         }
       ],
-      "complements": [
-        "cmp-131-teriaky",
-        "cmp-132-alho-poro",
-        "cmp-133-geleia-pimenta",
-        "cmp-134-gari",
-        "cmp-135-gergelim",
-        "cmp-136-shot-limao"
-      ]
+      "complements": []
     },
     {
       "id": "item_177",
@@ -4948,7 +4920,7 @@
       "portion": "40 peças",
       "photo": "assets/images/raw_combo_177_omaki.png",
       "image": "assets/images/raw_combo_177_omaki.png",
-      "description": "Sashimi salmão, 02 Joy cebolinha, 04 Niguiri salmão, 05 Uramaki joy salmão geleia de pimenta, 05 Uramaki joy camarão geleia de pimenta, 10 Uramaki skin, 10 Uramaki salmão",
+      "description": "04 Sashimi salmão, 02 Joy cebolinha, 04 Niguiri salmão, 05 Uramaki joy salmão geleia de pimenta, 05 Uramaki joy camarão geleia de pimenta, 10 Uramaki skin, 10 Uramaki salmão",
       "price": 132.0,
       "priceLabel": "R$ 132,00",
       "page": "Pág 10",
@@ -4985,7 +4957,7 @@
       "portion": "40 peças",
       "photo": "assets/images/raw_combo_178_chapada.jpeg",
       "image": "assets/images/raw_combo_178_chapada.jpeg",
-      "description": "Hossomaki, 10 Uramaki skin, 10 Uramaki salmão, 05 Hot poró, 05 Hot Filadélfia",
+      "description": "10 Hossomaki, 10 Uramaki skin, 10 Uramaki salmão, 05 Hot poró, 05 Hot Filadélfia",
       "price": 118.0,
       "priceLabel": "R$ 118,00",
       "page": "Pág 10",
@@ -5022,7 +4994,7 @@
       "portion": "36 peças",
       "photo": "assets/images/raw_combo_179_oriental.jpeg",
       "image": "assets/images/raw_combo_179_oriental.jpeg",
-      "description": "Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
+      "description": "04 Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
       "price": 107.0,
       "priceLabel": "R$ 107,00",
       "page": "Pág 10",
@@ -5059,7 +5031,7 @@
       "portion": "30 peças",
       "photo": "assets/images/raw_combo_180_guia.jpeg",
       "image": "assets/images/raw_combo_180_guia.jpeg",
-      "description": "Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão, 10 Uramaki salmão, 10 Uramaki skin",
+      "description": "04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão, 10 Uramaki salmão, 10 Uramaki skin",
       "price": 119.0,
       "priceLabel": "R$ 119,00",
       "page": "Pág 10",
@@ -5091,12 +5063,12 @@
       "num": null,
       "code": null,
       "title": "Combo Camarão Imperial - 25 Peças",
-      "name": "Combo Camarão Imperial - 25 Peças",
+      "name": "Camarão Imperial - 25 Peças",
       "category": "Combos Promocionais",
       "portion": "25 pçs",
       "photo": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
       "image": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
-      "description": "Uramaki joy camarão c/ geleia de pimenta e furikake, 04 Camarão imperial, 04 Sashimis salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha e Philadelphia, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
+      "description": "05 Uramaki joy camarão geleia de pimenta e furikake, 04 Camarão imperial, 04 Sashimis salmão, 04 Sashimi de tilápia com geleia de pimenta e furikake, 04 Joy de cebolinha e Philaldelphia, 02 Niguiri de salmão, 02 Niguiri de tilápia com geleia de pimenta e furikake",
       "price": 138.9,
       "priceLabel": "R$ 138,90",
       "page": "Pág 11",
@@ -5134,7 +5106,7 @@
       "portion": "30 pçs",
       "photo": "assets/images/raw_combo_camarao_30pc.jpeg",
       "image": "assets/images/raw_combo_camarao_30pc.jpeg",
-      "description": "Uramaki skin Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 04 Camarão imperial.",
+      "description": "10 Uramaki skin Philadelphia, 04 Sashimi de salmão, 04 Sashimi de tilápia com geleia de pimenta e furikake, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de tilápia com geleia de pimenta e furikake, 04 Camarão imperial",
       "price": 144.9,
       "priceLabel": "R$ 144,90",
       "page": "Pág 11",
@@ -5172,7 +5144,7 @@
       "portion": "28 pçs",
       "photo": "assets/images/raw_combo_joy_28pc.jpeg",
       "image": "assets/images/raw_combo_joy_28pc.jpeg",
-      "description": "Uramaki skin Philadelphia, 05 Uramaki joy salmão geleia pimenta furikake, 05 Uramaki joy camarão geleia pimenta furikake, 04 Sashimis salmão, 04 Joy cebolinha.",
+      "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy salmão geleia de pimenta furikake, 05 Uramaki joy camarão geleia de pimenta furikake, 04 Sashimis salmão, 04 Joy cebolinha",
       "price": 136.9,
       "priceLabel": "R$ 136,90",
       "page": "Pág 11",
@@ -5210,7 +5182,7 @@
       "portion": "28 pçs",
       "photo": "assets/images/raw_combo_misto_28pc.jpeg",
       "image": "assets/images/raw_combo_misto_28pc.jpeg",
-      "description": "Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 02 Niguiri salmão.",
+      "description": "05 Uramaki joy de camarão geleia de pimenta e furikake, 05 Uramaki joy salmão geleia de pimenta e furikake, 04 Sashimi de salmão, 04 Sashimi de tilápia, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de tilápia com geleia pimenta e furikake, 02 Niguiri de salmão",
       "price": 138.9,
       "priceLabel": "R$ 138,90",
       "page": "Pág 11",
@@ -5248,7 +5220,7 @@
       "portion": "30 pçs",
       "photo": "assets/images/raw_combo_salmao_30pc.jpeg",
       "image": "assets/images/raw_combo_salmao_30pc.jpeg",
-      "description": "Uramaki skin Philadelphia, 10 Hossomaki Philadelphia, 04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão.",
+      "description": "10 Uramaki skin Philadelphia, 10 Hossomaki Philadelphia, 04 Sashimi de salmão, 04 Joy de cebolinha, 02 Niguiri de salmão",
       "price": 129.9,
       "priceLabel": "R$ 129,90",
       "page": "Pág 12",
@@ -5286,7 +5258,7 @@
       "portion": "30 pçs",
       "photo": "assets/images/raw_combo_hot_30pc.jpeg",
       "image": "assets/images/raw_combo_hot_30pc.jpeg",
-      "description": "Uramaki skin Philadelphia, 05 Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 05 Hot couve crispy, 05 Hot Philadelphia.",
+      "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy camarão com geleia de pimenta e furikake, 05 Uramaki joy salmão com geleia de pimenta e furikake, 05 Hot couve crispy, 05 Hot Philadelphia",
       "price": 129.9,
       "priceLabel": "R$ 129,90",
       "page": "Pág 12",
@@ -5324,7 +5296,7 @@
       "portion": "28 pçs",
       "photo": "assets/images/raw_combo_hossomaki_28pc.jpeg",
       "image": "assets/images/raw_combo_hossomaki_28pc.jpeg",
-      "description": "Hossomaki Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
+      "description": "10 Hossomaki Philadelphia, 04 Sashimi de salmão, 04 Sashimi de tilápia, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de salmão, 02 Niguiri de tilápia com geleia de pimenta e furikake",
       "price": 126.9,
       "priceLabel": "R$ 126,90",
       "page": "Pág 12",
