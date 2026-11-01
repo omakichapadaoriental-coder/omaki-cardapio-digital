@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let deliveryType = 'delivery'; // 'delivery' | 'takeaway'
 
   let selectedNeighborhood = { name: 'Alto Paraíso', fee: 0 };
+  let capturedCoordinates = null;
   let adminState = {
     deliveryActive: true,
     manualDeliveryOverride: null,
@@ -2842,6 +2843,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (complement) msg += `${WA_ICONS.ref} *Ponto de Ref:* ${complement}\n`;
 
+        if (capturedCoordinates && capturedCoordinates.lat && capturedCoordinates.lng) {
+          msg += `🗺️ *Localização GPS para o Motoboy:* https://maps.google.com/?q=${capturedCoordinates.lat},${capturedCoordinates.lng}\n`;
+        }
+
         msg += `${WA_ICONS.moto} *Taxa de Entrega:* A combinar com o entregador (Média: R$ 12 a R$ 15 confirmada no WhatsApp)\n`;
 
       } else {
@@ -3109,6 +3114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- BOOTSTRAP INITIALIZATION ---
 
+  initGeolocation();
   initDisposables();
   initCategories();
 
@@ -3163,5 +3169,77 @@ document.addEventListener('DOMContentLoaded', () => {
           if (itemWrap) itemWrap.classList.add('has-qty');
         }
       });
+    });
+  }
+
+  // --- GEOLOCALIZAÇÃO GPS DO CLIENTE ---
+  function initGeolocation() {
+    const btnGetLocation = document.getElementById('btnGetLocation');
+    const gpsStatusBadge = document.getElementById('gpsStatusBadge');
+    const gpsMapsLink = document.getElementById('gpsMapsLink');
+    const orderStreet = document.getElementById('orderStreet');
+
+    if (!btnGetLocation) return;
+
+    btnGetLocation.addEventListener('click', () => {
+      if (!navigator.geolocation) {
+        showCustomAlert('Navegador Incompatível', 'Seu aparelho ou navegador não suporta geolocalização. Por favor, digite o endereço manualmente.', orderStreet);
+        return;
+      }
+
+      btnGetLocation.classList.add('loading');
+      btnGetLocation.innerHTML = '<span class="gps-icon spinner">📡</span> Detectando sua localização GPS...';
+
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          capturedCoordinates = { lat, lng };
+
+          btnGetLocation.classList.remove('loading');
+          btnGetLocation.classList.add('success');
+          btnGetLocation.innerHTML = '<span class="gps-icon">✓</span> Localização GPS Capturada!';
+
+          const mapsUrl = `https://maps.google.com/?q=${lat},${lng}`;
+          if (gpsStatusBadge && gpsMapsLink) {
+            gpsStatusBadge.style.display = 'flex';
+            gpsMapsLink.href = mapsUrl;
+          }
+
+          // Tenta preencher automaticamente o nome da rua via OpenStreetMap (Gratuito e sem chave)
+          try {
+            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`, {
+              headers: { 'Accept-Language': 'pt-BR' }
+            });
+            if (res.ok) {
+              const data = await res.json();
+              const addr = data.address || {};
+              const road = addr.road || addr.pedestrian || addr.footway || addr.suburb || '';
+              const houseNum = addr.house_number ? `, ${addr.house_number}` : '';
+              const quarter = addr.suburb || addr.neighbourhood || '';
+              const parts = [road + houseNum, quarter].filter(Boolean);
+              if (parts.length > 0 && orderStreet && !orderStreet.value.trim()) {
+                orderStreet.value = parts.join(' — ');
+              }
+            }
+          } catch (e) {
+            // Continua normalmente, as coordenadas já estão salvas para o motoboy
+          }
+        },
+        (error) => {
+          btnGetLocation.classList.remove('loading');
+          btnGetLocation.innerHTML = '<span class="gps-icon">📍</span> Usar minha localização atual (GPS)';
+
+          let msg = 'Não foi possível capturar sua posição GPS. Por favor, digite seu endereço ou nome da pousada.';
+          if (error.code === 1) { // PERMISSION_DENIED
+            msg = 'A permissão de localização foi negada no navegador. Para enviar o link GPS ao motoboy, permita o acesso à localização nas configurações do site ou digite o endereço manualmente.';
+          } else if (error.code === 3) { // TIMEOUT
+            msg = 'O sinal do GPS demorou a responder. Você pode tentar novamente ou digitar o endereço manualmente.';
+          }
+
+          showCustomAlert('Localização GPS', msg, orderStreet);
+        },
+        { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 }
+      );
     });
   }

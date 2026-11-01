@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "name": "omaki-cardapio-digital",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" }
+  ],
   "headers": [
     {
       "source": "/(.*).js",
