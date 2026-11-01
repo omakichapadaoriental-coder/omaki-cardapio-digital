@@ -1418,7 +1418,7 @@ const CARDAPIO_DATA = {
       "name": "Poke Imperial",
       "fullName": "Poke Imperial",
       "description": "150g arroz shari, camarão imperial empanado, mix acompanhamentos e molho",
-      "portion": "300g",
+      "portion": "80g Proteína",
       "page": "Pág 8",
       "price": 71.9,
       "photo": "assets/images/raw_poke.jpeg"
@@ -1430,7 +1430,7 @@ const CARDAPIO_DATA = {
       "name": "Poke Salmão, flor de sal, azeite trufado e limão",
       "fullName": "Poke Salmão, flor de sal, azeite trufado e limão",
       "description": "150g arroz shari, salmão em cubos, azeite trufado, flor de sal e raspas de limão",
-      "portion": "300g",
+      "portion": "80g Proteína",
       "page": "Pág 8",
       "price": 70.9,
       "photo": "assets/images/raw_poke.jpeg"
@@ -1442,7 +1442,7 @@ const CARDAPIO_DATA = {
       "name": "Poke Salmão",
       "fullName": "Poke Salmão",
       "description": "150g arroz shari, 80g salmão fresco em cubos, 6 acompanhamentos e molho da casa",
-      "portion": "300g",
+      "portion": "80g Proteína",
       "page": "Pág 8",
       "price": 67.9,
       "photo": "assets/images/raw_poke.jpeg"
@@ -1454,7 +1454,7 @@ const CARDAPIO_DATA = {
       "name": "Poke Tártare de salmão com Philadelphia",
       "fullName": "Poke Tártare de salmão com Philadelphia",
       "description": "150g arroz shari, salmão picado com cream cheese Philadelphia e acompanhamentos",
-      "portion": "300g",
+      "portion": "80g Proteína",
       "page": "Pág 8",
       "price": 65.9,
       "photo": "assets/images/raw_poke.jpeg"
@@ -1466,7 +1466,7 @@ const CARDAPIO_DATA = {
       "name": "Poke Camarão Imperial (4un)",
       "fullName": "Poke Camarão Imperial (4un)",
       "description": "150g arroz shari, 4 unidades de camarão imperial empanado e acompanhamentos",
-      "portion": "300g",
+      "portion": "4un Camarão",
       "page": "Pág 8",
       "price": 64.9,
       "photo": "assets/images/raw_poke.jpeg"
@@ -1478,7 +1478,7 @@ const CARDAPIO_DATA = {
       "name": "Poke Shimeji",
       "fullName": "Poke Shimeji",
       "description": "150g arroz shari, shimeji salteado na manteiga com shoyu e acompanhamentos",
-      "portion": "300g",
+      "portion": "80g Shimeji",
       "page": "Pág 8",
       "price": 61.9,
       "photo": "assets/images/raw_poke.jpeg"
@@ -1802,7 +1802,7 @@ const CARDAPIO_DATA = {
       "name": "Salmão Grelhado",
       "fullName": "Salmão Grelhado",
       "description": "200g filé de salmão grelhado na chapa com legumes refogados",
-      "portion": "200g",
+      "portion": "200g Proteína",
       "page": "Pág 8",
       "price": 76.9,
       "photo": "assets/images/raw_teppan.jpeg"
@@ -1814,7 +1814,7 @@ const CARDAPIO_DATA = {
       "name": "Tilápia Grelhada",
       "fullName": "Tilápia Grelhada",
       "description": "200g filé de tilápia grelhada na chapa com legumes refogados",
-      "portion": "200g",
+      "portion": "200g Proteína",
       "page": "Pág 8",
       "price": 75.9,
       "photo": "assets/images/raw_teppan.jpeg"
@@ -4243,10 +4243,10 @@ const CARDAPIO_DATA = {
       "title": "Monte seu Poke (300g)",
       "name": "Monte seu Poke (300g)",
       "category": "Pokes",
-      "portion": "300g",
+      "portion": "80g Proteína",
       "photo": "assets/images/raw_poke.jpeg",
       "image": "assets/images/raw_poke.jpeg",
-      "description": "80g de proteína nobre + escolha até 6 acompanhamentos + escolha 1 molho.",
+      "description": "Porção 300g • 80g de proteína nobre + escolha até 6 acompanhamentos + escolha 1 molho.",
       "price": 71.9,
       "basePrice": 61.9,
       "maxPrice": 71.9,
@@ -4260,7 +4260,7 @@ const CARDAPIO_DATA = {
           "fullName": "Poke Imperial",
           "description": "150g arroz shari, camarão imperial empanado, mix acompanhamentos e molho",
           "price": 71.9,
-          "portion": "300g"
+          "portion": "80g Proteína"
         },
         {
           "num": 106,
@@ -4269,7 +4269,7 @@ const CARDAPIO_DATA = {
           "fullName": "Poke Salmão, flor de sal, azeite trufado e limão",
           "description": "150g arroz shari, salmão em cubos, azeite trufado, flor de sal e raspas de limão",
           "price": 70.9,
-          "portion": "300g"
+          "portion": "80g Proteína"
         },
         {
           "num": 107,
@@ -4278,7 +4278,7 @@ const CARDAPIO_DATA = {
           "fullName": "Poke Salmão",
           "description": "150g arroz shari, 80g salmão fresco em cubos, 6 acompanhamentos e molho da casa",
           "price": 67.9,
-          "portion": "300g"
+          "portion": "80g Proteína"
         },
         {
           "num": 108,
@@ -4287,7 +4287,7 @@ const CARDAPIO_DATA = {
           "fullName": "Poke Tártare de salmão com Philadelphia",
           "description": "150g arroz shari, salmão picado com cream cheese Philadelphia e acompanhamentos",
           "price": 65.9,
-          "portion": "300g"
+          "portion": "80g Proteína"
         },
         {
           "num": 109,
@@ -4296,7 +4296,7 @@ const CARDAPIO_DATA = {
           "fullName": "Poke Camarão Imperial (4un)",
           "description": "150g arroz shari, 4 unidades de camarão imperial empanado e acompanhamentos",
           "price": 64.9,
-          "portion": "300g"
+          "portion": "4un Camarão"
         },
         {
           "num": 110,
@@ -4305,7 +4305,7 @@ const CARDAPIO_DATA = {
           "fullName": "Poke Shimeji",
           "description": "150g arroz shari, shimeji salteado na manteiga com shoyu e acompanhamentos",
           "price": 61.9,
-          "portion": "300g"
+          "portion": "80g Shimeji"
         }
       ],
       "isPoke": true,
@@ -4413,14 +4413,7 @@ const CARDAPIO_DATA = {
           "portion": "Shot"
         }
       ],
-      "complements": [
-        "cmp-131-teriaky",
-        "cmp-132-alho-poro",
-        "cmp-133-geleia-pimenta",
-        "cmp-134-gari",
-        "cmp-135-gergelim",
-        "cmp-136-shot-limao"
-      ]
+      "complements": []
     },
     {
       "id": "teppan_group",
@@ -4428,10 +4421,10 @@ const CARDAPIO_DATA = {
       "title": "Teppan Yaki (400g)",
       "name": "Teppan Yaki (400g)",
       "category": "Teppan Yaki",
-      "portion": "400g",
+      "portion": "200g Proteína",
       "photo": "assets/images/raw_teppan.jpeg",
       "image": "assets/images/raw_teppan.jpeg",
-      "description": "200g de proteína nobre grelhada com legumes refogados na chapa e arroz gohan.",
+      "description": "200g de proteína nobre grelhada na chapa com legumes refogados e arroz gohan.",
       "price": 76.9,
       "basePrice": 39.9,
       "maxPrice": 76.9,
@@ -4445,7 +4438,7 @@ const CARDAPIO_DATA = {
           "fullName": "Salmão Grelhado",
           "description": "200g filé de salmão grelhado na chapa com legumes refogados",
           "price": 76.9,
-          "portion": "200g"
+          "portion": "200g Proteína"
         },
         {
           "num": 138,
@@ -4454,7 +4447,7 @@ const CARDAPIO_DATA = {
           "fullName": "Tilápia Grelhada",
           "description": "200g filé de tilápia grelhada na chapa com legumes refogados",
           "price": 75.9,
-          "portion": "200g"
+          "portion": "200g Proteína"
         },
         {
           "num": 139,
@@ -4463,7 +4456,7 @@ const CARDAPIO_DATA = {
           "fullName": "Arroz Gohan 200g",
           "description": "Arroz japonês branco cozido sem tempero",
           "price": 39.9,
-          "portion": "200g"
+          "portion": "200g Gohan"
         }
       ],
       "complements": [

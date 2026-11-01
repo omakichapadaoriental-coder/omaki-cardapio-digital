@@ -1140,7 +1140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    if (isBeverage || availableComps.length === 0) {
+    if (isBeverage || availableComps.length === 0 || dish.id === 'molhos_group' || (dish.category && dish.category.includes('Adicionais'))) {
 
       if (modalComplementsSection) modalComplementsSection.style.display = 'none';
 
@@ -1522,513 +1522,381 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderSpecialCustomizations(dish) {
-
     if (!modalSpecialSection || !modalSpecialContent) return;
 
-    const isTemaki = dish.id === 'temaki_group' || dish.category === 'Temakis';
-
+    const isTemaki = (dish.category && dish.category.includes('Temaki')) || dish.id === 'temaki_group' || dish.id === 'cat-temakis';
     const isPoke = dish.isPoke || dish.id === 'poke_group';
 
-
-
     if (!isTemaki && !isPoke) {
-
       modalSpecialSection.style.display = 'none';
-
       modalSpecialContent.innerHTML = '';
-
+      selectedSpecialOptions = {
+        temakiFried: false,
+        temakiNoRice: false,
+        pokeDoubleProtein: false,
+        pokeProteinQty: 0,
+        pokeSauces: {},
+        pokeToppings: {}
+      };
       return;
-
     }
-
-
 
     modalSpecialSection.style.display = 'block';
 
-    modalSpecialContent.innerHTML = '';
-
-
-
     if (isTemaki) {
-
       modalSpecialContent.innerHTML = `
-
         <div class="special-custom-group">
-
           <div class="special-group-header">
-
             <h4>Preparo do Temaki</h4>
-
             <span class="optional-tag">Opcional</span>
-
           </div>
-
           <p class="section-hint">Personalize a textura e o acabamento do seu Temaki:</p>
-
           <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
-
             <label class="poke-extra-protein-card" id="cardTemakiFried">
-
               <div class="protein-left">
-
                 <input type="checkbox" id="checkTemakiFried">
-
                 <span class="poke-chip-indicator"></span>
-
                 <div class="protein-info">
-
                   <span class="protein-title">Empanar Temaki</span>
-
                   <span class="protein-sub">Frito na hora, quente e super crocante</span>
-
                 </div>
-
               </div>
-
               <span class="protein-price">+ ${formatMoney(9.00)}</span>
-
             </label>
-
             <label class="poke-extra-protein-card" id="cardTemakiNoRice">
-
               <div class="protein-left">
-
                 <input type="checkbox" id="checkTemakiNoRice">
-
                 <span class="poke-chip-indicator"></span>
-
                 <div class="protein-info">
-
                   <span class="protein-title">Substituir arroz por salmão</span>
-
                   <span class="protein-sub">Sem arroz (100% recheio nobre de salmão)</span>
-
                 </div>
-
               </div>
-
               <span class="protein-price">+ ${formatMoney(16.00)}</span>
-
             </label>
-
           </div>
-
         </div>
-
       `;
 
-
-
       const friedCb = document.getElementById('checkTemakiFried');
-
       const noRiceCb = document.getElementById('checkTemakiNoRice');
 
-
-
       if (friedCb) {
-
         friedCb.addEventListener('change', () => {
-
           selectedSpecialOptions.temakiFried = friedCb.checked;
-
           const card = document.getElementById('cardTemakiFried');
-
           if (card) card.classList.toggle('selected', friedCb.checked);
-
           updateModalTotal();
-
         });
-
       }
-
       if (noRiceCb) {
-
         noRiceCb.addEventListener('change', () => {
-
           selectedSpecialOptions.temakiNoRice = noRiceCb.checked;
-
           const card = document.getElementById('cardTemakiNoRice');
-
           if (card) card.classList.toggle('selected', noRiceCb.checked);
-
           updateModalTotal();
-
         });
-
       }
 
     } else if (isPoke) {
-
       const toppings = dish.pokeToppings || [
-
         'Cebolinha', 'Manga', 'Pepino fatiado', 'Tomate cereja', 'Avocado',
-
         'Cebola roxa', 'Kani', 'Crispy de alho-poró', 'Crispy de couve',
-
         'Crispy de Batata', 'Gergelim', 'Gengibre', 'Cenoura', 'Alga',
-
         'Crispy de Harumaki'
-
       ];
-
       const sauces = [
-
         'Molho especial trufado',
-
         'Molho especial do Chef',
-
         'Molho Tataki',
-
         'Molho cítrico',
-
         'Philadelphia'
-
       ];
 
-
+      // Initialize Poke state with support for quantities & repeated items
+      selectedSpecialOptions.pokeToppings = {};
+      selectedSpecialOptions.pokeSauces = { [sauces[0]]: 1 }; // 1st sauce selected by default
+      selectedSpecialOptions.pokeProteinQty = 0;
 
       let pokeHtml = `
-
         <div class="special-custom-group">
-
           <div class="special-group-header">
-
             <h4>Acompanhamentos</h4>
-
             <span class="special-badge-counter" id="pokeToppingsCounter">0 de 6 inclusos</span>
-
           </div>
-
-          <p class="section-hint">Escolha até 6 inclusos (adicional por +R$ 8,00 cada além do 6º):</p>
-
+          <p class="section-hint">Escolha até 6 inclusos (pode repetir opções; adicional por +R$ 8,00 cada além do 6º):</p>
           <div class="poke-chips-grid">
-
       `;
 
       toppings.forEach(top => {
-
         pokeHtml += `
-
-          <label class="poke-chip">
-
-            <input type="checkbox" name="pokeTop" value="${top}">
-
-            <span class="poke-chip-indicator"></span>
-
+          <div class="poke-chip" data-top="${top}">
             <span class="poke-chip-label">${top}</span>
-
-          </label>
-
+            <div class="poke-chip-stepper" style="display:none;">
+              <button type="button" class="poke-chip-step-btn btn-top-minus" aria-label="Diminuir">-</button>
+              <span class="poke-chip-qty">0x</span>
+              <button type="button" class="poke-chip-step-btn btn-top-plus" aria-label="Aumentar">+</button>
+            </div>
+            <button type="button" class="poke-chip-add-btn btn-top-add" aria-label="Adicionar">+</button>
+          </div>
         `;
-
       });
 
       pokeHtml += `
-
           </div>
-
         </div>
 
-
-
         <div class="special-custom-group">
-
           <div class="special-group-header">
-
             <h4>Molho do Chef</h4>
-
             <span class="special-badge-counter" id="pokeSaucesCounter">1 incluso</span>
-
           </div>
-
-          <p class="section-hint">Escolha 1 molho incluso (adicional por +R$ 9,00 cada além do 1º):</p>
-
+          <p class="section-hint">Escolha 1 molho incluso (pode repetir ou combinar; adicional por +R$ 9,00 cada além do 1º):</p>
           <div class="poke-chips-grid">
-
       `;
 
       sauces.forEach((sc, idx) => {
-
+        const isDefault = idx === 0;
         pokeHtml += `
-
-          <label class="poke-chip ${idx === 0 ? 'selected' : ''}">
-
-            <input type="checkbox" name="pokeSauce" value="${sc}" ${idx === 0 ? 'checked' : ''}>
-
-            <span class="poke-chip-indicator"></span>
-
+          <div class="poke-chip ${isDefault ? 'selected' : ''}" data-sauce="${sc}">
             <span class="poke-chip-label">${sc}</span>
-
-          </label>
-
+            <div class="poke-chip-stepper" style="${isDefault ? 'display:flex;' : 'display:none;'}">
+              <button type="button" class="poke-chip-step-btn btn-sauce-minus" aria-label="Diminuir">-</button>
+              <span class="poke-chip-qty">${isDefault ? '1x' : '0x'}</span>
+              <button type="button" class="poke-chip-step-btn btn-sauce-plus" aria-label="Aumentar">+</button>
+            </div>
+            <button type="button" class="poke-chip-add-btn btn-sauce-add" style="${isDefault ? 'display:none;' : 'display:flex;'}" aria-label="Adicionar">+</button>
+          </div>
         `;
-
       });
 
       pokeHtml += `
-
           </div>
-
         </div>
-
-
 
         <div class="special-custom-group">
-
           <div class="special-group-header">
-
             <h4>Proteína Extra</h4>
-
             <span class="optional-tag">Opcional</span>
-
           </div>
-
-          <label class="poke-extra-protein-card" id="cardPokeDoubleProtein">
-
+          <div class="poke-extra-protein-card" id="cardPokeDoubleProtein">
             <div class="protein-left">
-
-              <input type="checkbox" id="checkPokeDoubleProtein">
-
-              <span class="poke-chip-indicator"></span>
-
               <div class="protein-info">
-
-                <span class="protein-title">Dobrar Proteína</span>
-
-                <span class="protein-sub">+80g de peixe nobre fresco</span>
-
+                <span class="protein-title">Doses Extras de Proteína (+80g cada)</span>
+                <span class="protein-sub">Aumente ou duplique o peixe nobre fresco (+R$ 25,00 cada 80g)</span>
               </div>
-
             </div>
-
-            <span class="protein-price">+ ${formatMoney(25.00)}</span>
-
-          </label>
-
+            <div class="protein-stepper-wrapper">
+              <div class="poke-chip-stepper">
+                <button type="button" class="poke-chip-step-btn" id="btnPokeProtMinus" aria-label="Diminuir">-</button>
+                <span class="poke-chip-qty" id="valPokeProtQty">0</span>
+                <button type="button" class="poke-chip-step-btn" id="btnPokeProtPlus" aria-label="Aumentar">+</button>
+              </div>
+              <span class="protein-price" id="lblPokeProtPrice">+ R$ 0,00</span>
+            </div>
+          </div>
         </div>
-
       `;
-
-
 
       modalSpecialContent.innerHTML = pokeHtml;
 
-      selectedSpecialOptions.pokeSauces = [sauces[0]];
-
-      selectedSpecialOptions.pokeToppings = [];
-
-
-
-      // Topping limit logic (up to 6 included, +R$ 8 each extra)
-
-      const topInputs = modalSpecialContent.querySelectorAll('input[name="pokeTop"]');
-
+      // Event handlers for Topping Steppers
       const topCounterEl = document.getElementById('pokeToppingsCounter');
-
-
-
-      topInputs.forEach(inp => {
-
-        inp.addEventListener('change', () => {
-
-          const parentLabel = inp.closest('.poke-chip');
-
-          const checked = Array.from(topInputs).filter(i => i.checked);
-
-          if (parentLabel) parentLabel.classList.toggle('selected', inp.checked);
-
-          selectedSpecialOptions.pokeToppings = checked.map(i => i.value);
-
-
-
-          if (topCounterEl) {
-
-            if (checked.length <= 6) {
-
-              topCounterEl.textContent = `${checked.length} de 6 inclusos`;
-
-              topCounterEl.classList.toggle('full', checked.length === 6);
-
-            } else {
-
-              const extras = checked.length - 6;
-
-              topCounterEl.textContent = `${checked.length} selec. (+${extras} extra: +${formatMoney(extras * 8.00)})`;
-
-              topCounterEl.classList.add('full');
-
-            }
-
+      function updateToppingsUI() {
+        const total = Object.values(selectedSpecialOptions.pokeToppings).reduce((a, b) => a + b, 0);
+        if (topCounterEl) {
+          if (total <= 6) {
+            topCounterEl.textContent = `${total} de 6 inclusos`;
+            topCounterEl.classList.toggle('full', total === 6);
+          } else {
+            const extras = total - 6;
+            topCounterEl.textContent = `${total} itens (6 inclusos + ${extras} extra: +${formatMoney(extras * 8.00)})`;
+            topCounterEl.classList.add('full');
           }
-
-          updateModalTotal();
-
-        });
-
-      });
-
-
-
-      // Sauce selection logic (1 included, +R$ 9 each extra)
-
-      const sauceInputs = modalSpecialContent.querySelectorAll('input[name="pokeSauce"]');
-
-      const sauceCounterEl = document.getElementById('pokeSaucesCounter');
-
-
-
-      sauceInputs.forEach(inp => {
-
-        inp.addEventListener('change', () => {
-
-          const checked = Array.from(sauceInputs).filter(i => i.checked);
-
-          if (checked.length === 0) {
-
-            // Must have at least 1 sauce selected
-
-            inp.checked = true;
-
-            return;
-
-          }
-
-          const parentLabel = inp.closest('.poke-chip');
-
-          if (parentLabel) parentLabel.classList.toggle('selected', inp.checked);
-
-          selectedSpecialOptions.pokeSauces = checked.map(i => i.value);
-
-
-
-          if (sauceCounterEl) {
-
-            if (checked.length === 1) {
-
-              sauceCounterEl.textContent = '1 incluso';
-
-              sauceCounterEl.classList.remove('full');
-
-            } else {
-
-              const extras = checked.length - 1;
-
-              sauceCounterEl.textContent = `${checked.length} molhos (+${extras} extra: +${formatMoney(extras * 9.00)})`;
-
-              sauceCounterEl.classList.add('full');
-
-            }
-
-          }
-
-          updateModalTotal();
-
-        });
-
-      });
-
-
-
-      // Double protein logic
-
-      const doubleProt = document.getElementById('checkPokeDoubleProtein');
-
-      const cardProt = document.getElementById('cardPokeDoubleProtein');
-
-      if (doubleProt) {
-
-        doubleProt.addEventListener('change', () => {
-
-          selectedSpecialOptions.pokeDoubleProtein = doubleProt.checked;
-
-          if (cardProt) cardProt.classList.toggle('selected', doubleProt.checked);
-
-          updateModalTotal();
-
-        });
-
+        }
+        updateModalTotal();
       }
 
-    }
+      modalSpecialContent.querySelectorAll('.poke-chip[data-top]').forEach(chip => {
+        const topName = chip.getAttribute('data-top');
+        const stepper = chip.querySelector('.poke-chip-stepper');
+        const addBtn = chip.querySelector('.btn-top-add');
+        const qtySpan = chip.querySelector('.poke-chip-qty');
+        const btnMinus = chip.querySelector('.btn-top-minus');
+        const btnPlus = chip.querySelector('.btn-top-plus');
 
+        function setQty(q) {
+          if (q > 0) {
+            selectedSpecialOptions.pokeToppings[topName] = q;
+            chip.classList.add('selected');
+            stepper.style.display = 'flex';
+            addBtn.style.display = 'none';
+            qtySpan.textContent = `${q}x`;
+          } else {
+            delete selectedSpecialOptions.pokeToppings[topName];
+            chip.classList.remove('selected');
+            stepper.style.display = 'none';
+            addBtn.style.display = 'flex';
+            qtySpan.textContent = '0x';
+          }
+          updateToppingsUI();
+        }
+
+        chip.addEventListener('click', (e) => {
+          if (e.target.closest('.poke-chip-step-btn')) return;
+          const cur = selectedSpecialOptions.pokeToppings[topName] || 0;
+          if (cur === 0) setQty(1);
+        });
+
+        btnPlus.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const cur = selectedSpecialOptions.pokeToppings[topName] || 0;
+          setQty(cur + 1);
+        });
+
+        btnMinus.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const cur = selectedSpecialOptions.pokeToppings[topName] || 0;
+          setQty(Math.max(0, cur - 1));
+        });
+      });
+
+      // Event handlers for Sauce Steppers
+      const sauceCounterEl = document.getElementById('pokeSaucesCounter');
+      function updateSaucesUI() {
+        const total = Object.values(selectedSpecialOptions.pokeSauces).reduce((a, b) => a + b, 0);
+        if (sauceCounterEl) {
+          if (total <= 1) {
+            sauceCounterEl.textContent = `${total} incluso`;
+            sauceCounterEl.classList.remove('full');
+          } else {
+            const extras = total - 1;
+            sauceCounterEl.textContent = `${total} molhos (1 incluso + ${extras} extra: +${formatMoney(extras * 9.00)})`;
+            sauceCounterEl.classList.add('full');
+          }
+        }
+        updateModalTotal();
+      }
+
+      modalSpecialContent.querySelectorAll('.poke-chip[data-sauce]').forEach(chip => {
+        const sName = chip.getAttribute('data-sauce');
+        const stepper = chip.querySelector('.poke-chip-stepper');
+        const addBtn = chip.querySelector('.btn-sauce-add');
+        const qtySpan = chip.querySelector('.poke-chip-qty');
+        const btnMinus = chip.querySelector('.btn-sauce-minus');
+        const btnPlus = chip.querySelector('.btn-sauce-plus');
+
+        function setSauceQty(q) {
+          const totalOther = Object.entries(selectedSpecialOptions.pokeSauces)
+            .filter(([k]) => k !== sName)
+            .reduce((sum, [_, val]) => sum + val, 0);
+
+          if (q === 0 && totalOther === 0) {
+            // Must have at least 1 sauce total
+            return;
+          }
+
+          if (q > 0) {
+            selectedSpecialOptions.pokeSauces[sName] = q;
+            chip.classList.add('selected');
+            stepper.style.display = 'flex';
+            addBtn.style.display = 'none';
+            qtySpan.textContent = `${q}x`;
+          } else {
+            delete selectedSpecialOptions.pokeSauces[sName];
+            chip.classList.remove('selected');
+            stepper.style.display = 'none';
+            addBtn.style.display = 'flex';
+            qtySpan.textContent = '0x';
+          }
+          updateSaucesUI();
+        }
+
+        chip.addEventListener('click', (e) => {
+          if (e.target.closest('.poke-chip-step-btn')) return;
+          const cur = selectedSpecialOptions.pokeSauces[sName] || 0;
+          if (cur === 0) setSauceQty(1);
+        });
+
+        btnPlus.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const cur = selectedSpecialOptions.pokeSauces[sName] || 0;
+          setSauceQty(cur + 1);
+        });
+
+        btnMinus.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const cur = selectedSpecialOptions.pokeSauces[sName] || 0;
+          setSauceQty(Math.max(0, cur - 1));
+        });
+      });
+
+      // Event handlers for Extra Protein Stepper
+      const cardProt = document.getElementById('cardPokeDoubleProtein');
+      const valProtQty = document.getElementById('valPokeProtQty');
+      const lblProtPrice = document.getElementById('lblPokeProtPrice');
+      const btnProtMinus = document.getElementById('btnPokeProtMinus');
+      const btnProtPlus = document.getElementById('btnPokeProtPlus');
+
+      function setProteinQty(q) {
+        selectedSpecialOptions.pokeProteinQty = q;
+        if (valProtQty) valProtQty.textContent = q;
+        if (lblProtPrice) lblProtPrice.textContent = q > 0 ? `+ ${formatMoney(q * 25.00)}` : '+ R$ 0,00';
+        if (cardProt) cardProt.classList.toggle('selected', q > 0);
+        updateModalTotal();
+      }
+
+      if (btnProtPlus) {
+        btnProtPlus.addEventListener('click', () => {
+          setProteinQty((selectedSpecialOptions.pokeProteinQty || 0) + 1);
+        });
+      }
+      if (btnProtMinus) {
+        btnProtMinus.addEventListener('click', () => {
+          setProteinQty(Math.max(0, (selectedSpecialOptions.pokeProteinQty || 0) - 1));
+        });
+      }
+    }
   }
 
-
-
   function updateModalTotal() {
-
     if (!currentModalDish) return;
-
     let basePrice = currentModalDish.isGrouped && currentSelectedOption ? currentSelectedOption.price : currentModalDish.price;
 
-
-
-    // Special options
-
-    // Collect selected combo drinks with quantities
-      const drinks = [];
-      Object.keys(selectedComboDrinks).forEach(dId => {
-        const d = selectedComboDrinks[dId];
-        if (d && d.qty > 0) {
-          drinks.push({
-            id: d.id,
-            num: d.num,
-            name: d.name,
-            price: d.price,
-            qty: d.qty,
-            icon: d.icon || '🥤'
-          });
-        }
-      });
-
-      if (selectedSpecialOptions.temakiFried) basePrice += 9.00;
-
+    // Special options extras
+    if (selectedSpecialOptions.temakiFried) basePrice += 9.00;
     if (selectedSpecialOptions.temakiNoRice) basePrice += 16.00;
 
-    if (selectedSpecialOptions.pokeDoubleProtein) basePrice += 25.00;
-
-
-
-    // Poke extra toppings beyond 6 (+R$ 8,00 each)
-
-    if (selectedSpecialOptions.pokeToppings && selectedSpecialOptions.pokeToppings.length > 6) {
-
-      basePrice += (selectedSpecialOptions.pokeToppings.length - 6) * 8.00;
-
+    // Poke extras
+    if (selectedSpecialOptions.pokeProteinQty > 0) {
+      basePrice += selectedSpecialOptions.pokeProteinQty * 25.00;
     }
 
-
-
-    // Poke extra sauces beyond 1 (+R$ 9,00 each)
-
-    if (selectedSpecialOptions.pokeSauces && selectedSpecialOptions.pokeSauces.length > 1) {
-
-      basePrice += (selectedSpecialOptions.pokeSauces.length - 1) * 9.00;
-
-    }
-
-
-
-    // Complements with multiple quantities
-
-    let compTotal = 0;
-
-    Object.keys(selectedComplements).forEach(cmpId => {
-
-      const qty = selectedComplements[cmpId] || 0;
-
-      if (qty > 0) {
-
-        const cmp = data.complements.find(c => c.id === cmpId);
-
-        if (cmp) compTotal += cmp.price * qty;
-
+    if (selectedSpecialOptions.pokeToppings) {
+      const totalTops = Object.values(selectedSpecialOptions.pokeToppings).reduce((a, b) => a + b, 0);
+      if (totalTops > 6) {
+        basePrice += (totalTops - 6) * 8.00;
       }
+    }
 
+    if (selectedSpecialOptions.pokeSauces) {
+      const totalSauces = Object.values(selectedSpecialOptions.pokeSauces).reduce((a, b) => a + b, 0);
+      if (totalSauces > 1) {
+        basePrice += (totalSauces - 1) * 9.00;
+      }
+    }
+
+    // Complements total
+    let compTotal = 0;
+    Object.keys(selectedComplements).forEach(cmpId => {
+      const qty = selectedComplements[cmpId] || 0;
+      if (qty > 0) {
+        const cmp = data.complements.find(c => c.id === cmpId);
+        if (cmp) compTotal += cmp.price * qty;
+      }
     });
 
-
-
+    // Combo drinks total
     let comboDrinksTotal = 0;
     Object.keys(selectedComboDrinks).forEach(dId => {
       const d = selectedComboDrinks[dId];
@@ -2038,284 +1906,171 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const singleTotal = basePrice + compTotal + comboDrinksTotal;
-
     const finalTotal = singleTotal * currentModalQty;
 
-
-
     if (modalAddTotalPrice) modalAddTotalPrice.textContent = formatMoney(finalTotal);
-
   }
-
-
 
   function closeItemModal() {
-
     if (!itemModal) return;
-
     itemModal.style.display = 'none';
-
     document.body.style.overflow = '';
-
   }
-
-
 
   if (closeItemModalBtn) closeItemModalBtn.addEventListener('click', closeItemModal);
-
   if (itemModal) {
-
     itemModal.addEventListener('click', (e) => {
-
       if (e.target === itemModal) closeItemModal();
-
     });
-
   }
-
-
-
-  // Modal Quantity Handlers
 
   if (modalQtyMinus) {
-
     modalQtyMinus.addEventListener('click', () => {
-
       if (currentModalQty > 1) {
-
         currentModalQty--;
-
         if (modalQtyValue) modalQtyValue.textContent = currentModalQty;
-
         updateModalTotal();
-
       }
-
     });
-
   }
-
-
 
   if (modalQtyPlus) {
-
     modalQtyPlus.addEventListener('click', () => {
-
       currentModalQty++;
-
       if (modalQtyValue) modalQtyValue.textContent = currentModalQty;
-
       updateModalTotal();
-
     });
-
   }
 
-
-
-  // Add To Cart Action
-
   if (modalAddToCartBtn) {
-
     modalAddToCartBtn.addEventListener('click', () => {
-
       if (!currentModalDish) return;
 
-
-
       let canonicalItem = {};
-
       if (currentModalDish.isGrouped) {
-
         if (!currentSelectedOption) {
-
           showCustomAlert('Opção Obrigatória', 'Por favor, selecione qual corte ou sabor você deseja antes de adicionar.');
-
           return;
-
         }
-
         canonicalItem = {
-
-          id: currentSelectedOption.id,
-
+          id: currentSelectedOption.id || `dish_${currentSelectedOption.code || currentSelectedOption.num}`,
           num: currentSelectedOption.num || currentModalDish.num,
-
-          name: `${currentModalDish.name} — ${currentSelectedOption.name}`,
-
+          name: `${currentModalDish.name} • ${currentSelectedOption.name}`,
           price: currentSelectedOption.price,
-
           category: currentModalDish.category,
-
           image: currentModalDish.image
-
         };
-
       } else {
-
         canonicalItem = {
-
           id: currentModalDish.id,
-
           num: currentModalDish.num,
-
           name: currentModalDish.name,
-
           price: currentModalDish.price,
-
           category: currentModalDish.category,
-
           image: currentModalDish.image
-
         };
-
       }
-
-
 
       // Collect selected complements with quantities
-
       const complements = [];
-
       Object.keys(selectedComplements).forEach(cmpId => {
-
         const qty = selectedComplements[cmpId] || 0;
-
         if (qty > 0) {
-
           const cmp = data.complements.find(c => c.id === cmpId);
-
           if (cmp) {
-
             complements.push({
-
               id: cmp.id,
-
               num: cmp.num,
-
               name: cmp.name,
-
               price: cmp.price,
-
               qty: qty
-
             });
-
           }
-
         }
-
       });
 
-
+      // Collect selected combo drinks with quantities (PROPERLY DEFINED IN THIS SCOPE!)
+      const drinks = [];
+      Object.keys(selectedComboDrinks).forEach(dId => {
+        const d = selectedComboDrinks[dId];
+        if (d && d.qty > 0) {
+          drinks.push({
+            id: d.id,
+            num: d.num,
+            name: d.name,
+            price: d.price,
+            qty: d.qty
+          });
+        }
+      });
 
       // Special notes summary & extra pricing
-
       const specialNotes = [];
-
       let extraPrice = 0;
 
-
-
       if (selectedSpecialOptions.temakiFried) {
-
         extraPrice += 9.00;
-
         specialNotes.push('Empanar Temaki (+R$ 9,00)');
-
       }
-
       if (selectedSpecialOptions.temakiNoRice) {
-
         extraPrice += 16.00;
-
         specialNotes.push('Substituir arroz por salmão (+R$ 16,00)');
-
       }
 
-      if (selectedSpecialOptions.pokeDoubleProtein) {
-
-        extraPrice += 25.00;
-
-        specialNotes.push('Dobrar Proteína (+80g peixe nobre: +R$ 25,00)');
-
+      // Poke extra protein
+      if (selectedSpecialOptions.pokeProteinQty > 0) {
+        const pQty = selectedSpecialOptions.pokeProteinQty;
+        extraPrice += pQty * 25.00;
+        specialNotes.push(`Proteína Extra: ${pQty}x (+${pQty * 80}g: +${formatMoney(pQty * 25.00)})`);
       }
 
-
-
-      if (selectedSpecialOptions.pokeSauces && selectedSpecialOptions.pokeSauces.length > 0) {
-
-        const extraSauces = Math.max(0, selectedSpecialOptions.pokeSauces.length - 1);
-
-        if (extraSauces > 0) extraPrice += extraSauces * 9.00;
-
-        const extraSaucesTxt = extraSauces > 0 ? ` (+${extraSauces} extra: +${formatMoney(extraSauces * 9.00)})` : '';
-
-        specialNotes.push(`Molhos: ${selectedSpecialOptions.pokeSauces.join(', ')}${extraSaucesTxt}`);
-
+      // Poke sauces with quantities
+      if (selectedSpecialOptions.pokeSauces) {
+        const sEntries = Object.entries(selectedSpecialOptions.pokeSauces).filter(([_, q]) => q > 0);
+        const totalSauces = sEntries.reduce((sum, [_, q]) => sum + q, 0);
+        if (totalSauces > 0) {
+          const extraS = Math.max(0, totalSauces - 1);
+          if (extraS > 0) extraPrice += extraS * 9.00;
+          const sauceTxt = sEntries.map(([name, q]) => q > 1 ? `${q}x ${name}` : name).join(', ');
+          specialNotes.push(`Molhos: ${sauceTxt}${extraS > 0 ? ` (+${extraS} extra: +${formatMoney(extraS * 9.00)})` : ''}`);
+        }
       }
 
-
-
-      if (selectedSpecialOptions.pokeToppings && selectedSpecialOptions.pokeToppings.length > 0) {
-
-        const extraTops = Math.max(0, selectedSpecialOptions.pokeToppings.length - 6);
-
-        if (extraTops > 0) extraPrice += extraTops * 8.00;
-
-        const extraTopsTxt = extraTops > 0 ? ` (+${extraTops} extra: +${formatMoney(extraTops * 8.00)})` : '';
-
-        specialNotes.push(`Acomp: ${selectedSpecialOptions.pokeToppings.join(', ')}${extraTopsTxt}`);
-
+      // Poke toppings with quantities
+      if (selectedSpecialOptions.pokeToppings) {
+        const tEntries = Object.entries(selectedSpecialOptions.pokeToppings).filter(([_, q]) => q > 0);
+        const totalTops = tEntries.reduce((sum, [_, q]) => sum + q, 0);
+        if (totalTops > 0) {
+          const extraT = Math.max(0, totalTops - 6);
+          if (extraT > 0) extraPrice += extraT * 8.00;
+          const topTxt = tEntries.map(([name, q]) => q > 1 ? `${q}x ${name}` : name).join(', ');
+          specialNotes.push(`Acomp: ${topTxt}${extraT > 0 ? ` (+${extraT} extra: +${formatMoney(extraT * 8.00)})` : ''}`);
+        }
       }
-
-
 
       const userNotes = modalItemNotes ? modalItemNotes.value.trim() : '';
-
       const fullNotes = [...specialNotes, userNotes].filter(Boolean).join(' | ');
 
-
-
       // Base price of item includes extra special options
-
       canonicalItem.price = canonicalItem.price + extraPrice;
 
-
-
       const entry = {
-
         id: 'cart_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
-
         item: canonicalItem,
-
         qty: currentModalQty,
-
         complements: complements,
         drinks: drinks,
         notes: fullNotes
-
       };
 
-
-
       cart.push(entry);
-
       saveCart(cart);
-
       updateCartUI();
-
       closeItemModal();
 
-
-
-      showToast(`🍣 ${canonicalItem.name} adicionado à sacola!`);
-
+      showToast(`🛒 ${canonicalItem.name} adicionado à sacola!`);
     });
-
   }
-
-
 
   // --- RENDER CART ITEMS IN DRAWER (LUXURY CARDS WITH FULL STYLING) ---
 

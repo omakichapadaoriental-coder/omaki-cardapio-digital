@@ -2510,3 +2510,112 @@ select:focus {
   color: #f87171;
   background: rgba(239, 68, 68, 0.1);
 }
+
+/* Poke Chips with Steppers & Quantities */
+.poke-chip {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 8px 12px !important;
+  min-height: 46px !important;
+  background: rgba(17, 24, 39, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.poke-chip:hover {
+  background: rgba(25, 34, 53, 0.95);
+  border-color: rgba(229, 192, 123, 0.4);
+}
+
+.poke-chip.selected {
+  background: rgba(139, 30, 63, 0.25) !important;
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 12px rgba(229, 192, 123, 0.18) !important;
+}
+
+.poke-chip-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.25;
+  flex: 1 1 auto;
+  pointer-events: none;
+}
+
+.poke-chip-add-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(229, 192, 123, 0.1);
+  border: 1px solid rgba(229, 192, 123, 0.3);
+  color: var(--accent-gold);
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.poke-chip:hover .poke-chip-add-btn {
+  background: var(--accent-gold);
+  color: #070a11;
+}
+
+.poke-chip-stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(7, 10, 17, 0.9);
+  border: 1px solid rgba(229, 192, 123, 0.35);
+  border-radius: var(--radius-pill);
+  padding: 2px 4px;
+  flex-shrink: 0;
+}
+
+.poke-chip-step-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(229, 192, 123, 0.15);
+  border: 1px solid rgba(229, 192, 123, 0.4);
+  color: var(--accent-gold);
+  font-size: 0.95rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.poke-chip-step-btn:hover {
+  background: var(--accent-gold);
+  color: #070a11;
+}
+
+.poke-chip-qty {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  min-width: 22px;
+  text-align: center;
+}
+
+.protein-stepper-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
