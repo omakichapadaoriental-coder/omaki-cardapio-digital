@@ -1358,11 +1358,9 @@ document.addEventListener('DOMContentLoaded', () => {
         row.className = `combo-drink-item ${currentQty > 0 ? 'selected' : ''}`;
         row.id = `drink-row-${drink.id}`;
 
-        const codeTag = drink.num ? `<small style="color:var(--accent-gold); font-weight:700;">#${drink.num}</small> ` : '';
-
         row.innerHTML = `
           <div class="combo-drink-info">
-            <span class="combo-drink-title">${currentCat.icon} ${codeTag}${drink.name}</span>
+            <span class="combo-drink-title">${currentCat.icon} ${drink.name}</span>
             <span class="combo-drink-price">+ ${formatMoney(drink.price)}</span>
           </div>
           <div class="combo-drink-stepper">
@@ -2936,7 +2934,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const dQty = d.qty || 1;
             const linePrice = d.price * dQty;
             const prefix = dQty > 1 ? `${dQty}x ` : '';
-            msg += `   └ ${d.icon || '🥤'} _${prefix}${d.name}_ (+${formatMoney(linePrice)})\n`;
+            const dCode = d.num ? `[#${String(d.num).padStart(3, '0')}] ` : '';
+            msg += `   └ ${d.icon || '🥤'} _${prefix}${dCode}${d.name}_ (+${formatMoney(linePrice)})\n`;
           });
         }
 

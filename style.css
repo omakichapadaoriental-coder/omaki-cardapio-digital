@@ -1,3 +1,37 @@
+
+/* ==========================================================================
+   GLOBAL LUXURY SCROLLBAR SYSTEM (NOIR & GOLD)
+   ========================================================================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(229, 192, 123, 0.4) rgba(7, 10, 17, 0.85);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(7, 10, 17, 0.85);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 192, 123, 0.35);
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(7, 10, 17, 0.5);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* ==========================================================================
    OMAKI SUSHI — DESIGN SYSTEM NOIR & GOLD
    ========================================================================== */
@@ -2052,38 +2086,44 @@ select:focus {
    COMBO DRINKS UPSELL SYSTEM (BEBIDAS ESTRATÉGICAS NOS COMBOS)
    ========================================================================== */
 .combo-drinks-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-  scrollbar-width: thin;
+  margin-bottom: 14px;
+  overflow: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .combo-drinks-tabs::-webkit-scrollbar {
-  height: 4px;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
-.combo-drinks-tabs::-webkit-scrollbar-thumb {
-  background: rgba(229, 192, 123, 0.25);
-  border-radius: var(--radius-pill);
+@media (min-width: 480px) {
+  .combo-drinks-tabs {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .combo-drink-tab-btn {
   background: var(--bg-input);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-pill);
-  padding: 8px 14px;
+  padding: 9px 10px;
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--text-secondary);
   cursor: pointer;
-  white-space: nowrap;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   transition: all 0.2s ease;
   user-select: none;
+  text-align: center;
+  width: 100%;
 }
 
 .combo-drink-tab-btn:hover {
