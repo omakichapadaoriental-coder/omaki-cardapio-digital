@@ -1,0 +1,11 @@
+{
+  "name": "omaki-cardapio-digital",
+  "version": "1.0.0",
+  "description": "Cardápio Digital & Checkout via WhatsApp da Omaki Sushi Alto Paraíso",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["omaki", "sushi", "cardapio", "delivery", "whatsapp"],
+  "author": "André BizOps & Omaki Sushi",
+  "license": "ISC"
+}
