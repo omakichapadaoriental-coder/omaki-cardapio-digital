@@ -1,4 +1,4 @@
-const CARDAPIO_DATA = {
+window.OMAKI_DATA = {
   "store": {
     "name": "Omaki Sushi",
     "unit": "Alto Paraíso de Goiás / Chapada dos Veadeiros",

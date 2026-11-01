@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const data = window.OMAKI_DATA;
+  const data = window.OMAKI_DATA || (typeof CARDAPIO_DATA !== "undefined" ? CARDAPIO_DATA : null);
   if (!data) {
     console.error('Dados do cardápio não encontrados!');
     return;
