@@ -9,7 +9,10 @@
     "pixBeneficiary": "Omaki Sushi",
     "defaultDeliveryFee": 12.0,
     "distantDeliveryFee": 15.0,
-    "hours": "Terça a Domingo das 18h30 às 23h00"
+    "hours": "Terça a Domingo das 18h30 às 23h00",
+    "address": "Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro",
+    "city": "Alto Paraíso de Goiás / GO",
+    "fullAddress": "Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso de Goiás / GO"
   },
   "neighborhoods": [
     {

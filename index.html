@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Omaki Sushi — Cardápio Digital & Pedido WhatsApp</title>
   <meta name="description" content="Cardápio digital oficial da Omaki Sushi Alto Paraíso. Faça seu pedido com facilidade direto pelo WhatsApp.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,7 +25,7 @@
         <img src="assets/logo-white.png" alt="Omaki Sushi Logo" class="brand-logo" onerror="this.style.display='none'">
         <div class="brand-text">
           <h1 class="brand-title">OMAKI SUSHI</h1>
-          <p class="brand-subtitle">Chapada dos Veadeiros • Alto Paraíso / GO</p>
+          <p class="brand-subtitle">Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro • Alto Paraíso / GO</p>
         </div>
       </div>
       <div class="header-actions">
@@ -47,9 +50,13 @@
     </div>
 
     <!-- Categories Scrollable Navigation -->
-    <nav class="categories-nav" id="categoriesNav">
-      <!-- Dynamic categories injected by JS -->
-    </nav>
+    <div class="categories-nav-wrapper">
+      <button class="nav-scroll-btn nav-scroll-left" id="navScrollLeft" aria-label="Rolar categorias para a esquerda">‹</button>
+      <nav class="categories-nav" id="categoriesNav">
+        <!-- Dynamic categories injected by JS -->
+      </nav>
+      <button class="nav-scroll-btn nav-scroll-right" id="navScrollRight" aria-label="Rolar categorias para a direita">›</button>
+    </div>
   </header>
 
   <!-- Main Content -->
@@ -195,8 +202,8 @@
           </div>
 
           <div id="takeawayInfoGroup" class="takeaway-notice" style="display:none;">
-            <p>📍 <strong>Local de Retirada:</strong> Omaki Sushi — Alto Paraíso de Goiás / GO</p>
-            <p class="takeaway-sub">Avisaremos no WhatsApp assim que estiver pronto para buscar!</p>
+            <p>📍 <strong>Local de Retirada:</strong> Omaki Sushi — Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso de Goiás / GO</p>
+            <p class="takeaway-sub">Avisaremos no WhatsApp assim que seu pedido estiver pronto para buscar!</p>
           </div>
 
           <!-- Disposable / Utensils -->

@@ -145,6 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- CATEGORIES INIT ---
+  // Categories Scroll Controls (Desktop & Mobile)
+  const navScrollLeft = document.getElementById('navScrollLeft');
+  const navScrollRight = document.getElementById('navScrollRight');
+
   function initCategories() {
     if (!categoriesNav) return;
     categoriesNav.innerHTML = '';
@@ -174,6 +178,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       categoriesNav.appendChild(btn);
+    });
+
+    // Arrow Buttons for Desktop
+    if (navScrollLeft) {
+      navScrollLeft.addEventListener('click', () => {
+        categoriesNav.scrollBy({ left: -260, behavior: 'smooth' });
+      });
+    }
+
+    if (navScrollRight) {
+      navScrollRight.addEventListener('click', () => {
+        categoriesNav.scrollBy({ left: 260, behavior: 'smooth' });
+      });
+    }
+
+    // Mouse wheel horizontal scroll on Desktop
+    categoriesNav.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        categoriesNav.scrollLeft += e.deltaY * 1.2;
+      }
+    }, { passive: false });
+
+    // Click and Drag for Desktop
+    let isDown = false;
+    let startX = 0;
+    let scrollLeftPos = 0;
+
+    categoriesNav.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - categoriesNav.offsetLeft;
+      scrollLeftPos = categoriesNav.scrollLeft;
+    });
+
+    categoriesNav.addEventListener('mouseleave', () => { isDown = false; });
+    categoriesNav.addEventListener('mouseup', () => { isDown = false; });
+    categoriesNav.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - categoriesNav.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      categoriesNav.scrollLeft = scrollLeftPos - walk;
     });
   }
 
@@ -248,6 +294,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ? `<span class="badge-item-num">#${String(item.num).padStart(3, '0')}</span>`
       : `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">✨ NOVO</span>`;
 
+    // Only show portion badge for non-combos (since combos already have pieces in the name)
+    const isCombo = item.category.toLowerCase().includes('combo') || item.name.toLowerCase().includes('combo') || (item.portion && (item.portion.toLowerCase().includes('peça') || item.portion.toLowerCase().includes('pçs')));
+    const portionBadge = (!isCombo && item.portion) ? `<span class="badge-portion-pill">${item.portion}</span>` : '';
+
     if (item.photo) {
       const img = document.createElement('img');
       img.className = 'product-card-img';
@@ -259,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="product-card-no-img">🍣</div>
           <div class="product-card-badges">
             ${tagBadge}
+            ${portionBadge}
           </div>
         `;
       };
@@ -272,7 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const badges = document.createElement('div');
     badges.className = 'product-card-badges';
-    badges.innerHTML = tagBadge;
+    badges.innerHTML = `
+      ${tagBadge}
+      ${portionBadge}
+    `;
     imgWrapper.appendChild(badges);
 
     const content = document.createElement('div');
