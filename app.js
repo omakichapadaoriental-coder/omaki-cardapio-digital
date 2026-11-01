@@ -259,7 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="product-card-no-img">🍣</div>
           <div class="product-card-badges">
             ${tagBadge}
-            ${item.portion ? `<span class="badge-portion-pill">${item.portion}</span>` : ''}
           </div>
         `;
       };
@@ -273,10 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const badges = document.createElement('div');
     badges.className = 'product-card-badges';
-    badges.innerHTML = `
-      ${tagBadge}
-      ${item.portion ? `<span class="badge-portion-pill">${item.portion}</span>` : ''}
-    `;
+    badges.innerHTML = tagBadge;
     imgWrapper.appendChild(badges);
 
     const content = document.createElement('div');
@@ -322,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedComplements.clear();
 
     if (modalItemNum) modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : 'NOVO';
-    if (modalItemPortion) modalItemPortion.textContent = item.portion || 'Porção';
     if (modalItemName) modalItemName.textContent = item.name;
     if (modalItemPrice) modalItemPrice.textContent = formatMoney(item.price);
     if (modalItemDesc) modalItemDesc.textContent = item.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';
