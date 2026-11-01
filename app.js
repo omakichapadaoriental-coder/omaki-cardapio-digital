@@ -1633,16 +1633,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Initialize Poke state with support for quantities & repeated items
       selectedSpecialOptions.pokeToppings = {};
-      selectedSpecialOptions.pokeSauces = { [sauces[0]]: 1 }; // 1st sauce selected by default
+      selectedSpecialOptions.pokeSauces = {}; // Inicia vazio para escolha obrigatoria do cliente
       selectedSpecialOptions.pokeProteinQty = 0;
 
       let pokeHtml = `
-        <div class="special-custom-group">
+        <div class="special-custom-group" id="pokeToppingsSection">
           <div class="special-group-header">
             <h4>Acompanhamentos</h4>
-            <span class="special-badge-counter" id="pokeToppingsCounter">0 de 6 inclusos</span>
+            <span class="special-badge-counter required" id="pokeToppingsCounter">0 de 6 inclusos (Obrigatório)</span>
           </div>
-          <p class="section-hint">Escolha até 6 inclusos (pode repetir opções; adicional por +R$ 8,00 cada além do 6º):</p>
+          <p class="section-hint">Escolha 6 acompanhamentos inclusos (obrigatório; você pode repetir opções; adicionais por +R$ 8,00 cada além do 6º):</p>
           <div class="poke-chips-grid">
       `;
 
@@ -1664,26 +1664,25 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
-        <div class="special-custom-group">
+        <div class="special-custom-group" id="pokeSaucesSection">
           <div class="special-group-header">
             <h4>Molho do Chef</h4>
-            <span class="special-badge-counter" id="pokeSaucesCounter">1 incluso</span>
+            <span class="special-badge-counter required" id="pokeSaucesCounter">0 de 1 incluso (Obrigatório)</span>
           </div>
-          <p class="section-hint">Escolha 1 molho incluso (pode repetir ou combinar; adicional por +R$ 9,00 cada além do 1º):</p>
+          <p class="section-hint">Escolha 1 molho incluso (obrigatório; você pode adicionar mais por +R$ 9,00 cada além do 1º):</p>
           <div class="poke-chips-grid">
       `;
 
-      sauces.forEach((sc, idx) => {
-        const isDefault = idx === 0;
+      sauces.forEach((sc) => {
         pokeHtml += `
-          <div class="poke-chip ${isDefault ? 'selected' : ''}" data-sauce="${sc}">
+          <div class="poke-chip" data-sauce="${sc}">
             <span class="poke-chip-label">${sc}</span>
-            <div class="poke-chip-stepper" style="${isDefault ? 'display:flex;' : 'display:none;'}">
+            <div class="poke-chip-stepper" style="display:none;">
               <button type="button" class="poke-chip-step-btn btn-sauce-minus" aria-label="Diminuir">-</button>
-              <span class="poke-chip-qty">${isDefault ? '1x' : '0x'}</span>
+              <span class="poke-chip-qty">0x</span>
               <button type="button" class="poke-chip-step-btn btn-sauce-plus" aria-label="Aumentar">+</button>
             </div>
-            <button type="button" class="poke-chip-add-btn btn-sauce-add" style="${isDefault ? 'display:none;' : 'display:flex;'}" aria-label="Adicionar">+</button>
+            <button type="button" class="poke-chip-add-btn btn-sauce-add" style="display:flex;" aria-label="Adicionar">+</button>
           </div>
         `;
       });
@@ -1723,13 +1722,20 @@ document.addEventListener('DOMContentLoaded', () => {
       function updateToppingsUI() {
         const total = Object.values(selectedSpecialOptions.pokeToppings).reduce((a, b) => a + b, 0);
         if (topCounterEl) {
-          if (total <= 6) {
-            topCounterEl.textContent = `${total} de 6 inclusos`;
-            topCounterEl.classList.toggle('full', total === 6);
+          if (total === 0) {
+            topCounterEl.className = 'special-badge-counter required';
+            topCounterEl.textContent = '0 de 6 inclusos (Obrigatório)';
+          } else if (total < 6) {
+            const faltam = 6 - total;
+            topCounterEl.className = 'special-badge-counter required';
+            topCounterEl.textContent = `${total} de 6 (Faltam ${faltam})`;
+          } else if (total === 6) {
+            topCounterEl.className = 'special-badge-counter ready';
+            topCounterEl.textContent = '✓ 6 de 6 inclusos';
           } else {
             const extras = total - 6;
+            topCounterEl.className = 'special-badge-counter ready';
             topCounterEl.textContent = `${total} itens (6 inclusos + ${extras} extra: +${formatMoney(extras * 8.00)})`;
-            topCounterEl.classList.add('full');
           }
         }
         updateModalTotal();
@@ -1784,13 +1790,16 @@ document.addEventListener('DOMContentLoaded', () => {
       function updateSaucesUI() {
         const total = Object.values(selectedSpecialOptions.pokeSauces).reduce((a, b) => a + b, 0);
         if (sauceCounterEl) {
-          if (total <= 1) {
-            sauceCounterEl.textContent = `${total} incluso`;
-            sauceCounterEl.classList.remove('full');
+          if (total === 0) {
+            sauceCounterEl.className = 'special-badge-counter required';
+            sauceCounterEl.textContent = '0 de 1 incluso (Obrigatório)';
+          } else if (total === 1) {
+            sauceCounterEl.className = 'special-badge-counter ready';
+            sauceCounterEl.textContent = '✓ 1 incluso';
           } else {
             const extras = total - 1;
+            sauceCounterEl.className = 'special-badge-counter ready';
             sauceCounterEl.textContent = `${total} molhos (1 incluso + ${extras} extra: +${formatMoney(extras * 9.00)})`;
-            sauceCounterEl.classList.add('full');
           }
         }
         updateModalTotal();
@@ -1809,10 +1818,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .filter(([k]) => k !== sName)
             .reduce((sum, [_, val]) => sum + val, 0);
 
-          if (q === 0 && totalOther === 0) {
-            // Must have at least 1 sauce total
-            return;
-          }
+// Permite 0 para exibir o alerta obrigatorio caso desselecionado
 
           if (q > 0) {
             selectedSpecialOptions.pokeSauces[sName] = q;
@@ -1833,7 +1839,23 @@ document.addEventListener('DOMContentLoaded', () => {
         chip.addEventListener('click', (e) => {
           if (e.target.closest('.poke-chip-step-btn')) return;
           const cur = selectedSpecialOptions.pokeSauces[sName] || 0;
-          if (cur === 0) setSauceQty(1);
+          if (cur === 0) {
+            const curTotal = Object.values(selectedSpecialOptions.pokeSauces).reduce((a, b) => a + b, 0);
+            if (curTotal === 1) {
+              // Troca com 1 clique: desseleciona o outro molho e seleciona o novo
+              modalSpecialContent.querySelectorAll('.poke-chip[data-sauce]').forEach(c => {
+                c.classList.remove('selected');
+                const st = c.querySelector('.poke-chip-stepper');
+                const ab = c.querySelector('.btn-sauce-add');
+                const qs = c.querySelector('.poke-chip-qty');
+                if (st) st.style.display = 'none';
+                if (ab) ab.style.display = 'flex';
+                if (qs) qs.textContent = '0x';
+              });
+              selectedSpecialOptions.pokeSauces = {};
+            }
+            setSauceQty(1);
+          }
         });
 
         btnPlus.addEventListener('click', (e) => {
@@ -1967,6 +1989,45 @@ document.addEventListener('DOMContentLoaded', () => {
   if (modalAddToCartBtn) {
     modalAddToCartBtn.addEventListener('click', () => {
       if (!currentModalDish) return;
+
+      // Validação Estrita para Poke (Obrigatório 6 acompanhamentos e 1 molho)
+      const isPokeDish = currentModalDish.isPoke ||
+                         currentModalDish.id === 'poke_group' ||
+                         (currentModalDish.category && currentModalDish.category.toLowerCase().includes('poke')) ||
+                         (currentModalDish.name && currentModalDish.name.toLowerCase().includes('poke'));
+
+      if (isPokeDish) {
+        const totalToppings = Object.values(selectedSpecialOptions.pokeToppings || {}).reduce((a, b) => a + b, 0);
+        if (totalToppings < 6) {
+          const missing = 6 - totalToppings;
+          showCustomAlert(
+            'Acompanhamentos Obrigatórios',
+            `O seu Poke inclui 6 acompanhamentos obrigatórios.\n\nAtualmente você escolheu ${totalToppings} de 6.\nPor favor, adicione mais ${missing} acompanhamento${missing > 1 ? 's' : ''} antes de adicionar à sacola.`
+          );
+          const topSec = document.getElementById('pokeToppingsSection');
+          if (topSec) {
+            topSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            topSec.classList.add('section-attention');
+            setTimeout(() => topSec.classList.remove('section-attention'), 1500);
+          }
+          return;
+        }
+
+        const totalSauces = Object.values(selectedSpecialOptions.pokeSauces || {}).reduce((a, b) => a + b, 0);
+        if (totalSauces < 1) {
+          showCustomAlert(
+            'Molho Obrigatório',
+            'Por favor, escolha pelo menos 1 molho incluso para o seu Poke antes de adicionar à sacola.'
+          );
+          const sauceSec = document.getElementById('pokeSaucesSection');
+          if (sauceSec) {
+            sauceSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            sauceSec.classList.add('section-attention');
+            setTimeout(() => sauceSec.classList.remove('section-attention'), 1500);
+          }
+          return;
+        }
+      }
 
       let canonicalItem = {};
       if (currentModalDish.isGrouped) {

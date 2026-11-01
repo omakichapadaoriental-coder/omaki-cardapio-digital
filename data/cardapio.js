@@ -4246,7 +4246,7 @@ const CARDAPIO_DATA = {
       "portion": "80g Proteína",
       "photo": "assets/images/raw_poke.jpeg",
       "image": "assets/images/raw_poke.jpeg",
-      "description": "Porção 300g • 80g de proteína nobre + escolha até 6 acompanhamentos + escolha 1 molho.",
+      "description": "Porção 300g • 80g de proteína nobre + 6 acompanhamentos inclusos (obrigatório) + 1 molho incluso (obrigatório).",
       "price": 71.9,
       "basePrice": 61.9,
       "maxPrice": 71.9,
