@@ -2302,88 +2302,95 @@ window.OMAKI_DATA = {
       "photo": "assets/images/Combo_35_pe_as.jpg"
     },
     {
-      "num": 181,
-      "code": "181",
+      "num": null,
+      "code": null,
       "category": "Combos Promocionais",
       "name": "Combo Camarão Imperial - 25 Peças",
-      "fullName": "181. Combo Camarão Imperial - 25 Peças",
+      "fullName": "Combo Camarão Imperial - 25 Peças",
       "description": "05 Uramaki joy camarão c/ geleia de pimenta e furikake, 04 Camarão imperial, 04 Sashimis salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha e Philadelphia, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
       "portion": "25 pçs",
       "page": "Pág 11",
       "price": 138.9,
-      "photo": "assets/images/Camarao_Imperial.jpg"
+      "photo": "assets/images/Camarao_Imperial.jpg",
+      "isNew": true
     },
     {
-      "num": 182,
-      "code": "182",
+      "num": null,
+      "code": null,
       "category": "Combos Promocionais",
       "name": "Combo Camarão - 30 Peças",
-      "fullName": "182. Combo Camarão - 30 Peças",
+      "fullName": "Combo Camarão - 30 Peças",
       "description": "10 Uramaki skin Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 04 Camarão imperial.",
       "portion": "30 pçs",
       "page": "Pág 11",
       "price": 144.9,
-      "photo": "assets/images/3__Camar_o_Imperial.jpg"
+      "photo": "assets/images/3__Camar_o_Imperial.jpg",
+      "isNew": true
     },
     {
-      "num": 183,
-      "code": "183",
+      "num": null,
+      "code": null,
       "category": "Combos Promocionais",
       "name": "Combo Joy - 28 Peças",
-      "fullName": "183. Combo Joy - 28 Peças",
+      "fullName": "Combo Joy - 28 Peças",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy salmão geleia pimenta furikake, 05 Uramaki joy camarão geleia pimenta furikake, 04 Sashimis salmão, 04 Joy cebolinha.",
       "portion": "28 pçs",
       "page": "Pág 11",
       "price": 136.9,
-      "photo": "assets/images/9__Joy.jpg"
+      "photo": "assets/images/9__Joy.jpg",
+      "isNew": true
     },
     {
-      "num": 184,
-      "code": "184",
+      "num": null,
+      "code": null,
       "category": "Combos Promocionais",
       "name": "Combo Misto - 28 Peças",
-      "fullName": "184. Combo Misto - 28 Peças",
+      "fullName": "Combo Misto - 28 Peças",
       "description": "05 Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 02 Niguiri salmão.",
       "portion": "28 pçs",
       "page": "Pág 11",
       "price": 138.9,
-      "photo": "assets/images/Combo_35_pe_as.jpg"
+      "photo": "assets/images/Combo_35_pe_as.jpg",
+      "isNew": true
     },
     {
-      "num": 185,
-      "code": "185",
+      "num": null,
+      "code": null,
       "category": "Combos Promocionais",
       "name": "Combo Salmão - 30 Peças",
-      "fullName": "185. Combo Salmão - 30 Peças",
+      "fullName": "Combo Salmão - 30 Peças",
       "description": "10 Uramaki skin Philadelphia, 10 Hossomaki Philadelphia, 04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão.",
       "portion": "30 pçs",
       "page": "Pág 12",
       "price": 129.9,
-      "photo": "assets/images/Combo_40_Pe_as.jpg"
+      "photo": "assets/images/Combo_40_Pe_as.jpg",
+      "isNew": true
     },
     {
-      "num": 186,
-      "code": "186",
+      "num": null,
+      "code": null,
       "category": "Combos Promocionais",
       "name": "Combo Hot - 30 Peças",
-      "fullName": "186. Combo Hot - 30 Peças",
+      "fullName": "Combo Hot - 30 Peças",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 05 Hot couve crispy, 05 Hot Philadelphia.",
       "portion": "30 pçs",
       "page": "Pág 12",
       "price": 129.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg"
+      "photo": "assets/images/23__Hot_Rolls.jpg",
+      "isNew": true
     },
     {
-      "num": 187,
-      "code": "187",
+      "num": null,
+      "code": null,
       "category": "Combos Promocionais",
       "name": "Combo Hossomaki - 28 Peças",
-      "fullName": "187. Combo Hossomaki - 28 Peças",
+      "fullName": "Combo Hossomaki - 28 Peças",
       "description": "10 Hossomaki Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
       "portion": "28 pçs",
       "page": "Pág 12",
       "price": 126.9,
-      "photo": "assets/images/13__Hossomaki.jpg"
+      "photo": "assets/images/13__Hossomaki.jpg",
+      "isNew": true
     }
   ]
 };

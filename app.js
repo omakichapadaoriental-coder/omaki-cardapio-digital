@@ -134,18 +134,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- CATEGORIES DEFINITION ---
   const CATEGORY_MAP = [
-    { id: 'cat-combos-promo', title: '🍱 Combos Promocionais', match: (cat, num) => num >= 177 && num <= 187 },
-    { id: 'cat-combos-chef', title: '🍱 Combos do Chef', match: (cat, num) => num >= 173 && num <= 176 },
-    { id: 'cat-especiais', title: '✨ Especiais do Chef', match: (cat, num) => cat.includes('Especiais') || (num >= 41 && num <= 51) },
-    { id: 'cat-entradas', title: '🥢 Entradas & Harumakis', match: (cat, num) => cat.includes('Harumaki') || cat.includes('Entradas') || num <= 11 },
-    { id: 'cat-ceviches', title: '🐟 Ceviches & Tatakis', match: (cat, num) => cat.includes('Ceviche') || cat.includes('Tataki') || (num >= 12 && num <= 17) },
-    { id: 'cat-carpaccios', title: '🐟 Carpaccios & Gunkans', match: (cat, num) => cat.includes('Carpaccio') || cat.includes('Gunkan') || (num >= 18 && num <= 32) },
-    { id: 'cat-temakis', title: '🍣 Temakis', match: (cat, num) => cat.includes('Temaki') || (num >= 52 && num <= 60) },
-    { id: 'cat-hots', title: '🔥 Hot Rolls & Big Hot', match: (cat, num) => cat.includes('Hot') || (num >= 61 && num <= 69) },
-    { id: 'cat-sashimis', title: '🍣 Sashimis & Joys', match: (cat, num) => cat.includes('Sashimi') || cat.includes('Joy') || (num >= 70 && num <= 83) },
-    { id: 'cat-rolls', title: '🍣 Uramakis, Hossomakis & Niguiris', match: (cat, num) => cat.includes('Uramaki') || cat.includes('Hossomaki') || cat.includes('Niguiri') || (num >= 84 && num <= 123) },
-    { id: 'cat-pokes', title: '🥑 Pokes & Pratos Quentes', match: (cat, num) => cat.includes('Poke') || cat.includes('Yakisoba') || cat.includes('Teppan') || (num >= 124 && num <= 144) },
-    { id: 'cat-bebidas', title: '🍻 Bebidas, Sucos & Sakês', match: (cat, num) => cat.includes('Bebidas') || cat.includes('Refrigerante') || cat.includes('Cerveja') || cat.includes('Sakê') || num >= 145 }
+    { id: 'cat-combos-promo', title: '🍱 Combos Promocionais', match: (cat, num, item) => cat.includes('Promocionais') || (num && num >= 177 && num <= 187) || (item && item.isNew) },
+    { id: 'cat-combos-chef', title: '🍱 Combos do Chef', match: (cat, num) => num && num >= 173 && num <= 176 },
+    { id: 'cat-especiais', title: '✨ Especiais do Chef', match: (cat, num) => cat.includes('Especiais') || (num && num >= 41 && num <= 51) },
+    { id: 'cat-entradas', title: '🥢 Entradas & Harumakis', match: (cat, num) => cat.includes('Harumaki') || cat.includes('Entradas') || (num && num <= 11) },
+    { id: 'cat-ceviches', title: '🐟 Ceviches & Tatakis', match: (cat, num) => cat.includes('Ceviche') || cat.includes('Tataki') || (num && num >= 12 && num <= 17) },
+    { id: 'cat-carpaccios', title: '🐟 Carpaccios & Gunkans', match: (cat, num) => cat.includes('Carpaccio') || cat.includes('Gunkan') || (num && num >= 18 && num <= 32) },
+    { id: 'cat-temakis', title: '🍣 Temakis', match: (cat, num) => cat.includes('Temaki') || (num && num >= 52 && num <= 60) },
+    { id: 'cat-hots', title: '🔥 Hot Rolls & Big Hot', match: (cat, num) => cat.includes('Hot') || (num && num >= 61 && num <= 69) },
+    { id: 'cat-sashimis', title: '🍣 Sashimis & Joys', match: (cat, num) => cat.includes('Sashimi') || cat.includes('Joy') || (num && num >= 70 && num <= 83) },
+    { id: 'cat-rolls', title: '🍣 Uramakis, Hossomakis & Niguiris', match: (cat, num) => cat.includes('Uramaki') || cat.includes('Hossomaki') || cat.includes('Niguiri') || (num && num >= 84 && num <= 123) },
+    { id: 'cat-pokes', title: '🥑 Pokes & Pratos Quentes', match: (cat, num) => cat.includes('Poke') || cat.includes('Yakisoba') || cat.includes('Teppan') || (num && num >= 124 && num <= 144) },
+    { id: 'cat-bebidas', title: '🍻 Bebidas, Sucos & Sakês', match: (cat, num) => cat.includes('Bebidas') || cat.includes('Refrigerante') || cat.includes('Cerveja') || cat.includes('Sakê') || (num && num >= 145) }
   ];
 
   function initCategories() {
@@ -184,20 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
     menuContainer.innerHTML = '';
     const term = searchTerm.trim().toLowerCase();
 
-    // Group items into category sections
     CATEGORY_MAP.forEach(catDef => {
       const filteredItems = data.items.filter(item => {
-        const matchesCategory = catDef.match(item.category, item.num);
+        const matchesCategory = catDef.match(item.category, item.num, item);
         if (!matchesCategory) return false;
 
         if (!term) return true;
 
-        // Search in num (ex: "177"), name, description or portion
-        const numStr = String(item.num);
+        const numStr = item.num ? String(item.num) : '';
         const codeStr = String(item.code || '');
         const nameStr = item.name.toLowerCase();
         const descStr = (item.description || '').toLowerCase();
-        return numStr.includes(term) || codeStr.includes(term) || nameStr.includes(term) || descStr.includes(term);
+        const isNewMatch = item.isNew && (term === 'novo' || term === 'novos');
+        return numStr.includes(term) || codeStr.includes(term) || nameStr.includes(term) || descStr.includes(term) || isNewMatch;
       });
 
       if (filteredItems.length === 0) return;
@@ -246,6 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgWrapper = document.createElement('div');
     imgWrapper.className = 'product-card-img-wrapper';
 
+    const tagBadge = item.num 
+      ? `<span class="badge-item-num">#${String(item.num).padStart(3, '0')}</span>`
+      : `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">✨ NOVO</span>`;
+
     if (item.photo) {
       const img = document.createElement('img');
       img.className = 'product-card-img';
@@ -256,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imgWrapper.innerHTML = `
           <div class="product-card-no-img">🍣</div>
           <div class="product-card-badges">
-            <span class="badge-item-num">#${String(item.num).padStart(3, '0')}</span>
+            ${tagBadge}
             ${item.portion ? `<span class="badge-portion-pill">${item.portion}</span>` : ''}
           </div>
         `;
@@ -272,15 +275,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const badges = document.createElement('div');
     badges.className = 'product-card-badges';
     badges.innerHTML = `
-      <span class="badge-item-num">#${String(item.num).padStart(3, '0')}</span>
+      ${tagBadge}
       ${item.portion ? `<span class="badge-portion-pill">${item.portion}</span>` : ''}
     `;
     imgWrapper.appendChild(badges);
 
+    const displayName = item.num ? `${String(item.num).padStart(2, '0')}. ${item.name}` : item.name;
+
     const content = document.createElement('div');
     content.className = 'product-card-content';
     content.innerHTML = `
-      <h3 class="product-card-title">${item.fullName || item.name}</h3>
+      <h3 class="product-card-title">${displayName}</h3>
       <p class="product-card-desc">${item.description || 'Preparado na hora com ingredientes frescos e selecionados.'}</p>
       <div class="product-card-footer">
         <span class="product-price">${formatMoney(item.price)}</span>
@@ -314,9 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
     currentModalQty = 1;
     selectedComplements.clear();
 
-    modalItemNum.textContent = `#${String(item.num).padStart(3, '0')}`;
+    modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : 'NOVO';
     modalItemPortion.textContent = item.portion || 'Porção';
-    modalItemName.textContent = item.fullName || item.name;
+    modalItemName.textContent = item.num ? `${String(item.num).padStart(2, '0')}. ${item.name}` : item.name;
     modalItemPrice.textContent = formatMoney(item.price);
     modalItemDesc.textContent = item.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';
     modalItemNotes.value = '';
@@ -409,9 +414,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const notes = modalItemNotes.value.trim();
 
-    // Check if identical item already in cart (same item, complements and notes)
+    // Check if identical item already in cart (same name, complements and notes)
     const existingIndex = cart.findIndex(c => {
-      if (c.item.num !== currentModalItem.num) return false;
+      if (c.item.name !== currentModalItem.name) return false;
       if (c.notes !== notes) return false;
       const c1 = (c.complements || []).map(x => x.id).sort().join(',');
       const c2 = complementsArray.map(x => x.id).sort().join(',');
@@ -433,7 +438,8 @@ document.addEventListener('DOMContentLoaded', () => {
     saveCart();
     updateCartUI();
     closeItemModal();
-    showToast(`✓ #${String(currentModalItem.num).padStart(3, '0')} adicionado à sacola!`);
+    const tag = currentModalItem.num ? `#${String(currentModalItem.num).padStart(3, '0')}` : currentModalItem.name;
+    showToast(`✓ ${tag} adicionado à sacola!`);
   });
 
   // --- CART UI & UPDATES ---
@@ -504,11 +510,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const totalItemPrice = unitPrice * entry.qty;
 
       const complementsText = (entry.complements || []).map(c => `+ ${c.name} (${formatMoney(c.price)})`).join('<br>');
+      const numTag = entry.item.num ? `#${String(entry.item.num).padStart(3, '0')}` : 'NOVO';
 
       card.innerHTML = `
         <div class="cart-item-main-row">
           <div class="cart-item-details">
-            <span class="cart-item-num-tag">#${String(entry.item.num).padStart(3, '0')}</span>
+            <span class="cart-item-num-tag">${numTag}</span>
             <strong class="cart-item-title">${entry.item.name}</strong>
           </div>
           <span class="cart-item-price-calc">${formatMoney(totalItemPrice)}</span>
@@ -525,7 +532,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Event handlers
       card.querySelector('.btn-cart-minus').addEventListener('click', () => {
         if (entry.qty > 1) {
           entry.qty--;
@@ -692,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subtotal = calculateSubtotal();
     const grandTotal = subtotal + fee;
 
-    // Build the formatted WhatsApp Message
+    // Build formatted WhatsApp Message
     let msg = `🍣 *NOVO PEDIDO — OMAKI SUSHI*\n`;
     msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
     msg += `👤 *Cliente:* ${customerName}\n`;
@@ -709,12 +715,12 @@ document.addEventListener('DOMContentLoaded', () => {
     msg += `🛒 *ITENS DO PEDIDO:*\n\n`;
 
     cart.forEach(entry => {
-      const numCode = String(entry.item.num).padStart(3, '0');
+      const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}]` : '[NOVO]';
       let itemPriceUnit = entry.item.price;
       (entry.complements || []).forEach(c => itemPriceUnit += c.price);
       const totalLine = itemPriceUnit * entry.qty;
 
-      msg += `• *${entry.qty}x [#${numCode}] ${entry.item.name}* — ${formatMoney(totalLine)}\n`;
+      msg += `• *${entry.qty}x ${itemTag} ${entry.item.name}* — ${formatMoney(totalLine)}\n`;
 
       if (entry.complements && entry.complements.length > 0) {
         entry.complements.forEach(c => {
@@ -754,7 +760,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const storeWhatsApp = data.store.whatsapp || '556291749928';
     const waUrl = `https://wa.me/${storeWhatsApp}?text=${encodeURIComponent(msg)}`;
 
-    // Open WhatsApp
     window.open(waUrl, '_blank');
   });
 });
