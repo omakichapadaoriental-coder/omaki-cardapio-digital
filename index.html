@@ -1,381 +1,792 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <title>Omaki Sushi — Cardápio Digital & Pedido WhatsApp</title>
+
   <meta name="description" content="Cardápio digital oficial da Omaki Sushi Alto Paraíso. Faça seu pedido com facilidade direto pelo WhatsApp.">
+
   <link rel="icon" type="image/png" href="assets/favicon.png">
+
   <link rel="shortcut icon" href="favicon.ico">
+
   <link rel="apple-touch-icon" href="assets/favicon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261101_omaki_v10">
+
+  <link rel="stylesheet" href="style.css?v=20261101_omaki_v11">
+
 </head>
+
 <body>
+
   <!-- Background Ambient Glow -->
+
   <div class="ambient-glow glow-top"></div>
+
   <div class="ambient-glow glow-bottom"></div>
 
+
+
   <!-- Header -->
+
   <header class="site-header">
+
     <div class="header-container">
+
       <div class="brand-block">
+
         <img src="assets/logo-white.png" alt="Omaki Sushi Logo" class="brand-logo" onerror="this.style.display='none'">
+
         <div class="brand-text">
+
           <h1 class="brand-title">OMAKI SUSHI</h1>
+
           <p class="brand-subtitle">Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro • Alto Paraíso / GO</p>
+
         </div>
+
       </div>
+
       <div class="header-actions">
+
         <div class="status-badge">
+
           <span class="status-dot"></span>
+
           <span class="status-text">Aberto para Pedidos</span>
+
         </div>
+
         <button class="cart-trigger-btn" id="openCartHeaderBtn" aria-label="Abrir Sacola">
+
           <span class="cart-icon">🛒</span>
+
           <span class="cart-badge-count" id="headerCartCount">0</span>
+
         </button>
+
       </div>
+
     </div>
+
+
 
     <!-- Search & Quick Filters -->
+
     <div class="header-search-bar">
+
       <div class="search-input-wrapper">
+
         <span class="search-icon">🔍</span>
+
         <input type="text" id="searchInput" placeholder="Buscar por número (ex: 177) ou prato (ex: salmão, combo)..." autocomplete="off">
+
         <button class="search-clear-btn" id="clearSearchBtn" style="display:none;">✕</button>
+
       </div>
+
     </div>
+
+
 
     <!-- Categories Scrollable Navigation -->
+
     <div class="categories-nav-wrapper">
+
       <button class="nav-scroll-btn nav-scroll-left" id="navScrollLeft" aria-label="Rolar categorias para a esquerda">‹</button>
+
       <nav class="categories-nav" id="categoriesNav">
+
         <!-- Dynamic categories injected by JS -->
+
       </nav>
+
       <button class="nav-scroll-btn nav-scroll-right" id="navScrollRight" aria-label="Rolar categorias para a direita">›</button>
+
     </div>
+
   </header>
 
+
+
   <!-- Main Content -->
+
   <main class="main-content">
+
     <!-- Highlight Banner / Promotion -->
+
     <section class="store-notice-card">
+
       <div class="notice-icon">🍣</div>
+
       <div class="notice-info">
+
         <h3>Peça com facilidade pelo WhatsApp</h3>
+
         <p>Escolha seus itens, personalize observações, selecione complementos e envie seu pedido já formatado e com o número de cada item para nossa equipe.</p>
+
       </div>
+
     </section>
 
+
+
     <!-- Menu Items List Section -->
+
     <div id="menuContainer" class="menu-container">
+
       <!-- Injected by JavaScript -->
+
     </div>
+
   </main>
 
+
+
   <!-- Bottom Floating Cart Bar (Mobile) -->
+
   <aside class="floating-cart-bar" id="floatingCartBar" style="display:none;">
+
     <div class="cart-bar-content" id="openCartBarBtn">
+
       <div class="cart-bar-info">
+
         <div class="cart-bar-badge">
+
           <span id="floatingCartCount">0</span>
+
         </div>
+
         <div class="cart-bar-text">
+
           <span class="cart-bar-label">Minha Sacola</span>
+
           <span class="cart-bar-subtotal" id="floatingCartSubtotal">R$ 0,00</span>
+
         </div>
+
       </div>
+
       <button class="cart-bar-action-btn">
+
         <span>Ver Pedido</span>
+
         <span class="action-arrow">→</span>
+
       </button>
+
     </div>
+
   </aside>
 
+
+
   <!-- Item Customization Modal -->
+
   <div class="modal-overlay" id="itemModal" style="display:none;">
+
     <div class="modal-card">
+
       <button class="modal-close-btn" id="closeItemModalBtn">✕</button>
+
       
+
       <div class="modal-header-img" id="modalImgContainer">
+
         <img id="modalItemImg" src="" alt="Prato">
+
         <div class="modal-img-badges">
+
           <span class="badge-num" id="modalItemNum">#000</span>
+
           <span class="badge-portion" id="modalItemPortion" style="display:none;"></span>
+
         </div>
+
       </div>
+
+
 
       <div class="modal-body">
+
         <div class="modal-title-row">
+
           <h2 id="modalItemName">Nome do Prato</h2>
+
           <span class="modal-price" id="modalItemPrice">R$ 0,00</span>
+
         </div>
+
         <p class="modal-description" id="modalItemDesc">Descrição detalhada dos insumos e composição do prato.</p>
 
+
+
         <!-- Options / Flavors Selection (for grouped dishes) -->
+
         <div class="custom-section" id="modalOptionsSection" style="display:none;">
+
           <div class="section-title-row">
+
             <h4 id="modalOptionsTitle">Escolha a sua opção</h4>
+
             <span class="required-tag" style="background:#8b1e3f; color:#fff; font-size:0.68rem; padding:2px 8px; border-radius:4px; font-weight:700;">Obrigatório</span>
+
           </div>
+
           <p class="section-hint" id="modalOptionsHint">Selecione o corte ou sabor desejado:</p>
+
           <div class="options-list" id="modalOptionsList">
+
             <!-- Injected by JS -->
+
           </div>
+
         </div>
+
+
 
         <!-- Special Customization Section (Temakis / Pokes) -->
+
         <div class="custom-section" id="modalSpecialSection" style="display:none; padding: 0; border: none; background: transparent;">
+
           <div id="modalSpecialContent">
+
             <!-- Injected by JS -->
+
           </div>
+
         </div>
+
+
 
         <!-- Complements Section -->
+
         <div class="custom-section" id="modalComplementsSection">
+
           <div class="section-title-row">
+
             <h4>Complementos & Adicionais</h4>
+
             <span class="optional-tag">Opcional</span>
+
           </div>
+
           <p class="section-hint">Adicione molhos extras, crocância ou acompanhamentos:</p>
+
           <div class="complements-list" id="modalComplementsList">
+
             <!-- Injected by JS -->
+
           </div>
+
         </div>
+
+
+
+        <!-- Combo Drinks Section (Adicional de Bebidas para Combos) -->
+
+        <div class="custom-section" id="modalComboDrinksSection" style="display:none;">
+
+          <div class="section-title-row">
+
+            <h4>Bebidas para Acompanhar</h4>
+
+            <span class="optional-tag">Opcional</span>
+
+          </div>
+
+          <p class="section-hint">Selecione bebidas geladas para harmonizar com seu combo:</p>
+
+          <div class="combo-drinks-tabs" id="comboDrinksTabs">
+
+            <!-- Tabs injected by JS -->
+
+          </div>
+
+          <div class="combo-drinks-list" id="modalComboDrinksList">
+
+            <!-- Drinks injected by JS -->
+
+          </div>
+
+        </div>
+
+
 
         <!-- Item Observations Section -->
+
         <div class="custom-section">
+
           <div class="section-title-row">
+
             <h4>Observações deste item</h4>
+
             <span class="optional-tag">Opcional</span>
+
           </div>
+
           <textarea id="modalItemNotes" rows="2" placeholder="Ex: Sem cebolinha, sem cream cheese, cortar fino, caprichar no gengibre..."></textarea>
+
         </div>
+
+
 
         <!-- Quantity and Add Button -->
+
         <div class="modal-footer-actions">
+
           <div class="qty-control">
+
             <button class="qty-btn" id="modalQtyMinus">-</button>
+
             <span class="qty-value" id="modalQtyValue">1</span>
+
             <button class="qty-btn" id="modalQtyPlus">+</button>
+
           </div>
+
           <button class="add-to-cart-btn" id="modalAddToCartBtn">
+
             <span>Adicionar à Sacola</span>
+
             <span class="btn-divider">•</span>
+
             <span id="modalAddTotalPrice">R$ 0,00</span>
+
           </button>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
+
 
   <!-- Cart / Checkout Drawer -->
+
   <div class="drawer-overlay" id="cartDrawer" style="display:none;">
+
     <div class="drawer-container">
+
       <div class="drawer-header">
+
         <div class="drawer-title-block">
+
           <h3>Sua Sacola de Pedidos</h3>
+
           <span class="drawer-item-count" id="drawerItemCount">0 itens</span>
+
         </div>
+
         <button class="drawer-close-btn" id="closeCartDrawerBtn">✕</button>
+
       </div>
+
+
 
       <div class="drawer-content">
+
         <!-- Cart Items List -->
+
         <div class="cart-items-wrapper" id="cartItemsList">
+
           <!-- Injected by JS -->
+
         </div>
+
+
 
         <!-- Order Form Fields -->
+
         <div class="checkout-form">
+
           <h4 class="form-section-title">1. Como deseja receber?</h4>
+
           <div class="delivery-toggle-group">
+
             <button type="button" class="delivery-toggle-btn active" id="btnTypeDelivery">
+
               <span class="btn-emoji">🛵</span>
+
               <span>Entrega (Delivery)</span>
+
             </button>
+
             <button type="button" class="delivery-toggle-btn" id="btnTypeTakeaway">
+
               <span class="btn-emoji">🛍️</span>
+
               <span>Retirada no Balcão</span>
+
             </button>
+
           </div>
+
+
 
           <!-- Address Fields (Shown if Delivery) -->
+
           <div id="deliveryFieldsGroup" class="form-fields-subgroup">
+
             <div class="form-group">
+
               <label for="orderNeighborhood">Bairro em Alto Paraíso *</label>
+
               <select id="orderNeighborhood">
+
                 <!-- Injected by JS with neighborhoods and fees -->
+
               </select>
+
             </div>
+
             <div class="form-group">
+
               <label for="orderStreet">Rua / Avenida e Número *</label>
+
               <input type="text" id="orderStreet" placeholder="Ex: Rua das Flores, Quadra 12, Lote 05">
+
             </div>
+
             <div class="form-group">
+
               <label for="orderComplement">Complemento / Ponto de Referência</label>
+
               <input type="text" id="orderComplement" placeholder="Ex: Casa com portão marrom, em frente à pousada X">
+
             </div>
+
           </div>
+
+
 
           <div id="takeawayInfoGroup" class="takeaway-notice" style="display:none;">
+
             <div class="takeaway-badge">🛍️ Retirada no Balcão</div>
+
             <p class="takeaway-address">
+
               📍 <strong>Local de Retirada:</strong> Omaki Sushi<br>
+
               Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso de Goiás / GO
+
             </p>
+
             <a href="https://www.google.com/maps/search/?api=1&query=Omaki+Sushi,+Av.+Ary+Valad%C3%A3o+Filho,+Alto+Para%C3%ADso+de+Goi%C3%A1s" target="_blank" rel="noopener noreferrer" class="takeaway-maps-link">
+
               <span class="maps-icon">🗺️</span>
+
               <span>Abrir localização no Google Maps</span>
+
               <span class="maps-arrow">↗</span>
+
             </a>
+
             <p class="takeaway-sub">Avisaremos no WhatsApp assim que seu pedido estiver fresquinho e pronto para retirada!</p>
+
           </div>
+
+
 
           <!-- Disposable / Utensils -->
+
           <h4 class="form-section-title">2. Acompanhamentos & Descartáveis (Cortesia)</h4>
+
           <div class="form-row-compact">
+
             <div class="form-group">
+
               <label for="orderHashis">Pares de Hashi</label>
+
               <select id="orderHashis">
+
                 <option value="1 par" selected>1 par</option>
+
                 <option value="2 pares">2 pares</option>
+
                 <option value="3 pares">3 pares</option>
+
                 <option value="4 pares">4 pares</option>
+
                 <option value="5 ou mais">5 ou mais pares</option>
+
                 <option value="Não preciso">Não preciso</option>
+
               </select>
+
             </div>
+
             <div class="form-group">
+
               <label for="orderWasabiGari">Wasabi & Gengibre</label>
+
               <select id="orderWasabiGari">
+
                 <option value="Sim (Ambos)" selected>Sim (Ambos)</option>
+
                 <option value="Apenas Wasabi">Apenas Wasabi</option>
+
                 <option value="Apenas Gengibre">Apenas Gengibre</option>
+
                 <option value="Não (Dispensar)">Não (Dispensar)</option>
+
               </select>
+
             </div>
+
           </div>
+
+
 
           <!-- Payment Methods -->
+
           <h4 class="form-section-title">3. Forma de Pagamento *</h4>
+
           <div class="payment-methods-grid">
+
             <label class="payment-card">
+
               <input type="radio" name="paymentMethod" value="Pix" checked>
+
               <div class="payment-card-body">
+
                 <span class="pay-icon">💠</span>
+
                 <span class="pay-title">Pix</span>
+
                 <span class="pay-subtitle">Pagamento instantâneo</span>
+
               </div>
+
             </label>
+
             <label class="payment-card">
+
               <input type="radio" name="paymentMethod" value="Cartão de Crédito">
+
               <div class="payment-card-body">
+
                 <span class="pay-icon">💳</span>
+
                 <span class="pay-title">Crédito</span>
+
                 <span class="pay-subtitle">Maquininha</span>
+
               </div>
+
             </label>
+
             <label class="payment-card">
+
               <input type="radio" name="paymentMethod" value="Cartão de Débito">
+
               <div class="payment-card-body">
+
                 <span class="pay-icon">💳</span>
+
                 <span class="pay-title">Débito</span>
+
                 <span class="pay-subtitle">Maquininha</span>
+
               </div>
+
             </label>
+
             <label class="payment-card">
+
               <input type="radio" name="paymentMethod" value="Dinheiro">
+
               <div class="payment-card-body">
+
                 <span class="pay-icon">💵</span>
+
                 <span class="pay-title">Dinheiro</span>
+
                 <span class="pay-subtitle">Com ou sem troco</span>
+
               </div>
+
             </label>
+
           </div>
+
+
 
           <!-- Pix Box Helper -->
+
           <div id="pixInfoBox" class="pix-info-card">
+
             <div class="pix-card-header">
+
               <span class="pix-badge">Chave Pix (Telefone)</span>
+
               <button type="button" class="copy-pix-btn" id="copyPixBtn">📋 Copiar Chave</button>
+
             </div>
+
             <div class="pix-key-display">+55 62 99174-9928</div>
+
             <p class="pix-instruction">Após enviar o pedido, basta anexar o comprovante na conversa do WhatsApp para confirmação imediata.</p>
+
           </div>
+
+
 
           <!-- Cash Change Box (Shown if Cash) -->
+
           <div id="cashChangeBox" class="form-group" style="display:none;">
+
             <label for="cashChangeValue">Precisa de troco para quanto?</label>
+
             <input type="text" id="cashChangeValue" placeholder="Ex: R$ 100,00 ou Não preciso de troco">
+
           </div>
+
+
 
           <!-- Customer Data -->
+
           <h4 class="form-section-title">4. Seus Dados de Contato *</h4>
+
           <div class="form-group">
+
             <label for="orderCustomerName">Seu Nome Completo *</label>
+
             <input type="text" id="orderCustomerName" placeholder="Como podemos te chamar?">
+
           </div>
+
           <div class="form-group">
+
             <label for="orderCustomerPhone">Seu WhatsApp / Telefone *</label>
+
             <input type="tel" id="orderCustomerPhone" placeholder="Ex: (62) 99999-9999">
+
           </div>
+
           <div class="form-group">
+
             <label for="orderGeneralNotes">Observação Geral do Pedido</label>
+
             <textarea id="orderGeneralNotes" rows="2" placeholder="Alguma instrução especial para entrega ou preparo?"></textarea>
+
           </div>
+
         </div>
+
+
 
         <!-- Order Summary Totals -->
+
         <div class="order-summary-box">
+
           <div class="summary-line">
+
             <span>Subtotal dos Itens:</span>
+
             <span id="summarySubtotal">R$ 0,00</span>
+
           </div>
+
           <div class="summary-line" id="deliveryFeeSummaryLine">
+
             <span>Taxa de Entrega:</span>
+
             <span id="summaryDeliveryFee">R$ 12,00</span>
+
           </div>
+
           <div class="summary-line total-line">
+
             <span>Total do Pedido:</span>
+
             <span id="summaryGrandTotal">R$ 0,00</span>
+
           </div>
+
         </div>
+
       </div>
+
+
 
       <!-- Drawer Footer Action -->
+
       <div class="drawer-footer">
+
         <button class="send-whatsapp-btn" id="sendWhatsAppOrderBtn">
+
           <span class="whatsapp-btn-icon">💬</span>
+
           <span class="whatsapp-btn-text">Finalizar Pedido no WhatsApp</span>
+
           <span class="whatsapp-btn-total" id="footerBtnTotal">R$ 0,00</span>
+
         </button>
+
       </div>
+
     </div>
+
   </div>
+
+
 
   <!-- Toast Notification -->
+
   <div class="toast-message" id="toastMessage">Chave Pix copiada com sucesso!</div>
 
+
+
   <!-- Custom Styled Alert / Error Dialog -->
+
   <div class="custom-alert-overlay" id="customAlertOverlay" style="display:none;">
+
     <div class="custom-alert-card">
+
       <div class="custom-alert-header">
+
         <div class="custom-alert-icon-badge" id="customAlertIcon">⚠️</div>
+
         <h3 class="custom-alert-title" id="customAlertTitle">Atenção</h3>
+
       </div>
+
       <p class="custom-alert-message" id="customAlertMessage">Por favor, preencha os dados necessários.</p>
+
       <div class="custom-alert-footer">
+
         <button type="button" class="custom-alert-btn" id="customAlertBtn">Entendido</button>
+
       </div>
+
     </div>
+
   </div>
 
+
+
   <!-- Scripts -->
-  <script src="data/cardapio.js?v=20261101_omaki_v10" charset="UTF-8"></script>
-  <script src="app.js?v=20261101_omaki_v10" charset="UTF-8"></script>
+
+  <script src="data/cardapio.js?v=20261101_omaki_v11" charset="UTF-8"></script>
+
+  <script src="app.js?v=20261101_omaki_v11" charset="UTF-8"></script>
+
 </body>
+
 </html>
+

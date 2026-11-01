@@ -2046,3 +2046,209 @@ select:focus {
   color: var(--text-muted);
   opacity: 0.75;
 }
+
+
+/* ==========================================================================
+   COMBO DRINKS UPSELL SYSTEM (BEBIDAS ESTRATÉGICAS NOS COMBOS)
+   ========================================================================== */
+.combo-drinks-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  scrollbar-width: thin;
+}
+
+.combo-drinks-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.combo-drinks-tabs::-webkit-scrollbar-thumb {
+  background: rgba(229, 192, 123, 0.25);
+  border-radius: var(--radius-pill);
+}
+
+.combo-drink-tab-btn {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.combo-drink-tab-btn:hover {
+  border-color: rgba(229, 192, 123, 0.4);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.combo-drink-tab-btn.active {
+  background: linear-gradient(135deg, rgba(139, 30, 63, 0.45), rgba(229, 192, 123, 0.22));
+  border-color: var(--accent-gold);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(229, 192, 123, 0.2);
+}
+
+.combo-tab-badge {
+  background: var(--accent-gold);
+  color: #070a11;
+  font-size: 0.65rem;
+  font-weight: 800;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+}
+
+.combo-drinks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 290px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.combo-drinks-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.combo-drinks-list::-webkit-scrollbar-thumb {
+  background: rgba(229, 192, 123, 0.25);
+  border-radius: var(--radius-pill);
+}
+
+.combo-drink-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  transition: all 0.2s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.combo-drink-item:hover {
+  border-color: rgba(229, 192, 123, 0.35);
+  background: rgba(25, 34, 53, 0.7);
+}
+
+.combo-drink-item.selected {
+  border-color: var(--accent-gold);
+  background: rgba(139, 30, 63, 0.18);
+  box-shadow: 0 0 12px rgba(229, 192, 123, 0.15);
+}
+
+.combo-drink-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
+  padding-right: 12px;
+}
+
+.combo-drink-title {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.combo-drink-price {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.combo-drink-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(7, 10, 17, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+
+.combo-drink-item.selected .combo-drink-stepper {
+  border-color: var(--accent-gold);
+}
+
+.combo-drink-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-gold);
+  font-size: 1.15rem;
+  font-weight: 800;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.combo-drink-btn:hover {
+  color: #fff;
+  transform: scale(1.18);
+}
+
+.combo-drink-qty {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #fff;
+  min-width: 18px;
+  text-align: center;
+  user-select: none;
+}
+
+.combo-drink-item.selected .combo-drink-qty {
+  color: var(--accent-gold);
+}
+
+/* Cart Drinks Styling */
+.cart-drinks-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 8px 12px;
+  background: rgba(7, 10, 17, 0.65);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.cart-drink-line {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cart-drink-price {
+  color: var(--accent-gold);
+  font-weight: 600;
+  font-size: 0.76rem;
+  white-space: nowrap;
+}

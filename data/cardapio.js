@@ -4655,19 +4655,19 @@ window.OMAKI_DATA = {
         {
           "num": 153,
           "code": "153",
-          "name": "Sake dose 50ml",
-          "fullName": "Sake dose 50ml",
-          "description": "Dose individual de sakê 50ml",
-          "price": 39.9,
+          "name": "Sake dose 50ml (Importado)",
+          "fullName": "153. Sake dose 50ml (Importado)",
+          "description": "Dose individual de sakê importado 50ml",
+          "price": 48.9,
           "portion": "50ml"
         },
         {
           "num": 154,
           "code": "154",
-          "name": "Sake dose 150ml",
-          "fullName": "Sake dose 150ml",
-          "description": "Dose média de sakê em massu 150ml",
-          "price": 49.9,
+          "name": "Sake dose 150ml (Importado)",
+          "fullName": "154. Sake dose 150ml (Importado)",
+          "description": "Dose de sakê importado em massu 150ml",
+          "price": 59.9,
           "portion": "150ml"
         },
         {
@@ -5321,6 +5321,264 @@ window.OMAKI_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
+      ]
+    }
+  ],
+  "comboBeverages": [
+    {
+      "id": "sakes",
+      "name": "Sakês Japoneses & Nacionais",
+      "shortName": "Sakês",
+      "icon": "🍶",
+      "items": [
+        {
+          "id": "drink_156",
+          "num": 156,
+          "name": "Sake Hakutsuru 1.8LT (Garrafa Magna)",
+          "price": 619.9,
+          "volume": "1.8L"
+        },
+        {
+          "id": "drink_155",
+          "num": 155,
+          "name": "Sake Hakutsuru 720ml (Garrafa)",
+          "price": 279.9,
+          "volume": "720ml"
+        },
+        {
+          "id": "drink_159",
+          "num": 159,
+          "name": "Sake Azuma Kirin Dourado 740ml (Garrafa)",
+          "price": 159.9,
+          "volume": "740ml"
+        },
+        {
+          "id": "drink_154",
+          "num": 154,
+          "name": "Sake dose 150ml (Importado)",
+          "price": 59.9,
+          "volume": "150ml"
+        },
+        {
+          "id": "drink_158",
+          "num": 158,
+          "name": "Sake dose 150ml (Nacional)",
+          "price": 49.9,
+          "volume": "150ml"
+        },
+        {
+          "id": "drink_153",
+          "num": 153,
+          "name": "Sake dose 50ml (Importado)",
+          "price": 48.9,
+          "volume": "50ml"
+        },
+        {
+          "id": "drink_157",
+          "num": 157,
+          "name": "Sake dose 50ml (Nacional)",
+          "price": 39.9,
+          "volume": "50ml"
+        }
+      ]
+    },
+    {
+      "id": "cervejas",
+      "name": "Cervejas Long Neck & 600ml",
+      "shortName": "Cervejas",
+      "icon": "🍺",
+      "items": [
+        {
+          "id": "drink_173",
+          "num": 173,
+          "name": "Cerveja Heineken 600ml",
+          "price": 24.0,
+          "volume": "600ml"
+        },
+        {
+          "id": "drink_174",
+          "num": 174,
+          "name": "Cerveja Stella Artois 600ml",
+          "price": 21.0,
+          "volume": "600ml"
+        },
+        {
+          "id": "drink_175",
+          "num": 175,
+          "name": "Cerveja Spaten 600ml",
+          "price": 20.0,
+          "volume": "600ml"
+        },
+        {
+          "id": "drink_176",
+          "num": 176,
+          "name": "Cerveja Antarctica Original 600ml",
+          "price": 19.0,
+          "volume": "600ml"
+        },
+        {
+          "id": "drink_169",
+          "num": 169,
+          "name": "Cerveja Corona Extra Long Neck 355ml",
+          "price": 13.0,
+          "volume": "355ml"
+        },
+        {
+          "id": "drink_170",
+          "num": 170,
+          "name": "Cerveja Heineken Long Neck 330ml",
+          "price": 13.0,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_171",
+          "num": 171,
+          "name": "Cerveja Spaten Long Neck 355ml",
+          "price": 13.0,
+          "volume": "355ml"
+        },
+        {
+          "id": "drink_172",
+          "num": 172,
+          "name": "Cerveja Stella Artois Long Neck 330ml",
+          "price": 13.0,
+          "volume": "330ml"
+        }
+      ]
+    },
+    {
+      "id": "sucos",
+      "name": "Sucos Naturais & Polpa de Fruta (330ml)",
+      "shortName": "Sucos",
+      "icon": "🍹",
+      "items": [
+        {
+          "id": "drink_151",
+          "num": 151,
+          "name": "Suco Natural de Laranja 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_152",
+          "num": 152,
+          "name": "Suco Natural de Limão 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_149",
+          "num": 149,
+          "name": "Suco de Polpa de Morango 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_150",
+          "num": 150,
+          "name": "Suco de Polpa de Maracujá 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_145",
+          "num": 145,
+          "name": "Suco de Polpa de Cupuaçu 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_147",
+          "num": 147,
+          "name": "Suco de Polpa de Graviola 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_148",
+          "num": 148,
+          "name": "Suco de Polpa de Mangaba 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        },
+        {
+          "id": "drink_146",
+          "num": 146,
+          "name": "Suco de Polpa de Abacaxi 330ml",
+          "price": 16.9,
+          "volume": "330ml"
+        }
+      ]
+    },
+    {
+      "id": "refrigerantes",
+      "name": "Refrigerantes, Águas & Energético",
+      "shortName": "Refrigerantes & Águas",
+      "icon": "🥤",
+      "items": [
+        {
+          "id": "drink_160",
+          "num": 160,
+          "name": "Energético Red Bull 250ml",
+          "price": 17.0,
+          "volume": "250ml"
+        },
+        {
+          "id": "drink_166",
+          "num": 166,
+          "name": "H2O Limoneto 500ml",
+          "price": 9.0,
+          "volume": "500ml"
+        },
+        {
+          "id": "drink_161",
+          "num": 161,
+          "name": "Coca-Cola Lata 310ml",
+          "price": 8.0,
+          "volume": "310ml"
+        },
+        {
+          "id": "drink_162",
+          "num": 162,
+          "name": "Coca-Cola Zero 310ml",
+          "price": 8.0,
+          "volume": "310ml"
+        },
+        {
+          "id": "drink_167",
+          "num": 167,
+          "name": "Água Mineral com Gás 500ml",
+          "price": 7.0,
+          "volume": "500ml"
+        },
+        {
+          "id": "drink_163",
+          "num": 163,
+          "name": "Guaraná Antarctica 350ml",
+          "price": 6.0,
+          "volume": "350ml"
+        },
+        {
+          "id": "drink_164",
+          "num": 164,
+          "name": "Fanta Laranja 350ml",
+          "price": 6.0,
+          "volume": "350ml"
+        },
+        {
+          "id": "drink_165",
+          "num": 165,
+          "name": "Água Tônica Antarctica 350ml",
+          "price": 6.0,
+          "volume": "350ml"
+        },
+        {
+          "id": "drink_168",
+          "num": 168,
+          "name": "Água Mineral Sem Gás 500ml",
+          "price": 5.0,
+          "volume": "500ml"
+        }
       ]
     }
   ]
