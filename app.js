@@ -371,7 +371,30 @@ document.addEventListener('DOMContentLoaded', () => {
     currentModalQty = 1;
     selectedComplements.clear();
 
-    if (modalItemNum) modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : 'NOVO';
+    const isCombo = item.category.toLowerCase().includes('combo') || item.name.toLowerCase().includes('combo') || (item.portion && (item.portion.toLowerCase().includes('peça') || item.portion.toLowerCase().includes('pçs')));
+    if (modalItemNum) {
+      modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : '✨ NOVO';
+      if (!item.num) {
+        modalItemNum.style.background = '#8b1e3f';
+        modalItemNum.style.borderColor = '#e5c07b';
+        modalItemNum.style.color = '#fff';
+      } else {
+        modalItemNum.style.background = 'rgba(7, 10, 17, 0.9)';
+        modalItemNum.style.borderColor = 'var(--accent-gold)';
+        modalItemNum.style.color = 'var(--accent-gold)';
+      }
+    }
+
+    const modalItemPortion = document.getElementById('modalItemPortion');
+    if (modalItemPortion) {
+      if (!isCombo && item.portion) {
+        modalItemPortion.textContent = item.portion;
+        modalItemPortion.style.display = 'inline-block';
+      } else {
+        modalItemPortion.style.display = 'none';
+      }
+    }
+
     if (modalItemName) modalItemName.textContent = item.name;
     if (modalItemPrice) modalItemPrice.textContent = formatMoney(item.price);
     if (modalItemDesc) modalItemDesc.textContent = item.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';

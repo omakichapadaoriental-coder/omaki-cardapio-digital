@@ -586,7 +586,7 @@ window.OMAKI_DATA = {
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 54.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_40_tesouro_chef.jpg"
     },
     {
       "num": 38,
@@ -598,7 +598,7 @@ window.OMAKI_DATA = {
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 53.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_40_tesouro_chef.jpg"
     },
     {
       "num": 39,
@@ -610,7 +610,7 @@ window.OMAKI_DATA = {
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 52.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_40_tesouro_chef.jpg"
     },
     {
       "num": 40,
@@ -622,7 +622,7 @@ window.OMAKI_DATA = {
       "portion": "10 fatias",
       "page": "Pág 3",
       "price": 57.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_40_tesouro_chef.jpg"
     },
     {
       "num": 41,
@@ -634,7 +634,7 @@ window.OMAKI_DATA = {
       "portion": "10 un",
       "page": "Pág 3",
       "price": 58.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_41_elegancia_oriente.jpg"
     },
     {
       "num": 42,
@@ -646,7 +646,7 @@ window.OMAKI_DATA = {
       "portion": "10 un",
       "page": "Pág 3",
       "price": 58.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_42_salmao_avocado_morango.jpg"
     },
     {
       "num": 43,
@@ -658,7 +658,7 @@ window.OMAKI_DATA = {
       "portion": "10 un",
       "page": "Pág 3",
       "price": 57.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_43_salmao_trufado.jpg"
     },
     {
       "num": 44,
@@ -670,7 +670,7 @@ window.OMAKI_DATA = {
       "portion": "10 un",
       "page": "Pág 3",
       "price": 56.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_44_salmao_umeboshi.jpg"
     },
     {
       "num": 45,
@@ -682,7 +682,7 @@ window.OMAKI_DATA = {
       "portion": "10 un",
       "page": "Pág 4",
       "price": 57.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_45_ebi_avocado.jpg"
     },
     {
       "num": 46,
@@ -694,7 +694,7 @@ window.OMAKI_DATA = {
       "portion": "10 un",
       "page": "Pág 4",
       "price": 55.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_46_skin_salmao.jpg"
     },
     {
       "num": 47,
@@ -706,7 +706,7 @@ window.OMAKI_DATA = {
       "portion": "2 un",
       "page": "Pág 4",
       "price": 48.9,
-      "photo": "assets/images/especial_chef_banner.jpg"
+      "photo": "assets/images/esp_47_joy_macaricado.jpg"
     },
     {
       "num": 48,
@@ -742,7 +742,7 @@ window.OMAKI_DATA = {
       "portion": "180g",
       "page": "Pág 4",
       "price": 65.9,
-      "photo": "assets/images/Temaki_de_Cebolinha.jpg"
+      "photo": "assets/images/esp_50_supremo_salmao.png"
     },
     {
       "num": 51,
@@ -826,7 +826,7 @@ window.OMAKI_DATA = {
       "portion": "25 peças",
       "page": "Pág 5",
       "price": 141.9,
-      "photo": "assets/images/Combo_40_Pe_as.jpg"
+      "photo": "assets/images/combo_1_chef.jpg"
     },
     {
       "num": 58,
@@ -838,7 +838,7 @@ window.OMAKI_DATA = {
       "portion": "35 peças",
       "page": "Pág 5",
       "price": 161.9,
-      "photo": "assets/images/Combo_40_Pe_as.jpg"
+      "photo": "assets/images/combo_4_chef.jpg"
     },
     {
       "num": 59,
@@ -850,7 +850,7 @@ window.OMAKI_DATA = {
       "portion": "40 peças",
       "page": "Pág 5",
       "price": 205.9,
-      "photo": "assets/images/Combo_40_Pe_as.jpg"
+      "photo": "assets/images/combo_5_chef.jpg"
     },
     {
       "num": 60,
@@ -862,7 +862,7 @@ window.OMAKI_DATA = {
       "portion": "60 peças",
       "page": "Pág 5",
       "price": 320.9,
-      "photo": "assets/images/Combo_40_Pe_as.jpg"
+      "photo": "assets/images/combo_6_chef.jpg"
     },
     {
       "num": 61,
@@ -1090,7 +1090,7 @@ window.OMAKI_DATA = {
       "portion": "6 un",
       "page": "Pág 6",
       "price": 48.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/11__Eby_Fry.jpg"
     },
     {
       "num": 80,
@@ -1102,7 +1102,7 @@ window.OMAKI_DATA = {
       "portion": "6 un",
       "page": "Pág 6",
       "price": 47.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/11__Eby_Fry.jpg"
     },
     {
       "num": 81,
@@ -1114,7 +1114,7 @@ window.OMAKI_DATA = {
       "portion": "6 un",
       "page": "Pág 6",
       "price": 46.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/11__Eby_Fry.jpg"
     },
     {
       "num": 82,
@@ -1126,7 +1126,7 @@ window.OMAKI_DATA = {
       "portion": "6 un",
       "page": "Pág 6",
       "price": 44.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/11__Eby_Fry.jpg"
     },
     {
       "num": 83,
@@ -1138,7 +1138,7 @@ window.OMAKI_DATA = {
       "portion": "6 un",
       "page": "Pág 6",
       "price": 43.9,
-      "photo": "assets/images/10__Joy_de_Salm_o.jpg"
+      "photo": "assets/images/11__Eby_Fry.jpg"
     },
     {
       "num": 84,
@@ -1714,7 +1714,7 @@ window.OMAKI_DATA = {
       "portion": "Pote",
       "page": "Pág 8",
       "price": 22.0,
-      "photo": "assets/images/Camar_o__maionese__sriracha.png"
+      "photo": "assets/images/molhos_adicionais.jpg"
     },
     {
       "num": 132,
@@ -1726,7 +1726,7 @@ window.OMAKI_DATA = {
       "portion": "Pote",
       "page": "Pág 8",
       "price": 15.0,
-      "photo": "assets/images/Camar_o__maionese__sriracha.png"
+      "photo": "assets/images/molhos_adicionais.jpg"
     },
     {
       "num": 133,
@@ -1738,7 +1738,7 @@ window.OMAKI_DATA = {
       "portion": "Pote",
       "page": "Pág 8",
       "price": 9.0,
-      "photo": "assets/images/Camar_o__maionese__sriracha.png"
+      "photo": "assets/images/molhos_adicionais.jpg"
     },
     {
       "num": 134,
@@ -1750,7 +1750,7 @@ window.OMAKI_DATA = {
       "portion": "Pote",
       "page": "Pág 8",
       "price": 8.0,
-      "photo": "assets/images/Camar_o__maionese__sriracha.png"
+      "photo": "assets/images/molhos_adicionais.jpg"
     },
     {
       "num": 135,
@@ -1762,7 +1762,7 @@ window.OMAKI_DATA = {
       "portion": "Pote",
       "page": "Pág 8",
       "price": 7.0,
-      "photo": "assets/images/Camar_o__maionese__sriracha.png"
+      "photo": "assets/images/molhos_adicionais.jpg"
     },
     {
       "num": 136,
@@ -1774,7 +1774,7 @@ window.OMAKI_DATA = {
       "portion": "Shot",
       "page": "Pág 8",
       "price": 3.0,
-      "photo": "assets/images/Camar_o__maionese__sriracha.png"
+      "photo": "assets/images/molhos_adicionais.jpg"
     },
     {
       "num": 137,
@@ -1786,7 +1786,7 @@ window.OMAKI_DATA = {
       "portion": "200g",
       "page": "Pág 8",
       "price": 76.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/teppan_yaki.jpg"
     },
     {
       "num": 138,
@@ -1798,7 +1798,7 @@ window.OMAKI_DATA = {
       "portion": "200g",
       "page": "Pág 8",
       "price": 75.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/teppan_yaki.jpg"
     },
     {
       "num": 139,
@@ -1810,7 +1810,7 @@ window.OMAKI_DATA = {
       "portion": "200g",
       "page": "Pág 8",
       "price": 39.9,
-      "photo": "assets/images/yakisoba_tradicional.jpg"
+      "photo": "assets/images/teppan_yaki.jpg"
     },
     {
       "num": 140,
@@ -1882,7 +1882,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 146,
@@ -1894,7 +1894,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 147,
@@ -1906,7 +1906,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 148,
@@ -1918,7 +1918,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 149,
@@ -1930,7 +1930,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 150,
@@ -1942,7 +1942,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 151,
@@ -1954,7 +1954,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 152,
@@ -1966,7 +1966,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 16.9,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/sucos.jpg"
     },
     {
       "num": 153,
@@ -2062,7 +2062,7 @@ window.OMAKI_DATA = {
       "portion": "250ml",
       "page": "Pág 9",
       "price": 17.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 161,
@@ -2074,7 +2074,7 @@ window.OMAKI_DATA = {
       "portion": "310ml",
       "page": "Pág 9",
       "price": 8.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 162,
@@ -2086,7 +2086,7 @@ window.OMAKI_DATA = {
       "portion": "310ml",
       "page": "Pág 9",
       "price": 8.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 163,
@@ -2098,7 +2098,7 @@ window.OMAKI_DATA = {
       "portion": "350ml",
       "page": "Pág 9",
       "price": 6.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 164,
@@ -2110,7 +2110,7 @@ window.OMAKI_DATA = {
       "portion": "350ml",
       "page": "Pág 9",
       "price": 6.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 165,
@@ -2122,7 +2122,7 @@ window.OMAKI_DATA = {
       "portion": "350ml",
       "page": "Pág 9",
       "price": 6.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 166,
@@ -2134,7 +2134,7 @@ window.OMAKI_DATA = {
       "portion": "500ml",
       "page": "Pág 9",
       "price": 9.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 167,
@@ -2146,7 +2146,7 @@ window.OMAKI_DATA = {
       "portion": "500ml",
       "page": "Pág 9",
       "price": 7.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 168,
@@ -2158,7 +2158,7 @@ window.OMAKI_DATA = {
       "portion": "500ml",
       "page": "Pág 9",
       "price": 5.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/refrigerantes.jpg"
     },
     {
       "num": 169,
@@ -2170,7 +2170,7 @@ window.OMAKI_DATA = {
       "portion": "355ml",
       "page": "Pág 9",
       "price": 13.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 170,
@@ -2182,7 +2182,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 13.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 171,
@@ -2194,7 +2194,7 @@ window.OMAKI_DATA = {
       "portion": "355ml",
       "page": "Pág 9",
       "price": 13.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 172,
@@ -2206,7 +2206,7 @@ window.OMAKI_DATA = {
       "portion": "330ml",
       "page": "Pág 9",
       "price": 13.0,
-      "photo": "assets/images/bebidas_sake.png"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 173,
@@ -2218,7 +2218,7 @@ window.OMAKI_DATA = {
       "portion": "600ml",
       "page": "Pág 9",
       "price": 24.0,
-      "photo": "assets/images/Combo_35_pe_as.jpg"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 174,
@@ -2230,7 +2230,7 @@ window.OMAKI_DATA = {
       "portion": "600ml",
       "page": "Pág 9",
       "price": 21.0,
-      "photo": "assets/images/Combo_40_Pe_as.jpg"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 175,
@@ -2242,7 +2242,7 @@ window.OMAKI_DATA = {
       "portion": "600ml",
       "page": "Pág 9",
       "price": 20.0,
-      "photo": "assets/images/Combo_35_pe_as.jpg"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 176,
@@ -2254,7 +2254,7 @@ window.OMAKI_DATA = {
       "portion": "600ml",
       "page": "Pág 9",
       "price": 19.0,
-      "photo": "assets/images/Combo_40_Pe_as.jpg"
+      "photo": "assets/images/cervejas.jpg"
     },
     {
       "num": 177,

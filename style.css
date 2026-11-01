@@ -733,23 +733,33 @@ body {
 .modal-header-img {
   position: relative;
   width: 100%;
-  height: 220px;
-  background: #090e17;
+  min-height: 220px;
+  max-height: 380px;
+  background: radial-gradient(circle at center, #151d2f 0%, #070a11 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
 }
 
 .modal-header-img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  display: block;
 }
 
 .modal-img-badges {
   position: absolute;
-  bottom: 12px;
+  top: 14px;
   left: 14px;
   display: flex;
   gap: 8px;
+  z-index: 5;
 }
 
 .modal-img-badges .badge-num {
@@ -922,10 +932,17 @@ select:focus {
 
 /* Modal Actions */
 .modal-footer-actions {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding: 14px 20px;
+  margin: 16px -20px -20px -20px;
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-top: 10px;
+  z-index: 10;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .qty-control {
