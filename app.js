@@ -10,27 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // --- CATEGORIES DEFINITION (Top of scope) ---
+  // --- CATEGORIES DEFINITION ---
   const CATEGORY_MAP = [
-    { id: 'cat-combos-promo', title: '🍱 Combos Promocionais', match: (cat, num, item) => cat.includes('Promocionais') || (num && num >= 177 && num <= 187) || (item && item.isNew) },
-    { id: 'cat-combos-chef', title: '🍱 Combos do Chef', match: (cat, num) => num && num >= 173 && num <= 176 },
-    { id: 'cat-especiais', title: '✨ Especiais do Chef', match: (cat, num) => cat.includes('Especiais') || (num && num >= 41 && num <= 51) },
-    { id: 'cat-entradas', title: '🥢 Entradas & Harumakis', match: (cat, num) => cat.includes('Harumaki') || cat.includes('Entradas') || (num && num <= 11) },
-    { id: 'cat-ceviches', title: '🐟 Ceviches & Tatakis', match: (cat, num) => cat.includes('Ceviche') || cat.includes('Tataki') || (num && num >= 12 && num <= 17) },
-    { id: 'cat-carpaccios', title: '🐟 Carpaccios & Gunkans', match: (cat, num) => cat.includes('Carpaccio') || cat.includes('Gunkan') || (num && num >= 18 && num <= 32) },
-    { id: 'cat-temakis', title: '🍣 Temakis', match: (cat, num) => cat.includes('Temaki') || (num && num >= 52 && num <= 60) },
-    { id: 'cat-hots', title: '🔥 Hot Rolls & Big Hot', match: (cat, num) => cat.includes('Hot') || (num && num >= 61 && num <= 69) },
-    { id: 'cat-sashimis', title: '🍣 Sashimis & Joys', match: (cat, num) => cat.includes('Sashimi') || cat.includes('Joy') || (num && num >= 70 && num <= 83) },
-    { id: 'cat-rolls', title: '🍣 Uramakis, Hossomakis & Niguiris', match: (cat, num) => cat.includes('Uramaki') || cat.includes('Hossomaki') || cat.includes('Niguiri') || (num && num >= 84 && num <= 123) },
-    { id: 'cat-pokes', title: '🥑 Pokes & Pratos Quentes', match: (cat, num) => cat.includes('Poke') || cat.includes('Yakisoba') || cat.includes('Teppan') || (num && num >= 124 && num <= 144) },
-    { id: 'cat-bebidas', title: '🍻 Bebidas, Sucos & Sakês', match: (cat, num) => cat.includes('Bebidas') || cat.includes('Refrigerante') || cat.includes('Cerveja') || cat.includes('Sakê') || (num && num >= 145) }
+    { id: 'cat-combos-promo', title: '🍱 Combos Promocionais', match: d => d.category.includes('Promocionais') || d.isNew || (d.num && d.num >= 177 && d.num <= 187) },
+    { id: 'cat-combos-chef', title: '🍱 Combos do Chef', match: d => d.category.includes('Combos do Chef') || (d.num && d.num >= 57 && d.num <= 60) },
+    { id: 'cat-especiais', title: '✨ Especiais do Chef', match: d => d.category.includes('Especiais') || (d.num && d.num >= 41 && d.num <= 47) },
+    { id: 'cat-entradas', title: '🥢 Entradas & Harumakis', match: d => d.category.includes('Harumaki') || d.category.includes('Entradas') || d.id === 'harumaki_group' || d.id === 'kobachi_group' || (d.num && d.num <= 6) },
+    { id: 'cat-ceviches', title: '🐟 Ceviches & Tatakis', match: d => d.category.includes('Ceviche') || d.category.includes('Tataki') || d.category.includes('Camarão Imperial') },
+    { id: 'cat-carpaccios', title: '🐟 Carpaccios & Gunkans', match: d => d.category.includes('Carpaccio') || d.category.includes('Oishi') || d.category.includes('Gunkan') || d.category.includes('Vegano') },
+    { id: 'cat-temakis', title: '🍣 Temakis', match: d => d.category.includes('Temaki') },
+    { id: 'cat-hots', title: '🔥 Hot Rolls & Big Hot', match: d => d.category.includes('Hot') },
+    { id: 'cat-sashimis', title: '🍣 Sashimis & Joys', match: d => d.category.includes('Sashimi') || d.category.includes('Joy') },
+    { id: 'cat-rolls', title: '🍣 Uramakis, Hossomakis & Niguiris', match: d => d.category.includes('Uramaki') || d.category.includes('Hossomaki') || d.category.includes('Niguiri') },
+    { id: 'cat-pokes', title: '🥑 Pokes & Pratos Quentes', match: d => d.category.includes('Poke') || d.category.includes('Teppan') || d.category.includes('Yakisoba') || d.category.includes('Adicionais') },
+    { id: 'cat-bebidas', title: '🍻 Bebidas, Sucos & Sakês', match: d => d.category.includes('Bebidas') || d.category.includes('Sucos') || d.category.includes('Sakê') || d.category.includes('Refrigerante') || d.category.includes('Cerveja') }
   ];
 
   // --- STATE ---
   let cart = loadCart();
-  let currentModalItem = null;
+  let currentModalDish = null;
+  let currentSelectedOption = null;
   let currentModalQty = 1;
   let selectedComplements = new Set();
+  let selectedSpecialOptions = {
+    temakiFried: false,
+    temakiNoRice: false,
+    pokeToppings: [],
+    pokeSauce: '',
+    pokeDoubleProtein: false
+  };
   let deliveryType = 'delivery'; // 'delivery' | 'takeaway'
   let selectedNeighborhood = data.neighborhoods && data.neighborhoods.length > 0 ? data.neighborhoods[0] : { name: 'Centro', fee: 12.00 };
 
@@ -39,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuContainer = document.getElementById('menuContainer');
   const searchInput = document.getElementById('searchInput');
   const clearSearchBtn = document.getElementById('clearSearchBtn');
+  const navScrollLeft = document.getElementById('navScrollLeft');
+  const navScrollRight = document.getElementById('navScrollRight');
 
   // Floating Cart & Header Badges
   const floatingCartBar = document.getElementById('floatingCartBar');
@@ -58,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalItemName = document.getElementById('modalItemName');
   const modalItemPrice = document.getElementById('modalItemPrice');
   const modalItemDesc = document.getElementById('modalItemDesc');
+  const modalOptionsSection = document.getElementById('modalOptionsSection');
+  const modalOptionsList = document.getElementById('modalOptionsList');
+  const modalSpecialSection = document.getElementById('modalSpecialSection');
+  const modalSpecialContent = document.getElementById('modalSpecialContent');
   const modalComplementsList = document.getElementById('modalComplementsList');
   const modalItemNotes = document.getElementById('modalItemNotes');
   const modalQtyMinus = document.getElementById('modalQtyMinus');
@@ -96,6 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendWhatsAppOrderBtn = document.getElementById('sendWhatsAppOrderBtn');
   const toastMessage = document.getElementById('toastMessage');
 
+  // Custom Alert Modal
+  const customAlertOverlay = document.getElementById('customAlertOverlay');
+  const customAlertTitle = document.getElementById('customAlertTitle');
+  const customAlertMessage = document.getElementById('customAlertMessage');
+  const customAlertBtn = document.getElementById('customAlertBtn');
+
   // --- STORAGE HELPERS ---
   function loadCart() {
     try {
@@ -126,6 +146,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2800);
   }
 
+  // --- CUSTOM ELEGANT ALERT (REPLACES BROWSER ALERT) ---
+  function showCustomAlert(title, message, inputToFocus = null) {
+    if (!customAlertOverlay) {
+      alert(message);
+      return;
+    }
+    if (customAlertTitle) customAlertTitle.textContent = title || 'Atenção';
+    if (customAlertMessage) customAlertMessage.textContent = message;
+    customAlertOverlay.style.display = 'flex';
+
+    if (inputToFocus) {
+      inputToFocus.classList.add('input-error');
+      inputToFocus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+        try { inputToFocus.focus(); } catch (err) {}
+      }, 200);
+    }
+
+    const closeHandler = () => {
+      customAlertOverlay.style.display = 'none';
+      if (inputToFocus) {
+        setTimeout(() => inputToFocus.classList.remove('input-error'), 1800);
+      }
+      customAlertBtn.removeEventListener('click', closeHandler);
+      customAlertOverlay.removeEventListener('click', overlayHandler);
+    };
+
+    const overlayHandler = (e) => {
+      if (e.target === customAlertOverlay) closeHandler();
+    };
+
+    if (customAlertBtn) customAlertBtn.addEventListener('click', closeHandler);
+    customAlertOverlay.addEventListener('click', overlayHandler);
+  }
+
   // --- NEIGHBORHOODS INIT ---
   function initNeighborhoods() {
     if (!orderNeighborhood || !data.neighborhoods) return;
@@ -144,15 +199,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- CATEGORIES INIT ---
-  // Categories Scroll Controls (Desktop & Mobile)
-  const navScrollLeft = document.getElementById('navScrollLeft');
-  const navScrollRight = document.getElementById('navScrollRight');
-
+  // --- CATEGORIES NAVIGATION INIT ---
   function initCategories() {
     if (!categoriesNav) return;
     categoriesNav.innerHTML = '';
-    
+
     // "Todos" pill
     const allBtn = document.createElement('button');
     allBtn.className = 'category-tab-btn active';
@@ -180,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
       categoriesNav.appendChild(btn);
     });
 
-    // Arrow Buttons for Desktop
+    // Arrow Buttons for Desktop Navigation
     if (navScrollLeft) {
       navScrollLeft.addEventListener('click', () => {
         categoriesNav.scrollBy({ left: -260, behavior: 'smooth' });
@@ -228,41 +279,72 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!menuContainer) return;
     menuContainer.innerHTML = '';
     const term = searchTerm.trim().toLowerCase();
+    const dishesList = data.dishes || [];
 
     CATEGORY_MAP.forEach(catDef => {
-      const filteredItems = data.items.filter(item => {
-        const matchesCategory = catDef.match(item.category, item.num, item);
+      const filteredDishes = dishesList.filter(dish => {
+        const matchesCategory = catDef.match(dish);
         if (!matchesCategory) return false;
 
         if (!term) return true;
 
-        const numStr = item.num ? String(item.num) : '';
-        const codeStr = String(item.code || '');
-        const nameStr = item.name.toLowerCase();
-        const descStr = (item.description || '').toLowerCase();
-        const isNewMatch = item.isNew && (term === 'novo' || term === 'novos');
-        return numStr.includes(term) || codeStr.includes(term) || nameStr.includes(term) || descStr.includes(term) || isNewMatch;
+        // Search in single dish properties
+        const numStr = dish.num ? String(dish.num) : '';
+        const codeStr = String(dish.code || '');
+        const titleStr = (dish.title || dish.name || '').toLowerCase();
+        const descStr = (dish.description || '').toLowerCase();
+        const catStr = (dish.category || '').toLowerCase();
+        const isNewMatch = dish.isNew && (term === 'novo' || term === 'novos' || term === 'promo');
+
+        if (numStr.includes(term) || codeStr.includes(term) || titleStr.includes(term) || descStr.includes(term) || catStr.includes(term) || isNewMatch) {
+          return true;
+        }
+
+        // Search inside options of grouped dishes
+        if (dish.isGrouped && dish.options && dish.options.length > 0) {
+          return dish.options.some(opt => {
+            const optNum = opt.num ? String(opt.num) : '';
+            const optCode = String(opt.code || '');
+            const optName = (opt.name || '').toLowerCase();
+            const optDesc = (opt.description || '').toLowerCase();
+            return optNum.includes(term) || optCode.includes(term) || optName.includes(term) || optDesc.includes(term);
+          });
+        }
+
+        return false;
       });
 
-      if (filteredItems.length === 0) return;
+      if (filteredDishes.length === 0) return;
 
       const section = document.createElement('section');
       section.className = 'menu-category-section';
       section.id = catDef.id;
 
-      const header = document.createElement('div');
-      header.className = 'category-section-header';
-      header.innerHTML = `
+      const catHeader = document.createElement('div');
+      catHeader.className = 'category-section-header';
+      catHeader.innerHTML = `
         <h2 class="category-section-title">${catDef.title}</h2>
-        <span class="category-item-count">${filteredItems.length} ${filteredItems.length === 1 ? 'item' : 'itens'}</span>
+        <span class="category-section-count">${filteredDishes.length} ${filteredDishes.length === 1 ? 'item' : 'itens'}</span>
       `;
-      section.appendChild(header);
+      section.appendChild(catHeader);
 
       const grid = document.createElement('div');
       grid.className = 'products-grid';
 
-      filteredItems.forEach(item => {
-        const card = createProductCard(item);
+      filteredDishes.forEach(dish => {
+        // If searched, check if an option matched specifically
+        let matchedOptionCode = null;
+        if (term && dish.isGrouped && dish.options) {
+          const matchOpt = dish.options.find(opt => {
+            const optNum = opt.num ? String(opt.num) : '';
+            const optCode = String(opt.code || '');
+            const optName = (opt.name || '').toLowerCase();
+            return optNum.includes(term) || optCode.includes(term) || optName.includes(term);
+          });
+          if (matchOpt) matchedOptionCode = matchOpt.code || matchOpt.num;
+        }
+
+        const card = createProductCard(dish, matchedOptionCode);
         grid.appendChild(card);
       });
 
@@ -275,34 +357,44 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="empty-state">
           <div class="empty-state-icon">🔍</div>
           <h3>Nenhum prato encontrado para "${searchTerm}"</h3>
-          <p>Tente buscar por outro nome ou número do cardápio.</p>
+          <p>Tente buscar pelo nome, número ou ingrediente do prato.</p>
         </div>
       `;
     }
   }
 
   // --- PRODUCT CARD COMPONENT ---
-  function createProductCard(item) {
+  function createProductCard(dish, matchedOptionCode = null) {
     const card = document.createElement('div');
     card.className = 'product-card';
-    card.addEventListener('click', () => openItemModal(item));
+    card.addEventListener('click', () => openItemModal(dish, matchedOptionCode));
 
     const imgWrapper = document.createElement('div');
     imgWrapper.className = 'product-card-img-wrapper';
 
-    const tagBadge = item.num 
-      ? `<span class="badge-item-num">#${String(item.num).padStart(3, '0')}</span>`
-      : `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">✨ NOVO</span>`;
+    // Badge logic:
+    // For single item with num: #005
+    // For grouped item: show # of options or category badge
+    // For combos: pieces are in title, do not show redundant portion badge
+    let tagBadge = '';
+    if (dish.num) {
+      tagBadge = `<span class="badge-item-num">#${String(dish.num).padStart(3, '0')}</span>`;
+    } else if (dish.isNew) {
+      tagBadge = `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">✨ NOVO</span>`;
+    } else if (dish.isGrouped && dish.options) {
+      tagBadge = `<span class="badge-item-num" style="background:rgba(7,10,17,0.85); color:var(--accent-gold);">${dish.options.length} OPÇÕES</span>`;
+    }
 
-    // Only show portion badge for non-combos (since combos already have pieces in the name)
-    const isCombo = item.category.toLowerCase().includes('combo') || item.name.toLowerCase().includes('combo') || (item.portion && (item.portion.toLowerCase().includes('peça') || item.portion.toLowerCase().includes('pçs')));
-    const portionBadge = (!isCombo && item.portion) ? `<span class="badge-portion-pill">${item.portion}</span>` : '';
+    // Portion badge: ONLY for non-combos (since combos already have piece count in the name)
+    const isCombo = dish.category.toLowerCase().includes('combo') || (dish.num && dish.num >= 57 && dish.num <= 60) || (dish.num && dish.num >= 177 && dish.num <= 187) || dish.isNew;
+    const portionBadge = (!isCombo && dish.portion) ? `<span class="badge-portion-pill">${dish.portion}</span>` : '';
 
-    if (item.photo) {
+    const photoSrc = dish.photo || dish.image;
+    if (photoSrc) {
       const img = document.createElement('img');
       img.className = 'product-card-img';
-      img.src = item.photo;
-      img.alt = item.name;
+      img.src = photoSrc;
+      img.alt = dish.title || dish.name;
       img.loading = 'lazy';
       img.onerror = () => {
         imgWrapper.innerHTML = `
@@ -331,13 +423,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const content = document.createElement('div');
     content.className = 'product-card-content';
+    const displayPrice = dish.priceLabel || formatMoney(dish.price);
+
     content.innerHTML = `
-      <h3 class="product-card-title">${item.name}</h3>
-      <p class="product-card-desc">${item.description || 'Preparado na hora com ingredientes frescos e selecionados.'}</p>
+      <h3 class="product-card-title">${dish.title || dish.name}</h3>
+      <p class="product-card-desc">${dish.description || 'Preparado na hora com ingredientes frescos e selecionados.'}</p>
       <div class="product-card-footer">
-        <span class="product-price">${formatMoney(item.price)}</span>
+        <span class="product-price">${displayPrice}</span>
         <button type="button" class="product-add-btn">
-          <span>+ Adicionar</span>
+          <span>${dish.isGrouped ? 'Ver Opções' : '+ Adicionar'}</span>
         </button>
       </div>
     `;
@@ -364,52 +458,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- ITEM MODAL LOGIC ---
-  function openItemModal(item) {
+  // --- ITEM MODAL LOGIC (GROUPED DISHES & COMPLEMENTS) ---
+  function openItemModal(dish, preselectedOptionCode = null) {
     if (!itemModal) return;
-    currentModalItem = item;
+    currentModalDish = dish;
     currentModalQty = 1;
     selectedComplements.clear();
+    selectedSpecialOptions = {
+      temakiFried: false,
+      temakiNoRice: false,
+      pokeToppings: [],
+      pokeSauce: '',
+      pokeDoubleProtein: false
+    };
 
-    const isCombo = item.category.toLowerCase().includes('combo') || item.name.toLowerCase().includes('combo') || (item.portion && (item.portion.toLowerCase().includes('peça') || item.portion.toLowerCase().includes('pçs')));
-    if (modalItemNum) {
-      modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : '✨ NOVO';
-      if (!item.num) {
-        modalItemNum.style.background = '#8b1e3f';
-        modalItemNum.style.borderColor = '#e5c07b';
-        modalItemNum.style.color = '#fff';
+    const isCombo = dish.category.toLowerCase().includes('combo') || (dish.num && dish.num >= 57 && dish.num <= 60) || (dish.num && dish.num >= 177 && dish.num <= 187) || dish.isNew;
+
+    // Set Image (full picture displayed via object-fit contain)
+    const photoSrc = dish.photo || dish.image;
+    if (modalImgContainer) {
+      if (photoSrc) {
+        if (modalItemImg) modalItemImg.src = photoSrc;
+        modalImgContainer.style.display = 'flex';
       } else {
-        modalItemNum.style.background = 'rgba(7, 10, 17, 0.9)';
-        modalItemNum.style.borderColor = 'var(--accent-gold)';
-        modalItemNum.style.color = 'var(--accent-gold)';
+        modalImgContainer.style.display = 'none';
       }
     }
 
-    const modalItemPortion = document.getElementById('modalItemPortion');
     if (modalItemPortion) {
-      if (!isCombo && item.portion) {
-        modalItemPortion.textContent = item.portion;
+      if (!isCombo && dish.portion) {
+        modalItemPortion.textContent = dish.portion;
         modalItemPortion.style.display = 'inline-block';
       } else {
         modalItemPortion.style.display = 'none';
       }
     }
 
-    if (modalItemName) modalItemName.textContent = item.name;
-    if (modalItemPrice) modalItemPrice.textContent = formatMoney(item.price);
-    if (modalItemDesc) modalItemDesc.textContent = item.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';
+    if (modalItemName) modalItemName.textContent = dish.title || dish.name;
+    if (modalItemDesc) modalItemDesc.textContent = dish.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';
     if (modalItemNotes) modalItemNotes.value = '';
     if (modalQtyValue) modalQtyValue.textContent = '1';
 
-    if (modalImgContainer) {
-      if (item.photo) {
-        if (modalItemImg) modalItemImg.src = item.photo;
-        modalImgContainer.style.display = 'block';
+    // Handle Grouped Dishes with Options (e.g. Tatakis, Ceviches, Harumakis, Cervejas)
+    if (dish.isGrouped && dish.options && dish.options.length > 0) {
+      modalOptionsSection.style.display = 'block';
+
+      // Pick default option
+      if (preselectedOptionCode) {
+        currentSelectedOption = dish.options.find(o => String(o.code) === String(preselectedOptionCode) || String(o.num) === String(preselectedOptionCode)) || dish.options[0];
       } else {
-        modalImgContainer.style.display = 'none';
+        currentSelectedOption = dish.options[0];
+      }
+
+      renderOptionsList(dish.options);
+      updateModalHeaderWithOption(currentSelectedOption);
+    } else {
+      currentSelectedOption = null;
+      modalOptionsSection.style.display = 'none';
+      if (modalItemPrice) modalItemPrice.textContent = formatMoney(dish.price);
+      if (modalItemNum) {
+        modalItemNum.textContent = dish.num ? `#${String(dish.num).padStart(3, '0')}` : '✨ PROMO';
+        modalItemNum.style.background = dish.num ? 'rgba(7, 10, 17, 0.9)' : '#8b1e3f';
+        modalItemNum.style.borderColor = 'var(--accent-gold)';
+        modalItemNum.style.color = dish.num ? 'var(--accent-gold)' : '#fff';
       }
     }
 
+    // Handle Special Customization (Temakis & Pokes)
+    renderSpecialCustomizations(dish);
+
+    // Complements List
     if (modalComplementsList) {
       modalComplementsList.innerHTML = '';
       data.complements.forEach(cmp => {
@@ -444,23 +562,213 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
   }
 
+  function renderOptionsList(options) {
+    if (!modalOptionsList) return;
+    modalOptionsList.innerHTML = '';
+
+    options.forEach(opt => {
+      const isSelected = currentSelectedOption && (String(opt.code) === String(currentSelectedOption.code) || opt.num === currentSelectedOption.num);
+      const row = document.createElement('label');
+      row.className = `option-item ${isSelected ? 'selected' : ''}`;
+      row.innerHTML = `
+        <div class="option-left">
+          <input type="radio" name="modalDishOptionRadio" value="${opt.code || opt.num}" ${isSelected ? 'checked' : ''}>
+          <div class="option-details">
+            <span class="option-name">
+              ${opt.num ? `<span class="option-code">#${String(opt.num).padStart(3, '0')}</span>` : ''}
+              ${opt.name}
+            </span>
+            ${opt.description && opt.description !== opt.name ? `<p class="option-desc">${opt.description}</p>` : ''}
+          </div>
+        </div>
+        <span class="option-price">${formatMoney(opt.price)}</span>
+      `;
+
+      row.querySelector('input').addEventListener('change', () => {
+        currentSelectedOption = opt;
+        document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+        row.classList.add('selected');
+        updateModalHeaderWithOption(opt);
+        updateModalTotal();
+      });
+
+      modalOptionsList.appendChild(row);
+    });
+  }
+
+  function updateModalHeaderWithOption(opt) {
+    if (!opt) return;
+    if (modalItemPrice) modalItemPrice.textContent = formatMoney(opt.price);
+    if (modalItemNum) {
+      modalItemNum.textContent = opt.num ? `#${String(opt.num).padStart(3, '0')}` : '✨ PROMO';
+      modalItemNum.style.background = 'rgba(7, 10, 17, 0.9)';
+      modalItemNum.style.borderColor = 'var(--accent-gold)';
+      modalItemNum.style.color = 'var(--accent-gold)';
+    }
+  }
+
+  function renderSpecialCustomizations(dish) {
+    if (!modalSpecialSection || !modalSpecialContent) return;
+    const isTemaki = dish.id === 'temaki_group' || dish.category === 'Temakis';
+    const isPoke = dish.isPoke || dish.id === 'poke_group';
+
+    if (!isTemaki && !isPoke) {
+      modalSpecialSection.style.display = 'none';
+      modalSpecialContent.innerHTML = '';
+      return;
+    }
+
+    modalSpecialSection.style.display = 'block';
+    modalSpecialContent.innerHTML = '';
+
+    if (isTemaki) {
+      modalSpecialContent.innerHTML = `
+        <p class="section-hint">Personalize o preparo do seu Temaki:</p>
+        <div class="special-custom-list">
+          <label class="complement-item special-check-item">
+            <div class="complement-left">
+              <input type="checkbox" id="checkTemakiFried">
+              <span class="complement-name">Empanar Temaki (Frito e crocante)</span>
+            </div>
+            <span class="complement-price">+ ${formatMoney(9.00)}</span>
+          </label>
+          <label class="complement-item special-check-item">
+            <div class="complement-left">
+              <input type="checkbox" id="checkTemakiNoRice">
+              <span class="complement-name">Substituir arroz por salmão (Sem arroz)</span>
+            </div>
+            <span class="complement-price">+ ${formatMoney(16.00)}</span>
+          </label>
+        </div>
+      `;
+
+      const friedCb = document.getElementById('checkTemakiFried');
+      const noRiceCb = document.getElementById('checkTemakiNoRice');
+
+      if (friedCb) {
+        friedCb.addEventListener('change', () => {
+          selectedSpecialOptions.temakiFried = friedCb.checked;
+          updateModalTotal();
+        });
+      }
+      if (noRiceCb) {
+        noRiceCb.addEventListener('change', () => {
+          selectedSpecialOptions.temakiNoRice = noRiceCb.checked;
+          updateModalTotal();
+        });
+      }
+    } else if (isPoke) {
+      const toppings = dish.pokeToppings || ['Cebolinha', 'Manga', 'Pepino fatiado', 'Tomate cereja', 'Avocado', 'Crispy couve', 'Crispy batata', 'Gergelim', 'Gengibre', 'Cenoura', 'Alga', 'Crispy de Harumaki'];
+      const sauces = dish.pokeSauces || ['Molho especial trufado', 'Molho especial do Chef', 'Molho Tataki', 'Molho Tarê', 'Shoyu Tradicional'];
+
+      let pokeHtml = `
+        <p class="section-hint"><strong>Escolha até 6 acompanhamentos:</strong></p>
+        <div class="poke-grid-toppings">
+      `;
+      toppings.forEach((top, idx) => {
+        pokeHtml += `
+          <label class="poke-tag-checkbox">
+            <input type="checkbox" name="pokeTop" value="${top}">
+            <span>${top}</span>
+          </label>
+        `;
+      });
+      pokeHtml += `
+        </div>
+        <p class="section-hint" style="margin-top:12px;"><strong>Escolha 1 molho do Chef:</strong></p>
+        <div class="poke-grid-sauces">
+      `;
+      sauces.forEach((sc, idx) => {
+        pokeHtml += `
+          <label class="poke-tag-radio">
+            <input type="radio" name="pokeSauce" value="${sc}" ${idx === 0 ? 'checked' : ''}>
+            <span>${sc}</span>
+          </label>
+        `;
+      });
+      pokeHtml += `
+        </div>
+        <div style="margin-top:14px;">
+          <label class="complement-item special-check-item">
+            <div class="complement-left">
+              <input type="checkbox" id="checkPokeDoubleProtein">
+              <span class="complement-name">Dobrar Proteína (+80g de peixe nobre)</span>
+            </div>
+            <span class="complement-price">+ ${formatMoney(25.00)}</span>
+          </label>
+        </div>
+      `;
+
+      modalSpecialContent.innerHTML = pokeHtml;
+      selectedSpecialOptions.pokeSauce = sauces[0];
+
+      // Topping limit logic (max 6)
+      const topInputs = modalSpecialContent.querySelectorAll('input[name="pokeTop"]');
+      topInputs.forEach(inp => {
+        inp.addEventListener('change', () => {
+          const checked = Array.from(topInputs).filter(i => i.checked);
+          if (checked.length > 6) {
+            inp.checked = false;
+            showCustomAlert('Limite Atingido', 'Você pode selecionar no máximo 6 acompanhamentos inclusos para o seu Poke.');
+            return;
+          }
+          selectedSpecialOptions.pokeToppings = checked.map(i => i.value);
+        });
+      });
+
+      const sauceInputs = modalSpecialContent.querySelectorAll('input[name="pokeSauce"]');
+      sauceInputs.forEach(inp => {
+        inp.addEventListener('change', () => {
+          if (inp.checked) selectedSpecialOptions.pokeSauce = inp.value;
+        });
+      });
+
+      const doubleProt = document.getElementById('checkPokeDoubleProtein');
+      if (doubleProt) {
+        doubleProt.addEventListener('change', () => {
+          selectedSpecialOptions.pokeDoubleProtein = doubleProt.checked;
+          updateModalTotal();
+        });
+      }
+    }
+  }
+
+  function updateModalTotal() {
+    if (!currentModalDish) return;
+    let basePrice = currentModalDish.isGrouped && currentSelectedOption ? currentSelectedOption.price : currentModalDish.price;
+
+    // Special options
+    if (selectedSpecialOptions.temakiFried) basePrice += 9.00;
+    if (selectedSpecialOptions.temakiNoRice) basePrice += 16.00;
+    if (selectedSpecialOptions.pokeDoubleProtein) basePrice += 25.00;
+
+    // Complements
+    let compTotal = 0;
+    selectedComplements.forEach(cmpId => {
+      const cmp = data.complements.find(c => c.id === cmpId);
+      if (cmp) compTotal += cmp.price;
+    });
+
+    const singleTotal = basePrice + compTotal;
+    const finalTotal = singleTotal * currentModalQty;
+
+    if (modalAddTotalPrice) modalAddTotalPrice.textContent = formatMoney(finalTotal);
+  }
+
   function closeItemModal() {
     if (!itemModal) return;
     itemModal.style.display = 'none';
     document.body.style.overflow = '';
   }
 
-  function updateModalTotal() {
-    if (!currentModalItem || !modalAddTotalPrice) return;
-    let singleTotal = currentModalItem.price;
-    selectedComplements.forEach(id => {
-      const cmp = data.complements.find(c => c.id === id);
-      if (cmp) singleTotal += cmp.price;
+  if (closeItemModalBtn) closeItemModalBtn.addEventListener('click', closeItemModal);
+  if (itemModal) {
+    itemModal.addEventListener('click', (e) => {
+      if (e.target === itemModal) closeItemModal();
     });
-    const finalTotal = singleTotal * currentModalQty;
-    modalAddTotalPrice.textContent = formatMoney(finalTotal);
   }
 
+  // Modal Quantity Handlers
   if (modalQtyMinus) {
     modalQtyMinus.addEventListener('click', () => {
       if (currentModalQty > 1) {
@@ -479,175 +787,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (closeItemModalBtn) closeItemModalBtn.addEventListener('click', closeItemModal);
-  if (itemModal) {
-    itemModal.addEventListener('click', (e) => {
-      if (e.target === itemModal) closeItemModal();
-    });
-  }
-
+  // Add To Cart Action
   if (modalAddToCartBtn) {
     modalAddToCartBtn.addEventListener('click', () => {
-      if (!currentModalItem) return;
+      if (!currentModalDish) return;
 
-      const complementsArray = [];
-      selectedComplements.forEach(id => {
-        const found = data.complements.find(c => c.id === id);
-        if (found) complementsArray.push(found);
-      });
-
-      const notes = modalItemNotes ? modalItemNotes.value.trim() : '';
-
-      const existingIndex = cart.findIndex(c => {
-        if (c.item.name !== currentModalItem.name) return false;
-        if (c.notes !== notes) return false;
-        const c1 = (c.complements || []).map(x => x.id).sort().join(',');
-        const c2 = complementsArray.map(x => x.id).sort().join(',');
-        return c1 === c2;
-      });
-
-      if (existingIndex > -1) {
-        cart[existingIndex].qty += currentModalQty;
+      let canonicalItem = {};
+      if (currentModalDish.isGrouped) {
+        if (!currentSelectedOption) {
+          showCustomAlert('Opção Obrigatória', 'Por favor, selecione qual corte ou sabor você deseja antes de adicionar.');
+          return;
+        }
+        canonicalItem = {
+          num: currentSelectedOption.num,
+          code: currentSelectedOption.code,
+          name: `${currentModalDish.title} — ${currentSelectedOption.name}`,
+          category: currentModalDish.category,
+          price: currentSelectedOption.price,
+          portion: currentSelectedOption.portion || currentModalDish.portion,
+          photo: currentModalDish.photo || currentModalDish.image,
+          description: currentSelectedOption.description
+        };
       } else {
-        cart.push({
-          id: 'cart_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-          item: currentModalItem,
-          qty: currentModalQty,
-          complements: complementsArray,
-          notes: notes
-        });
+        canonicalItem = currentModalDish.rawItem || {
+          num: currentModalDish.num,
+          code: currentModalDish.code,
+          name: currentModalDish.title || currentModalDish.name,
+          category: currentModalDish.category,
+          price: currentModalDish.price,
+          portion: currentModalDish.portion,
+          photo: currentModalDish.photo || currentModalDish.image,
+          description: currentModalDish.description,
+          isNew: currentModalDish.isNew
+        };
       }
 
+      const complementsList = [];
+      selectedComplements.forEach(cmpId => {
+        const c = data.complements.find(item => item.id === cmpId);
+        if (c) complementsList.push(c);
+      });
+
+      // Special notes summary
+      const specialNotes = [];
+      if (selectedSpecialOptions.temakiFried) specialNotes.push('Empanar Temaki (+R$ 9,00)');
+      if (selectedSpecialOptions.temakiNoRice) specialNotes.push('Substituir arroz por salmão (+R$ 16,00)');
+      if (selectedSpecialOptions.pokeDoubleProtein) specialNotes.push('Dobrar Proteína (+R$ 25,00)');
+      if (selectedSpecialOptions.pokeSauce) specialNotes.push(`Molho: ${selectedSpecialOptions.pokeSauce}`);
+      if (selectedSpecialOptions.pokeToppings && selectedSpecialOptions.pokeToppings.length > 0) {
+        specialNotes.push(`Acomp: ${selectedSpecialOptions.pokeToppings.join(', ')}`);
+      }
+
+      let extraPrice = 0;
+      if (selectedSpecialOptions.temakiFried) extraPrice += 9.00;
+      if (selectedSpecialOptions.temakiNoRice) extraPrice += 16.00;
+      if (selectedSpecialOptions.pokeDoubleProtein) extraPrice += 25.00;
+
+      const userNotes = modalItemNotes ? modalItemNotes.value.trim() : '';
+      const fullNotes = [...specialNotes, userNotes].filter(Boolean).join(' | ');
+
+      const entry = {
+        id: 'cart_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
+        item: {
+          ...canonicalItem,
+          price: canonicalItem.price + extraPrice
+        },
+        qty: currentModalQty,
+        complements: complementsList,
+        notes: fullNotes
+      };
+
+      cart.push(entry);
       saveCart();
       updateCartUI();
       closeItemModal();
-      const tag = currentModalItem.num ? `#${String(currentModalItem.num).padStart(3, '0')}` : currentModalItem.name;
-      showToast(`✓ ${tag} adicionado à sacola!`);
+      showToast(`🍣 "${canonicalItem.name}" adicionado à sacola!`);
     });
   }
 
-  // --- CART UI & UPDATES ---
-  function updateCartUI() {
-    const totalCount = cart.reduce((acc, curr) => acc + curr.qty, 0);
-    const subtotal = calculateSubtotal();
-
-    if (headerCartCount) headerCartCount.textContent = totalCount;
-    if (floatingCartCount) floatingCartCount.textContent = totalCount;
-    if (floatingCartSubtotal) floatingCartSubtotal.textContent = formatMoney(subtotal);
-    if (drawerItemCount) drawerItemCount.textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'itens'}`;
-
-    if (floatingCartBar) {
-      if (totalCount > 0) {
-        floatingCartBar.style.display = 'block';
-      } else {
-        floatingCartBar.style.display = 'none';
-      }
-    }
-
-    renderCartItems();
-    updateTotals();
-  }
-
-  function calculateSubtotal() {
-    return cart.reduce((acc, entry) => {
-      let unitPrice = entry.item.price;
-      (entry.complements || []).forEach(cmp => {
-        unitPrice += cmp.price;
-      });
-      return acc + (unitPrice * entry.qty);
-    }, 0);
-  }
-
-  function updateTotals() {
-    const subtotal = calculateSubtotal();
-    const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
-    const grandTotal = subtotal + fee;
-
-    if (summarySubtotal) summarySubtotal.textContent = formatMoney(subtotal);
-    if (summaryDeliveryFee) summaryDeliveryFee.textContent = deliveryType === 'delivery' ? formatMoney(fee) : 'Grátis (Retirada)';
-    if (summaryGrandTotal) summaryGrandTotal.textContent = formatMoney(grandTotal);
-    if (footerBtnTotal) footerBtnTotal.textContent = formatMoney(grandTotal);
-
-    if (deliveryFeeSummaryLine) {
-      if (deliveryType === 'takeaway') {
-        deliveryFeeSummaryLine.style.opacity = '0.6';
-      } else {
-        deliveryFeeSummaryLine.style.opacity = '1';
-      }
-    }
-  }
-
-  function renderCartItems() {
-    if (!cartItemsList) return;
-    cartItemsList.innerHTML = '';
-    if (cart.length === 0) {
-      cartItemsList.innerHTML = `
-        <div class="empty-state" style="padding: 20px 0;">
-          <div class="empty-state-icon" style="font-size:2rem;">🛒</div>
-          <p>Sua sacola está vazia.</p>
-        </div>
-      `;
-      return;
-    }
-
-    cart.forEach(entry => {
-      const card = document.createElement('div');
-      card.className = 'cart-item-card';
-
-      let unitPrice = entry.item.price;
-      (entry.complements || []).forEach(c => unitPrice += c.price);
-      const totalItemPrice = unitPrice * entry.qty;
-
-      const complementsText = (entry.complements || []).map(c => `+ ${c.name} (${formatMoney(c.price)})`).join('<br>');
-      const numTag = entry.item.num ? `#${String(entry.item.num).padStart(3, '0')}` : 'NOVO';
-
-      card.innerHTML = `
-        <div class="cart-item-main-row">
-          <div class="cart-item-details">
-            <span class="cart-item-num-tag">${numTag}</span>
-            <strong class="cart-item-title">${entry.item.name}</strong>
-          </div>
-          <span class="cart-item-price-calc">${formatMoney(totalItemPrice)}</span>
-        </div>
-        ${complementsText ? `<div class="cart-item-complements">${complementsText}</div>` : ''}
-        ${entry.notes ? `<div class="cart-item-obs">Obs: ${entry.notes}</div>` : ''}
-        <div class="cart-item-actions-row">
-          <div class="qty-control" style="transform: scale(0.85); transform-origin: left;">
-            <button class="qty-btn btn-cart-minus">-</button>
-            <span class="qty-value">${entry.qty}</span>
-            <button class="qty-btn btn-cart-plus">+</button>
-          </div>
-          <button type="button" class="cart-item-remove-btn">Remover</button>
-        </div>
-      `;
-
-      card.querySelector('.btn-cart-minus').addEventListener('click', () => {
-        if (entry.qty > 1) {
-          entry.qty--;
-        } else {
-          cart = cart.filter(c => c.id !== entry.id);
-        }
-        saveCart();
-        updateCartUI();
-      });
-
-      card.querySelector('.btn-cart-plus').addEventListener('click', () => {
-        entry.qty++;
-        saveCart();
-        updateCartUI();
-      });
-
-      card.querySelector('.cart-item-remove-btn').addEventListener('click', () => {
-        cart = cart.filter(c => c.id !== entry.id);
-        saveCart();
-        updateCartUI();
-      });
-
-      cartItemsList.appendChild(card);
-    });
-  }
-
-  // --- DRAWER ACTIONS ---
+  // --- CHECKOUT DRAWER & CART MANAGEMENT ---
   function openCartDrawer() {
     if (!cartDrawer) return;
     renderCartItems();
@@ -671,14 +889,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Delivery vs Takeaway toggles
+  // Delivery vs Takeaway Switcher
   if (btnTypeDelivery) {
     btnTypeDelivery.addEventListener('click', () => {
       deliveryType = 'delivery';
       btnTypeDelivery.classList.add('active');
-      if (btnTypeTakeaway) btnTypeTakeaway.classList.remove('active');
-      if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'flex';
+      btnTypeTakeaway.classList.remove('active');
+      if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'block';
       if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'none';
+      if (deliveryFeeSummaryLine) deliveryFeeSummaryLine.style.display = 'flex';
       updateTotals();
     });
   }
@@ -687,116 +906,229 @@ document.addEventListener('DOMContentLoaded', () => {
     btnTypeTakeaway.addEventListener('click', () => {
       deliveryType = 'takeaway';
       btnTypeTakeaway.classList.add('active');
-      if (btnTypeDelivery) btnTypeDelivery.classList.remove('active');
+      btnTypeDelivery.classList.remove('active');
       if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'none';
       if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'block';
+      if (deliveryFeeSummaryLine) deliveryFeeSummaryLine.style.display = 'none';
       updateTotals();
     });
   }
 
-  // Payment radio change handler
-  paymentMethodRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      if (radio.value === 'Pix') {
-        if (pixInfoBox) pixInfoBox.style.display = 'block';
-        if (cashChangeBox) cashChangeBox.style.display = 'none';
-      } else if (radio.value === 'Dinheiro') {
-        if (pixInfoBox) pixInfoBox.style.display = 'none';
-        if (cashChangeBox) cashChangeBox.style.display = 'block';
-      } else {
-        if (pixInfoBox) pixInfoBox.style.display = 'none';
-        if (cashChangeBox) cashChangeBox.style.display = 'none';
-      }
+  // Payment method switcher
+  if (paymentMethodRadios) {
+    paymentMethodRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const val = radio.value;
+        if (pixInfoBox) pixInfoBox.style.display = val === 'Pix' ? 'block' : 'none';
+        if (cashChangeBox) cashChangeBox.style.display = val === 'Dinheiro' ? 'block' : 'none';
+      });
     });
-  });
+  }
 
-  // Copy Pix Button
+  // Copy Pix Key
   if (copyPixBtn) {
     copyPixBtn.addEventListener('click', () => {
-      const rawKey = data.store.pixKeyRaw || '+55 62 9174-9928';
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(rawKey).then(() => {
-          showToast('✓ Chave Pix copiada com sucesso!');
-        }).catch(() => {
-          fallbackCopy(rawKey);
-        });
-      } else {
-        fallbackCopy(rawKey);
-      }
+      const pixKey = data.store.pixKeyRaw || data.store.pixKey || '+55 62 99174-9928';
+      navigator.clipboard.writeText(pixKey).then(() => {
+        showToast('🔑 Chave Pix copiada com sucesso!');
+      }).catch(() => {
+        showCustomAlert('Chave Pix', `Copie a chave Pix da Omaki Sushi:\n${pixKey}`);
+      });
     });
   }
 
-  function fallbackCopy(text) {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    try {
-      document.execCommand('copy');
-      showToast('✓ Chave Pix copiada com sucesso!');
-    } catch (e) {
-      prompt('Copie a chave Pix:', text);
+  // Render Cart Items in Drawer
+  function renderCartItems() {
+    if (!cartItemsList) return;
+    cartItemsList.innerHTML = '';
+
+    if (cart.length === 0) {
+      cartItemsList.innerHTML = `
+        <div class="cart-empty-message">
+          <div class="empty-icon">🍣</div>
+          <h4>Sua sacola está vazia</h4>
+          <p>Adicione pratos deliciosos do nosso cardápio para fazer o pedido.</p>
+        </div>
+      `;
+      return;
     }
-    document.body.removeChild(ta);
+
+    cart.forEach((entry, index) => {
+      const itemRow = document.createElement('div');
+      itemRow.className = 'cart-item-row';
+
+      const itemTag = entry.item.num 
+        ? `<span class="cart-item-tag">#${String(entry.item.num).padStart(3, '0')}</span>` 
+        : `<span class="cart-item-tag" style="background:#8b1e3f; color:#fff;">NOVO</span>`;
+
+      let unitPrice = entry.item.price;
+      let compHtml = '';
+      if (entry.complements && entry.complements.length > 0) {
+        compHtml += '<div class="cart-item-complements">';
+        entry.complements.forEach(c => {
+          unitPrice += c.price;
+          compHtml += `<span>+ ${c.name} (${formatMoney(c.price)})</span>`;
+        });
+        compHtml += '</div>';
+      }
+
+      let notesHtml = '';
+      if (entry.notes) {
+        notesHtml = `<div class="cart-item-notes">📝 ${entry.notes}</div>`;
+      }
+
+      const rowTotal = unitPrice * entry.qty;
+
+      itemRow.innerHTML = `
+        <div class="cart-item-header">
+          <div class="cart-item-title-col">
+            <h4 class="cart-item-name">${itemTag} ${entry.item.name}</h4>
+            ${compHtml}
+            ${notesHtml}
+          </div>
+          <button class="cart-item-remove-btn" title="Remover item" data-index="${index}">✕</button>
+        </div>
+        <div class="cart-item-footer">
+          <div class="cart-qty-controls">
+            <button class="cart-qty-btn cart-minus" data-index="${index}">−</button>
+            <span class="cart-qty-val">${entry.qty}</span>
+            <button class="cart-qty-btn cart-plus" data-index="${index}">+</button>
+          </div>
+          <div class="cart-item-price-col">
+            <span class="cart-item-total">${formatMoney(rowTotal)}</span>
+          </div>
+        </div>
+      `;
+
+      // Event Listeners for quantity and removal
+      itemRow.querySelector('.cart-item-remove-btn').addEventListener('click', () => {
+        cart.splice(index, 1);
+        saveCart();
+        updateCartUI();
+        renderCartItems();
+      });
+
+      itemRow.querySelector('.cart-minus').addEventListener('click', () => {
+        if (entry.qty > 1) {
+          entry.qty--;
+        } else {
+          cart.splice(index, 1);
+        }
+        saveCart();
+        updateCartUI();
+        renderCartItems();
+      });
+
+      itemRow.querySelector('.cart-plus').addEventListener('click', () => {
+        entry.qty++;
+        saveCart();
+        updateCartUI();
+        renderCartItems();
+      });
+
+      cartItemsList.appendChild(itemRow);
+    });
   }
 
-  // --- WHATSAPP ORDER SUBMISSION ---
+  // Update Cart Totals & UI Badges
+  function updateTotals() {
+    let subtotal = 0;
+    cart.forEach(entry => {
+      let unit = entry.item.price;
+      (entry.complements || []).forEach(c => unit += c.price);
+      subtotal += unit * entry.qty;
+    });
+
+    const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
+    const grandTotal = subtotal + fee;
+
+    if (summarySubtotal) summarySubtotal.textContent = formatMoney(subtotal);
+    if (summaryDeliveryFee) summaryDeliveryFee.textContent = formatMoney(fee);
+    if (summaryGrandTotal) summaryGrandTotal.textContent = formatMoney(grandTotal);
+    if (footerBtnTotal) footerBtnTotal.textContent = formatMoney(grandTotal);
+    if (floatingCartSubtotal) floatingCartSubtotal.textContent = formatMoney(subtotal);
+  }
+
+  function updateCartUI() {
+    const totalCount = cart.reduce((sum, entry) => sum + entry.qty, 0);
+
+    if (headerCartCount) headerCartCount.textContent = totalCount;
+    if (floatingCartCount) floatingCartCount.textContent = totalCount;
+    if (drawerItemCount) drawerItemCount.textContent = `(${totalCount})`;
+
+    if (floatingCartBar) {
+      floatingCartBar.style.display = totalCount > 0 ? 'block' : 'none';
+    }
+
+    updateTotals();
+  }
+
+  // --- SEND ORDER VIA WHATSAPP ---
   if (sendWhatsAppOrderBtn) {
     sendWhatsAppOrderBtn.addEventListener('click', () => {
       if (cart.length === 0) {
-        alert('Sua sacola está vazia. Adicione itens antes de finalizar o pedido!');
+        showCustomAlert('Sacola Vazia', 'Sua sacola está vazia. Adicione itens antes de finalizar o pedido!');
         return;
       }
 
       const customerName = orderCustomerName ? orderCustomerName.value.trim() : '';
-      const customerPhone = orderCustomerPhone ? orderCustomerPhone.value.trim() : '';
-
       if (!customerName) {
-        alert('Por favor, informe seu nome completo para identificarmos o pedido.');
-        if (orderCustomerName) orderCustomerName.focus();
+        showCustomAlert('Nome Obrigatório', 'Por favor, informe seu nome completo para identificarmos o pedido.', orderCustomerName);
         return;
       }
 
+      const customerPhone = orderCustomerPhone ? orderCustomerPhone.value.trim() : '';
       if (!customerPhone) {
-        alert('Por favor, informe seu número de WhatsApp/Telefone para contato.');
-        if (orderCustomerPhone) orderCustomerPhone.focus();
+        showCustomAlert('WhatsApp Obrigatório', 'Por favor, informe seu número de WhatsApp/Telefone para contato e confirmação.', orderCustomerPhone);
         return;
       }
 
       let street = '';
-      let complement = '';
       let neighborhoodName = '';
-      let fee = 0;
+      let complement = '';
 
       if (deliveryType === 'delivery') {
         street = orderStreet ? orderStreet.value.trim() : '';
+        neighborhoodName = selectedNeighborhood ? selectedNeighborhood.name : 'Centro';
         complement = orderComplement ? orderComplement.value.trim() : '';
-        neighborhoodName = selectedNeighborhood ? selectedNeighborhood.name : 'Alto Paraíso';
-        fee = selectedNeighborhood ? selectedNeighborhood.fee : 12.00;
 
         if (!street) {
-          alert('Por favor, preencha o endereço completo (Rua, Quadra e Número) para entrega.');
-          if (orderStreet) orderStreet.focus();
+          showCustomAlert('Endereço Obrigatório', 'Por favor, preencha a rua, quadra e número da residência ou pousada para entrega.', orderStreet);
           return;
         }
       }
 
+      const hashis = orderHashis ? orderHashis.value : 'Não precisa';
+      const wasabiGari = orderWasabiGari ? orderWasabiGari.value : 'Sim, ambos';
+
       let selectedPayment = 'Pix';
-      paymentMethodRadios.forEach(r => {
-        if (r.checked) selectedPayment = r.value;
-      });
+      if (paymentMethodRadios) {
+        paymentMethodRadios.forEach(r => {
+          if (r.checked) selectedPayment = r.value;
+        });
+      }
 
       let cashNote = '';
       if (selectedPayment === 'Dinheiro') {
-        const val = cashChangeValue ? cashChangeValue.value.trim() : '';
-        cashNote = val ? ` (Troco para: ${val})` : ' (Sem necessidade de troco)';
+        const changeVal = cashChangeValue ? cashChangeValue.value.trim() : '';
+        if (changeVal) {
+          cashNote = ` (Troco para: ${changeVal})`;
+        } else {
+          cashNote = ' (Não precisa de troco)';
+        }
       }
 
-      const hashis = orderHashis ? orderHashis.value : '1 par de hashi';
-      const wasabiGari = orderWasabiGari ? orderWasabiGari.value : 'Enviar Wasabi e Gengibre';
       const generalNotes = orderGeneralNotes ? orderGeneralNotes.value.trim() : '';
 
-      const subtotal = calculateSubtotal();
+      // Calculate final prices
+      let subtotal = 0;
+      cart.forEach(entry => {
+        let unit = entry.item.price;
+        (entry.complements || []).forEach(c => unit += c.price);
+        subtotal += unit * entry.qty;
+      });
+
+      const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
       const grandTotal = subtotal + fee;
 
       // Build formatted WhatsApp Message
@@ -816,7 +1148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `🛒 *ITENS DO PEDIDO:*\n\n`;
 
       cart.forEach(entry => {
-        const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}]` : '[NOVO]';
+        const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}]` : '[PROMO]';
         let itemPriceUnit = entry.item.price;
         (entry.complements || []).forEach(c => itemPriceUnit += c.price);
         const totalLine = itemPriceUnit * entry.qty;
@@ -840,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `🌿 *Wasabi/Gengibre:* ${wasabiGari}\n`;
       msg += `💳 *Pagamento:* ${selectedPayment}${cashNote}\n`;
       if (selectedPayment === 'Pix') {
-        msg += `   └ ℹ️ _Chave Pix: ${data.store.pixKey}_\n`;
+        msg += `   └ ℹ️ _Chave Pix: ${data.store.pixKey || '+55 62 99174-9928'}_\n`;
       }
 
       if (generalNotes) {
@@ -858,14 +1190,14 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
       msg += `_Pedido gerado via Cardápio Digital Omaki Sushi_`;
 
-      const storeWhatsApp = data.store.whatsapp || '556291749928';
+      const storeWhatsApp = data.store.whatsapp || '5562991749928';
       const waUrl = `https://wa.me/${storeWhatsApp}?text=${encodeURIComponent(msg)}`;
 
       window.open(waUrl, '_blank');
     });
   }
 
-  // --- BOOTSTRAP INITIALIZATION (CALLED AFTER ALL FUNCTIONS DECLARED) ---
+  // --- BOOTSTRAP INITIALIZATION ---
   initNeighborhoods();
   initCategories();
   renderMenu();

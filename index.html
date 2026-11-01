@@ -115,6 +115,29 @@
         </div>
         <p class="modal-description" id="modalItemDesc">Descrição detalhada dos insumos e composição do prato.</p>
 
+        <!-- Options / Flavors Selection (for grouped dishes) -->
+        <div class="custom-section" id="modalOptionsSection" style="display:none;">
+          <div class="section-title-row">
+            <h4 id="modalOptionsTitle">Escolha a sua opção</h4>
+            <span class="required-tag" style="background:#8b1e3f; color:#fff; font-size:0.68rem; padding:2px 8px; border-radius:4px; font-weight:700;">Obrigatório</span>
+          </div>
+          <p class="section-hint" id="modalOptionsHint">Selecione o corte ou sabor desejado:</p>
+          <div class="options-list" id="modalOptionsList">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- Special Customization Section (Temakis / Pokes) -->
+        <div class="custom-section" id="modalSpecialSection" style="display:none;">
+          <div class="section-title-row">
+            <h4>Personalização Especial</h4>
+            <span class="optional-tag">Opcional</span>
+          </div>
+          <div id="modalSpecialContent">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
         <!-- Complements Section -->
         <div class="custom-section">
           <div class="section-title-row">
@@ -275,7 +298,7 @@
               <span class="pix-badge">Chave Pix (Telefone)</span>
               <button type="button" class="copy-pix-btn" id="copyPixBtn">📋 Copiar Chave</button>
             </div>
-            <div class="pix-key-display">+55 62 9174-9928</div>
+            <div class="pix-key-display">+55 62 99174-9928</div>
             <p class="pix-instruction">Após enviar o pedido, basta anexar o comprovante na conversa do WhatsApp para confirmação imediata.</p>
           </div>
 
@@ -331,6 +354,20 @@
 
   <!-- Toast Notification -->
   <div class="toast-message" id="toastMessage">Chave Pix copiada com sucesso!</div>
+
+  <!-- Custom Styled Alert / Error Dialog -->
+  <div class="custom-alert-overlay" id="customAlertOverlay" style="display:none;">
+    <div class="custom-alert-card">
+      <div class="custom-alert-header">
+        <div class="custom-alert-icon-badge" id="customAlertIcon">⚠️</div>
+        <h3 class="custom-alert-title" id="customAlertTitle">Atenção</h3>
+      </div>
+      <p class="custom-alert-message" id="customAlertMessage">Por favor, preencha os dados necessários.</p>
+      <div class="custom-alert-footer">
+        <button type="button" class="custom-alert-btn" id="customAlertBtn">Entendido</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="data/cardapio.js"></script>

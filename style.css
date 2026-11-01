@@ -1438,3 +1438,170 @@ select:focus {
     height: 140px;
   }
 }
+
+/* Options Selector List (Radio items inside modal) */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.option-item:hover {
+  border-color: rgba(229, 192, 123, 0.4);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.option-item.selected {
+  border-color: var(--accent-gold);
+  background: rgba(229, 192, 123, 0.08);
+  box-shadow: 0 0 10px rgba(229, 192, 123, 0.15);
+}
+
+.option-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.option-left input[type="radio"] {
+  accent-color: var(--accent-gold);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.option-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.option-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.option-desc {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.option-price {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+/* Custom Alert / Error Modal */
+.custom-alert-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 13, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.custom-alert-card {
+  background: linear-gradient(135deg, #182236, #0e1422);
+  border: 1px solid rgba(229, 192, 123, 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(139, 30, 63, 0.3);
+  width: 100%;
+  max-width: 400px;
+  padding: 26px;
+  text-align: center;
+  position: relative;
+  animation: modal-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-alert-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.custom-alert-icon-badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(139, 30, 63, 0.25);
+  border: 1px solid rgba(139, 30, 63, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 0 16px rgba(139, 30, 63, 0.4);
+}
+
+.custom-alert-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+}
+
+.custom-alert-message {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.custom-alert-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-alert-btn {
+  background: linear-gradient(135deg, var(--accent-wine), #a5264c);
+  color: #fff;
+  border: 1px solid var(--accent-gold);
+  border-radius: var(--radius-pill);
+  padding: 10px 32px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(139, 30, 63, 0.5);
+}
+
+.custom-alert-btn:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(139, 30, 63, 0.7);
+}
+
+/* Shake Animation for Invalid Form Fields */
+.input-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4) !important;
+  animation: fieldShake 0.35s ease-in-out;
+}
+
+@keyframes fieldShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
