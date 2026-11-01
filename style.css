@@ -2444,8 +2444,37 @@ select:focus {
 .payment-card-body-split {
   flex-direction: row !important;
   align-items: center !important;
-  gap: 12px !important;
-  padding: 12px 14px !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 10px 14px !important;
+  min-height: 46px !important;
+}
+
+.payment-card-body-split .pay-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.payment-card-body-split .pay-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.payment-card-body-split .pay-subtitle {
+  font-size: 0.74rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+.payment-card-body-split .pay-subtitle::before {
+  content: '•';
+  margin-right: 8px;
+  color: var(--border-subtle);
 }
 
 .split-payment-card {
