@@ -2311,7 +2311,7 @@ window.OMAKI_DATA = {
       "portion": "25 pçs",
       "page": "Pág 11",
       "price": 138.9,
-      "photo": "assets/images/Camarao_Imperial.jpg",
+      "photo": "assets/images/combo_camarao_imperial_25pc.jpg",
       "isNew": true
     },
     {
@@ -2324,7 +2324,7 @@ window.OMAKI_DATA = {
       "portion": "30 pçs",
       "page": "Pág 11",
       "price": 144.9,
-      "photo": "assets/images/3__Camar_o_Imperial.jpg",
+      "photo": "assets/images/combo_camarao_30pc.jpg",
       "isNew": true
     },
     {
@@ -2337,7 +2337,7 @@ window.OMAKI_DATA = {
       "portion": "28 pçs",
       "page": "Pág 11",
       "price": 136.9,
-      "photo": "assets/images/9__Joy.jpg",
+      "photo": "assets/images/combo_joy_28pc.jpg",
       "isNew": true
     },
     {
@@ -2350,7 +2350,7 @@ window.OMAKI_DATA = {
       "portion": "28 pçs",
       "page": "Pág 11",
       "price": 138.9,
-      "photo": "assets/images/Combo_35_pe_as.jpg",
+      "photo": "assets/images/combo_misto_28pc.jpg",
       "isNew": true
     },
     {
@@ -2363,7 +2363,7 @@ window.OMAKI_DATA = {
       "portion": "30 pçs",
       "page": "Pág 12",
       "price": 129.9,
-      "photo": "assets/images/Combo_40_Pe_as.jpg",
+      "photo": "assets/images/combo_salmao_30pc.jpg",
       "isNew": true
     },
     {
@@ -2376,7 +2376,7 @@ window.OMAKI_DATA = {
       "portion": "30 pçs",
       "page": "Pág 12",
       "price": 129.9,
-      "photo": "assets/images/23__Hot_Rolls.jpg",
+      "photo": "assets/images/combo_hot_30pc.jpg",
       "isNew": true
     },
     {
@@ -2389,7 +2389,7 @@ window.OMAKI_DATA = {
       "portion": "28 pçs",
       "page": "Pág 12",
       "price": 126.9,
-      "photo": "assets/images/13__Hossomaki.jpg",
+      "photo": "assets/images/combo_hossomaki_28pc.jpg",
       "isNew": true
     }
   ]

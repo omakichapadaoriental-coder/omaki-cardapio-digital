@@ -279,12 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     imgWrapper.appendChild(badges);
 
-    const displayName = item.num ? `${String(item.num).padStart(2, '0')}. ${item.name}` : item.name;
-
     const content = document.createElement('div');
     content.className = 'product-card-content';
     content.innerHTML = `
-      <h3 class="product-card-title">${displayName}</h3>
+      <h3 class="product-card-title">${item.name}</h3>
       <p class="product-card-desc">${item.description || 'Preparado na hora com ingredientes frescos e selecionados.'}</p>
       <div class="product-card-footer">
         <span class="product-price">${formatMoney(item.price)}</span>
@@ -325,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (modalItemNum) modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : 'NOVO';
     if (modalItemPortion) modalItemPortion.textContent = item.portion || 'Porção';
-    if (modalItemName) modalItemName.textContent = item.num ? `${String(item.num).padStart(2, '0')}. ${item.name}` : item.name;
+    if (modalItemName) modalItemName.textContent = item.name;
     if (modalItemPrice) modalItemPrice.textContent = formatMoney(item.price);
     if (modalItemDesc) modalItemDesc.textContent = item.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';
     if (modalItemNotes) modalItemNotes.value = '';
