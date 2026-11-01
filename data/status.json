@@ -2,8 +2,6 @@
   "deliveryActive": true,
   "manualDeliveryOverride": true,
   "deliveryClosedReason": "",
-  "soldOutIds": [
-    "harumaki_group"
-  ],
-  "lastUpdated": "2026-11-01T23:13:26.599Z"
+  "soldOutIds": [],
+  "lastUpdated": "2026-11-01T23:13:28.501Z"
 }
