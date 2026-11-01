@@ -6,6 +6,7 @@
 
   <meta charset="UTF-8">
 
+  <meta name="color-scheme" content="dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <title>Omaki Sushi — Cardápio Digital & Pedido WhatsApp</title>
@@ -24,7 +25,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20261101_omaki_v17">
+  <link rel="stylesheet" href="style.css?v=20261101_omaki_v18">
 
 </head>
 
@@ -687,40 +688,86 @@
               <span class="split-order-total" id="splitOrderTotalDisplay">Total: R$ 0,00</span>
             </div>
             <p class="split-intro">Distribua o valor total do pedido entre duas formas de pagamento:</p>
-            
-            <div class="split-row">
-              <div class="split-col-method">
-                <label for="splitMethod1">1ª Forma</label>
-                <select id="splitMethod1" class="split-select">
-                  <option value="Pix" selected>💠 Pix (Instantâneo)</option>
-                  <option value="Cartão de Crédito">💳 Cartão de Crédito</option>
-                  <option value="Cartão de Débito">💳 Cartão de Débito</option>
-                  <option value="Dinheiro">💵 Dinheiro</option>
-                </select>
+
+            <div class="split-quick-bar">
+              <button type="button" class="btn-split-auto" id="btnSplitHalf">
+                ⚖️ Dividir 50% / 50% Automaticamente
+              </button>
+            </div>
+
+            <!-- Hidden selects to preserve 100% compatibility with backend/form scripts -->
+            <select id="splitMethod1" class="split-select" style="display:none;">
+              <option value="Pix" selected>Pix</option>
+              <option value="Cartão de Crédito">Cartão de Crédito</option>
+              <option value="Cartão de Débito">Cartão de Débito</option>
+              <option value="Dinheiro">Dinheiro</option>
+            </select>
+            <select id="splitMethod2" class="split-select" style="display:none;">
+              <option value="Pix">Pix</option>
+              <option value="Cartão de Crédito" selected>Cartão de Crédito</option>
+              <option value="Cartão de Débito">Cartão de Débito</option>
+              <option value="Dinheiro">Dinheiro</option>
+            </select>
+
+            <!-- 1ª Forma -->
+            <div class="split-form-card">
+              <div class="split-card-row">
+                <span class="split-card-title">1ª Forma de Pagamento</span>
+                <div class="split-input-box">
+                  <span class="currency-sign">R$</span>
+                  <input type="number" step="0.01" min="0" id="splitValue1" placeholder="0,00" class="split-val-input">
+                </div>
               </div>
-              <div class="split-col-val">
-                <label for="splitValue1">Valor 1 (R$)</label>
-                <input type="number" step="0.01" min="0" id="splitValue1" placeholder="0,00" class="split-input-val">
+              <div class="split-chips-row" id="splitChips1">
+                <button type="button" class="split-pill-btn active" data-method="Pix">
+                  <span class="pill-ico">🔹</span>
+                  <span class="pill-txt">Pix</span>
+                </button>
+                <button type="button" class="split-pill-btn" data-method="Cartão de Crédito">
+                  <span class="pill-ico">💳</span>
+                  <span class="pill-txt">Crédito</span>
+                </button>
+                <button type="button" class="split-pill-btn" data-method="Cartão de Débito">
+                  <span class="pill-ico">💳</span>
+                  <span class="pill-txt">Débito</span>
+                </button>
+                <button type="button" class="split-pill-btn" data-method="Dinheiro">
+                  <span class="pill-ico">💵</span>
+                  <span class="pill-txt">Dinheiro</span>
+                </button>
               </div>
             </div>
 
-            <div class="split-row">
-              <div class="split-col-method">
-                <label for="splitMethod2">2ª Forma</label>
-                <select id="splitMethod2" class="split-select">
-                  <option value="Cartão de Crédito" selected>💳 Cartão de Crédito</option>
-                  <option value="Cartão de Débito">💳 Cartão de Débito</option>
-                  <option value="Pix">💠 Pix (Instantâneo)</option>
-                  <option value="Dinheiro">💵 Dinheiro</option>
-                </select>
+            <!-- 2ª Forma -->
+            <div class="split-form-card">
+              <div class="split-card-row">
+                <span class="split-card-title">2ª Forma de Pagamento</span>
+                <div class="split-input-box">
+                  <span class="currency-sign">R$</span>
+                  <input type="number" step="0.01" min="0" id="splitValue2" placeholder="0,00" class="split-val-input">
+                </div>
               </div>
-              <div class="split-col-val">
-                <label for="splitValue2">Valor 2 (R$)</label>
-                <input type="number" step="0.01" min="0" id="splitValue2" placeholder="0,00" class="split-input-val">
+              <div class="split-chips-row" id="splitChips2">
+                <button type="button" class="split-pill-btn" data-method="Pix">
+                  <span class="pill-ico">🔹</span>
+                  <span class="pill-txt">Pix</span>
+                </button>
+                <button type="button" class="split-pill-btn active" data-method="Cartão de Crédito">
+                  <span class="pill-ico">💳</span>
+                  <span class="pill-txt">Crédito</span>
+                </button>
+                <button type="button" class="split-pill-btn" data-method="Cartão de Débito">
+                  <span class="pill-ico">💳</span>
+                  <span class="pill-txt">Débito</span>
+                </button>
+                <button type="button" class="split-pill-btn" data-method="Dinheiro">
+                  <span class="pill-ico">💵</span>
+                  <span class="pill-txt">Dinheiro</span>
+                </button>
               </div>
             </div>
 
-            <div id="splitCashChangeBox" class="form-group" style="display:none; margin-top:8px;">
+            <div id="splitCashChangeBox" class="form-group" style="display:none; margin-top:10px;">
               <label for="splitCashChangeValue">Troco para a parte em dinheiro?</label>
               <input type="text" id="splitCashChangeValue" placeholder="Ex: Pagar R$ 50 em dinheiro com nota de R$ 100">
             </div>
@@ -856,9 +903,9 @@
 
   <!-- Scripts -->
 
-  <script src="data/cardapio.js?v=20261101_omaki_v17" charset="UTF-8"></script>
+  <script src="data/cardapio.js?v=20261101_omaki_v18" charset="UTF-8"></script>
 
-  <script src="app.js?v=20261101_omaki_v17" charset="UTF-8"></script>
+  <script src="app.js?v=20261101_omaki_v18" charset="UTF-8"></script>
 
 </body>
 

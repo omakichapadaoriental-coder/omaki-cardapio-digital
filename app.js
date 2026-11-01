@@ -2535,6 +2535,43 @@ document.addEventListener('DOMContentLoaded', () => {
   if (splitMethod1) splitMethod1.addEventListener('change', updateSplitBalance);
   if (splitMethod2) splitMethod2.addEventListener('change', updateSplitBalance);
 
+  // Wire High-Contrast Visual Split Chips
+  const chips1 = document.querySelectorAll('#splitChips1 .split-pill-btn');
+  chips1.forEach(btn => {
+    btn.addEventListener('click', () => {
+      chips1.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (splitMethod1) {
+        splitMethod1.value = btn.dataset.method;
+        updateSplitBalance();
+      }
+    });
+  });
+
+  const chips2 = document.querySelectorAll('#splitChips2 .split-pill-btn');
+  chips2.forEach(btn => {
+    btn.addEventListener('click', () => {
+      chips2.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (splitMethod2) {
+        splitMethod2.value = btn.dataset.method;
+        updateSplitBalance();
+      }
+    });
+  });
+
+  const btnSplitHalf = document.getElementById('btnSplitHalf');
+  if (btnSplitHalf) {
+    btnSplitHalf.addEventListener('click', () => {
+      const total = getCartGrandTotal();
+      const half1 = (Math.floor((total / 2) * 100) / 100).toFixed(2);
+      const half2 = (total - parseFloat(half1)).toFixed(2);
+      if (splitValue1) splitValue1.value = half1;
+      if (splitValue2) splitValue2.value = half2;
+      updateSplitBalance();
+    });
+  }
+
   if (paymentMethodRadios) {
     paymentMethodRadios.forEach(radio => {
       radio.addEventListener('change', () => {

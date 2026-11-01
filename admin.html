@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Omaki Sushi — Painel de Controle Operacional</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -549,13 +550,10 @@
         <button type="button" class="btn-delivery-action btn-start-delivery" id="btnStartDelivery">
           🟢 Reativar Entregas
         </button>
-        <button type="button" class="btn-auto-delivery" id="btnAutoDelivery">
-          ⏱️ Restaurar Horário Automático (18:20 às 22:30)
-        </button>
       </div>
 
       <div class="info-alert">
-        💡 <strong>Regra Automática:</strong> As entregas encerram diariamente às <strong>22:30</strong> por padrão. Utilize os botões acima para interrupções imprevistas (ex: chuva forte ou falta de motoboys). Quando encerrado, os clientes conseguem pedir apenas para <strong>Retirada no Balcão</strong>.
+        💡 <strong>Limite Inviolável:</strong> As entregas encerram rigorosamente às <strong>22:30</strong> de forma automática pelo sistema. Utilize os botões acima caso os motoboys precisem encerrar mais cedo (ex: chuva forte ou escassez de entregadores). Quando encerrado, o cardápio aceita exclusivamente <strong>Retirada no Balcão</strong>.
       </div>
     </section>
 
@@ -585,7 +583,7 @@
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="data/cardapio.js"></script>
+  <script src="data/cardapio.js?v=20261101_omaki_v17"></script>
   <script>
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
@@ -664,35 +662,55 @@
 
     function flattenItems() {
       allItems = [];
-      const cData = window.cardapioData || {};
-      (cData.categories || []).forEach(cat => {
-        (cat.items || []).forEach(item => {
-          allItems.push({
-            id: item.id,
-            name: item.name,
-            number: item.item_number || '',
-            price: item.price || item.min_price || 0,
-            image: item.image || '',
-            category: cat.id,
-            categoryName: cat.name
-          });
+      const cData = (typeof CARDAPIO_DATA !== "undefined" ? CARDAPIO_DATA : window.OMAKI_DATA) || {};
+      const dishesList = cData.dishes || [];
+      const itemsList = cData.items || [];
+
+      // 1. All dishes from menu
+      dishesList.forEach(dish => {
+        allItems.push({
+          id: dish.id,
+          name: dish.title || dish.name,
+          number: dish.num || '',
+          price: dish.price || dish.minPrice || 0,
+          image: dish.photo || dish.image || 'assets/logo-white.png',
+          category: dish.category || 'Geral',
+          categoryName: dish.category || 'Geral'
         });
+      });
+
+      // 2. Also ensure numbered drinks from items are listed
+      itemsList.forEach(item => {
+        if (item.category && (item.category.includes('Bebida') || item.category.includes('Cerveja') || item.category.includes('Refrigerante') || item.category.includes('Suco') || item.category.includes('Saké'))) {
+          const exists = allItems.some(a => a.id === `item_${item.num}` || a.number === item.num);
+          if (!exists) {
+            allItems.push({
+              id: `item_${item.num}`,
+              name: item.name,
+              number: item.num,
+              price: item.price || 0,
+              image: item.image || 'assets/logo-white.png',
+              category: item.category,
+              categoryName: item.category
+            });
+          }
+        }
       });
     }
 
     function renderCategoryPills() {
-      const cData = window.cardapioData || {};
       categoryPills.innerHTML = '<button type="button" class="cat-pill active" data-cat="all">Todos</button>';
-      (cData.categories || []).forEach(cat => {
+      const uniqueCats = Array.from(new Set(allItems.map(i => i.category))).filter(Boolean).sort();
+      uniqueCats.forEach(cat => {
         const pill = document.createElement('button');
         pill.type = 'button';
         pill.className = 'cat-pill';
-        pill.dataset.cat = cat.id;
-        pill.textContent = cat.name;
+        pill.dataset.cat = cat;
+        pill.textContent = cat;
         pill.addEventListener('click', () => {
           document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
           pill.classList.add('active');
-          currentCategory = cat.id;
+          currentCategory = cat;
           renderItems();
         });
         categoryPills.appendChild(pill);
@@ -872,9 +890,7 @@
         setDeliveryState(true, '');
       });
 
-      btnAutoDelivery.addEventListener('click', () => {
-        setDeliveryState(null, '');
-      });
+
 
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value;
