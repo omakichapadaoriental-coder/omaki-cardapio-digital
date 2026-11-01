@@ -708,16 +708,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     } else if (isPoke) {
-      const toppings = dish.pokeToppings || ['Cebolinha', 'Manga', 'Pepino fatiado', 'Tomate cereja', 'Avocado', 'Crispy de couve', 'Crispy de Batata', 'Gergelim', 'Gengibre', 'Cenoura', 'Alga', 'Crispy de Harumaki'];
-      const sauces = dish.pokeSauces || ['Molho especial trufado', 'Molho especial do Chef', 'Molho Tataki', 'Molho Tarê', 'Shoyu Tradicional'];
+      const toppings = dish.pokeToppings || [
+        'Cebolinha', 'Manga', 'Pepino fatiado', 'Tomate cereja', 'Avocado',
+        'Cebola roxa', 'Kani', 'Crispy de alho-poró', 'Crispy de couve',
+        'Crispy de Batata', 'Gergelim', 'Gengibre', 'Cenoura', 'Alga',
+        'Crispy de Harumaki'
+      ];
+      const sauces = [
+        'Molho especial trufado',
+        'Molho especial do Chef',
+        'Molho Tataki',
+        'Molho cítrico',
+        'Philadelphia'
+      ];
 
       let pokeHtml = `
         <div class="special-custom-group">
           <div class="special-group-header">
             <h4>Acompanhamentos</h4>
-            <span class="special-badge-counter" id="pokeToppingsCounter">0 de 6 selecionados</span>
+            <span class="special-badge-counter" id="pokeToppingsCounter">0 de 6 inclusos</span>
           </div>
-          <p class="section-hint">Selecione até 6 acompanhamentos inclusos para seu Poke:</p>
+          <p class="section-hint">Escolha até 6 inclusos (adicional por +R$ 8,00 cada além do 6º):</p>
           <div class="poke-chips-grid">
       `;
       toppings.forEach(top => {
@@ -736,16 +747,16 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="special-custom-group">
           <div class="special-group-header">
             <h4>Molho do Chef</h4>
-            <span class="required-tag" style="background:#8b1e3f; color:#fff; font-size:0.68rem; padding:2px 8px; border-radius:4px; font-weight:700;">1 incluso</span>
+            <span class="special-badge-counter" id="pokeSaucesCounter">1 incluso</span>
           </div>
-          <p class="section-hint">Escolha o molho artesanal de finalização:</p>
+          <p class="section-hint">Escolha 1 molho incluso (adicional por +R$ 9,00 cada além do 1º):</p>
           <div class="poke-chips-grid">
       `;
       sauces.forEach((sc, idx) => {
         pokeHtml += `
-          <label class="poke-chip radio-chip ${idx === 0 ? 'selected' : ''}">
-            <input type="radio" name="pokeSauce" value="${sc}" ${idx === 0 ? 'checked' : ''}>
-            <span class="poke-chip-indicator radio"></span>
+          <label class="poke-chip ${idx === 0 ? 'selected' : ''}">
+            <input type="checkbox" name="pokeSauce" value="${sc}" ${idx === 0 ? 'checked' : ''}>
+            <span class="poke-chip-indicator"></span>
             <span class="poke-chip-label">${sc}</span>
           </label>
         `;
@@ -774,42 +785,61 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       modalSpecialContent.innerHTML = pokeHtml;
-      selectedSpecialOptions.pokeSauce = sauces[0];
+      selectedSpecialOptions.pokeSauces = [sauces[0]];
       selectedSpecialOptions.pokeToppings = [];
 
-      // Topping limit logic (max 6) with luxury counter & highlights
+      // Topping limit logic (up to 6 included, +R$ 8 each extra)
       const topInputs = modalSpecialContent.querySelectorAll('input[name="pokeTop"]');
-      const counterEl = document.getElementById('pokeToppingsCounter');
+      const topCounterEl = document.getElementById('pokeToppingsCounter');
 
       topInputs.forEach(inp => {
         inp.addEventListener('change', () => {
           const parentLabel = inp.closest('.poke-chip');
           const checked = Array.from(topInputs).filter(i => i.checked);
-          if (checked.length > 6) {
-            inp.checked = false;
-            if (parentLabel) parentLabel.classList.remove('selected');
-            showCustomAlert('Limite Atingido', 'Você pode selecionar no máximo 6 acompanhamentos inclusos para o seu Poke.');
-            return;
-          }
-
           if (parentLabel) parentLabel.classList.toggle('selected', inp.checked);
           selectedSpecialOptions.pokeToppings = checked.map(i => i.value);
 
-          if (counterEl) {
-            counterEl.textContent = `${checked.length} de 6 selecionados`;
-            counterEl.classList.toggle('full', checked.length === 6);
+          if (topCounterEl) {
+            if (checked.length <= 6) {
+              topCounterEl.textContent = `${checked.length} de 6 inclusos`;
+              topCounterEl.classList.toggle('full', checked.length === 6);
+            } else {
+              const extras = checked.length - 6;
+              topCounterEl.textContent = `${checked.length} selec. (+${extras} extra: +${formatMoney(extras * 8.00)})`;
+              topCounterEl.classList.add('full');
+            }
           }
+          updateModalTotal();
         });
       });
 
-      // Sauce selection logic
+      // Sauce selection logic (1 included, +R$ 9 each extra)
       const sauceInputs = modalSpecialContent.querySelectorAll('input[name="pokeSauce"]');
+      const sauceCounterEl = document.getElementById('pokeSaucesCounter');
+
       sauceInputs.forEach(inp => {
         inp.addEventListener('change', () => {
-          modalSpecialContent.querySelectorAll('.radio-chip').forEach(el => el.classList.remove('selected'));
-          const parentLabel = inp.closest('.radio-chip');
-          if (parentLabel) parentLabel.classList.add('selected');
-          if (inp.checked) selectedSpecialOptions.pokeSauce = inp.value;
+          const checked = Array.from(sauceInputs).filter(i => i.checked);
+          if (checked.length === 0) {
+            // Must have at least 1 sauce selected
+            inp.checked = true;
+            return;
+          }
+          const parentLabel = inp.closest('.poke-chip');
+          if (parentLabel) parentLabel.classList.toggle('selected', inp.checked);
+          selectedSpecialOptions.pokeSauces = checked.map(i => i.value);
+
+          if (sauceCounterEl) {
+            if (checked.length === 1) {
+              sauceCounterEl.textContent = '1 incluso';
+              sauceCounterEl.classList.remove('full');
+            } else {
+              const extras = checked.length - 1;
+              sauceCounterEl.textContent = `${checked.length} molhos (+${extras} extra: +${formatMoney(extras * 9.00)})`;
+              sauceCounterEl.classList.add('full');
+            }
+          }
+          updateModalTotal();
         });
       });
 
@@ -834,6 +864,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (selectedSpecialOptions.temakiFried) basePrice += 9.00;
     if (selectedSpecialOptions.temakiNoRice) basePrice += 16.00;
     if (selectedSpecialOptions.pokeDoubleProtein) basePrice += 25.00;
+
+    // Poke extra toppings beyond 6 (+R$ 8,00 each)
+    if (selectedSpecialOptions.pokeToppings && selectedSpecialOptions.pokeToppings.length > 6) {
+      basePrice += (selectedSpecialOptions.pokeToppings.length - 6) * 8.00;
+    }
+
+    // Poke extra sauces beyond 1 (+R$ 9,00 each)
+    if (selectedSpecialOptions.pokeSauces && selectedSpecialOptions.pokeSauces.length > 1) {
+      basePrice += (selectedSpecialOptions.pokeSauces.length - 1) * 9.00;
+    }
 
     // Complements
     let compTotal = 0;
@@ -892,141 +932,84 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
         canonicalItem = {
-          num: currentSelectedOption.num,
-          code: currentSelectedOption.code,
-          name: `${currentModalDish.title} — ${currentSelectedOption.name}`,
-          category: currentModalDish.category,
+          id: currentSelectedOption.id,
+          num: currentSelectedOption.num || currentModalDish.num,
+          name: `${currentModalDish.name} — ${currentSelectedOption.name}`,
           price: currentSelectedOption.price,
-          portion: currentSelectedOption.portion || currentModalDish.portion,
-          photo: currentModalDish.photo || currentModalDish.image,
-          description: currentSelectedOption.description
+          category: currentModalDish.category,
+          image: currentModalDish.image
         };
       } else {
-        canonicalItem = currentModalDish.rawItem || {
+        canonicalItem = {
+          id: currentModalDish.id,
           num: currentModalDish.num,
-          code: currentModalDish.code,
-          name: currentModalDish.title || currentModalDish.name,
-          category: currentModalDish.category,
+          name: currentModalDish.name,
           price: currentModalDish.price,
-          portion: currentModalDish.portion,
-          photo: currentModalDish.photo || currentModalDish.image,
-          description: currentModalDish.description,
-          isNew: currentModalDish.isNew
+          category: currentModalDish.category,
+          image: currentModalDish.image
         };
       }
 
-      const complementsList = [];
+      // Collect selected complements
+      const complements = [];
       selectedComplements.forEach(cmpId => {
-        const c = data.complements.find(item => item.id === cmpId);
-        if (c) complementsList.push(c);
+        const cmp = data.complements.find(c => c.id === cmpId);
+        if (cmp) {
+          complements.push({ id: cmp.id, name: cmp.name, price: cmp.price });
+        }
       });
 
-      // Special notes summary
+      // Special notes summary & extra pricing
       const specialNotes = [];
-      if (selectedSpecialOptions.temakiFried) specialNotes.push('Empanar Temaki (+R$ 9,00)');
-      if (selectedSpecialOptions.temakiNoRice) specialNotes.push('Substituir arroz por salmão (+R$ 16,00)');
-      if (selectedSpecialOptions.pokeDoubleProtein) specialNotes.push('Dobrar Proteína (+R$ 25,00)');
-      if (selectedSpecialOptions.pokeSauce) specialNotes.push(`Molho: ${selectedSpecialOptions.pokeSauce}`);
-      if (selectedSpecialOptions.pokeToppings && selectedSpecialOptions.pokeToppings.length > 0) {
-        specialNotes.push(`Acomp: ${selectedSpecialOptions.pokeToppings.join(', ')}`);
+      let extraPrice = 0;
+
+      if (selectedSpecialOptions.temakiFried) {
+        extraPrice += 9.00;
+        specialNotes.push('Empanar Temaki (+R$ 9,00)');
+      }
+      if (selectedSpecialOptions.temakiNoRice) {
+        extraPrice += 16.00;
+        specialNotes.push('Substituir arroz por salmão (+R$ 16,00)');
+      }
+      if (selectedSpecialOptions.pokeDoubleProtein) {
+        extraPrice += 25.00;
+        specialNotes.push('Dobrar Proteína (+80g peixe nobre: +R$ 25,00)');
       }
 
-      let extraPrice = 0;
-      if (selectedSpecialOptions.temakiFried) extraPrice += 9.00;
-      if (selectedSpecialOptions.temakiNoRice) extraPrice += 16.00;
-      if (selectedSpecialOptions.pokeDoubleProtein) extraPrice += 25.00;
+      if (selectedSpecialOptions.pokeSauces && selectedSpecialOptions.pokeSauces.length > 0) {
+        const extraSauces = Math.max(0, selectedSpecialOptions.pokeSauces.length - 1);
+        if (extraSauces > 0) extraPrice += extraSauces * 9.00;
+        const extraSaucesTxt = extraSauces > 0 ? ` (+${extraSauces} extra: +${formatMoney(extraSauces * 9.00)})` : '';
+        specialNotes.push(`Molhos: ${selectedSpecialOptions.pokeSauces.join(', ')}${extraSaucesTxt}`);
+      }
+
+      if (selectedSpecialOptions.pokeToppings && selectedSpecialOptions.pokeToppings.length > 0) {
+        const extraTops = Math.max(0, selectedSpecialOptions.pokeToppings.length - 6);
+        if (extraTops > 0) extraPrice += extraTops * 8.00;
+        const extraTopsTxt = extraTops > 0 ? ` (+${extraTops} extra: +${formatMoney(extraTops * 8.00)})` : '';
+        specialNotes.push(`Acomp: ${selectedSpecialOptions.pokeToppings.join(', ')}${extraTopsTxt}`);
+      }
 
       const userNotes = modalItemNotes ? modalItemNotes.value.trim() : '';
       const fullNotes = [...specialNotes, userNotes].filter(Boolean).join(' | ');
 
+      // Base price of item includes extra special options
+      canonicalItem.price = canonicalItem.price + extraPrice;
+
       const entry = {
         id: 'cart_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
-        item: {
-          ...canonicalItem,
-          price: canonicalItem.price + extraPrice
-        },
+        item: canonicalItem,
         qty: currentModalQty,
-        complements: complementsList,
+        complements: complements,
         notes: fullNotes
       };
 
       cart.push(entry);
-      saveCart();
+      saveCart(cart);
       updateCartUI();
       closeItemModal();
-      showToast(`🍣 "${canonicalItem.name}" adicionado à sacola!`);
-    });
-  }
 
-  // --- CHECKOUT DRAWER & CART MANAGEMENT ---
-  function openCartDrawer() {
-    if (!cartDrawer) return;
-    renderCartItems();
-    updateTotals();
-    cartDrawer.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeCartDrawer() {
-    if (!cartDrawer) return;
-    cartDrawer.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  if (openCartHeaderBtn) openCartHeaderBtn.addEventListener('click', openCartDrawer);
-  if (openCartBarBtn) openCartBarBtn.addEventListener('click', openCartDrawer);
-  if (closeCartDrawerBtn) closeCartDrawerBtn.addEventListener('click', closeCartDrawer);
-  if (cartDrawer) {
-    cartDrawer.addEventListener('click', (e) => {
-      if (e.target === cartDrawer) closeCartDrawer();
-    });
-  }
-
-  // Delivery vs Takeaway Switcher
-  if (btnTypeDelivery) {
-    btnTypeDelivery.addEventListener('click', () => {
-      deliveryType = 'delivery';
-      btnTypeDelivery.classList.add('active');
-      btnTypeTakeaway.classList.remove('active');
-      if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'block';
-      if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'none';
-      if (deliveryFeeSummaryLine) deliveryFeeSummaryLine.style.display = 'flex';
-      updateTotals();
-    });
-  }
-
-  if (btnTypeTakeaway) {
-    btnTypeTakeaway.addEventListener('click', () => {
-      deliveryType = 'takeaway';
-      btnTypeTakeaway.classList.add('active');
-      btnTypeDelivery.classList.remove('active');
-      if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'none';
-      if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'block';
-      if (deliveryFeeSummaryLine) deliveryFeeSummaryLine.style.display = 'none';
-      updateTotals();
-    });
-  }
-
-  // Payment method switcher
-  if (paymentMethodRadios) {
-    paymentMethodRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        const val = radio.value;
-        if (pixInfoBox) pixInfoBox.style.display = val === 'Pix' ? 'block' : 'none';
-        if (cashChangeBox) cashChangeBox.style.display = val === 'Dinheiro' ? 'block' : 'none';
-      });
-    });
-  }
-
-  // Copy Pix Key
-  if (copyPixBtn) {
-    copyPixBtn.addEventListener('click', () => {
-      const pixKey = data.store.pixKeyRaw || data.store.pixKey || '+55 62 99174-9928';
-      navigator.clipboard.writeText(pixKey).then(() => {
-        showToast('🔑 Chave Pix copiada com sucesso!');
-      }).catch(() => {
-        showCustomAlert('Chave Pix', `Copie a chave Pix da Omaki Sushi:\n${pixKey}`);
-      });
+      showToast(`🍣 ${canonicalItem.name} adicionado à sacola!`);
     });
   }
 
@@ -1312,7 +1295,7 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
       const storeWhatsApp = data.store.whatsapp || '5562991749928';
-      const waUrl = `https://wa.me/${storeWhatsApp}?text=${encodeURIComponent(msg)}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=${storeWhatsApp}&text=${encodeURIComponent(msg)}`;
 
       window.open(waUrl, '_blank');
     });

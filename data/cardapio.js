@@ -1,4 +1,4 @@
-window.OMAKI_DATA = {
+const CARDAPIO_DATA = {
   "store": {
     "name": "Omaki Sushi",
     "unit": "Alto Paraíso de Goiás / Chapada dos Veadeiros",
@@ -12,7 +12,45 @@ window.OMAKI_DATA = {
     "hours": "Terça a Domingo das 18h30 às 23h00",
     "address": "Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro",
     "city": "Alto Paraíso de Goiás / GO",
-    "fullAddress": "Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso de Goiás / GO"
+    "fullAddress": "Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso de Goiás / GO",
+    "complements": [
+      {
+        "id": "cmp-131-teriaky",
+        "num": 131,
+        "name": "Molho Teriaky Caseiro (Pote)",
+        "price": 22.0
+      },
+      {
+        "id": "cmp-132-alho-poro",
+        "num": 132,
+        "name": "Pote de alho-poró Crocante",
+        "price": 15.0
+      },
+      {
+        "id": "cmp-133-geleia-pimenta",
+        "num": 133,
+        "name": "Geleia de Pimenta",
+        "price": 9.0
+      },
+      {
+        "id": "cmp-134-gari",
+        "num": 134,
+        "name": "Gengibre em Conserva (Gari)",
+        "price": 8.0
+      },
+      {
+        "id": "cmp-135-gergelim",
+        "num": 135,
+        "name": "Gergelim Tostado",
+        "price": 7.0
+      },
+      {
+        "id": "cmp-136-shot-limao",
+        "num": 136,
+        "name": "Shot de Limão",
+        "price": 3.0
+      }
+    ]
   },
   "neighborhoods": [
     {
@@ -88,59 +126,40 @@ window.OMAKI_DATA = {
   ],
   "complements": [
     {
-      "id": "cmp-tare",
-      "name": "Molho Tarê Artesanal Extra (50ml)",
-      "price": 4.0
+      "id": "cmp-131-teriaky",
+      "num": 131,
+      "name": "Molho Teriaky Caseiro (Pote)",
+      "price": 22.0
     },
     {
-      "id": "cmp-shoyu",
-      "name": "Molho Shoyu Tradicional Extra",
-      "price": 2.5
+      "id": "cmp-132-alho-poro",
+      "num": 132,
+      "name": "Pote de alho-poró Crocante",
+      "price": 15.0
     },
     {
-      "id": "cmp-cream",
-      "name": "Cream Cheese Philadelphia Extra",
-      "price": 5.0
+      "id": "cmp-133-geleia-pimenta",
+      "num": 133,
+      "name": "Geleia de Pimenta",
+      "price": 9.0
     },
     {
-      "id": "cmp-geleiapi",
-      "name": "Geleia de Pimenta Defumada Extra",
-      "price": 4.0
+      "id": "cmp-134-gari",
+      "num": 134,
+      "name": "Gengibre em Conserva (Gari)",
+      "price": 8.0
     },
     {
-      "id": "cmp-geleiamara",
-      "name": "Geleia de Maracujá Especial Extra",
-      "price": 4.0
+      "id": "cmp-135-gergelim",
+      "num": 135,
+      "name": "Gergelim Tostado",
+      "price": 7.0
     },
     {
-      "id": "cmp-alhoporo",
-      "name": "Alho-poró Crispy Extra",
-      "price": 4.0
-    },
-    {
-      "id": "cmp-couve",
-      "name": "Couve Crispy Extra",
-      "price": 4.0
-    },
-    {
-      "id": "cmp-gengibre",
-      "name": "Gengibre em Conserva (Gari) Extra",
+      "id": "cmp-136-shot-limao",
+      "num": 136,
+      "name": "Shot de Limão",
       "price": 3.0
-    },
-    {
-      "id": "cmp-wasabi",
-      "name": "Wasabi Nobre Extra",
-      "price": 3.0
-    },
-    {
-      "id": "cmp-hashi",
-      "name": "Par de Hashi de Bambu Adicional",
-      "price": 1.5
-    },
-    {
-      "id": "cmp-adaptador",
-      "name": "Adaptador Infantil de Hashi",
-      "price": 1.0
     }
   ],
   "items": [
@@ -2449,6 +2468,14 @@ window.OMAKI_DATA = {
           "price": 27.9,
           "portion": "2 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2478,7 +2505,15 @@ window.OMAKI_DATA = {
         "page": "Pág 1",
         "price": 43.9,
         "photo": "assets/images/real_guioza.jpg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_6",
@@ -2507,7 +2542,15 @@ window.OMAKI_DATA = {
         "page": "Pág 1",
         "price": 37.9,
         "photo": "assets/images/real_joy_goiaba.jpg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "tataki_group",
@@ -2570,6 +2613,14 @@ window.OMAKI_DATA = {
           "price": 55.9,
           "portion": "200g"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2624,6 +2675,14 @@ window.OMAKI_DATA = {
           "price": 51.9,
           "portion": "200g"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2660,6 +2719,14 @@ window.OMAKI_DATA = {
           "price": 52.9,
           "portion": "6 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2705,6 +2772,14 @@ window.OMAKI_DATA = {
           "price": 54.9,
           "portion": "12 fatias"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2741,6 +2816,14 @@ window.OMAKI_DATA = {
           "price": 54.9,
           "portion": "Porção"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2786,6 +2869,14 @@ window.OMAKI_DATA = {
           "price": 24.9,
           "portion": "150g"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2840,6 +2931,14 @@ window.OMAKI_DATA = {
           "price": 38.9,
           "portion": "6 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2921,6 +3020,14 @@ window.OMAKI_DATA = {
           "price": 41.9,
           "portion": "10 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -2975,6 +3082,14 @@ window.OMAKI_DATA = {
           "price": 57.9,
           "portion": "10 fatias"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3004,7 +3119,15 @@ window.OMAKI_DATA = {
         "page": "Pág 3",
         "price": 58.9,
         "photo": "assets/images/raw_esp_41_elegancia.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_42",
@@ -3033,7 +3156,15 @@ window.OMAKI_DATA = {
         "page": "Pág 3",
         "price": 58.9,
         "photo": "assets/images/raw_esp_42_morango.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_43",
@@ -3062,7 +3193,15 @@ window.OMAKI_DATA = {
         "page": "Pág 3",
         "price": 57.9,
         "photo": "assets/images/raw_esp_43_trufado.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_44",
@@ -3091,7 +3230,15 @@ window.OMAKI_DATA = {
         "page": "Pág 3",
         "price": 56.9,
         "photo": "assets/images/raw_esp_44_chef.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_45",
@@ -3120,7 +3267,15 @@ window.OMAKI_DATA = {
         "page": "Pág 4",
         "price": 57.9,
         "photo": "assets/images/raw_esp_45_ebi_avocado.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_46",
@@ -3149,7 +3304,15 @@ window.OMAKI_DATA = {
         "page": "Pág 4",
         "price": 55.9,
         "photo": "assets/images/raw_esp_46_skin_salmao.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_47",
@@ -3178,7 +3341,15 @@ window.OMAKI_DATA = {
         "page": "Pág 4",
         "price": 48.9,
         "photo": "assets/images/raw_esp_47_joy_macaricado.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "temaki_group",
@@ -3277,6 +3448,14 @@ window.OMAKI_DATA = {
           "price": 46.9,
           "portion": "180g"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3306,7 +3485,15 @@ window.OMAKI_DATA = {
         "page": "Pág 5",
         "price": 141.9,
         "photo": "assets/images/raw_combo_1_chef.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_58",
@@ -3335,7 +3522,15 @@ window.OMAKI_DATA = {
         "page": "Pág 5",
         "price": 161.9,
         "photo": "assets/images/raw_combo_4_chef.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_59",
@@ -3364,7 +3559,15 @@ window.OMAKI_DATA = {
         "page": "Pág 5",
         "price": 205.9,
         "photo": "assets/images/raw_combo_5_chef.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_60",
@@ -3393,7 +3596,15 @@ window.OMAKI_DATA = {
         "page": "Pág 5",
         "price": 320.9,
         "photo": "assets/images/real_combo_8_chef.png"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "bighot_group",
@@ -3438,6 +3649,14 @@ window.OMAKI_DATA = {
           "price": 57.9,
           "portion": "2 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3510,6 +3729,14 @@ window.OMAKI_DATA = {
           "price": 46.9,
           "portion": "10 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3555,6 +3782,14 @@ window.OMAKI_DATA = {
           "price": 36.9,
           "portion": "5 fatias"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3627,6 +3862,14 @@ window.OMAKI_DATA = {
           "price": 32.9,
           "portion": "6 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3690,6 +3933,14 @@ window.OMAKI_DATA = {
           "price": 43.9,
           "portion": "6 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3753,6 +4004,14 @@ window.OMAKI_DATA = {
           "price": 42.9,
           "portion": "10 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3825,6 +4084,14 @@ window.OMAKI_DATA = {
           "price": 42.9,
           "portion": "10 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3861,6 +4128,14 @@ window.OMAKI_DATA = {
           "price": 49.9,
           "portion": "10 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -3951,6 +4226,14 @@ window.OMAKI_DATA = {
           "price": 34.9,
           "portion": "4 un"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4048,6 +4331,14 @@ window.OMAKI_DATA = {
         "Molho Tataki",
         "Molho cítrico",
         "Philadelphia"
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4120,6 +4411,14 @@ window.OMAKI_DATA = {
           "price": 3.0,
           "portion": "Shot"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4165,6 +4464,14 @@ window.OMAKI_DATA = {
           "price": 39.9,
           "portion": "200g"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4228,6 +4535,14 @@ window.OMAKI_DATA = {
           "price": 45.9,
           "portion": "400g"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4318,6 +4633,14 @@ window.OMAKI_DATA = {
           "price": 16.9,
           "portion": "330ml"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4399,6 +4722,14 @@ window.OMAKI_DATA = {
           "price": 159.9,
           "portion": "740ml"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4498,6 +4829,14 @@ window.OMAKI_DATA = {
           "price": 5.0,
           "portion": "500ml"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4588,6 +4927,14 @@ window.OMAKI_DATA = {
           "price": 19.0,
           "portion": "600ml"
         }
+      ],
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
       ]
     },
     {
@@ -4617,7 +4964,15 @@ window.OMAKI_DATA = {
         "page": "Pág 10",
         "price": 132.0,
         "photo": "assets/images/raw_combo_177_omaki.png"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_178",
@@ -4646,7 +5001,15 @@ window.OMAKI_DATA = {
         "page": "Pág 10",
         "price": 118.0,
         "photo": "assets/images/raw_combo_178_chapada.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_179",
@@ -4675,7 +5038,15 @@ window.OMAKI_DATA = {
         "page": "Pág 10",
         "price": 107.0,
         "photo": "assets/images/raw_combo_179_oriental.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_180",
@@ -4704,7 +5075,15 @@ window.OMAKI_DATA = {
         "page": "Pág 10",
         "price": 119.0,
         "photo": "assets/images/raw_combo_180_guia.jpeg"
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_combo_camarão_imperial_-_25_peças",
@@ -4734,7 +5113,15 @@ window.OMAKI_DATA = {
         "price": 138.9,
         "photo": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
         "isNew": true
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_combo_camarão_-_30_peças",
@@ -4764,7 +5151,15 @@ window.OMAKI_DATA = {
         "price": 144.9,
         "photo": "assets/images/raw_combo_camarao_30pc.jpeg",
         "isNew": true
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_combo_joy_-_28_peças",
@@ -4794,7 +5189,15 @@ window.OMAKI_DATA = {
         "price": 136.9,
         "photo": "assets/images/raw_combo_joy_28pc.jpeg",
         "isNew": true
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_combo_misto_-_28_peças",
@@ -4824,7 +5227,15 @@ window.OMAKI_DATA = {
         "price": 138.9,
         "photo": "assets/images/raw_combo_misto_28pc.jpeg",
         "isNew": true
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_combo_salmão_-_30_peças",
@@ -4854,7 +5265,15 @@ window.OMAKI_DATA = {
         "price": 129.9,
         "photo": "assets/images/raw_combo_salmao_30pc.jpeg",
         "isNew": true
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_combo_hot_-_30_peças",
@@ -4884,7 +5303,15 @@ window.OMAKI_DATA = {
         "price": 129.9,
         "photo": "assets/images/raw_combo_hot_30pc.jpeg",
         "isNew": true
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     },
     {
       "id": "item_combo_hossomaki_-_28_peças",
@@ -4914,7 +5341,15 @@ window.OMAKI_DATA = {
         "price": 126.9,
         "photo": "assets/images/raw_combo_hossomaki_28pc.jpeg",
         "isNew": true
-      }
+      },
+      "complements": [
+        "cmp-131-teriaky",
+        "cmp-132-alho-poro",
+        "cmp-133-geleia-pimenta",
+        "cmp-134-gari",
+        "cmp-135-gergelim",
+        "cmp-136-shot-limao"
+      ]
     }
   ]
 };
