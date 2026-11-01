@@ -10,13 +10,29 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // --- CATEGORIES DEFINITION (Top of scope) ---
+  const CATEGORY_MAP = [
+    { id: 'cat-combos-promo', title: '🍱 Combos Promocionais', match: (cat, num, item) => cat.includes('Promocionais') || (num && num >= 177 && num <= 187) || (item && item.isNew) },
+    { id: 'cat-combos-chef', title: '🍱 Combos do Chef', match: (cat, num) => num && num >= 173 && num <= 176 },
+    { id: 'cat-especiais', title: '✨ Especiais do Chef', match: (cat, num) => cat.includes('Especiais') || (num && num >= 41 && num <= 51) },
+    { id: 'cat-entradas', title: '🥢 Entradas & Harumakis', match: (cat, num) => cat.includes('Harumaki') || cat.includes('Entradas') || (num && num <= 11) },
+    { id: 'cat-ceviches', title: '🐟 Ceviches & Tatakis', match: (cat, num) => cat.includes('Ceviche') || cat.includes('Tataki') || (num && num >= 12 && num <= 17) },
+    { id: 'cat-carpaccios', title: '🐟 Carpaccios & Gunkans', match: (cat, num) => cat.includes('Carpaccio') || cat.includes('Gunkan') || (num && num >= 18 && num <= 32) },
+    { id: 'cat-temakis', title: '🍣 Temakis', match: (cat, num) => cat.includes('Temaki') || (num && num >= 52 && num <= 60) },
+    { id: 'cat-hots', title: '🔥 Hot Rolls & Big Hot', match: (cat, num) => cat.includes('Hot') || (num && num >= 61 && num <= 69) },
+    { id: 'cat-sashimis', title: '🍣 Sashimis & Joys', match: (cat, num) => cat.includes('Sashimi') || cat.includes('Joy') || (num && num >= 70 && num <= 83) },
+    { id: 'cat-rolls', title: '🍣 Uramakis, Hossomakis & Niguiris', match: (cat, num) => cat.includes('Uramaki') || cat.includes('Hossomaki') || cat.includes('Niguiri') || (num && num >= 84 && num <= 123) },
+    { id: 'cat-pokes', title: '🥑 Pokes & Pratos Quentes', match: (cat, num) => cat.includes('Poke') || cat.includes('Yakisoba') || cat.includes('Teppan') || (num && num >= 124 && num <= 144) },
+    { id: 'cat-bebidas', title: '🍻 Bebidas, Sucos & Sakês', match: (cat, num) => cat.includes('Bebidas') || cat.includes('Refrigerante') || cat.includes('Cerveja') || cat.includes('Sakê') || (num && num >= 145) }
+  ];
+
   // --- STATE ---
   let cart = loadCart();
   let currentModalItem = null;
   let currentModalQty = 1;
   let selectedComplements = new Set();
   let deliveryType = 'delivery'; // 'delivery' | 'takeaway'
-  let selectedNeighborhood = data.neighborhoods[0];
+  let selectedNeighborhood = data.neighborhoods && data.neighborhoods.length > 0 ? data.neighborhoods[0] : { name: 'Centro', fee: 12.00 };
 
   // --- DOM ELEMENTS ---
   const categoriesNav = document.getElementById('categoriesNav');
@@ -80,12 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendWhatsAppOrderBtn = document.getElementById('sendWhatsAppOrderBtn');
   const toastMessage = document.getElementById('toastMessage');
 
-  // --- INITIALIZATION ---
-  initNeighborhoods();
-  initCategories();
-  renderMenu();
-  updateCartUI();
-
   // --- STORAGE HELPERS ---
   function loadCart() {
     try {
@@ -108,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showToast(msg) {
+    if (!toastMessage) return;
     toastMessage.textContent = msg;
     toastMessage.classList.add('show');
     setTimeout(() => {
@@ -117,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- NEIGHBORHOODS INIT ---
   function initNeighborhoods() {
+    if (!orderNeighborhood || !data.neighborhoods) return;
     orderNeighborhood.innerHTML = '';
     data.neighborhoods.forEach((n, idx) => {
       const opt = document.createElement('option');
@@ -132,23 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- CATEGORIES DEFINITION ---
-  const CATEGORY_MAP = [
-    { id: 'cat-combos-promo', title: '🍱 Combos Promocionais', match: (cat, num, item) => cat.includes('Promocionais') || (num && num >= 177 && num <= 187) || (item && item.isNew) },
-    { id: 'cat-combos-chef', title: '🍱 Combos do Chef', match: (cat, num) => num && num >= 173 && num <= 176 },
-    { id: 'cat-especiais', title: '✨ Especiais do Chef', match: (cat, num) => cat.includes('Especiais') || (num && num >= 41 && num <= 51) },
-    { id: 'cat-entradas', title: '🥢 Entradas & Harumakis', match: (cat, num) => cat.includes('Harumaki') || cat.includes('Entradas') || (num && num <= 11) },
-    { id: 'cat-ceviches', title: '🐟 Ceviches & Tatakis', match: (cat, num) => cat.includes('Ceviche') || cat.includes('Tataki') || (num && num >= 12 && num <= 17) },
-    { id: 'cat-carpaccios', title: '🐟 Carpaccios & Gunkans', match: (cat, num) => cat.includes('Carpaccio') || cat.includes('Gunkan') || (num && num >= 18 && num <= 32) },
-    { id: 'cat-temakis', title: '🍣 Temakis', match: (cat, num) => cat.includes('Temaki') || (num && num >= 52 && num <= 60) },
-    { id: 'cat-hots', title: '🔥 Hot Rolls & Big Hot', match: (cat, num) => cat.includes('Hot') || (num && num >= 61 && num <= 69) },
-    { id: 'cat-sashimis', title: '🍣 Sashimis & Joys', match: (cat, num) => cat.includes('Sashimi') || cat.includes('Joy') || (num && num >= 70 && num <= 83) },
-    { id: 'cat-rolls', title: '🍣 Uramakis, Hossomakis & Niguiris', match: (cat, num) => cat.includes('Uramaki') || cat.includes('Hossomaki') || cat.includes('Niguiri') || (num && num >= 84 && num <= 123) },
-    { id: 'cat-pokes', title: '🥑 Pokes & Pratos Quentes', match: (cat, num) => cat.includes('Poke') || cat.includes('Yakisoba') || cat.includes('Teppan') || (num && num >= 124 && num <= 144) },
-    { id: 'cat-bebidas', title: '🍻 Bebidas, Sucos & Sakês', match: (cat, num) => cat.includes('Bebidas') || cat.includes('Refrigerante') || cat.includes('Cerveja') || cat.includes('Sakê') || (num && num >= 145) }
-  ];
-
+  // --- CATEGORIES INIT ---
   function initCategories() {
+    if (!categoriesNav) return;
     categoriesNav.innerHTML = '';
     
     // "Todos" pill
@@ -181,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- RENDER MENU ---
   function renderMenu(searchTerm = '') {
+    if (!menuContainer) return;
     menuContainer.innerHTML = '';
     const term = searchTerm.trim().toLowerCase();
 
@@ -301,66 +300,74 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- SEARCH EVENTS ---
-  searchInput.addEventListener('input', (e) => {
-    const val = e.target.value;
-    clearSearchBtn.style.display = val ? 'block' : 'none';
-    renderMenu(val);
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (clearSearchBtn) clearSearchBtn.style.display = val ? 'block' : 'none';
+      renderMenu(val);
+    });
+  }
 
-  clearSearchBtn.addEventListener('click', () => {
-    searchInput.value = '';
-    clearSearchBtn.style.display = 'none';
-    renderMenu();
-  });
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      clearSearchBtn.style.display = 'none';
+      renderMenu();
+    });
+  }
 
   // --- ITEM MODAL LOGIC ---
   function openItemModal(item) {
+    if (!itemModal) return;
     currentModalItem = item;
     currentModalQty = 1;
     selectedComplements.clear();
 
-    modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : 'NOVO';
-    modalItemPortion.textContent = item.portion || 'Porção';
-    modalItemName.textContent = item.num ? `${String(item.num).padStart(2, '0')}. ${item.name}` : item.name;
-    modalItemPrice.textContent = formatMoney(item.price);
-    modalItemDesc.textContent = item.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';
-    modalItemNotes.value = '';
-    modalQtyValue.textContent = '1';
+    if (modalItemNum) modalItemNum.textContent = item.num ? `#${String(item.num).padStart(3, '0')}` : 'NOVO';
+    if (modalItemPortion) modalItemPortion.textContent = item.portion || 'Porção';
+    if (modalItemName) modalItemName.textContent = item.num ? `${String(item.num).padStart(2, '0')}. ${item.name}` : item.name;
+    if (modalItemPrice) modalItemPrice.textContent = formatMoney(item.price);
+    if (modalItemDesc) modalItemDesc.textContent = item.description || 'Preparado artesanalmente com rigor metrológico e insumos de altíssima qualidade.';
+    if (modalItemNotes) modalItemNotes.value = '';
+    if (modalQtyValue) modalQtyValue.textContent = '1';
 
-    if (item.photo) {
-      modalItemImg.src = item.photo;
-      modalImgContainer.style.display = 'block';
-    } else {
-      modalImgContainer.style.display = 'none';
+    if (modalImgContainer) {
+      if (item.photo) {
+        if (modalItemImg) modalItemImg.src = item.photo;
+        modalImgContainer.style.display = 'block';
+      } else {
+        modalImgContainer.style.display = 'none';
+      }
     }
 
-    // Render complements checkboxes
-    modalComplementsList.innerHTML = '';
-    data.complements.forEach(cmp => {
-      const row = document.createElement('label');
-      row.className = 'complement-item';
-      row.innerHTML = `
-        <div class="complement-left">
-          <input type="checkbox" value="${cmp.id}">
-          <span class="complement-name">${cmp.name}</span>
-        </div>
-        <span class="complement-price">+ ${formatMoney(cmp.price)}</span>
-      `;
+    if (modalComplementsList) {
+      modalComplementsList.innerHTML = '';
+      data.complements.forEach(cmp => {
+        const row = document.createElement('label');
+        row.className = 'complement-item';
+        row.innerHTML = `
+          <div class="complement-left">
+            <input type="checkbox" value="${cmp.id}">
+            <span class="complement-name">${cmp.name}</span>
+          </div>
+          <span class="complement-price">+ ${formatMoney(cmp.price)}</span>
+        `;
 
-      const cb = row.querySelector('input');
-      cb.addEventListener('change', () => {
-        if (cb.checked) {
-          selectedComplements.add(cmp.id);
-          row.classList.add('selected');
-        } else {
-          selectedComplements.delete(cmp.id);
-          row.classList.remove('selected');
-        }
-        updateModalTotal();
+        const cb = row.querySelector('input');
+        cb.addEventListener('change', () => {
+          if (cb.checked) {
+            selectedComplements.add(cmp.id);
+            row.classList.add('selected');
+          } else {
+            selectedComplements.delete(cmp.id);
+            row.classList.remove('selected');
+          }
+          updateModalTotal();
+        });
+
+        modalComplementsList.appendChild(row);
       });
-
-      modalComplementsList.appendChild(row);
-    });
+    }
 
     updateModalTotal();
     itemModal.style.display = 'flex';
@@ -368,12 +375,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeItemModal() {
+    if (!itemModal) return;
     itemModal.style.display = 'none';
     document.body.style.overflow = '';
   }
 
   function updateModalTotal() {
-    if (!currentModalItem) return;
+    if (!currentModalItem || !modalAddTotalPrice) return;
     let singleTotal = currentModalItem.price;
     selectedComplements.forEach(id => {
       const cmp = data.complements.find(c => c.id === id);
@@ -383,79 +391,87 @@ document.addEventListener('DOMContentLoaded', () => {
     modalAddTotalPrice.textContent = formatMoney(finalTotal);
   }
 
-  modalQtyMinus.addEventListener('click', () => {
-    if (currentModalQty > 1) {
-      currentModalQty--;
-      modalQtyValue.textContent = currentModalQty;
+  if (modalQtyMinus) {
+    modalQtyMinus.addEventListener('click', () => {
+      if (currentModalQty > 1) {
+        currentModalQty--;
+        if (modalQtyValue) modalQtyValue.textContent = currentModalQty;
+        updateModalTotal();
+      }
+    });
+  }
+
+  if (modalQtyPlus) {
+    modalQtyPlus.addEventListener('click', () => {
+      currentModalQty++;
+      if (modalQtyValue) modalQtyValue.textContent = currentModalQty;
       updateModalTotal();
-    }
-  });
-
-  modalQtyPlus.addEventListener('click', () => {
-    currentModalQty++;
-    modalQtyValue.textContent = currentModalQty;
-    updateModalTotal();
-  });
-
-  closeItemModalBtn.addEventListener('click', closeItemModal);
-  itemModal.addEventListener('click', (e) => {
-    if (e.target === itemModal) closeItemModal();
-  });
-
-  // Add to cart from modal
-  modalAddToCartBtn.addEventListener('click', () => {
-    if (!currentModalItem) return;
-
-    const complementsArray = [];
-    selectedComplements.forEach(id => {
-      const found = data.complements.find(c => c.id === id);
-      if (found) complementsArray.push(found);
     });
+  }
 
-    const notes = modalItemNotes.value.trim();
-
-    // Check if identical item already in cart (same name, complements and notes)
-    const existingIndex = cart.findIndex(c => {
-      if (c.item.name !== currentModalItem.name) return false;
-      if (c.notes !== notes) return false;
-      const c1 = (c.complements || []).map(x => x.id).sort().join(',');
-      const c2 = complementsArray.map(x => x.id).sort().join(',');
-      return c1 === c2;
+  if (closeItemModalBtn) closeItemModalBtn.addEventListener('click', closeItemModal);
+  if (itemModal) {
+    itemModal.addEventListener('click', (e) => {
+      if (e.target === itemModal) closeItemModal();
     });
+  }
 
-    if (existingIndex > -1) {
-      cart[existingIndex].qty += currentModalQty;
-    } else {
-      cart.push({
-        id: 'cart_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
-        item: currentModalItem,
-        qty: currentModalQty,
-        complements: complementsArray,
-        notes: notes
+  if (modalAddToCartBtn) {
+    modalAddToCartBtn.addEventListener('click', () => {
+      if (!currentModalItem) return;
+
+      const complementsArray = [];
+      selectedComplements.forEach(id => {
+        const found = data.complements.find(c => c.id === id);
+        if (found) complementsArray.push(found);
       });
-    }
 
-    saveCart();
-    updateCartUI();
-    closeItemModal();
-    const tag = currentModalItem.num ? `#${String(currentModalItem.num).padStart(3, '0')}` : currentModalItem.name;
-    showToast(`✓ ${tag} adicionado à sacola!`);
-  });
+      const notes = modalItemNotes ? modalItemNotes.value.trim() : '';
+
+      const existingIndex = cart.findIndex(c => {
+        if (c.item.name !== currentModalItem.name) return false;
+        if (c.notes !== notes) return false;
+        const c1 = (c.complements || []).map(x => x.id).sort().join(',');
+        const c2 = complementsArray.map(x => x.id).sort().join(',');
+        return c1 === c2;
+      });
+
+      if (existingIndex > -1) {
+        cart[existingIndex].qty += currentModalQty;
+      } else {
+        cart.push({
+          id: 'cart_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+          item: currentModalItem,
+          qty: currentModalQty,
+          complements: complementsArray,
+          notes: notes
+        });
+      }
+
+      saveCart();
+      updateCartUI();
+      closeItemModal();
+      const tag = currentModalItem.num ? `#${String(currentModalItem.num).padStart(3, '0')}` : currentModalItem.name;
+      showToast(`✓ ${tag} adicionado à sacola!`);
+    });
+  }
 
   // --- CART UI & UPDATES ---
   function updateCartUI() {
     const totalCount = cart.reduce((acc, curr) => acc + curr.qty, 0);
     const subtotal = calculateSubtotal();
 
-    headerCartCount.textContent = totalCount;
-    floatingCartCount.textContent = totalCount;
-    floatingCartSubtotal.textContent = formatMoney(subtotal);
-    drawerItemCount.textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'itens'}`;
+    if (headerCartCount) headerCartCount.textContent = totalCount;
+    if (floatingCartCount) floatingCartCount.textContent = totalCount;
+    if (floatingCartSubtotal) floatingCartSubtotal.textContent = formatMoney(subtotal);
+    if (drawerItemCount) drawerItemCount.textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'itens'}`;
 
-    if (totalCount > 0) {
-      floatingCartBar.style.display = 'block';
-    } else {
-      floatingCartBar.style.display = 'none';
+    if (floatingCartBar) {
+      if (totalCount > 0) {
+        floatingCartBar.style.display = 'block';
+      } else {
+        floatingCartBar.style.display = 'none';
+      }
     }
 
     renderCartItems();
@@ -477,19 +493,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
     const grandTotal = subtotal + fee;
 
-    summarySubtotal.textContent = formatMoney(subtotal);
-    summaryDeliveryFee.textContent = deliveryType === 'delivery' ? formatMoney(fee) : 'Grátis (Retirada)';
-    summaryGrandTotal.textContent = formatMoney(grandTotal);
-    footerBtnTotal.textContent = formatMoney(grandTotal);
+    if (summarySubtotal) summarySubtotal.textContent = formatMoney(subtotal);
+    if (summaryDeliveryFee) summaryDeliveryFee.textContent = deliveryType === 'delivery' ? formatMoney(fee) : 'Grátis (Retirada)';
+    if (summaryGrandTotal) summaryGrandTotal.textContent = formatMoney(grandTotal);
+    if (footerBtnTotal) footerBtnTotal.textContent = formatMoney(grandTotal);
 
-    if (deliveryType === 'takeaway') {
-      deliveryFeeSummaryLine.style.opacity = '0.6';
-    } else {
-      deliveryFeeSummaryLine.style.opacity = '1';
+    if (deliveryFeeSummaryLine) {
+      if (deliveryType === 'takeaway') {
+        deliveryFeeSummaryLine.style.opacity = '0.6';
+      } else {
+        deliveryFeeSummaryLine.style.opacity = '1';
+      }
     }
   }
 
   function renderCartItems() {
+    if (!cartItemsList) return;
     cartItemsList.innerHTML = '';
     if (cart.length === 0) {
       cartItemsList.innerHTML = `
@@ -560,6 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- DRAWER ACTIONS ---
   function openCartDrawer() {
+    if (!cartDrawer) return;
     renderCartItems();
     updateTotals();
     cartDrawer.style.display = 'flex';
@@ -567,65 +587,74 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeCartDrawer() {
+    if (!cartDrawer) return;
     cartDrawer.style.display = 'none';
     document.body.style.overflow = '';
   }
 
-  openCartHeaderBtn.addEventListener('click', openCartDrawer);
-  openCartBarBtn.addEventListener('click', openCartDrawer);
-  closeCartDrawerBtn.addEventListener('click', closeCartDrawer);
-  cartDrawer.addEventListener('click', (e) => {
-    if (e.target === cartDrawer) closeCartDrawer();
-  });
+  if (openCartHeaderBtn) openCartHeaderBtn.addEventListener('click', openCartDrawer);
+  if (openCartBarBtn) openCartBarBtn.addEventListener('click', openCartDrawer);
+  if (closeCartDrawerBtn) closeCartDrawerBtn.addEventListener('click', closeCartDrawer);
+  if (cartDrawer) {
+    cartDrawer.addEventListener('click', (e) => {
+      if (e.target === cartDrawer) closeCartDrawer();
+    });
+  }
 
   // Delivery vs Takeaway toggles
-  btnTypeDelivery.addEventListener('click', () => {
-    deliveryType = 'delivery';
-    btnTypeDelivery.classList.add('active');
-    btnTypeTakeaway.classList.remove('active');
-    deliveryFieldsGroup.style.display = 'flex';
-    takeawayInfoGroup.style.display = 'none';
-    updateTotals();
-  });
+  if (btnTypeDelivery) {
+    btnTypeDelivery.addEventListener('click', () => {
+      deliveryType = 'delivery';
+      btnTypeDelivery.classList.add('active');
+      if (btnTypeTakeaway) btnTypeTakeaway.classList.remove('active');
+      if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'flex';
+      if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'none';
+      updateTotals();
+    });
+  }
 
-  btnTypeTakeaway.addEventListener('click', () => {
-    deliveryType = 'takeaway';
-    btnTypeTakeaway.classList.add('active');
-    btnTypeDelivery.classList.remove('active');
-    deliveryFieldsGroup.style.display = 'none';
-    takeawayInfoGroup.style.display = 'block';
-    updateTotals();
-  });
+  if (btnTypeTakeaway) {
+    btnTypeTakeaway.addEventListener('click', () => {
+      deliveryType = 'takeaway';
+      btnTypeTakeaway.classList.add('active');
+      if (btnTypeDelivery) btnTypeDelivery.classList.remove('active');
+      if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'none';
+      if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'block';
+      updateTotals();
+    });
+  }
 
   // Payment radio change handler
   paymentMethodRadios.forEach(radio => {
     radio.addEventListener('change', () => {
       if (radio.value === 'Pix') {
-        pixInfoBox.style.display = 'block';
-        cashChangeBox.style.display = 'none';
+        if (pixInfoBox) pixInfoBox.style.display = 'block';
+        if (cashChangeBox) cashChangeBox.style.display = 'none';
       } else if (radio.value === 'Dinheiro') {
-        pixInfoBox.style.display = 'none';
-        cashChangeBox.style.display = 'block';
+        if (pixInfoBox) pixInfoBox.style.display = 'none';
+        if (cashChangeBox) cashChangeBox.style.display = 'block';
       } else {
-        pixInfoBox.style.display = 'none';
-        cashChangeBox.style.display = 'none';
+        if (pixInfoBox) pixInfoBox.style.display = 'none';
+        if (cashChangeBox) cashChangeBox.style.display = 'none';
       }
     });
   });
 
   // Copy Pix Button
-  copyPixBtn.addEventListener('click', () => {
-    const rawKey = data.store.pixKeyRaw || '+55 62 9174-9928';
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(rawKey).then(() => {
-        showToast('✓ Chave Pix copiada com sucesso!');
-      }).catch(() => {
+  if (copyPixBtn) {
+    copyPixBtn.addEventListener('click', () => {
+      const rawKey = data.store.pixKeyRaw || '+55 62 9174-9928';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(rawKey).then(() => {
+          showToast('✓ Chave Pix copiada com sucesso!');
+        }).catch(() => {
+          fallbackCopy(rawKey);
+        });
+      } else {
         fallbackCopy(rawKey);
-      });
-    } else {
-      fallbackCopy(rawKey);
-    }
-  });
+      }
+    });
+  }
 
   function fallbackCopy(text) {
     const ta = document.createElement('textarea');
@@ -642,124 +671,133 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- WHATSAPP ORDER SUBMISSION ---
-  sendWhatsAppOrderBtn.addEventListener('click', () => {
-    if (cart.length === 0) {
-      alert('Sua sacola está vazia. Adicione itens antes de finalizar o pedido!');
-      return;
-    }
-
-    const customerName = orderCustomerName.value.trim();
-    const customerPhone = orderCustomerPhone.value.trim();
-
-    if (!customerName) {
-      alert('Por favor, informe seu nome completo para identificarmos o pedido.');
-      orderCustomerName.focus();
-      return;
-    }
-
-    if (!customerPhone) {
-      alert('Por favor, informe seu número de WhatsApp/Telefone para contato.');
-      orderCustomerPhone.focus();
-      return;
-    }
-
-    let street = '';
-    let complement = '';
-    let neighborhoodName = '';
-    let fee = 0;
-
-    if (deliveryType === 'delivery') {
-      street = orderStreet.value.trim();
-      complement = orderComplement.value.trim();
-      neighborhoodName = selectedNeighborhood ? selectedNeighborhood.name : 'Alto Paraíso';
-      fee = selectedNeighborhood ? selectedNeighborhood.fee : 12.00;
-
-      if (!street) {
-        alert('Por favor, preencha o endereço completo (Rua, Quadra e Número) para entrega.');
-        orderStreet.focus();
+  if (sendWhatsAppOrderBtn) {
+    sendWhatsAppOrderBtn.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Sua sacola está vazia. Adicione itens antes de finalizar o pedido!');
         return;
       }
-    }
 
-    let selectedPayment = 'Pix';
-    paymentMethodRadios.forEach(r => {
-      if (r.checked) selectedPayment = r.value;
-    });
+      const customerName = orderCustomerName ? orderCustomerName.value.trim() : '';
+      const customerPhone = orderCustomerPhone ? orderCustomerPhone.value.trim() : '';
 
-    let cashNote = '';
-    if (selectedPayment === 'Dinheiro') {
-      cashNote = cashChangeValue.value.trim() ? ` (Troco para: ${cashChangeValue.value.trim()})` : ' (Sem necessidade de troco)';
-    }
-
-    const hashis = orderHashis.value;
-    const wasabiGari = orderWasabiGari.value;
-    const generalNotes = orderGeneralNotes.value.trim();
-
-    const subtotal = calculateSubtotal();
-    const grandTotal = subtotal + fee;
-
-    // Build formatted WhatsApp Message
-    let msg = `🍣 *NOVO PEDIDO — OMAKI SUSHI*\n`;
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    msg += `👤 *Cliente:* ${customerName}\n`;
-    msg += `📱 *WhatsApp:* ${customerPhone}\n`;
-    msg += `🛵 *Modalidade:* ${deliveryType === 'delivery' ? 'Entrega (Delivery)' : 'Retirada no Balcão'}\n`;
-
-    if (deliveryType === 'delivery') {
-      msg += `📍 *Endereço:* ${street}\n`;
-      msg += `🏘️ *Bairro:* ${neighborhoodName}\n`;
-      if (complement) msg += `🏢 *Ponto de Ref:* ${complement}\n`;
-    }
-
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    msg += `🛒 *ITENS DO PEDIDO:*\n\n`;
-
-    cart.forEach(entry => {
-      const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}]` : '[NOVO]';
-      let itemPriceUnit = entry.item.price;
-      (entry.complements || []).forEach(c => itemPriceUnit += c.price);
-      const totalLine = itemPriceUnit * entry.qty;
-
-      msg += `• *${entry.qty}x ${itemTag} ${entry.item.name}* — ${formatMoney(totalLine)}\n`;
-
-      if (entry.complements && entry.complements.length > 0) {
-        entry.complements.forEach(c => {
-          msg += `   └ ➕ _${c.name}_ (+${formatMoney(c.price)})\n`;
-        });
+      if (!customerName) {
+        alert('Por favor, informe seu nome completo para identificarmos o pedido.');
+        if (orderCustomerName) orderCustomerName.focus();
+        return;
       }
 
-      if (entry.notes) {
-        msg += `   └ 📝 _Obs: ${entry.notes}_\n`;
+      if (!customerPhone) {
+        alert('Por favor, informe seu número de WhatsApp/Telefone para contato.');
+        if (orderCustomerPhone) orderCustomerPhone.focus();
+        return;
       }
-      msg += `\n`;
+
+      let street = '';
+      let complement = '';
+      let neighborhoodName = '';
+      let fee = 0;
+
+      if (deliveryType === 'delivery') {
+        street = orderStreet ? orderStreet.value.trim() : '';
+        complement = orderComplement ? orderComplement.value.trim() : '';
+        neighborhoodName = selectedNeighborhood ? selectedNeighborhood.name : 'Alto Paraíso';
+        fee = selectedNeighborhood ? selectedNeighborhood.fee : 12.00;
+
+        if (!street) {
+          alert('Por favor, preencha o endereço completo (Rua, Quadra e Número) para entrega.');
+          if (orderStreet) orderStreet.focus();
+          return;
+        }
+      }
+
+      let selectedPayment = 'Pix';
+      paymentMethodRadios.forEach(r => {
+        if (r.checked) selectedPayment = r.value;
+      });
+
+      let cashNote = '';
+      if (selectedPayment === 'Dinheiro') {
+        const val = cashChangeValue ? cashChangeValue.value.trim() : '';
+        cashNote = val ? ` (Troco para: ${val})` : ' (Sem necessidade de troco)';
+      }
+
+      const hashis = orderHashis ? orderHashis.value : '1 par de hashi';
+      const wasabiGari = orderWasabiGari ? orderWasabiGari.value : 'Enviar Wasabi e Gengibre';
+      const generalNotes = orderGeneralNotes ? orderGeneralNotes.value.trim() : '';
+
+      const subtotal = calculateSubtotal();
+      const grandTotal = subtotal + fee;
+
+      // Build formatted WhatsApp Message
+      let msg = `🍣 *NOVO PEDIDO — OMAKI SUSHI*\n`;
+      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `👤 *Cliente:* ${customerName}\n`;
+      msg += `📱 *WhatsApp:* ${customerPhone}\n`;
+      msg += `🛵 *Modalidade:* ${deliveryType === 'delivery' ? 'Entrega (Delivery)' : 'Retirada no Balcão'}\n`;
+
+      if (deliveryType === 'delivery') {
+        msg += `📍 *Endereço:* ${street}\n`;
+        msg += `🏘️ *Bairro:* ${neighborhoodName}\n`;
+        if (complement) msg += `🏢 *Ponto de Ref:* ${complement}\n`;
+      }
+
+      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `🛒 *ITENS DO PEDIDO:*\n\n`;
+
+      cart.forEach(entry => {
+        const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}]` : '[NOVO]';
+        let itemPriceUnit = entry.item.price;
+        (entry.complements || []).forEach(c => itemPriceUnit += c.price);
+        const totalLine = itemPriceUnit * entry.qty;
+
+        msg += `• *${entry.qty}x ${itemTag} ${entry.item.name}* — ${formatMoney(totalLine)}\n`;
+
+        if (entry.complements && entry.complements.length > 0) {
+          entry.complements.forEach(c => {
+            msg += `   └ ➕ _${c.name}_ (+${formatMoney(c.price)})\n`;
+          });
+        }
+
+        if (entry.notes) {
+          msg += `   └ 📝 _Obs: ${entry.notes}_\n`;
+        }
+        msg += `\n`;
+      });
+
+      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `🥢 *Hashis:* ${hashis}\n`;
+      msg += `🌿 *Wasabi/Gengibre:* ${wasabiGari}\n`;
+      msg += `💳 *Pagamento:* ${selectedPayment}${cashNote}\n`;
+      if (selectedPayment === 'Pix') {
+        msg += `   └ ℹ️ _Chave Pix: ${data.store.pixKey}_\n`;
+      }
+
+      if (generalNotes) {
+        msg += `📝 *Obs Geral:* ${generalNotes}\n`;
+      }
+
+      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `📦 *Subtotal dos Itens:* ${formatMoney(subtotal)}\n`;
+      if (deliveryType === 'delivery') {
+        msg += `🛵 *Taxa de Entrega:* ${formatMoney(fee)}\n`;
+      } else {
+        msg += `🛍️ *Taxa de Entrega:* Grátis (Retirada)\n`;
+      }
+      msg += `💰 *TOTAL DO PEDIDO:* ${formatMoney(grandTotal)}\n`;
+      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `_Pedido gerado via Cardápio Digital Omaki Sushi_`;
+
+      const storeWhatsApp = data.store.whatsapp || '556291749928';
+      const waUrl = `https://wa.me/${storeWhatsApp}?text=${encodeURIComponent(msg)}`;
+
+      window.open(waUrl, '_blank');
     });
+  }
 
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    msg += `🥢 *Hashis:* ${hashis}\n`;
-    msg += `🌿 *Wasabi/Gengibre:* ${wasabiGari}\n`;
-    msg += `💳 *Pagamento:* ${selectedPayment}${cashNote}\n`;
-    if (selectedPayment === 'Pix') {
-      msg += `   └ ℹ️ _Chave Pix: ${data.store.pixKey}_\n`;
-    }
-
-    if (generalNotes) {
-      msg += `📝 *Obs Geral:* ${generalNotes}\n`;
-    }
-
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    msg += `📦 *Subtotal dos Itens:* ${formatMoney(subtotal)}\n`;
-    if (deliveryType === 'delivery') {
-      msg += `🛵 *Taxa de Entrega:* ${formatMoney(fee)}\n`;
-    } else {
-      msg += `🛍️ *Taxa de Entrega:* Grátis (Retirada)\n`;
-    }
-    msg += `💰 *TOTAL DO PEDIDO:* ${formatMoney(grandTotal)}\n`;
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    msg += `_Pedido gerado via Cardápio Digital Omaki Sushi_`;
-
-    const storeWhatsApp = data.store.whatsapp || '556291749928';
-    const waUrl = `https://wa.me/${storeWhatsApp}?text=${encodeURIComponent(msg)}`;
-
-    window.open(waUrl, '_blank');
-  });
+  // --- BOOTSTRAP INITIALIZATION (CALLED AFTER ALL FUNCTIONS DECLARED) ---
+  initNeighborhoods();
+  initCategories();
+  renderMenu();
+  updateCartUI();
 });

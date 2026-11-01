@@ -216,44 +216,61 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .search-icon {
   position: absolute;
-  left: 14px;
-  font-size: 0.9rem;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.05rem;
   color: var(--text-muted);
   pointer-events: none;
+  z-index: 2;
 }
 
-.search-input-wrapper input {
+.search-input-wrapper input,
+.search-input-wrapper input[type="text"] {
   width: 100%;
-  background: var(--bg-input);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  padding: 10px 40px 10px 40px;
-  color: var(--text-primary);
-  font-size: 0.88rem;
+  height: 46px;
+  background: var(--bg-input) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 10px 42px 10px 48px !important;
+  color: var(--text-primary) !important;
+  font-size: 0.9rem !important;
   font-family: inherit;
   outline: none;
   transition: var(--transition);
+  box-shadow: none;
 }
 
-.search-input-wrapper input:focus {
-  border-color: var(--accent-gold);
-  background: var(--bg-card);
-  box-shadow: 0 0 12px rgba(229, 192, 123, 0.15);
+.search-input-wrapper input:focus,
+.search-input-wrapper input[type="text"]:focus {
+  border-color: var(--accent-gold) !important;
+  background: var(--bg-card) !important;
+  box-shadow: 0 0 14px rgba(229, 192, 123, 0.2) !important;
 }
 
 .search-clear-btn {
   position: absolute;
-  right: 12px;
-  background: transparent;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
   cursor: pointer;
   padding: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 /* Categories Navigation */
@@ -821,10 +838,14 @@ body {
   color: var(--accent-gold);
 }
 
-textarea,
-input[type="text"],
-input[type="tel"],
-select {
+.modal-card textarea,
+.modal-card input[type="text"],
+.modal-card input[type="tel"],
+.modal-card select,
+.checkout-form textarea,
+.checkout-form input[type="text"],
+.checkout-form input[type="tel"],
+.checkout-form select {
   width: 100%;
   background: var(--bg-input);
   border: 1px solid var(--border-subtle);
