@@ -1,7 +1,7 @@
 {
-  "deliveryActive": false,
-  "manualDeliveryOverride": false,
-  "deliveryClosedReason": "Encerrado pela gerência via painel rápido",
+  "deliveryActive": true,
+  "manualDeliveryOverride": true,
+  "deliveryClosedReason": "",
   "soldOutIds": [],
-  "lastUpdated": "2026-11-01T22:42:35.502Z"
+  "lastUpdated": "2026-11-01T22:42:50.434Z"
 }
