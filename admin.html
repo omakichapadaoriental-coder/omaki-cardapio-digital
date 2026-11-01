@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omaki Sushi — Painel de Controle Operacional</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #070a11;
+      --bg-card: #0f172a;
+      --bg-card-hover: #1e293b;
+      --accent-gold: #d4af37;
+      --accent-gold-hover: #b89628;
+      --status-green: #22c55e;
+      --status-red: #ef4444;
+      --status-amber: #f59e0b;
+      --text-primary: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(212, 175, 55, 0.35);
+      --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* Auth Overlay */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 10, 17, 0.96);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .auth-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    .auth-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .pin-input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 1.4rem;
+      color: #fff;
+      text-align: center;
+      letter-spacing: 0.3em;
+      margin-bottom: 16px;
+    }
+
+    .pin-input:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-auth {
+      width: 100%;
+      background: linear-gradient(135deg, #d4af37, #b89628);
+      border: none;
+      color: #070a11;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-auth:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .auth-error {
+      color: var(--status-red);
+      font-size: 0.82rem;
+      margin-top: 12px;
+      font-weight: 600;
+      display: none;
+    }
+
+    /* Top Bar */
+    .admin-header {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .admin-header-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--accent-gold);
+    }
+
+    .btn-link-menu {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s;
+    }
+
+    .btn-link-menu:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    /* Container */
+    .admin-container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+
+    /* Delivery Control Card */
+    .control-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-open {
+      background: rgba(34, 197, 94, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #4ade80;
+    }
+
+    .badge-closed {
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+
+    .delivery-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .btn-delivery-action {
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-stop-delivery {
+      background: #dc2626;
+      color: #fff;
+    }
+    .btn-stop-delivery:hover {
+      background: #b91c1c;
+      transform: translateY(-1px);
+    }
+
+    .btn-start-delivery {
+      background: #16a34a;
+      color: #fff;
+    }
+    .btn-start-delivery:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+    }
+
+    .btn-auto-delivery {
+      grid-column: span 2;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      padding: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn-auto-delivery:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .info-alert {
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      color: #cbd5e1;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.80rem;
+      line-height: 1.45;
+      margin-top: 14px;
+    }
+
+    /* Items Section */
+    .search-box {
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 16px 12px 42px;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      opacity: 0.6;
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      scrollbar-width: thin;
+    }
+
+    .cat-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.80rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cat-pill.active {
+      background: var(--accent-gold);
+      color: #070a11;
+      border-color: var(--accent-gold);
+    }
+
+    /* Items List */
+    .items-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .item-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+
+    .item-row.is-sold-out {
+      border-color: rgba(239, 68, 68, 0.35);
+      background: rgba(239, 68, 68, 0.04);
+    }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .item-thumb {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #000;
+      flex-shrink: 0;
+    }
+
+    .item-texts {
+      min-width: 0;
+    }
+
+    .item-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .item-price {
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .tag-status {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .tag-available {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+    }
+
+    .tag-sold-out {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+    }
+
+    .btn-toggle-sold-out {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-mark-sold-out {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+    }
+    .btn-mark-sold-out:hover {
+      background: #dc2626;
+      color: #fff;
+    }
+
+    .btn-restore {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #4ade80;
+    }
+    .btn-restore:hover {
+      background: #16a34a;
+      color: #fff;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      border: 1px solid var(--accent-gold);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 0.90rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+      pointer-events: none;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      .delivery-buttons-grid {
+        grid-template-columns: 1fr;
+      }
+      .btn-auto-delivery {
+        grid-column: span 1;
+      }
+      .item-row {
+        padding: 10px 12px;
+      }
+      .item-name {
+        max-width: 140px;
+      }
+      .btn-toggle-sold-out {
+        padding: 6px 10px;
+        font-size: 0.76rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Auth Overlay (PIN) -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-card">
+      <h2 class="auth-title">OMAKI SUSHI</h2>
+      <p class="auth-subtitle">Painel do Atendente & Administração</p>
+      <input type="password" id="pinInput" class="pin-input" placeholder="••••" maxlength="6" inputmode="numeric" autofocus>
+      <button type="button" id="btnAuth" class="btn-auth">Acessar Painel</button>
+      <div class="auth-error" id="authError">PIN incorreto. Tente novamente.</div>
+    </div>
+  </div>
+
+  <!-- Admin Top Bar -->
+  <header class="admin-header">
+    <div class="admin-header-content">
+      <div class="brand-title">OMAKI ADMIN</div>
+      <a href="index.html" class="btn-link-menu">‹ Ver Cardápio</a>
+    </div>
+  </header>
+
+  <main class="admin-container">
+
+    <!-- Delivery Control Section -->
+    <section class="control-card">
+      <div class="card-title-row">
+        <h2 class="card-title">🛵 Entregas (Delivery)</h2>
+        <span class="status-badge badge-open" id="deliveryStatusBadge">● Carregando...</span>
+      </div>
+
+      <div class="delivery-buttons-grid">
+        <button type="button" class="btn-delivery-action btn-stop-delivery" id="btnStopDelivery">
+          ⛔ Encerrar Entregas Agora
+        </button>
+        <button type="button" class="btn-delivery-action btn-start-delivery" id="btnStartDelivery">
+          🟢 Reativar Entregas
+        </button>
+        <button type="button" class="btn-auto-delivery" id="btnAutoDelivery">
+          ⏱️ Restaurar Horário Automático (18:20 às 22:30)
+        </button>
+      </div>
+
+      <div class="info-alert">
+        💡 <strong>Regra Automática:</strong> As entregas encerram diariamente às <strong>22:30</strong> por padrão. Utilize os botões acima para interrupções imprevistas (ex: chuva forte ou falta de motoboys). Quando encerrado, os clientes conseguem pedir apenas para <strong>Retirada no Balcão</strong>.
+      </div>
+    </section>
+
+    <!-- Sold Out Items Section -->
+    <section class="control-card">
+      <div class="card-title-row">
+        <h2 class="card-title">🍱 Controle de Itens Esgotados</h2>
+        <span style="font-size:0.82rem; color:var(--text-muted);" id="soldOutCount">0 itens esgotados</span>
+      </div>
+
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome ou número (ex: Sashimi, Poke, 177)...">
+      </div>
+
+      <div class="category-pills" id="categoryPills">
+        <button type="button" class="cat-pill active" data-cat="all">Todos</button>
+      </div>
+
+      <div class="items-grid" id="itemsList">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
+
+  <!-- Scripts -->
+  <script src="data/cardapio.js"></script>
+  <script>
+    let adminPin = localStorage.getItem('omaki_admin_pin') || '';
+    let adminState = {
+      deliveryActive: true,
+      manualDeliveryOverride: null,
+      deliveryClosedReason: '',
+      soldOutIds: []
+    };
+    let allItems = [];
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    const authOverlay = document.getElementById('authOverlay');
+    const pinInput = document.getElementById('pinInput');
+    const btnAuth = document.getElementById('btnAuth');
+    const authError = document.getElementById('authError');
+    const deliveryStatusBadge = document.getElementById('deliveryStatusBadge');
+    const btnStopDelivery = document.getElementById('btnStopDelivery');
+    const btnStartDelivery = document.getElementById('btnStartDelivery');
+    const btnAutoDelivery = document.getElementById('btnAutoDelivery');
+    const soldOutCount = document.getElementById('soldOutCount');
+    const searchInput = document.getElementById('searchInput');
+    const categoryPills = document.getElementById('categoryPills');
+    const itemsList = document.getElementById('itemsList');
+    const toastMessage = document.getElementById('toastMessage');
+
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toastMessage.classList.add('show');
+      setTimeout(() => toastMessage.classList.remove('show'), 2800);
+    }
+
+    async function checkAuth(pin) {
+      try {
+        const res = await fetch('/api/status');
+        if (res.ok) {
+          const data = await res.json();
+          adminState = data;
+        }
+      } catch (e) {
+        console.warn('API status fetch fallback to local', e);
+      }
+
+      if (pin === '1234' || pin === 'omaki2026') {
+        adminPin = pin;
+        localStorage.setItem('omaki_admin_pin', pin);
+        authOverlay.style.display = 'none';
+        initAdmin();
+      } else {
+        authError.style.display = 'block';
+        pinInput.value = '';
+        pinInput.focus();
+      }
+    }
+
+    btnAuth.addEventListener('click', () => {
+      checkAuth(pinInput.value.trim());
+    });
+
+    pinInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkAuth(pinInput.value.trim());
+    });
+
+    // Auto unlock if stored
+    if (adminPin === '1234' || adminPin === 'omaki2026') {
+      authOverlay.style.display = 'none';
+      initAdmin();
+    }
+
+    function initAdmin() {
+      flattenItems();
+      renderCategoryPills();
+      loadState();
+      bindEvents();
+    }
+
+    function flattenItems() {
+      allItems = [];
+      const cData = window.cardapioData || {};
+      (cData.categories || []).forEach(cat => {
+        (cat.items || []).forEach(item => {
+          allItems.push({
+            id: item.id,
+            name: item.name,
+            number: item.item_number || '',
+            price: item.price || item.min_price || 0,
+            image: item.image || '',
+            category: cat.id,
+            categoryName: cat.name
+          });
+        });
+      });
+    }
+
+    function renderCategoryPills() {
+      const cData = window.cardapioData || {};
+      categoryPills.innerHTML = '<button type="button" class="cat-pill active" data-cat="all">Todos</button>';
+      (cData.categories || []).forEach(cat => {
+        const pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'cat-pill';
+        pill.dataset.cat = cat.id;
+        pill.textContent = cat.name;
+        pill.addEventListener('click', () => {
+          document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentCategory = cat.id;
+          renderItems();
+        });
+        categoryPills.appendChild(pill);
+      });
+
+      categoryPills.querySelector('[data-cat="all"]').addEventListener('click', (e) => {
+        document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+        e.target.classList.add('active');
+        currentCategory = 'all';
+        renderItems();
+      });
+    }
+
+    async function loadState() {
+      try {
+        const res = await fetch('/api/status?t=' + Date.now());
+        if (res.ok) {
+          adminState = await res.json();
+          localStorage.setItem('omaki_admin_state', JSON.stringify(adminState));
+        } else {
+          fallbackLocalState();
+        }
+      } catch (err) {
+        fallbackLocalState();
+      }
+      updateUI();
+    }
+
+    function fallbackLocalState() {
+      const saved = localStorage.getItem('omaki_admin_state');
+      if (saved) {
+        try { adminState = JSON.parse(saved); } catch(e) {}
+      }
+    }
+
+    function updateUI() {
+      // 1. Delivery UI
+      const isManualOff = adminState.manualDeliveryOverride === false;
+      const isManualOn = adminState.manualDeliveryOverride === true;
+      
+      // Check current local time
+      const now = new Date();
+      const hours = now.getHours();
+      const mins = now.getMinutes();
+      const curMins = hours * 60 + mins;
+      const startMins = 18 * 60 + 20; // 18:20
+      const endMins = 22 * 60 + 30;   // 22:30
+      const inAutoWindow = curMins >= startMins && curMins < endMins;
+
+      let effectiveOpen = adminState.manualDeliveryOverride !== null ? adminState.manualDeliveryOverride : inAutoWindow;
+
+      if (effectiveOpen) {
+        deliveryStatusBadge.className = 'status-badge badge-open';
+        deliveryStatusBadge.textContent = '🟢 Entregas ABERTAS';
+      } else {
+        deliveryStatusBadge.className = 'status-badge badge-closed';
+        deliveryStatusBadge.textContent = '🔴 Entregas ENCERRADAS';
+      }
+
+      // 2. Sold out count
+      const count = (adminState.soldOutIds || []).length;
+      soldOutCount.textContent = count === 1 ? '1 item esgotado' : `${count} itens esgotados`;
+
+      renderItems();
+    }
+
+    function renderItems() {
+      itemsList.innerHTML = '';
+      const soldOutIds = adminState.soldOutIds || [];
+
+      const filtered = allItems.filter(item => {
+        const matchCat = currentCategory === 'all' || item.category === currentCategory;
+        const q = searchQuery.toLowerCase().trim();
+        const matchSearch = !q || item.name.toLowerCase().includes(q) || item.number.toString().includes(q);
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        itemsList.innerHTML = '<div style="padding:24px; text-align:center; color:#94a3b8;">Nenhum item encontrado.</div>';
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isSoldOut = soldOutIds.includes(item.id);
+        const row = document.createElement('div');
+        row.className = `item-row ${isSoldOut ? 'is-sold-out' : ''}`;
+
+        const priceFmt = typeof item.price === 'number' ? `R$ ${item.price.toFixed(2).replace('.', ',')}` : '';
+
+        row.innerHTML = `
+          <div class="item-info">
+            <img src="${item.image || 'assets/logo-white.png'}" class="item-thumb" alt="${item.name}" onerror="this.src='assets/logo-white.png'">
+            <div class="item-texts">
+              <div class="item-name">${item.number ? '#' + item.number + ' ' : ''}${item.name}</div>
+              <div class="item-meta">
+                <span class="item-price">${priceFmt}</span> • <span>${item.categoryName}</span>
+              </div>
+            </div>
+          </div>
+          <div class="item-actions">
+            <span class="tag-status ${isSoldOut ? 'tag-sold-out' : 'tag-available'}">
+              ${isSoldOut ? 'Esgotado' : 'Disponível'}
+            </span>
+            <button type="button" class="btn-toggle-sold-out ${isSoldOut ? 'btn-restore' : 'btn-mark-sold-out'}" data-id="${item.id}">
+              ${isSoldOut ? '✓ Reativar' : '✕ Esgotar'}
+            </button>
+          </div>
+        `;
+
+        row.querySelector('.btn-toggle-sold-out').addEventListener('click', () => {
+          toggleSoldOut(item.id);
+        });
+
+        itemsList.appendChild(row);
+      });
+    }
+
+    async function toggleSoldOut(itemId) {
+      if (!adminState.soldOutIds) adminState.soldOutIds = [];
+      const idx = adminState.soldOutIds.indexOf(itemId);
+      if (idx > -1) {
+        adminState.soldOutIds.splice(idx, 1);
+        showToast('Item disponibilizado no cardápio!');
+      } else {
+        adminState.soldOutIds.push(itemId);
+        showToast('Item marcado como ESGOTADO!');
+      }
+      updateUI();
+      saveState();
+    }
+
+    async function setDeliveryState(manualOverride, reason = '') {
+      adminState.manualDeliveryOverride = manualOverride;
+      adminState.deliveryActive = manualOverride !== null ? manualOverride : true;
+      adminState.deliveryClosedReason = reason;
+
+      if (manualOverride === false) {
+        showToast('Entregas pausadas! Clientes verão apenas retirada.');
+      } else if (manualOverride === true) {
+        showToast('Entregas ativadas com sucesso!');
+      } else {
+        showToast('Horário automático (18:20 às 22:30) restaurado!');
+      }
+
+      updateUI();
+      saveState();
+    }
+
+    async function saveState() {
+      localStorage.setItem('omaki_admin_state', JSON.stringify(adminState));
+      try {
+        const res = await fetch('/api/status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            pin: adminPin,
+            deliveryActive: adminState.deliveryActive,
+            manualDeliveryOverride: adminState.manualDeliveryOverride,
+            deliveryClosedReason: adminState.deliveryClosedReason,
+            soldOutIds: adminState.soldOutIds
+          })
+        });
+        if (!res.ok) {
+          console.warn('API save returned non-200');
+        }
+      } catch (err) {
+        console.warn('Network error saving to API, stored in localStorage', err);
+      }
+    }
+
+    function bindEvents() {
+      btnStopDelivery.addEventListener('click', () => {
+        setDeliveryState(false, 'Equipe pausou temporariamente as entregas');
+      });
+
+      btnStartDelivery.addEventListener('click', () => {
+        setDeliveryState(true, '');
+      });
+
+      btnAutoDelivery.addEventListener('click', () => {
+        setDeliveryState(null, '');
+      });
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderItems();
+      });
+    }
+  </script>
+</body>
+</html>

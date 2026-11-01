@@ -86,7 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let deliveryType = 'delivery'; // 'delivery' | 'takeaway'
 
-  let selectedNeighborhood = data.neighborhoods && data.neighborhoods.length > 0 ? data.neighborhoods[0] : { name: 'Centro', fee: 12.00 };
+  let selectedNeighborhood = { name: 'Alto Paraíso', fee: 0 };
+  let adminState = {
+    deliveryActive: true,
+    manualDeliveryOverride: null,
+    deliveryClosedReason: '',
+    soldOutIds: []
+  };
 
 
 
@@ -127,6 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const itemModal = document.getElementById('itemModal');
 
   const closeItemModalBtn = document.getElementById('closeItemModalBtn');
+  const backItemModalBtn = document.getElementById('backItemModalBtn');
+  const backCartDrawerBtn = document.getElementById('backCartDrawerBtn');
 
   const modalItemImg = document.getElementById('modalItemImg');
 
@@ -898,6 +906,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    const isSoldOut = (adminState.soldOutIds || []).includes(dish.id);
+    if (isSoldOut) {
+      card.classList.add('is-sold-out');
+    }
+
+    const soldOutBadge = isSoldOut ? `<span class="sold-out-badge">Esgotado Hoje</span>` : '';
+
     const badges = document.createElement('div');
 
     badges.className = 'product-card-badges';
@@ -907,6 +922,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ${tagBadge}
 
       ${portionBadge}
+
+      ${soldOutBadge}
 
     `;
 
@@ -932,9 +949,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <span class="product-price">${displayPrice}</span>
 
-        <button type="button" class="product-add-btn">
+        <button type="button" class="product-add-btn ${isSoldOut ? 'btn-sold-out' : ''}" ${isSoldOut ? 'disabled' : ''}>
 
-          <span>${dish.isGrouped ? 'Ver Opções' : '+ Adicionar'}</span>
+          <span>${isSoldOut ? 'Esgotado' : (dish.isGrouped ? 'Ver Opções' : '+ Adicionar')}</span>
 
         </button>
 
@@ -1911,13 +1928,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalAddTotalPrice) modalAddTotalPrice.textContent = formatMoney(finalTotal);
   }
 
-  function closeItemModal() {
+  function closeItemModal(fromPopState = false) {
     if (!itemModal) return;
     itemModal.style.display = 'none';
     document.body.style.overflow = '';
+    if (!fromPopState && history.state && history.state.omakiView === 'item-modal') {
+      try { history.back(); } catch (e) {}
+    }
   }
 
-  if (closeItemModalBtn) closeItemModalBtn.addEventListener('click', closeItemModal);
+  if (closeItemModalBtn) closeItemModalBtn.addEventListener('click', () => closeItemModal());
+  if (backItemModalBtn) backItemModalBtn.addEventListener('click', () => closeItemModal());
   if (itemModal) {
     itemModal.addEventListener('click', (e) => {
       if (e.target === itemModal) closeItemModal();
@@ -2300,19 +2321,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
-
-    const grandTotal = subtotal + fee;
-
-
+    const isDelivery = deliveryType === 'delivery';
 
     if (summarySubtotal) summarySubtotal.textContent = formatMoney(subtotal);
 
-    if (summaryDeliveryFee) summaryDeliveryFee.textContent = formatMoney(fee);
+    if (summaryDeliveryFee) {
+      if (isDelivery) {
+        summaryDeliveryFee.innerHTML = '<span class="delivery-fee-badge">A combinar (~R$ 12 a R$ 15)</span>';
+      } else {
+        summaryDeliveryFee.innerHTML = '<span style="color:#4ade80; font-weight:600;">Grátis (Retirada)</span>';
+      }
+    }
 
-    if (summaryGrandTotal) summaryGrandTotal.textContent = formatMoney(grandTotal);
+    if (summaryGrandTotal) {
+      if (isDelivery) {
+        summaryGrandTotal.innerHTML = `${formatMoney(subtotal)} <small style="font-size:0.72rem; color:#94a3b8; font-weight:normal;">+ taxa</small>`;
+      } else {
+        summaryGrandTotal.textContent = formatMoney(subtotal);
+      }
+    }
 
-    if (footerBtnTotal) footerBtnTotal.textContent = formatMoney(grandTotal);
+    if (footerBtnTotal) {
+      if (isDelivery) {
+        footerBtnTotal.innerHTML = `${formatMoney(subtotal)} <small style="font-size:0.75rem; font-weight:normal; opacity:0.8;">+ taxa</small>`;
+      } else {
+        footerBtnTotal.textContent = formatMoney(subtotal);
+      }
+    }
 
     if (floatingCartSubtotal) floatingCartSubtotal.textContent = formatMoney(subtotal);
 
@@ -2350,22 +2385,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- CHECKOUT DRAWER & CART MANAGEMENT ---
   function openCartDrawer() {
     if (!cartDrawer) return;
+    checkDeliveryAvailability();
     renderCartItems();
     updateTotals();
     cartDrawer.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    try {
+      history.pushState({ omakiView: 'cart-drawer' }, '');
+    } catch (e) {}
   }
 
-  function closeCartDrawer() {
+  function closeCartDrawer(fromPopState = false) {
     if (!cartDrawer) return;
     cartDrawer.style.display = 'none';
     document.body.style.overflow = '';
+    if (!fromPopState && history.state && history.state.omakiView === 'cart-drawer') {
+      try { history.back(); } catch (e) {}
+    }
   }
 
   if (openCartHeaderBtn) openCartHeaderBtn.addEventListener('click', openCartDrawer);
   if (openCartBarBtn) openCartBarBtn.addEventListener('click', openCartDrawer);
   document.querySelectorAll('.cart-bar-action-btn').forEach(btn => btn.addEventListener('click', openCartDrawer));
-  if (closeCartDrawerBtn) closeCartDrawerBtn.addEventListener('click', closeCartDrawer);
+  if (closeCartDrawerBtn) closeCartDrawerBtn.addEventListener('click', () => closeCartDrawer());
+  if (backCartDrawerBtn) backCartDrawerBtn.addEventListener('click', () => closeCartDrawer());
+
+  // Gestural / Native Back Navigation (PopState)
+  window.addEventListener('popstate', (e) => {
+    if (itemModal && itemModal.style.display === 'flex') {
+      closeItemModal(true);
+    } else if (cartDrawer && (cartDrawer.style.display === 'flex' || cartDrawer.style.display === 'block')) {
+      closeCartDrawer(true);
+    }
+  });
   if (cartDrawer) {
     cartDrawer.addEventListener('click', (e) => {
       if (e.target === cartDrawer) closeCartDrawer();
@@ -2375,6 +2427,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Delivery vs Takeaway Switcher
   if (btnTypeDelivery) {
     btnTypeDelivery.addEventListener('click', () => {
+      if (btnTypeDelivery.classList.contains('btn-delivery-disabled')) {
+        showCustomAlert('Entregas Encerradas', 'As entregas por motoboy estão indisponíveis no momento. Por favor, selecione Retirada no Balcão.');
+        return;
+      }
       deliveryType = 'delivery';
       btnTypeDelivery.classList.add('active');
       btnTypeTakeaway.classList.remove('active');
@@ -2415,11 +2471,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let sub = 0;
     cart.forEach(entry => {
       let unit = entry.item.price;
-      (entry.complements || []).forEach(c => unit += c.price);
+      (entry.complements || []).forEach(c => unit += c.price * (c.qty || 1));
+      (entry.drinks || []).forEach(d => unit += d.price * (d.qty || 1));
       sub += unit * entry.qty;
     });
-    const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
-    return sub + fee;
+    return sub; // Taxa de entrega é combinada com o entregador, o restaurante cobra subtotal dos itens
   }
 
   function updateSplitBalance() {
@@ -2616,15 +2672,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         street = orderStreet ? orderStreet.value.trim() : '';
 
-        neighborhoodName = selectedNeighborhood ? selectedNeighborhood.name : 'Centro';
-
         complement = orderComplement ? orderComplement.value.trim() : '';
 
 
 
         if (!street || street.length < 4) {
 
-          showCustomAlert('Endereço Obrigatório', 'Por favor, informe a rua, quadra e número da sua residência ou pousada para entrega.', orderStreet);
+          showCustomAlert('Endereço Obrigatório', 'Por favor, informe o endereço da sua residência, pousada ou chalé para entrega.', orderStreet);
 
           return;
 
@@ -2727,9 +2781,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
-
-      const grandTotal = subtotal + fee;
+      const grandTotal = subtotal;
 
 
 
@@ -2751,9 +2803,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         msg += `${WA_ICONS.pin} *Endereço:* ${street}\n`;
 
-        msg += `${WA_ICONS.neighborhood} *Bairro:* ${neighborhoodName}\n`;
-
         if (complement) msg += `${WA_ICONS.ref} *Ponto de Ref:* ${complement}\n`;
+
+        msg += `${WA_ICONS.moto} *Taxa de Entrega:* A combinar com o entregador (Média: R$ 12 a R$ 15 confirmada no WhatsApp)\n`;
 
       } else {
 
@@ -2872,15 +2924,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (deliveryType === 'delivery') {
 
-        msg += `${WA_ICONS.moto} *Taxa de Entrega:* ${formatMoney(fee)}\n`;
+        msg += `${WA_ICONS.moto} *Taxa de Entrega:* A combinar (Média: R$ 12 a R$ 15)\n`;
+
+        msg += `${WA_ICONS.money} *TOTAL DOS ITENS:* ${formatMoney(subtotal)} (+ taxa a combinar)\n`;
 
       } else {
 
         msg += `${WA_ICONS.takeaway} *Taxa de Entrega:* Grátis (Retirada no Balcão)\n`;
 
-      }
+        msg += `${WA_ICONS.money} *TOTAL DO PEDIDO:* ${formatMoney(grandTotal)}\n`;
 
-      msg += `${WA_ICONS.money} *TOTAL DO PEDIDO:* ${formatMoney(grandTotal)}\n`;
+      }
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
@@ -2900,15 +2954,125 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // --- BOOTSTRAP INITIALIZATION ---
 
-  initNeighborhoods();
+  // --- GESTÃO OPERACIONAL, HORÁRIOS & CORTE 22:30 ---
+
+  async function loadOperationalStatus() {
+    try {
+      const res = await fetch('/api/status?t=' + Date.now());
+      if (res.ok) {
+        adminState = await res.json();
+        localStorage.setItem('omaki_admin_state', JSON.stringify(adminState));
+      } else {
+        const local = localStorage.getItem('omaki_admin_state');
+        if (local) adminState = JSON.parse(local);
+      }
+    } catch (e) {
+      try {
+        const local = localStorage.getItem('omaki_admin_state');
+        if (local) adminState = JSON.parse(local);
+      } catch (err) {}
+    }
+    checkDeliveryAvailability();
+    renderMenu('', currentActiveCategory);
+  }
+
+  function checkDeliveryAvailability() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const curMins = hours * 60 + minutes;
+    const startMins = 18 * 60 + 20; // 18:20
+    const cutoffMins = 22 * 60 + 30; // 22:30
+
+    let isDeliveryAllowed = true;
+    let reasonText = '';
+
+    if (adminState.manualDeliveryOverride === false) {
+      isDeliveryAllowed = false;
+      reasonText = adminState.deliveryClosedReason || 'Pausado temporariamente pela equipe';
+    } else if (adminState.manualDeliveryOverride === true) {
+      isDeliveryAllowed = true;
+    } else {
+      // Regra padrão de horário (18:20 às 22:30)
+      if (curMins >= cutoffMins) {
+        isDeliveryAllowed = false;
+        reasonText = 'Entregas por motoboy encerradas às 22:30';
+      } else if (curMins < startMins) {
+        isDeliveryAllowed = false;
+        reasonText = 'Entregas iniciam após as 18:20';
+      }
+    }
+
+    // Atualiza o selo do cabeçalho
+    const headerStatusBadge = document.getElementById('headerStatusBadge');
+    const headerStatusText = document.getElementById('headerStatusText');
+
+    if (headerStatusBadge && headerStatusText) {
+      if (isDeliveryAllowed) {
+        headerStatusBadge.className = 'status-badge';
+        headerStatusBadge.style.borderColor = 'rgba(34, 197, 94, 0.3)';
+        headerStatusBadge.style.background = 'rgba(34, 197, 94, 0.12)';
+        headerStatusBadge.style.color = '#4ade80';
+        headerStatusText.innerHTML = '<span class="status-label">Aberto</span><span class="status-suffix"> para Pedidos</span>';
+      } else {
+        headerStatusBadge.className = 'status-badge';
+        headerStatusBadge.style.borderColor = 'rgba(245, 158, 11, 0.35)';
+        headerStatusBadge.style.background = 'rgba(245, 158, 11, 0.12)';
+        headerStatusBadge.style.color = '#fbbf24';
+        headerStatusText.innerHTML = '<span class="status-label">Só Retirada</span><span class="status-suffix"> no Balcão</span>';
+      }
+    }
+
+    // Atualiza botões no drawer
+    let cutoffBanner = document.getElementById('deliveryCutoffBanner');
+    if (!cutoffBanner && btnTypeDelivery && btnTypeDelivery.parentNode) {
+      cutoffBanner = document.createElement('div');
+      cutoffBanner.id = 'deliveryCutoffBanner';
+      cutoffBanner.className = 'delivery-cutoff-banner';
+      btnTypeDelivery.parentNode.parentNode.insertBefore(cutoffBanner, btnTypeDelivery.parentNode);
+    }
+
+    if (!isDeliveryAllowed) {
+      if (cutoffBanner) {
+        cutoffBanner.style.display = 'block';
+        cutoffBanner.innerHTML = `⚠️ <strong>Aviso:</strong> ${reasonText}. Pedidos disponíveis exclusivamente para <strong>Retirada no Balcão</strong>.`;
+      }
+      if (btnTypeDelivery) {
+        btnTypeDelivery.classList.add('btn-delivery-disabled');
+        btnTypeDelivery.style.opacity = '0.5';
+        btnTypeDelivery.style.cursor = 'not-allowed';
+      }
+      if (deliveryType === 'delivery') {
+        deliveryType = 'takeaway';
+        if (btnTypeTakeaway) btnTypeTakeaway.classList.add('active');
+        if (btnTypeDelivery) btnTypeDelivery.classList.remove('active');
+        if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'none';
+        if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'block';
+        updateTotals();
+      }
+    } else {
+      if (cutoffBanner) cutoffBanner.style.display = 'none';
+      if (btnTypeDelivery) {
+        btnTypeDelivery.classList.remove('btn-delivery-disabled');
+        btnTypeDelivery.style.opacity = '1';
+        btnTypeDelivery.style.cursor = 'pointer';
+      }
+    }
+  }
+
+  // --- BOOTSTRAP INITIALIZATION ---
 
   initCategories();
 
   renderMenu('', 'all');
 
   updateCartUI();
+
+  loadOperationalStatus();
+
+  // Periodic check every 60 seconds
+  setInterval(loadOperationalStatus, 60000);
 
 });
 

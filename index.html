@@ -24,7 +24,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20261101_omaki_v16">
+  <link rel="stylesheet" href="style.css?v=20261101_omaki_v17">
 
 </head>
 
@@ -52,7 +52,10 @@
 
           <h1 class="brand-title">OMAKI SUSHI</h1>
 
-          <p class="brand-subtitle">Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro • Alto Paraíso / GO</p>
+          <p class="brand-subtitle">
+            <span class="addr-full">Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro • Alto Paraíso / GO</span>
+            <span class="addr-short">Centro • Alto Paraíso / GO</span>
+          </p>
 
         </div>
 
@@ -60,11 +63,11 @@
 
       <div class="header-actions">
 
-        <div class="status-badge">
+        <div class="status-badge" id="headerStatusBadge">
 
-          <span class="status-dot"></span>
+          <span class="status-dot" id="headerStatusDot"></span>
 
-          <span class="status-text">Aberto para Pedidos</span>
+          <span class="status-text" id="headerStatusText"><span class="status-label">Aberto</span><span class="status-suffix"> para Pedidos</span></span>
 
         </div>
 
@@ -198,7 +201,13 @@
 
     <div class="modal-card">
 
-      <button class="modal-close-btn" id="closeItemModalBtn">✕</button>
+      <div class="modal-top-nav">
+        <button type="button" class="modal-back-btn" id="backItemModalBtn" aria-label="Voltar ao Cardápio">
+          <span class="back-arrow">‹</span>
+          <span>Voltar</span>
+        </button>
+        <button type="button" class="modal-close-btn" id="closeItemModalBtn" aria-label="Fechar">✕</button>
+      </div>
 
       
 
@@ -384,15 +393,20 @@
 
       <div class="drawer-header">
 
+        <button type="button" class="drawer-back-btn" id="backCartDrawerBtn" aria-label="Voltar ao Cardápio">
+          <span class="back-arrow">‹</span>
+          <span>Voltar</span>
+        </button>
+
         <div class="drawer-title-block">
 
-          <h3>Sua Sacola de Pedidos</h3>
+          <h3>Sua Sacola</h3>
 
           <span class="drawer-item-count" id="drawerItemCount">0 itens</span>
 
         </div>
 
-        <button class="drawer-close-btn" id="closeCartDrawerBtn">✕</button>
+        <button class="drawer-close-btn" id="closeCartDrawerBtn" aria-label="Fechar">✕</button>
 
       </div>
 
@@ -444,21 +458,9 @@
 
             <div class="form-group">
 
-              <label for="orderNeighborhood">Bairro em Alto Paraíso *</label>
+              <label for="orderStreet">Endereço de Entrega (Rua, Pousada, Chalé ou Número) *</label>
 
-              <select id="orderNeighborhood">
-
-                <!-- Injected by JS with neighborhoods and fees -->
-
-              </select>
-
-            </div>
-
-            <div class="form-group">
-
-              <label for="orderStreet">Rua / Avenida e Número *</label>
-
-              <input type="text" id="orderStreet" placeholder="Ex: Rua das Flores, Quadra 12, Lote 05">
+              <input type="text" id="orderStreet" placeholder="Ex: Pousada Recanto dos Pássaros / Rua das Flores, 120">
 
             </div>
 
@@ -466,8 +468,20 @@
 
               <label for="orderComplement">Complemento / Ponto de Referência</label>
 
-              <input type="text" id="orderComplement" placeholder="Ex: Casa com portão marrom, em frente à pousada X">
+              <input type="text" id="orderComplement" placeholder="Ex: Portão marrom, em frente ao mercado">
 
+            </div>
+
+            <!-- Card Transparente de Taxa de Entrega -->
+            <div class="delivery-notice-box">
+              <div class="delivery-notice-header">
+                <span class="delivery-notice-icon">🛵</span>
+                <span class="delivery-notice-title">Taxa de Entrega</span>
+                <span class="delivery-notice-pill">A Combinar</span>
+              </div>
+              <p class="delivery-notice-text">
+                O valor é acertado com o entregador parceiro conforme a distância (em média <strong>R$ 12,00 a R$ 15,00</strong> para a maior parte de Alto Paraíso). O atendente confirmará no WhatsApp.
+              </p>
             </div>
 
           </div>
@@ -842,9 +856,9 @@
 
   <!-- Scripts -->
 
-  <script src="data/cardapio.js?v=20261101_omaki_v16" charset="UTF-8"></script>
+  <script src="data/cardapio.js?v=20261101_omaki_v17" charset="UTF-8"></script>
 
-  <script src="app.js?v=20261101_omaki_v16" charset="UTF-8"></script>
+  <script src="app.js?v=20261101_omaki_v17" charset="UTF-8"></script>
 
 </body>
 
