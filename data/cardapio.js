@@ -1,4 +1,4 @@
-window.OMAKI_DATA = {
+const CARDAPIO_DATA = {
   "store": {
     "name": "Omaki Sushi",
     "unit": "Alto Paraíso de Goiás / Chapada dos Veadeiros",
@@ -2887,8 +2887,8 @@ window.OMAKI_DATA = {
       "name": "Gunkans",
       "category": "Gunkans",
       "portion": "6 un",
-      "photo": "assets/images/raw_gunkan.png",
-      "image": "assets/images/raw_gunkan.png",
+      "photo": "assets/images/real_gunkan_authentic.png?v=20261101_omaki_v14",
+      "image": "assets/images/real_gunkan_authentic.png?v=20261101_omaki_v14",
       "description": "Todos levam tártare de salmão, arroz e cream cheese Philadelphia. Escolha o acabamento.",
       "price": 39.9,
       "basePrice": 38.9,
@@ -3800,8 +3800,8 @@ window.OMAKI_DATA = {
       "name": "Joys Tradicionais (Sem Arroz)",
       "category": "Joys Tradicionais",
       "portion": "6 un",
-      "photo": "assets/images/raw_joy_tradicional.png",
-      "image": "assets/images/raw_joy_tradicional.png",
+      "photo": "assets/images/real_joy_tradicional_authentic.png?v=20261101_omaki_v14",
+      "image": "assets/images/real_joy_tradicional_authentic.png?v=20261101_omaki_v14",
       "description": "Fatias nobres de salmão maçaricado ou fresco enrolados com Philadelphia.",
       "price": 36.9,
       "basePrice": 32.9,

@@ -1458,7 +1458,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="option-left">
 
-          <input type="radio" name="modalDishOptionRadio" value="${opt.code || opt.num}" ${isSelected ? 'checked' : ''}>
+          <input type="radio" name="modalDishOptionRadio" value="${opt.code || opt.num}" ${isSelected ? 'checked' : ''} style="display:none;">
+          <span class="option-radio-custom" aria-hidden="true"></span>
 
           <div class="option-details">
 
@@ -2641,13 +2642,108 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Payment method switcher
+  // Payment method switcher (com suporte a pagamento dividido em 2 formas)
+
+  // Split Payment Elements
+  const splitPaymentBox = document.getElementById('splitPaymentBox');
+  const splitOrderTotalDisplay = document.getElementById('splitOrderTotalDisplay');
+  const splitMethod1 = document.getElementById('splitMethod1');
+  const splitValue1 = document.getElementById('splitValue1');
+  const splitMethod2 = document.getElementById('splitMethod2');
+  const splitValue2 = document.getElementById('splitValue2');
+  const splitCashChangeBox = document.getElementById('splitCashChangeBox');
+  const splitCashChangeValue = document.getElementById('splitCashChangeValue');
+  const splitBalanceBar = document.getElementById('splitBalanceBar');
+  const splitBalanceText = document.getElementById('splitBalanceText');
+
+  function getCartGrandTotal() {
+    let sub = 0;
+    cart.forEach(entry => {
+      let unit = entry.item.price;
+      (entry.complements || []).forEach(c => unit += c.price);
+      sub += unit * entry.qty;
+    });
+    const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
+    return sub + fee;
+  }
+
+  function updateSplitBalance() {
+    const total = getCartGrandTotal();
+    if (splitOrderTotalDisplay) splitOrderTotalDisplay.textContent = `Total: ${formatMoney(total)}`;
+    
+    const v1 = parseFloat(splitValue1 ? splitValue1.value : 0) || 0;
+    const v2 = parseFloat(splitValue2 ? splitValue2.value : 0) || 0;
+    const sum = v1 + v2;
+    const diff = Math.abs(sum - total);
+
+    if (splitBalanceBar && splitBalanceText) {
+      if (diff <= 0.05) {
+        splitBalanceBar.className = 'split-balance-bar matched';
+        splitBalanceText.textContent = `✓ Total distribuído: ${formatMoney(sum)} de ${formatMoney(total)} (Perfeito)`;
+      } else if (sum < total) {
+        splitBalanceBar.className = 'split-balance-bar unmatched';
+        splitBalanceText.textContent = `⚠️ Falta distribuir: ${formatMoney(total - sum)} (Distribuído: ${formatMoney(sum)} / ${formatMoney(total)})`;
+      } else {
+        splitBalanceBar.className = 'split-balance-bar unmatched';
+        splitBalanceText.textContent = `⚠️ Valor excede o total em: ${formatMoney(sum - total)} (Distribuído: ${formatMoney(sum)} / ${formatMoney(total)})`;
+      }
+    }
+
+    // Toggle pix box helper and cash change box based on selected split methods
+    const m1 = splitMethod1 ? splitMethod1.value : '';
+    const m2 = splitMethod2 ? splitMethod2.value : '';
+    const hasPix = m1 === 'Pix' || m2 === 'Pix';
+    const hasCash = m1 === 'Dinheiro' || m2 === 'Dinheiro';
+
+    if (pixInfoBox) pixInfoBox.style.display = hasPix ? 'block' : 'none';
+    if (splitCashChangeBox) splitCashChangeBox.style.display = hasCash ? 'block' : 'none';
+  }
+
+  if (splitValue1) {
+    splitValue1.addEventListener('input', () => {
+      const total = getCartGrandTotal();
+      const v1 = parseFloat(splitValue1.value) || 0;
+      if (splitValue2 && v1 <= total) {
+        splitValue2.value = (Math.max(0, total - v1)).toFixed(2);
+      }
+      updateSplitBalance();
+    });
+  }
+
+  if (splitValue2) {
+    splitValue2.addEventListener('input', () => {
+      const total = getCartGrandTotal();
+      const v2 = parseFloat(splitValue2.value) || 0;
+      if (splitValue1 && v2 <= total) {
+        splitValue1.value = (Math.max(0, total - v2)).toFixed(2);
+      }
+      updateSplitBalance();
+    });
+  }
+
+  if (splitMethod1) splitMethod1.addEventListener('change', updateSplitBalance);
+  if (splitMethod2) splitMethod2.addEventListener('change', updateSplitBalance);
+
   if (paymentMethodRadios) {
     paymentMethodRadios.forEach(radio => {
       radio.addEventListener('change', () => {
         const val = radio.value;
-        if (pixInfoBox) pixInfoBox.style.display = val === 'Pix' ? 'block' : 'none';
-        if (cashChangeBox) cashChangeBox.style.display = val === 'Dinheiro' ? 'block' : 'none';
+        if (val === 'Dividido') {
+          if (splitPaymentBox) splitPaymentBox.style.display = 'block';
+          if (cashChangeBox) cashChangeBox.style.display = 'none';
+          const total = getCartGrandTotal();
+          if (splitValue1 && (!splitValue1.value || parseFloat(splitValue1.value) === 0)) {
+            const half = (total / 2).toFixed(2);
+            splitValue1.value = half;
+            if (splitValue2) splitValue2.value = (total - parseFloat(half)).toFixed(2);
+          }
+          updateSplitBalance();
+        } else {
+          if (splitPaymentBox) splitPaymentBox.style.display = 'none';
+          if (splitCashChangeBox) splitCashChangeBox.style.display = 'none';
+          if (pixInfoBox) pixInfoBox.style.display = val === 'Pix' ? 'block' : 'none';
+          if (cashChangeBox) cashChangeBox.style.display = val === 'Dinheiro' ? 'block' : 'none';
+        }
       });
     });
   }
@@ -2801,7 +2897,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
       }
 
+      let splitVal1 = 0;
+      let splitVal2 = 0;
+      let splitM1 = 'Pix';
+      let splitM2 = 'Cartão de Crédito';
+      let splitCashNote = '';
 
+      if (selectedPayment === 'Dividido') {
+        splitVal1 = parseFloat(splitValue1 ? splitValue1.value : 0) || 0;
+        splitVal2 = parseFloat(splitValue2 ? splitValue2.value : 0) || 0;
+        splitM1 = splitMethod1 ? splitMethod1.value : 'Pix';
+        splitM2 = splitMethod2 ? splitMethod2.value : 'Cartão de Crédito';
+
+        if (splitVal1 <= 0 || splitVal2 <= 0) {
+          showCustomAlert('Valores Obrigatórios', 'Por favor, preencha os valores para as duas formas de pagamento divididas.', splitValue1);
+          return;
+        }
+
+        const sumSplit = splitVal1 + splitVal2;
+        if (Math.abs(sumSplit - grandTotal) > 0.05) {
+          showCustomAlert('Ajuste os Valores', `A soma das duas formas de pagamento (${formatMoney(sumSplit)}) deve ser exatamente igual ao total do pedido (${formatMoney(grandTotal)}).`, splitValue1);
+          return;
+        }
+
+        if (splitM1 === 'Dinheiro' || splitM2 === 'Dinheiro') {
+          const changeVal = splitCashChangeValue ? splitCashChangeValue.value.trim() : '';
+          if (changeVal) {
+            splitCashNote = ` (Troco para: ${changeVal})`;
+          } else {
+            splitCashNote = ' (Não precisa de troco)';
+          }
+        }
+      }
 
       let cashNote = '';
 
@@ -2955,12 +3082,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       msg += `${WA_ICONS.wasabi} *Wasabi & Gengibre:* ${wasabiGari}\n`;
 
-      msg += `${WA_ICONS.card} *Pagamento:* ${selectedPayment}${cashNote}\n`;
+      if (selectedPayment === 'Dividido') {
+        msg += `${WA_ICONS.card} *Pagamento:* Dividido em 2 formas:\n`;
+        msg += `   ├ 1ª: ${splitM1} — ${formatMoney(splitVal1)}\n`;
+        msg += `   └ 2ª: ${splitM2} — ${formatMoney(splitVal2)}${splitCashNote}\n`;
+        if (splitM1 === 'Pix' || splitM2 === 'Pix') {
+          msg += `   └ ${WA_ICONS.pix} _Chave Pix: ${data.store.pixKey || '+55 62 99174-9928'}_\n`;
+        }
+      } else {
+        msg += `${WA_ICONS.card} *Pagamento:* ${selectedPayment}${cashNote}\n`;
 
-      if (selectedPayment === 'Pix') {
+        if (selectedPayment === 'Pix') {
 
-        msg += `   └ ${WA_ICONS.pix} _Chave Pix: ${data.store.pixKey || '+55 62 99174-9928'}_\n`;
+          msg += `   └ ${WA_ICONS.pix} _Chave Pix: ${data.store.pixKey || '+55 62 99174-9928'}_\n`;
 
+        }
       }
 
 
