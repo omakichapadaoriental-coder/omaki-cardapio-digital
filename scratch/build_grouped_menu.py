@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import sys
 
 # Load current data
@@ -14,16 +15,27 @@ data['store']['pixKeyRaw'] = '+55 62 99174-9928'
 
 items = data['items']
 
-# Update photos in items
+def clean_text_number(txt):
+    if not txt:
+        return ''
+    # Remove leading number like '01. ', '07 - ', '140. '
+    return re.sub(r'^\d+[\.\s\-]+\s*', '', txt).strip()
+
+# Update photos and clean names in items
 for it in items:
     num = it.get('num')
-    name = it.get('name', '')
+    raw_name = it.get('name', '')
+    it['name'] = clean_text_number(raw_name)
+    it['fullName'] = it['name']
+    if it.get('description'):
+        it['description'] = clean_text_number(it['description'])
+
     if num == 1:
         it['photo'] = 'assets/images/raw_harumaki.png'
     elif num == 5:
-        it['photo'] = 'assets/images/raw_guioza.jpeg'
+        it['photo'] = 'assets/images/real_guioza.jpg'
     elif num == 6:
-        it['photo'] = 'assets/images/cat_joy_goiaba.jpg'
+        it['photo'] = 'assets/images/real_joy_goiaba.jpg'
     elif num and 7 <= num <= 11:
         it['photo'] = 'assets/images/raw_tataki.jpeg'
     elif num and 12 <= num <= 15:
@@ -65,7 +77,7 @@ for it in items:
     elif num == 59:
         it['photo'] = 'assets/images/raw_combo_5_chef.jpeg'
     elif num == 60:
-        it['photo'] = 'assets/images/raw_combo_8_chef.png'
+        it['photo'] = 'assets/images/real_combo_8_chef.png'
     elif num and 61 <= num <= 63:
         it['photo'] = 'assets/images/raw_bighot.png'
     elif num and 64 <= num <= 69:
@@ -73,7 +85,7 @@ for it in items:
     elif num and 70 <= num <= 72:
         it['photo'] = 'assets/images/raw_sashimi_tradicional.png'
     elif num and 73 <= num <= 78:
-        it['photo'] = 'assets/images/raw_joy_tradicional.jpeg'
+        it['photo'] = 'assets/images/raw_joy_tradicional.png'
     elif num and 79 <= num <= 83:
         it['photo'] = 'assets/images/raw_joy_ebifry.png'
     elif num and 84 <= num <= 88:
@@ -99,19 +111,19 @@ for it in items:
     elif num == 180:
         it['photo'] = 'assets/images/raw_combo_180_guia.jpeg'
     elif it.get('isNew'):
-        if 'Camarão Imperial' in name:
+        if 'Camarão Imperial' in raw_name:
             it['photo'] = 'assets/images/raw_combo_camarao_imp_25pc.jpeg'
-        elif 'Camarão -' in name:
+        elif 'Camarão -' in raw_name:
             it['photo'] = 'assets/images/raw_combo_camarao_30pc.jpeg'
-        elif 'Joy -' in name:
+        elif 'Joy -' in raw_name:
             it['photo'] = 'assets/images/raw_combo_joy_28pc.jpeg'
-        elif 'Misto -' in name:
+        elif 'Misto -' in raw_name:
             it['photo'] = 'assets/images/raw_combo_misto_28pc.jpeg'
-        elif 'Salmão -' in name:
+        elif 'Salmão -' in raw_name:
             it['photo'] = 'assets/images/raw_combo_salmao_30pc.jpeg'
-        elif 'Hot -' in name:
+        elif 'Hot -' in raw_name:
             it['photo'] = 'assets/images/raw_combo_hot_30pc.jpeg'
-        elif 'Hossomaki -' in name:
+        elif 'Hossomaki -' in raw_name:
             it['photo'] = 'assets/images/raw_combo_hossomaki_28pc.jpeg'
 
 item_map = {it['num']: it for it in items if it.get('num') is not None}
@@ -124,12 +136,13 @@ def make_grouped_dish(id, title, category, portion, photo, desc, option_nums, pa
     for n in option_nums:
         if n in item_map:
             it = item_map[n]
+            clean_name = clean_text_number(it['name'])
             opts.append({
                 'num': it['num'],
                 'code': it['code'],
-                'name': it['name'],
-                'fullName': it['fullName'],
-                'description': it['description'],
+                'name': clean_name,
+                'fullName': clean_name,
+                'description': clean_text_number(it['description']),
                 'price': it['price'],
                 'portion': it['portion']
             })
@@ -147,7 +160,9 @@ def make_grouped_dish(id, title, category, portion, photo, desc, option_nums, pa
         'photo': photo,
         'image': photo,
         'description': desc,
-        'price': min_price,
+        'price': max_price, # Use max price for anchoring or min_price
+        'basePrice': min_price,
+        'maxPrice': max_price,
         'priceLabel': price_label,
         'page': page,
         'options': opts
@@ -155,18 +170,19 @@ def make_grouped_dish(id, title, category, portion, photo, desc, option_nums, pa
 
 def make_single_dish(item):
     p_label = f"R$ {item['price']:,.2f}".replace('.', ',')
+    clean_title = clean_text_number(item['name'])
     return {
-        'id': f"item_{item.get('num') or item.get('code') or item['name'].lower().replace(' ', '_')}",
+        'id': f"item_{item.get('num') or item.get('code') or clean_title.lower().replace(' ', '_')}",
         'isGrouped': False,
         'num': item.get('num'),
         'code': item.get('code'),
-        'title': item['name'],
-        'name': item['name'],
+        'title': clean_title,
+        'name': clean_title,
         'category': item['category'],
         'portion': item.get('portion'),
         'photo': item.get('photo'),
         'image': item.get('photo'),
-        'description': item.get('description'),
+        'description': clean_text_number(item.get('description', '')),
         'price': item['price'],
         'priceLabel': p_label,
         'page': item.get('page'),
@@ -215,7 +231,7 @@ for n in range(41, 48):
 # 13. Temakis Tradicionais & Especiais (48-56)
 dishes.append(make_grouped_dish('temaki_group', 'Temakis Tradicionais & Especiais', 'Temakis', '180g', 'assets/images/raw_temaki.png', 'Todos levam cream cheese Philadelphia e alga crocante. Escolha o recheio.', [48, 49, 50, 51, 52, 53, 54, 55, 56], 'Pág 4'))
 
-# 14. Combos do Chef (57, 58, 59, 60): individual cards with raw unique photos!
+# 14. Combos do Chef (57, 58, 59, 60): individual cards with authentic unique photos!
 for n in [57, 58, 59, 60]:
     dishes.append(make_single_dish(item_map[n]))
 
@@ -229,7 +245,7 @@ dishes.append(make_grouped_dish('hotrolls_group', 'Hot Rolls', 'Hot Rolls', '10 
 dishes.append(make_grouped_dish('sashimi_trad_group', 'Sashimis Tradicionais', 'Sashimis Tradicionais', '5 un', 'assets/images/raw_sashimi_tradicional.png', 'Fatias frescas de salmão e tilápia fresca com flor de sal e limão.', [70, 71, 72], 'Pág 6'))
 
 # 18. Joys Tradicionais (73-78)
-dishes.append(make_grouped_dish('joy_trad_group', 'Joys Tradicionais (Sem Arroz)', 'Joys Tradicionais', '6 un', 'assets/images/raw_joy_tradicional.jpeg', 'Fatias nobres de salmão maçaricado ou fresco enrolados com Philadelphia.', [73, 74, 75, 76, 77, 78], 'Pág 6'))
+dishes.append(make_grouped_dish('joy_trad_group', 'Joys Tradicionais (Sem Arroz)', 'Joys Tradicionais', '6 un', 'assets/images/raw_joy_tradicional.png', 'Fatias nobres de salmão maçaricado ou fresco enrolados com Philadelphia.', [73, 74, 75, 76, 77, 78], 'Pág 6'))
 
 # 19. Joy Ebi Fry (79-83)
 dishes.append(make_grouped_dish('joy_ebifry_group', 'Joy Ebi Fry', 'Joy Ebi Fry', '6 un', 'assets/images/raw_joy_ebifry.png', 'Contém salmão, camarão empanado crocante e Philadelphia. Escolha o topping.', [79, 80, 81, 82, 83], 'Pág 6'))
@@ -262,17 +278,17 @@ dishes.append(make_grouped_dish('teppan_group', 'Teppan Yaki (400g)', 'Teppan Ya
 # 27. Yakisobas (140-144)
 dishes.append(make_grouped_dish('yakisoba_group', 'Yakisoba Tradicional (400g)', 'Yakisobas', '400g', 'assets/images/raw_yakisoba.jpeg', 'Macarrão artesanal, legumes selecionados refogados e molho especial do Chef.', [140, 141, 142, 143, 144], 'Pág 8'))
 
-# 28. Sucos (145-152)
-dishes.append(make_grouped_dish('sucos_group', 'Sucos Naturais & Polpa de Fruta (330ml)', 'Bebidas e Sucos', '330ml', 'assets/images/sucos.jpg', 'Refrescantes e preparados na hora. Escolha o sabor.', list(range(145, 153)), 'Pág 9'))
+# 28. Sucos (145-152) -> High quality authentic photo!
+dishes.append(make_grouped_dish('sucos_group', 'Sucos Naturais & Polpa de Fruta (330ml)', 'Bebidas e Sucos', '330ml', 'assets/images/real_sucos.jpg', 'Refrescantes e preparados na hora em garrafas e copos de 330ml. Escolha o sabor.', list(range(145, 153)), 'Pág 9'))
 
-# 29. Sakês & Doses (153-159)
-dishes.append(make_grouped_dish('sake_group', 'Sakês Japoneses & Nacionais', 'Sakês e Doses', 'Doses & Garrafas', 'assets/images/bebidas_sake.png', 'Doses e garrafas de sakê importado Hakutsuru e nacional Azuma Kirin Dourado.', list(range(153, 160)), 'Pág 9'))
+# 29. Sakês & Doses (153-159) -> Authentic sake photo (No red ball!)
+dishes.append(make_grouped_dish('sake_group', 'Sakês Japoneses & Nacionais', 'Sakês e Doses', 'Doses & Garrafas', 'assets/images/real_sake.jpg', 'Doses e garrafas de sakê importado Hakutsuru e nacional Azuma Kirin Dourado.', list(range(153, 160)), 'Pág 9'))
 
-# 30. Refrigerantes, Águas & Energético (160-168)
-dishes.append(make_grouped_dish('refrigerantes_group', 'Refrigerantes, Águas & Energético', 'Refrigerantes e Águas', 'Lata / Garrafa', 'assets/images/refrigerantes.jpg', 'Refrigerantes em lata, água mineral com ou sem gás, H2O e Energético Red Bull gelados.', list(range(160, 169)), 'Pág 9'))
+# 30. Refrigerantes, Águas & Energético (160-168) -> Realistic restaurant chilled drinks!
+dishes.append(make_grouped_dish('refrigerantes_group', 'Refrigerantes, Águas & Energético', 'Refrigerantes e Águas', 'Lata / Garrafa', 'assets/images/real_refrigerantes.jpg', 'Refrigerantes em lata, água mineral com ou sem gás, H2O e Energético Red Bull gelados.', list(range(160, 169)), 'Pág 9'))
 
-# 31. Cervejas Especiais (169-176)
-dishes.append(make_grouped_dish('cervejas_group', 'Cervejas Long Neck & 600ml', 'Cervejas', 'Long Neck & 600ml', 'assets/images/cervejas.jpg', 'Heineken, Corona, Stella Artois, Spaten e Antarctica Original trincando de geladas.', list(range(169, 177)), 'Pág 9'))
+# 31. Cervejas Especiais (169-176) -> Chilled longneck & 600ml bottles!
+dishes.append(make_grouped_dish('cervejas_group', 'Cervejas Long Neck & 600ml', 'Cervejas', 'Long Neck & 600ml', 'assets/images/real_cervejas.jpg', 'Heineken, Corona, Stella Artois, Spaten e Antarctica Original trincando de geladas.', list(range(169, 177)), 'Pág 9'))
 
 # 32. Combos Promocionais Clássicos (177-180)
 for n in [177, 178, 179, 180]:
@@ -294,4 +310,4 @@ with open('cardapio-digital-omaki/data/cardapio.json', 'w', encoding='utf-8') as
 with open('cardapio-digital-omaki/data/cardapio.js', 'w', encoding='utf-8') as f:
     f.write('window.OMAKI_DATA = ' + json.dumps(data, ensure_ascii=False, indent=2) + ';\n')
 
-print('cardapio.json and cardapio.js updated successfully with raw embedded images!')
+print('cardapio.json and cardapio.js updated successfully!')

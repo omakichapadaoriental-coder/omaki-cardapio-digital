@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261101_omaki_v5">
 </head>
 <body>
   <!-- Background Ambient Glow -->
@@ -128,11 +128,7 @@
         </div>
 
         <!-- Special Customization Section (Temakis / Pokes) -->
-        <div class="custom-section" id="modalSpecialSection" style="display:none;">
-          <div class="section-title-row">
-            <h4>Personalização Especial</h4>
-            <span class="optional-tag">Opcional</span>
-          </div>
+        <div class="custom-section" id="modalSpecialSection" style="display:none; padding: 0; border: none; background: transparent;">
           <div id="modalSpecialContent">
             <!-- Injected by JS -->
           </div>
@@ -226,8 +222,17 @@
           </div>
 
           <div id="takeawayInfoGroup" class="takeaway-notice" style="display:none;">
-            <p>📍 <strong>Local de Retirada:</strong> Omaki Sushi — Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso de Goiás / GO</p>
-            <p class="takeaway-sub">Avisaremos no WhatsApp assim que seu pedido estiver pronto para buscar!</p>
+            <div class="takeaway-badge">🛍️ Retirada no Balcão</div>
+            <p class="takeaway-address">
+              📍 <strong>Local de Retirada:</strong> Omaki Sushi<br>
+              Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso de Goiás / GO
+            </p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Omaki+Sushi,+Av.+Ary+Valad%C3%A3o+Filho,+Alto+Para%C3%ADso+de+Goi%C3%A1s" target="_blank" rel="noopener noreferrer" class="takeaway-maps-link">
+              <span class="maps-icon">🗺️</span>
+              <span>Abrir localização no Google Maps</span>
+              <span class="maps-arrow">↗</span>
+            </a>
+            <p class="takeaway-sub">Avisaremos no WhatsApp assim que seu pedido estiver fresquinho e pronto para retirada!</p>
           </div>
 
           <!-- Disposable / Utensils -->
@@ -236,21 +241,21 @@
             <div class="form-group">
               <label for="orderHashis">Pares de Hashi</label>
               <select id="orderHashis">
-                <option value="Não preciso de hashi">Não preciso</option>
-                <option value="1 par de hashi" selected>1 par</option>
-                <option value="2 pares de hashi">2 pares</option>
-                <option value="3 pares de hashi">3 pares</option>
-                <option value="4 pares de hashi">4 pares</option>
-                <option value="5 ou mais pares">5 ou mais</option>
+                <option value="1 par" selected>1 par</option>
+                <option value="2 pares">2 pares</option>
+                <option value="3 pares">3 pares</option>
+                <option value="4 pares">4 pares</option>
+                <option value="5 ou mais">5 ou mais pares</option>
+                <option value="Não preciso">Não preciso</option>
               </select>
             </div>
             <div class="form-group">
               <label for="orderWasabiGari">Wasabi & Gengibre</label>
               <select id="orderWasabiGari">
-                <option value="Enviar Wasabi e Gengibre" selected>Sim, enviar ambos</option>
+                <option value="Sim (Ambos)" selected>Sim (Ambos)</option>
                 <option value="Apenas Wasabi">Apenas Wasabi</option>
                 <option value="Apenas Gengibre">Apenas Gengibre</option>
-                <option value="Não enviar nenhum">Não preciso</option>
+                <option value="Não (Dispensar)">Não (Dispensar)</option>
               </select>
             </div>
           </div>
@@ -370,7 +375,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="data/cardapio.js"></script>
-  <script src="app.js"></script>
+  <script src="data/cardapio.js?v=20261101_omaki_v5" charset="UTF-8"></script>
+  <script src="app.js?v=20261101_omaki_v5" charset="UTF-8"></script>
 </body>
 </html>

@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- STATE ---
   let cart = loadCart();
+  let currentActiveCategory = 'all'; // 'all' or specific category id
   let currentModalDish = null;
   let currentSelectedOption = null;
   let currentModalQty = 1;
@@ -146,39 +147,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2800);
   }
 
-  // --- CUSTOM ELEGANT ALERT (REPLACES BROWSER ALERT) ---
+  // --- CUSTOM ELEGANT ALERT (REPLACES BROWSER ALERT - ZERO NATIVE ALERT) ---
   function showCustomAlert(title, message, inputToFocus = null) {
-    if (!customAlertOverlay) {
-      alert(message);
-      return;
+    let overlay = document.getElementById('customAlertOverlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'customAlertOverlay';
+      overlay.className = 'custom-alert-overlay';
+      overlay.innerHTML = `
+        <div class="custom-alert-card">
+          <div class="custom-alert-header">
+            <div class="custom-alert-icon-badge">\u26A0\uFE0F</div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Atenção</h3>
+          </div>
+          <p class="custom-alert-message" id="customAlertMessage"></p>
+          <div class="custom-alert-footer">
+            <button type="button" class="custom-alert-btn" id="customAlertBtn">Entendido</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
     }
-    if (customAlertTitle) customAlertTitle.textContent = title || 'Atenção';
-    if (customAlertMessage) customAlertMessage.textContent = message;
-    customAlertOverlay.style.display = 'flex';
+
+    const titleEl = document.getElementById('customAlertTitle');
+    const msgEl = document.getElementById('customAlertMessage');
+    const btnEl = document.getElementById('customAlertBtn');
+
+    if (titleEl) titleEl.textContent = title || 'Atenção';
+    if (msgEl) msgEl.textContent = message || '';
+    overlay.style.display = 'flex';
 
     if (inputToFocus) {
       inputToFocus.classList.add('input-error');
-      inputToFocus.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => {
-        try { inputToFocus.focus(); } catch (err) {}
-      }, 200);
+      try {
+        inputToFocus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          try { inputToFocus.focus(); } catch (err) {}
+        }, 250);
+      } catch (e) {}
     }
 
     const closeHandler = () => {
-      customAlertOverlay.style.display = 'none';
+      overlay.style.display = 'none';
       if (inputToFocus) {
         setTimeout(() => inputToFocus.classList.remove('input-error'), 1800);
+        try { inputToFocus.focus(); } catch (e) {}
       }
-      customAlertBtn.removeEventListener('click', closeHandler);
-      customAlertOverlay.removeEventListener('click', overlayHandler);
+      if (btnEl) btnEl.removeEventListener('click', closeHandler);
+      overlay.removeEventListener('click', overlayHandler);
     };
 
     const overlayHandler = (e) => {
-      if (e.target === customAlertOverlay) closeHandler();
+      if (e.target === overlay) closeHandler();
     };
 
-    if (customAlertBtn) customAlertBtn.addEventListener('click', closeHandler);
-    customAlertOverlay.addEventListener('click', overlayHandler);
+    if (btnEl) btnEl.addEventListener('click', closeHandler);
+    overlay.addEventListener('click', overlayHandler);
   }
 
   // --- NEIGHBORHOODS INIT ---
@@ -199,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- CATEGORIES NAVIGATION INIT ---
+  // --- CATEGORIES NAVIGATION INIT (EXCLUSIVE SINGLE-CATEGORY VIEW) ---
   function initCategories() {
     if (!categoriesNav) return;
     categoriesNav.innerHTML = '';
@@ -211,7 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
     allBtn.addEventListener('click', () => {
       document.querySelectorAll('.category-tab-btn').forEach(b => b.classList.remove('active'));
       allBtn.classList.add('active');
-      renderMenu();
+      currentActiveCategory = 'all';
+      renderMenu(searchInput ? searchInput.value : '', 'all');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     categoriesNav.appendChild(allBtn);
@@ -223,10 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.category-tab-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const targetSec = document.getElementById(c.id);
-        if (targetSec) {
-          targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        currentActiveCategory = c.id;
+        // Filter view to show ONLY the selected category
+        renderMenu(searchInput ? searchInput.value : '', c.id);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
       categoriesNav.appendChild(btn);
     });
@@ -274,21 +299,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- RENDER MENU ---
-  function renderMenu(searchTerm = '') {
+  // --- RENDER MENU (WITH PRICE ANCHORING & EXCLUSIVE CATEGORY FILTER) ---
+  function renderMenu(searchTerm = '', categoryFilter = currentActiveCategory) {
     if (!menuContainer) return;
     menuContainer.innerHTML = '';
     const term = searchTerm.trim().toLowerCase();
     const dishesList = data.dishes || [];
 
-    CATEGORY_MAP.forEach(catDef => {
-      const filteredDishes = dishesList.filter(dish => {
+    // Filter categories to show ONLY the selected one (or all if 'all')
+    const targetCategories = (categoryFilter && categoryFilter !== 'all')
+      ? CATEGORY_MAP.filter(c => c.id === categoryFilter)
+      : CATEGORY_MAP;
+
+    targetCategories.forEach(catDef => {
+      let filteredDishes = dishesList.filter(dish => {
         const matchesCategory = catDef.match(dish);
         if (!matchesCategory) return false;
 
         if (!term) return true;
 
-        // Search in single dish properties
+        // Search in dish properties
         const numStr = dish.num ? String(dish.num) : '';
         const codeStr = String(dish.code || '');
         const titleStr = (dish.title || dish.name || '').toLowerCase();
@@ -315,6 +345,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (filteredDishes.length === 0) return;
+
+      // PRICE ANCHORING: Sort dishes from HIGHEST to LOWEST price in every category!
+      filteredDishes.sort((a, b) => {
+        const priceA = a.maxPrice || a.price || 0;
+        const priceB = b.maxPrice || b.price || 0;
+        return priceB - priceA;
+      });
 
       const section = document.createElement('section');
       section.className = 'menu-category-section';
@@ -373,19 +410,16 @@ document.addEventListener('DOMContentLoaded', () => {
     imgWrapper.className = 'product-card-img-wrapper';
 
     // Badge logic:
-    // For single item with num: #005
-    // For grouped item: show # of options or category badge
-    // For combos: pieces are in title, do not show redundant portion badge
+    // For single item with num and individual photo: show #005, #177, etc.
+    // For combos: piece count is already prominent in title, do not show redundant portion badge
+    // For grouped item: show portion (e.g. 200g, 2 un) or options count
     let tagBadge = '';
     if (dish.num) {
       tagBadge = `<span class="badge-item-num">#${String(dish.num).padStart(3, '0')}</span>`;
     } else if (dish.isNew) {
       tagBadge = `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">✨ NOVO</span>`;
-    } else if (dish.isGrouped && dish.options) {
-      tagBadge = `<span class="badge-item-num" style="background:rgba(7,10,17,0.85); color:var(--accent-gold);">${dish.options.length} OPÇÕES</span>`;
     }
 
-    // Portion badge: ONLY for non-combos (since combos already have piece count in the name)
     const isCombo = dish.category.toLowerCase().includes('combo') || (dish.num && dish.num >= 57 && dish.num <= 60) || (dish.num && dish.num >= 177 && dish.num <= 187) || dish.isNew;
     const portionBadge = (!isCombo && dish.portion) ? `<span class="badge-portion-pill">${dish.portion}</span>` : '';
 
@@ -446,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', (e) => {
       const val = e.target.value;
       if (clearSearchBtn) clearSearchBtn.style.display = val ? 'block' : 'none';
-      renderMenu(val);
+      renderMenu(val, currentActiveCategory);
     });
   }
 
@@ -454,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearSearchBtn.addEventListener('click', () => {
       if (searchInput) searchInput.value = '';
       clearSearchBtn.style.display = 'none';
-      renderMenu();
+      renderMenu('', currentActiveCategory);
     });
   }
 
@@ -474,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isCombo = dish.category.toLowerCase().includes('combo') || (dish.num && dish.num >= 57 && dish.num <= 60) || (dish.num && dish.num >= 177 && dish.num <= 187) || dish.isNew;
 
-    // Set Image (full picture displayed via object-fit contain)
+    // Set Image
     const photoSrc = dish.photo || dish.image;
     if (modalImgContainer) {
       if (photoSrc) {
@@ -562,6 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
   }
 
+  // Render Options without raw numbers in visible string (clean user-facing names)
   function renderOptionsList(options) {
     if (!modalOptionsList) return;
     modalOptionsList.innerHTML = '';
@@ -574,10 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="option-left">
           <input type="radio" name="modalDishOptionRadio" value="${opt.code || opt.num}" ${isSelected ? 'checked' : ''}>
           <div class="option-details">
-            <span class="option-name">
-              ${opt.num ? `<span class="option-code">#${String(opt.num).padStart(3, '0')}</span>` : ''}
-              ${opt.name}
-            </span>
+            <span class="option-name">${opt.name}</span>
             ${opt.description && opt.description !== opt.name ? `<p class="option-desc">${opt.description}</p>` : ''}
           </div>
         </div>
@@ -998,7 +1030,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Render Cart Items in Drawer
+  // --- RENDER CART ITEMS IN DRAWER (LUXURY CARDS WITH FULL STYLING) ---
   function renderCartItems() {
     if (!cartItemsList) return;
     cartItemsList.innerHTML = '';
@@ -1015,61 +1047,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     cart.forEach((entry, index) => {
-      const itemRow = document.createElement('div');
-      itemRow.className = 'cart-item-row';
+      const card = document.createElement('div');
+      card.className = 'cart-item-card';
 
-      const itemTag = entry.item.num 
-        ? `<span class="cart-item-tag">#${String(entry.item.num).padStart(3, '0')}</span>` 
-        : `<span class="cart-item-tag" style="background:#8b1e3f; color:#fff;">NOVO</span>`;
+      const tagHtml = entry.item.num 
+        ? `<span class="cart-item-badge-code">#${String(entry.item.num).padStart(3, '0')}</span>`
+        : `<span class="cart-item-badge-code" style="background:#8b1e3f; color:#fff;">NOVO</span>`;
 
       let unitPrice = entry.item.price;
       let compHtml = '';
       if (entry.complements && entry.complements.length > 0) {
-        compHtml += '<div class="cart-item-complements">';
+        compHtml += '<div class="cart-complements-box">';
         entry.complements.forEach(c => {
           unitPrice += c.price;
-          compHtml += `<span>+ ${c.name} (${formatMoney(c.price)})</span>`;
+          compHtml += `
+            <div class="cart-complement-line">
+              <span>➕ ${c.name}</span>
+              <span class="cart-complement-price">+ ${formatMoney(c.price)}</span>
+            </div>
+          `;
         });
         compHtml += '</div>';
       }
 
       let notesHtml = '';
       if (entry.notes) {
-        notesHtml = `<div class="cart-item-notes">📝 ${entry.notes}</div>`;
+        notesHtml = `<div class="cart-item-notes-box">📝 ${entry.notes}</div>`;
       }
 
       const rowTotal = unitPrice * entry.qty;
 
-      itemRow.innerHTML = `
-        <div class="cart-item-header">
-          <div class="cart-item-title-col">
-            <h4 class="cart-item-name">${itemTag} ${entry.item.name}</h4>
+      card.innerHTML = `
+        <div class="cart-item-top">
+          <div class="cart-item-title-group">
+            <h4 class="cart-item-heading">${tagHtml} <span>${entry.item.name}</span></h4>
             ${compHtml}
             ${notesHtml}
           </div>
-          <button class="cart-item-remove-btn" title="Remover item" data-index="${index}">✕</button>
+          <button type="button" class="cart-item-delete-btn" title="Remover item" data-index="${index}">🗑️</button>
         </div>
-        <div class="cart-item-footer">
-          <div class="cart-qty-controls">
-            <button class="cart-qty-btn cart-minus" data-index="${index}">−</button>
-            <span class="cart-qty-val">${entry.qty}</span>
-            <button class="cart-qty-btn cart-plus" data-index="${index}">+</button>
+        <div class="cart-item-bottom">
+          <div class="cart-qty-pill">
+            <button type="button" class="cart-qty-pill-btn cart-minus" data-index="${index}">−</button>
+            <span class="cart-qty-pill-val">${entry.qty}</span>
+            <button type="button" class="cart-qty-pill-btn cart-plus" data-index="${index}">+</button>
           </div>
-          <div class="cart-item-price-col">
-            <span class="cart-item-total">${formatMoney(rowTotal)}</span>
-          </div>
+          <span class="cart-item-subtotal-price">${formatMoney(rowTotal)}</span>
         </div>
       `;
 
-      // Event Listeners for quantity and removal
-      itemRow.querySelector('.cart-item-remove-btn').addEventListener('click', () => {
+      card.querySelector('.cart-item-delete-btn').addEventListener('click', () => {
         cart.splice(index, 1);
         saveCart();
         updateCartUI();
         renderCartItems();
       });
 
-      itemRow.querySelector('.cart-minus').addEventListener('click', () => {
+      card.querySelector('.cart-minus').addEventListener('click', () => {
         if (entry.qty > 1) {
           entry.qty--;
         } else {
@@ -1080,14 +1114,14 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCartItems();
       });
 
-      itemRow.querySelector('.cart-plus').addEventListener('click', () => {
+      card.querySelector('.cart-plus').addEventListener('click', () => {
         entry.qty++;
         saveCart();
         updateCartUI();
         renderCartItems();
       });
 
-      cartItemsList.appendChild(itemRow);
+      cartItemsList.appendChild(card);
     });
   }
 
@@ -1124,23 +1158,45 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTotals();
   }
 
-  // --- SEND ORDER VIA WHATSAPP ---
+  // --- SEND ORDER VIA WHATSAPP (CANONICAL CODES PRESERVED & BULLETPROOF EMOJIS) ---
+  const WA_ICONS = {
+    sushi: '\u{1F363}',
+    client: '\u{1F464}',
+    phone: '\u{1F4F1}',
+    moto: '\u{1F6F5}',
+    pin: '\u{1F4CD}',
+    map: '\u{1F5FA}\uFE0F',
+    neighborhood: '\u{1F3D8}\uFE0F',
+    ref: '\u{1F3E2}',
+    cart: '\u{1F6D2}',
+    plus: '\u2795',
+    notes: '\u{1F4DD}',
+    hashis: '\u{1F962}',
+    wasabi: '\u{1F33F}',
+    card: '\u{1F4B3}',
+    pix: '\u2139\uFE0F',
+    box: '\u{1F4E6}',
+    takeaway: '\u{1F6CD}\uFE0F',
+    money: '\u{1F4B0}'
+  };
+
   if (sendWhatsAppOrderBtn) {
     sendWhatsAppOrderBtn.addEventListener('click', () => {
       if (cart.length === 0) {
-        showCustomAlert('Sacola Vazia', 'Sua sacola está vazia. Adicione itens antes de finalizar o pedido!');
+        showCustomAlert('Sacola Vazia', 'Sua sacola está vazia. Adicione pratos deliciosos antes de enviar o pedido!');
         return;
       }
 
       const customerName = orderCustomerName ? orderCustomerName.value.trim() : '';
-      if (!customerName) {
-        showCustomAlert('Nome Obrigatório', 'Por favor, informe seu nome completo para identificarmos o pedido.', orderCustomerName);
+      if (!customerName || customerName.length < 2) {
+        showCustomAlert('Nome Obrigatório', 'Por favor, informe seu nome para identificarmos seu pedido na comanda.', orderCustomerName);
         return;
       }
 
       const customerPhone = orderCustomerPhone ? orderCustomerPhone.value.trim() : '';
-      if (!customerPhone) {
-        showCustomAlert('WhatsApp Obrigatório', 'Por favor, informe seu número de WhatsApp/Telefone para contato e confirmação.', orderCustomerPhone);
+      const phoneDigits = customerPhone.replace(/\D/g, '');
+      if (!customerPhone || phoneDigits.length < 10) {
+        showCustomAlert('WhatsApp Incompleto', 'Por favor, informe seu número de WhatsApp com DDD (ex: 62 99999-9999) para confirmarmos o pedido.', orderCustomerPhone);
         return;
       }
 
@@ -1153,14 +1209,14 @@ document.addEventListener('DOMContentLoaded', () => {
         neighborhoodName = selectedNeighborhood ? selectedNeighborhood.name : 'Centro';
         complement = orderComplement ? orderComplement.value.trim() : '';
 
-        if (!street) {
-          showCustomAlert('Endereço Obrigatório', 'Por favor, preencha a rua, quadra e número da residência ou pousada para entrega.', orderStreet);
+        if (!street || street.length < 4) {
+          showCustomAlert('Endereço Obrigatório', 'Por favor, informe a rua, quadra e número da sua residência ou pousada para entrega.', orderStreet);
           return;
         }
       }
 
-      const hashis = orderHashis ? orderHashis.value : 'Não precisa';
-      const wasabiGari = orderWasabiGari ? orderWasabiGari.value : 'Sim, ambos';
+      const hashis = orderHashis ? orderHashis.value : '1 par';
+      const wasabiGari = orderWasabiGari ? orderWasabiGari.value : 'Sim (Ambos)';
 
       let selectedPayment = 'Pix';
       if (paymentMethodRadios) {
@@ -1192,21 +1248,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const fee = deliveryType === 'delivery' ? (selectedNeighborhood ? selectedNeighborhood.fee : 12.00) : 0.00;
       const grandTotal = subtotal + fee;
 
-      // Build formatted WhatsApp Message
-      let msg = `🍣 *NOVO PEDIDO — OMAKI SUSHI*\n`;
+      // Build formatted WhatsApp Message with canonical tags [#007]
+      let msg = `${WA_ICONS.sushi} *NOVO PEDIDO — OMAKI SUSHI*\n`;
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-      msg += `👤 *Cliente:* ${customerName}\n`;
-      msg += `📱 *WhatsApp:* ${customerPhone}\n`;
-      msg += `🛵 *Modalidade:* ${deliveryType === 'delivery' ? 'Entrega (Delivery)' : 'Retirada no Balcão'}\n`;
+      msg += `${WA_ICONS.client} *Cliente:* ${customerName}\n`;
+      msg += `${WA_ICONS.phone} *WhatsApp:* ${customerPhone}\n`;
 
       if (deliveryType === 'delivery') {
-        msg += `📍 *Endereço:* ${street}\n`;
-        msg += `🏘️ *Bairro:* ${neighborhoodName}\n`;
-        if (complement) msg += `🏢 *Ponto de Ref:* ${complement}\n`;
+        msg += `${WA_ICONS.moto} *Modalidade:* Entrega (Delivery)\n`;
+        msg += `${WA_ICONS.pin} *Endereço:* ${street}\n`;
+        msg += `${WA_ICONS.neighborhood} *Bairro:* ${neighborhoodName}\n`;
+        if (complement) msg += `${WA_ICONS.ref} *Ponto de Ref:* ${complement}\n`;
+      } else {
+        msg += `${WA_ICONS.takeaway} *Modalidade:* Retirada no Balcão\n`;
+        msg += `${WA_ICONS.pin} *Local de Retirada:* Av. Ary Valadão Filho, Qd. 02, Lt. 04 — Centro, Alto Paraíso / GO\n`;
+        msg += `${WA_ICONS.map} *Google Maps:* https://maps.google.com/?q=Omaki+Sushi+Alto+Paraiso+de+Goias\n`;
       }
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-      msg += `🛒 *ITENS DO PEDIDO:*\n\n`;
+      msg += `${WA_ICONS.cart} *ITENS DO PEDIDO:*\n\n`;
 
       cart.forEach(entry => {
         const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}]` : '[PROMO]';
@@ -1218,38 +1278,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (entry.complements && entry.complements.length > 0) {
           entry.complements.forEach(c => {
-            msg += `   └ ➕ _${c.name}_ (+${formatMoney(c.price)})\n`;
+            msg += `   └ ${WA_ICONS.plus} _${c.name}_ (+${formatMoney(c.price)})\n`;
           });
         }
 
         if (entry.notes) {
-          msg += `   └ 📝 _Obs: ${entry.notes}_\n`;
+          msg += `   └ ${WA_ICONS.notes} _Obs: ${entry.notes}_\n`;
         }
         msg += `\n`;
       });
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-      msg += `🥢 *Hashis:* ${hashis}\n`;
-      msg += `🌿 *Wasabi/Gengibre:* ${wasabiGari}\n`;
-      msg += `💳 *Pagamento:* ${selectedPayment}${cashNote}\n`;
+      msg += `${WA_ICONS.hashis} *Hashis:* ${hashis}\n`;
+      msg += `${WA_ICONS.wasabi} *Wasabi & Gengibre:* ${wasabiGari}\n`;
+      msg += `${WA_ICONS.card} *Pagamento:* ${selectedPayment}${cashNote}\n`;
       if (selectedPayment === 'Pix') {
-        msg += `   └ ℹ️ _Chave Pix: ${data.store.pixKey || '+55 62 99174-9928'}_\n`;
+        msg += `   └ ${WA_ICONS.pix} _Chave Pix: ${data.store.pixKey || '+55 62 99174-9928'}_\n`;
       }
 
       if (generalNotes) {
-        msg += `📝 *Obs Geral:* ${generalNotes}\n`;
+        msg += `${WA_ICONS.notes} *Obs Geral:* ${generalNotes}\n`;
       }
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-      msg += `📦 *Subtotal dos Itens:* ${formatMoney(subtotal)}\n`;
+      msg += `${WA_ICONS.box} *Subtotal dos Itens:* ${formatMoney(subtotal)}
+`;
       if (deliveryType === 'delivery') {
-        msg += `🛵 *Taxa de Entrega:* ${formatMoney(fee)}\n`;
+        msg += `${WA_ICONS.moto} *Taxa de Entrega:* ${formatMoney(fee)}\n`;
       } else {
-        msg += `🛍️ *Taxa de Entrega:* Grátis (Retirada)\n`;
+        msg += `${WA_ICONS.takeaway} *Taxa de Entrega:* Grátis (Retirada no Balcão)\n`;
       }
-      msg += `💰 *TOTAL DO PEDIDO:* ${formatMoney(grandTotal)}\n`;
-      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-      msg += `_Pedido gerado via Cardápio Digital Omaki Sushi_`;
+      msg += `${WA_ICONS.money} *TOTAL DO PEDIDO:* ${formatMoney(grandTotal)}\n`;
+      msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
       const storeWhatsApp = data.store.whatsapp || '5562991749928';
       const waUrl = `https://wa.me/${storeWhatsApp}?text=${encodeURIComponent(msg)}`;
@@ -1261,6 +1321,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- BOOTSTRAP INITIALIZATION ---
   initNeighborhoods();
   initCategories();
-  renderMenu();
+  renderMenu('', 'all');
   updateCartUI();
 });
