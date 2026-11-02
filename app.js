@@ -2764,30 +2764,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      let street = '';
-
-      let neighborhoodName = '';
-
+      let fullAddress = '';
       let complement = '';
 
-
-
       if (deliveryType === 'delivery') {
+        const orderStreet = document.getElementById('orderStreet');
+        const orderNumber = document.getElementById('orderNumber');
+        const orderNeighborhood = document.getElementById('orderNeighborhood');
+        const orderComplement = document.getElementById('orderComplement');
 
-        street = orderStreet ? orderStreet.value.trim() : '';
-
+        const street = orderStreet ? orderStreet.value.trim() : '';
+        const number = orderNumber ? orderNumber.value.trim() : '';
+        const neighborhood = orderNeighborhood ? orderNeighborhood.value.trim() : '';
         complement = orderComplement ? orderComplement.value.trim() : '';
 
-
-
-        if (!street || street.length < 4) {
-
-          showCustomAlert('Endereço Obrigatório', 'Por favor, informe o endereço da sua residência, pousada ou chalé para entrega.', orderStreet);
-
+        if (!street || street.length < 3) {
+          showCustomAlert('Rua / Pousada Obrigatória', 'Por favor, informe a rua, avenida ou o nome da pousada/chalé para entrega.', orderStreet);
           return;
-
         }
 
+        if (!number) {
+          showCustomAlert('Número / Quadra Obrigatório', 'Por favor, informe o número da residência ou a Quadra e Lote (ex: Qd. 02, Lt. 04 ou Nº 145).', orderNumber);
+          return;
+        }
+
+        const addressBase = [street, number].filter(Boolean).join(', ');
+        fullAddress = neighborhood ? `${addressBase} — ${neighborhood}` : addressBase;
       }
 
 
@@ -2902,19 +2904,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
       if (deliveryType === 'delivery') {
-
         msg += `${WA_ICONS.moto} *Modalidade:* Entrega (Delivery)\n`;
-
-        msg += `${WA_ICONS.pin} *Endereço:* ${street}\n`;
-
-        if (complement) msg += `${WA_ICONS.ref} *Ponto de Ref:* ${complement}\n`;
+        msg += `${WA_ICONS.pin} *Endereço:* ${fullAddress}\n`;
+        if (complement) msg += `${WA_ICONS.ref} *Ponto de Ref / Pousada:* ${complement}\n`;
 
         if (capturedCoordinates && capturedCoordinates.lat && capturedCoordinates.lng) {
-          msg += `🗺️ *Localização GPS para o Motoboy:* https://maps.google.com/?q=${capturedCoordinates.lat},${capturedCoordinates.lng}\n`;
+          msg += `🗺️ *Localização no Google Maps:*\n`;
+          msg += `   ├ 📍 *Ponto Exato:* https://maps.google.com/?q=${capturedCoordinates.lat},${capturedCoordinates.lng}\n`;
+          msg += `   └ 🛵 *Rota do Motoboy:* https://www.google.com/maps/dir/?api=1&destination=${capturedCoordinates.lat},${capturedCoordinates.lng}\n`;
+          msg += `💡 _Dica: Se preferir, compartilhe sua localização atual aqui no WhatsApp (📎 > Localização)._` + '\n';
+        } else {
+          msg += `💡 *Dica de Entrega:* Se estiver em pousada ou chalé, compartilhe sua localização atual aqui no WhatsApp (clique no 📎 e escolha "Localização") para o motoboy chegar sem erro.\n`;
         }
-
-        msg += `${WA_ICONS.moto} *Taxa de Entrega:* A combinar com o entregador (Média: R$ 12 a R$ 15 confirmada no WhatsApp)\n`;
-
       } else {
 
         msg += `${WA_ICONS.takeaway} *Modalidade:* Retirada no Balcão\n`;
@@ -3034,28 +3035,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-
-      msg += `${WA_ICONS.box} *Subtotal dos Itens:* ${formatMoney(subtotal)}
-
-`;
+      msg += `💰 *RESUMO DO PEDIDO:*\n`;
+      msg += `• *Subtotal dos Itens:* ${formatMoney(subtotal)}\n`;
 
       if (deliveryType === 'delivery') {
-
-        msg += `${WA_ICONS.moto} *Taxa de Entrega:* A combinar (Média: R$ 12 a R$ 15)\n`;
-
-        msg += `${WA_ICONS.money} *TOTAL DOS ITENS:* ${formatMoney(subtotal)} (+ taxa a combinar)\n`;
-
+        msg += `• *Taxa de Entrega:* A combinar (Média: R$ 12 a R$ 15)\n`;
+        msg += `👉 *Total a Pagar:* ${formatMoney(subtotal)} + taxa de entrega\n`;
       } else {
-
-        msg += `${WA_ICONS.takeaway} *Taxa de Entrega:* Grátis (Retirada no Balcão)\n`;
-
-        msg += `${WA_ICONS.money} *TOTAL DO PEDIDO:* ${formatMoney(grandTotal)}\n`;
-
+        msg += `• *Taxa de Entrega:* Grátis (Retirada no Balcão)\n`;
+        msg += `👉 *Total a Pagar:* ${formatMoney(grandTotal)}\n`;
       }
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━`;
-
-
 
       const storeWhatsApp = data.store.whatsapp || '5562991749928';
 
@@ -3242,8 +3233,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function initGeolocation() {
     const btnGetLocation = document.getElementById('btnGetLocation');
     const gpsStatusBadge = document.getElementById('gpsStatusBadge');
+    const gpsStatusText = document.getElementById('gpsStatusText');
     const gpsMapsLink = document.getElementById('gpsMapsLink');
+    const gpsCoordHint = document.getElementById('gpsCoordHint');
     const orderStreet = document.getElementById('orderStreet');
+    const orderNumber = document.getElementById('orderNumber');
+    const orderNeighborhood = document.getElementById('orderNeighborhood');
 
     if (!btnGetLocation) return;
 
@@ -3254,7 +3249,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       btnGetLocation.classList.add('loading');
-      btnGetLocation.innerHTML = '<span class="gps-icon spinner">📡</span> Detectando sua localização GPS...';
+      btnGetLocation.innerHTML = '<span class="gps-icon spinner">📡</span> Conectando aos satélites GPS...';
 
       navigator.geolocation.getCurrentPosition(
         async (position) => {
@@ -3271,25 +3266,45 @@ document.addEventListener('DOMContentLoaded', () => {
             gpsStatusBadge.style.display = 'flex';
             gpsMapsLink.href = mapsUrl;
           }
+          if (gpsCoordHint) {
+            gpsCoordHint.style.display = 'block';
+          }
 
-          // Tenta preencher automaticamente o nome da rua via OpenStreetMap (Gratuito e sem chave)
+          // Busca reversa detalhada via Nominatim OpenStreetMap
           try {
-            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`, {
-              headers: { 'Accept-Language': 'pt-BR' }
+            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1&namedetails=1`, {
+              headers: { 'Accept-Language': 'pt-BR', 'User-Agent': 'OmakiSushiApp/1.0' }
             });
             if (res.ok) {
               const data = await res.json();
               const addr = data.address || {};
-              const road = addr.road || addr.pedestrian || addr.footway || addr.suburb || '';
-              const houseNum = addr.house_number ? `, ${addr.house_number}` : '';
-              const quarter = addr.suburb || addr.neighbourhood || '';
-              const parts = [road + houseNum, quarter].filter(Boolean);
-              if (parts.length > 0 && orderStreet && !orderStreet.value.trim()) {
-                orderStreet.value = parts.join(' — ');
+
+              // 1. Rua / Avenida / Pousada
+              const detectedStreet = addr.road || addr.pedestrian || addr.footway || addr.avenue || addr.street || addr.amenity || '';
+              if (detectedStreet && orderStreet && !orderStreet.value.trim()) {
+                orderStreet.value = detectedStreet;
+              }
+
+              // 2. Bairro / Setor
+              const detectedNeighborhood = addr.neighbourhood || addr.suburb || addr.quarter || addr.residential || addr.city_district || addr.hamlet || '';
+              if (detectedNeighborhood && orderNeighborhood && !orderNeighborhood.value.trim()) {
+                orderNeighborhood.value = detectedNeighborhood;
+              }
+
+              // 3. Número (se existir na base)
+              if (addr.house_number && orderNumber && !orderNumber.value.trim()) {
+                orderNumber.value = addr.house_number;
               }
             }
           } catch (e) {
-            // Continua normalmente, as coordenadas já estão salvas para o motoboy
+            // Continua normalmente com as coordenadas salvas
+          }
+
+          // Se a Quadra/Lote/Número estiver vazia, posiciona o foco para o cliente preencher em 1 segundo
+          if (orderNumber && !orderNumber.value.trim()) {
+            setTimeout(() => {
+              orderNumber.focus();
+            }, 300);
           }
         },
         (error) => {

@@ -3302,3 +3302,50 @@ option {
 .gps-maps-preview:hover {
   color: #ffffff;
 }
+
+
+.gps-coord-hint {
+  font-size: 0.74rem;
+  color: var(--accent-gold);
+  margin-top: 6px;
+  line-height: 1.35;
+  padding: 0 4px;
+}
+
+/* Card de Dica de Localização WhatsApp */
+.wa-location-tip-card {
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.28);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.wa-tip-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.wa-tip-icon {
+  font-size: 1rem;
+}
+
+.wa-tip-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #25d366;
+}
+
+.wa-tip-text {
+  font-size: 0.74rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.wa-tip-text strong {
+  color: #ffffff;
+}
