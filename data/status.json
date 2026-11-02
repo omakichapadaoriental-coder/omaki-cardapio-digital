@@ -1,7 +1,7 @@
 {
   "deliveryActive": false,
   "manualDeliveryOverride": false,
-  "deliveryClosedReason": "Pausado pelo Caixa",
+  "deliveryClosedReason": "Equipe pausou temporariamente as entregas",
   "soldOutIds": [],
-  "lastUpdated": "2026-11-02T02:00:24.900Z"
+  "lastUpdated": "2026-11-02T02:43:13.539Z"
 }
