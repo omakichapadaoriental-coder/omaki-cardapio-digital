@@ -2391,12 +2391,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (summarySubtotal) summarySubtotal.textContent = formatMoney(subtotal);
 
-    if (summaryDeliveryFee) {
-      if (isDelivery) {
-        summaryDeliveryFee.innerHTML = '<span class="delivery-fee-badge">A combinar (~R$ 12 a R$ 15)</span>';
-      } else {
-        summaryDeliveryFee.innerHTML = '<span style="color:#4ade80; font-weight:600;">Grátis (Retirada)</span>';
-      }
+    if (deliveryFeeSummaryLine) {
+      deliveryFeeSummaryLine.style.display = isDelivery ? 'flex' : 'none';
+    }
+
+    if (summaryDeliveryFee && isDelivery) {
+      summaryDeliveryFee.innerHTML = '<span class="delivery-fee-badge">A combinar (~R$ 12 a R$ 15)</span>';
     }
 
     if (summaryGrandTotal) {
@@ -3033,7 +3033,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `• *Taxa de Entrega:* A combinar (Média: R$ 12 a R$ 15)\n`;
         msg += `👉 *Total a Pagar:* ${formatMoney(subtotal)} + taxa de entrega\n`;
       } else {
-        msg += `• *Taxa de Entrega:* Grátis (Retirada no Balcão)\n`;
+        msg += `• *Modalidade:* Retirada no Balcão\n`;
         msg += `👉 *Total a Pagar:* ${formatMoney(grandTotal)}\n`;
       }
 
