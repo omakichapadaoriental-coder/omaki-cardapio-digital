@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Omaki Sushi — Painel de Controle Operacional</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <title>Omaki Sushi — Painel de Controle Operacional & Pedidos</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,10 +48,10 @@
       inset: 0;
       background: rgba(7, 10, 17, 0.96);
       backdrop-filter: blur(12px);
+      z-index: 999;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
       padding: 20px;
     }
 
@@ -63,72 +63,68 @@
       width: 100%;
       max-width: 380px;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
     }
 
     .auth-title {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 800;
+      letter-spacing: 0.08em;
       color: var(--accent-gold);
       margin-bottom: 6px;
-      letter-spacing: 0.04em;
     }
 
     .auth-subtitle {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       margin-bottom: 24px;
     }
 
     .pin-input {
       width: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid var(--border-subtle);
+      background: #070a11;
+      border: 1.5px solid var(--border-subtle);
       border-radius: 10px;
       padding: 14px;
-      font-size: 1.4rem;
-      color: #fff;
+      font-size: 1.3rem;
       text-align: center;
-      letter-spacing: 0.3em;
-      margin-bottom: 16px;
-    }
-
-    .pin-input:focus {
+      letter-spacing: 0.35em;
+      color: #fff;
+      margin-bottom: 18px;
       outline: none;
+      transition: border-color 0.2s;
+    }
+    .pin-input:focus {
       border-color: var(--accent-gold);
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     }
 
     .btn-auth {
       width: 100%;
-      background: linear-gradient(135deg, #d4af37, #b89628);
-      border: none;
+      background: var(--accent-gold);
       color: #070a11;
-      padding: 14px;
-      font-size: 1rem;
-      font-weight: 700;
+      border: none;
       border-radius: 10px;
+      padding: 13px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.2s;
     }
-
     .btn-auth:hover {
-      opacity: 0.95;
-      transform: translateY(-1px);
+      background: var(--accent-gold-hover);
     }
 
     .auth-error {
+      margin-top: 14px;
       color: var(--status-red);
       font-size: 0.82rem;
-      margin-top: 12px;
-      font-weight: 600;
       display: none;
     }
 
     /* Top Bar */
     .admin-header {
       background: rgba(15, 23, 42, 0.92);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
       padding: 14px 20px;
       position: sticky;
@@ -137,12 +133,11 @@
     }
 
     .admin-header-content {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
     }
 
     .brand-title {
@@ -153,40 +148,90 @@
     }
 
     .btn-link-menu {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-subtle);
       transition: all 0.2s;
     }
-
     .btn-link-menu:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* Tabs Navigation */
+    .admin-tabs-nav {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      padding: 0 16px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 10px;
+    }
+
+    .admin-tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 18px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .admin-tab-btn:hover {
+      background: var(--bg-card-hover);
+      color: #fff;
+    }
+    .admin-tab-btn.active {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(15, 23, 42, 0.9));
       border-color: var(--accent-gold);
       color: var(--accent-gold);
+    }
+    .tab-badge {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 7px;
+      border-radius: 12px;
+      font-size: 0.74rem;
     }
 
     /* Container */
     .admin-container {
-      max-width: 900px;
-      margin: 20px auto;
+      max-width: 1100px;
+      margin: 20px auto 0;
       padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    /* Delivery Control Card */
+    .tab-content {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .tab-content.active {
+      display: flex;
+    }
+
+    /* Card Box */
     .control-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 22px;
-      margin-bottom: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
 
     .card-title-row {
@@ -194,12 +239,13 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 16px;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .card-title {
-      font-size: 1.15rem;
-      font-weight: 800;
+      font-size: 1.05rem;
+      font-weight: 700;
       color: #fff;
       display: flex;
       align-items: center;
@@ -210,38 +256,35 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      white-space: nowrap;
     }
-
     .badge-open {
-      background: rgba(34, 197, 94, 0.16);
-      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
       color: #4ade80;
     }
-
     .badge-closed {
-      background: rgba(239, 68, 68, 0.16);
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
     }
 
     .delivery-buttons-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 14px;
+      margin-bottom: 14px;
     }
 
     .btn-delivery-action {
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 700;
       border: none;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 0.90rem;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -249,132 +292,117 @@
       gap: 8px;
       transition: all 0.2s;
     }
-
     .btn-stop-delivery {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+    .btn-stop-delivery:hover {
       background: #dc2626;
       color: #fff;
     }
-    .btn-stop-delivery:hover {
-      background: #b91c1c;
-      transform: translateY(-1px);
-    }
-
     .btn-start-delivery {
-      background: #16a34a;
-      color: #fff;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ade80;
     }
     .btn-start-delivery:hover {
-      background: #15803d;
-      transform: translateY(-1px);
-    }
-
-    .btn-auto-delivery {
-      grid-column: span 2;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border-subtle);
-      color: #cbd5e1;
-      padding: 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .btn-auto-delivery:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: #16a34a;
       color: #fff;
     }
 
     .info-alert {
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px solid rgba(212, 175, 55, 0.25);
-      color: #cbd5e1;
-      padding: 12px 14px;
+      background: rgba(212, 175, 55, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.2);
       border-radius: 10px;
+      padding: 12px 14px;
       font-size: 0.80rem;
+      color: #e2e8f0;
       line-height: 1.45;
-      margin-top: 14px;
     }
 
-    /* Items Section */
+    /* Search & Categories */
     .search-box {
-      margin-bottom: 16px;
       position: relative;
+      margin-bottom: 14px;
     }
-
     .search-input {
       width: 100%;
-      background: var(--bg-card);
+      background: #070a11;
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 12px 16px 12px 42px;
+      border-radius: 10px;
+      padding: 12px 14px 12px 38px;
       color: #fff;
-      font-size: 0.95rem;
-    }
-
-    .search-input:focus {
+      font-size: 0.88rem;
       outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus {
       border-color: var(--accent-gold);
     }
-
     .search-icon {
       position: absolute;
-      left: 14px;
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.1rem;
-      opacity: 0.6;
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
     .category-pills {
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
       margin-bottom: 16px;
-      scrollbar-width: thin;
     }
-
     .cat-pill {
-      background: rgba(255, 255, 255, 0.06);
+      background: #070a11;
       border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.80rem;
+      padding: 6px 14px;
+      font-size: 0.78rem;
       font-weight: 600;
-      white-space: nowrap;
+      color: var(--text-muted);
       cursor: pointer;
+      white-space: nowrap;
       transition: all 0.2s;
     }
-
-    .cat-pill.active {
-      background: var(--accent-gold);
-      color: #070a11;
+    .cat-pill:hover, .cat-pill.active {
       border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.1);
     }
 
-    /* Items List */
+    /* Items List Grid */
     .items-grid {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 4px;
     }
 
     .item-row {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      background: #070a11;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px 16px;
       transition: all 0.2s;
+      gap: 12px;
     }
-
+    .item-row:hover {
+      background: #0b1120;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
     .item-row.is-sold-out {
-      border-color: rgba(239, 68, 68, 0.35);
+      border-color: rgba(239, 68, 68, 0.4);
       background: rgba(239, 68, 68, 0.04);
+      opacity: 0.85;
     }
 
     .item-info {
@@ -382,60 +410,34 @@
       align-items: center;
       gap: 12px;
       min-width: 0;
-      flex: 1 1 auto;
+      flex: 1;
     }
 
     .item-thumb {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 8px;
       object-fit: cover;
-      background: #000;
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       flex-shrink: 0;
     }
 
     .item-texts {
+      display: flex;
+      flex-direction: column;
       min-width: 0;
     }
 
     .item-name-row {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 2px;
-    }
-
-    .item-code-badge {
-      display: inline-flex;
-      align-items: center;
-      font-family: 'Plus Jakarta Sans', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #fbbf24;
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      padding: 1px 7px;
-      border-radius: 6px;
-      letter-spacing: 0.02em;
-    }
-
-    .item-promo-badge {
-      display: inline-flex;
-      align-items: center;
-      font-size: 0.66rem;
-      font-weight: 800;
-      color: #f43f5e;
-      background: rgba(244, 63, 94, 0.12);
-      border: 1px solid rgba(244, 63, 94, 0.32);
-      padding: 1px 6px;
-      border-radius: 6px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
     }
 
     .item-name {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #fff;
       white-space: nowrap;
@@ -443,15 +445,39 @@
       text-overflow: ellipsis;
     }
 
+    .item-code-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 6px;
+      color: var(--accent-gold);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .item-promo-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      background: rgba(139, 30, 63, 0.3);
+      border: 1px solid rgba(139, 30, 63, 0.6);
+      border-radius: 6px;
+      color: #f43f5e;
+      font-size: 0.70rem;
+      font-weight: 800;
+    }
+
     .item-meta {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
-
     .item-price {
       color: var(--accent-gold);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .item-actions {
@@ -462,43 +488,38 @@
     }
 
     .tag-status {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 700;
       padding: 4px 8px;
       border-radius: 6px;
-      text-transform: uppercase;
     }
-
     .tag-available {
-      background: rgba(34, 197, 94, 0.15);
+      background: rgba(34, 197, 94, 0.1);
       color: #4ade80;
     }
-
     .tag-sold-out {
-      background: rgba(239, 68, 68, 0.2);
+      background: rgba(239, 68, 68, 0.15);
       color: #f87171;
     }
 
     .btn-toggle-sold-out {
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 700;
       border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.80rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
     }
-
     .btn-mark-sold-out {
       background: rgba(239, 68, 68, 0.15);
       border: 1px solid rgba(239, 68, 68, 0.35);
-      color: #fca5a5;
+      color: #f87171;
     }
     .btn-mark-sold-out:hover {
       background: #dc2626;
       color: #fff;
     }
-
     .btn-restore {
       background: rgba(34, 197, 94, 0.15);
       border: 1px solid rgba(34, 197, 94, 0.35);
@@ -507,6 +528,140 @@
     .btn-restore:hover {
       background: #16a34a;
       color: #fff;
+    }
+
+    /* KPI Cards for Metrics */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .kpi-card {
+      background: #070a11;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .kpi-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .kpi-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .kpi-value.gold { color: var(--accent-gold); }
+    .kpi-value.green { color: #4ade80; }
+    .kpi-value.amber { color: #fbbf24; }
+
+    /* Orders Cards */
+    .order-card {
+      background: #070a11;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    .order-card:hover {
+      border-color: var(--border-gold);
+    }
+    .order-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px dashed var(--border-subtle);
+      padding-bottom: 10px;
+    }
+    .order-id {
+      font-weight: 800;
+      color: var(--accent-gold);
+      font-size: 0.95rem;
+    }
+    .order-time {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .order-delivery-pill {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .order-customer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .order-customer-info {
+      font-size: 0.88rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .btn-wa-direct {
+      background: #25d366;
+      color: #070a11;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .order-items-box {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+    .order-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* Empty state */
+    .empty-card {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      background: #070a11;
+      border-radius: 12px;
+      border: 1px dashed var(--border-subtle);
+    }
+    .empty-card h3 {
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .empty-card p {
+      font-size: 0.84rem;
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.45;
     }
 
     /* Toast */
@@ -530,25 +685,6 @@
     .toast.show {
       transform: translateX(-50%) translateY(0);
     }
-
-    @media (max-width: 600px) {
-      .delivery-buttons-grid {
-        grid-template-columns: 1fr;
-      }
-      .btn-auto-delivery {
-        grid-column: span 1;
-      }
-      .item-row {
-        padding: 10px 12px;
-      }
-      .item-name {
-        max-width: 140px;
-      }
-      .btn-toggle-sold-out {
-        padding: 6px 10px;
-        font-size: 0.76rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -557,7 +693,7 @@
   <div class="auth-overlay" id="authOverlay">
     <div class="auth-card">
       <h2 class="auth-title">OMAKI SUSHI</h2>
-      <p class="auth-subtitle">Painel do Atendente & Administração</p>
+      <p class="auth-subtitle">Painel de Atendimento & Controle Operacional</p>
       <input type="password" id="pinInput" class="pin-input" placeholder="••••" maxlength="6" inputmode="numeric" autofocus>
       <button type="button" id="btnAuth" class="btn-auth">Acessar Painel</button>
       <div class="auth-error" id="authError">PIN incorreto. Tente novamente.</div>
@@ -572,113 +708,128 @@
     </div>
   </header>
 
+  <!-- Tabs Navigation -->
+  <nav class="admin-tabs-nav">
+    <button type="button" class="admin-tab-btn active" data-tab="menu">
+      🍱 Cardápio & Esgotados <span class="tab-badge" id="tabItemsCount">187</span>
+    </button>
+    <button type="button" class="admin-tab-btn" data-tab="orders">
+      📋 Histórico de Pedidos <span class="tab-badge" id="tabOrdersCount">0</span>
+    </button>
+    <button type="button" class="admin-tab-btn" data-tab="metrics">
+      📊 Métricas & Abandonos
+    </button>
+  </nav>
+
   <main class="admin-container">
 
-    <!-- Delivery Control Section -->
-    <section class="control-card">
-      <div class="card-title-row">
-        <h2 class="card-title">🛵 Entregas (Delivery)</h2>
-        <span class="status-badge badge-open" id="deliveryStatusBadge">● Carregando...</span>
+    <!-- TAB 1: MENU & SOLD-OUT ITEMS -->
+    <div class="tab-content active" id="tabContentMenu">
+      
+      <!-- Delivery Control Section -->
+      <section class="control-card">
+        <div class="card-title-row">
+          <h2 class="card-title">🛵 Entregas (Delivery)</h2>
+          <span class="status-badge badge-open" id="deliveryStatusBadge">● Carregando...</span>
+        </div>
+
+        <div class="delivery-buttons-grid">
+          <button type="button" class="btn-delivery-action btn-stop-delivery" id="btnStopDelivery">
+            ⛔ Encerrar Entregas Agora
+          </button>
+          <button type="button" class="btn-delivery-action btn-start-delivery" id="btnStartDelivery">
+            🟢 Reativar Entregas
+          </button>
+        </div>
+
+        <div class="info-alert">
+          💡 <strong>Limite Inviolável:</strong> As entregas encerram rigorosamente às <strong>22:30</strong> de forma automática pelo sistema. Utilize os botões acima caso os motoboys precisem encerrar mais cedo. Quando encerrado, o cardápio aceita exclusivamente <strong>Retirada no Balcão</strong>.
+        </div>
+      </section>
+
+      <!-- Granular 187 Items Sold Out Section -->
+      <section class="control-card">
+        <div class="card-title-row">
+          <h2 class="card-title">🍱 Controle Granular de Itens Esgotados</h2>
+          <span style="font-size:0.82rem; color:var(--text-muted);" id="soldOutCount">0 itens esgotados</span>
+        </div>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Buscar por código (#001), nome ou categoria (ex: Temaki, Salmão, 177)...">
+        </div>
+
+        <div class="category-pills" id="categoryPills">
+          <button type="button" class="cat-pill active" data-cat="all">Todos (187)</button>
+        </div>
+
+        <div class="items-grid" id="itemsList">
+          <!-- Injected by JS -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- TAB 2: ORDERS HISTORY -->
+    <div class="tab-content" id="tabContentOrders">
+      <section class="control-card">
+        <div class="card-title-row">
+          <h2 class="card-title">📋 Pedidos Recebidos pelo Cardápio</h2>
+          <button type="button" class="cat-pill active" id="btnRefreshOrders">🔄 Atualizar Lista</button>
+        </div>
+
+        <div id="ordersListContainer" style="display:flex; flex-direction:column; gap:12px;">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 3: METRICS & ABANDONED CARTS -->
+    <div class="tab-content" id="tabContentMetrics">
+      
+      <!-- Top KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-label">📦 Pedidos Concluídos</span>
+          <span class="kpi-value green" id="metricTotalOrders">0</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">💰 Faturamento Estimado</span>
+          <span class="kpi-value gold" id="metricTotalRevenue">R$ 0,00</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">🛒 Carrinhos Abandonados</span>
+          <span class="kpi-value amber" id="metricAbandonedCarts">0</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">🎯 Taxa de Conversão</span>
+          <span class="kpi-value" id="metricConversionRate">0%</span>
+        </div>
       </div>
 
-      <div class="delivery-buttons-grid">
-        <button type="button" class="btn-delivery-action btn-stop-delivery" id="btnStopDelivery">
-          ⛔ Encerrar Entregas Agora
-        </button>
-        <button type="button" class="btn-delivery-action btn-start-delivery" id="btnStartDelivery">
-          🟢 Reativar Entregas
-        </button>
-      </div>
+      <!-- Abandoned Carts Leads Section -->
+      <section class="control-card">
+        <div class="card-title-row">
+          <h2 class="card-title">🛒 Carrinhos Abandonados (Leads para Recuperação)</h2>
+        </div>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:14px;">
+          Clientes que montaram pedidos na sacola mas não enviaram o pedido no WhatsApp. Entre em contato para tirar dúvidas e fechar a venda!
+        </p>
 
-      <div class="info-alert">
-        💡 <strong>Limite Inviolável:</strong> As entregas encerram rigorosamente às <strong>22:30</strong> de forma automática pelo sistema. Utilize os botões acima caso os motoboys precisem encerrar mais cedo (ex: chuva forte ou escassez de entregadores). Quando encerrado, o cardápio aceita exclusivamente <strong>Retirada no Balcão</strong>.
-      </div>
-    </section>
+        <div id="abandonedListContainer" style="display:flex; flex-direction:column; gap:10px;">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
 
-    <!-- Sold Out Items Section -->
-    <section class="control-card">
-      <div class="card-title-row">
-        <h2 class="card-title">🍱 Controle de Itens Esgotados</h2>
-        <span style="font-size:0.82rem; color:var(--text-muted);" id="soldOutCount">0 itens esgotados</span>
-      </div>
-
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome ou número (ex: Sashimi, Poke, 177)...">
-      </div>
-
-      <div class="category-pills" id="categoryPills">
-        <button type="button" class="cat-pill active" data-cat="all">Todos</button>
-      </div>
-
-      <div class="items-grid" id="itemsList">
-        <!-- Injected by JS -->
-      </div>
-    </section>
+    </div>
 
   </main>
 
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="/data/cardapio.js?v=20261102_omaki_v36"></script>
+  <script src="/data/cardapio.js?v=20261102_omaki_v37"></script>
   <script>
-    const DISH_CODES = {
-      'harumaki_group': '#001–#004',
-      'item_5': '#005',
-      'item_6': '#006',
-      'tataki_group': '#007–#011',
-      'ceviche_group': '#012–#015',
-      'camarao_imperial_group': '#016–#017',
-      'carpaccio_group': '#018–#020',
-      'oishi_group': '#021–#022',
-      'kobachi_group': '#023–#024',
-      'gunkan_group': '#025–#030',
-      'vegano_group': '#031–#032',
-      'sashimi_especial_group': '#033–#040',
-      'item_41': '#041',
-      'item_42': '#042',
-      'item_43': '#043',
-      'item_44': '#044',
-      'item_45': '#045',
-      'item_46': '#046',
-      'item_47': '#047',
-      'temaki_group': '#048–#056',
-      'item_57': '#057',
-      'item_58': '#058',
-      'item_59': '#059',
-      'item_60': '#060',
-      'bighot_group': '#061–#062',
-      'hotrolls_group': '#063–#069',
-      'sashimi_trad_group': '#070–#076',
-      'joy_trad_group': '#077–#082',
-      'joy_ebifry_group': '#083–#085',
-      'hossomaki_group': '#086–#091',
-      'uramaki_trad_group': '#092–#098',
-      'uramaki_joy_group': '#099–#104',
-      'poke_group': '#105–#109',
-      'niguiri_group': '#110–#118',
-      'molhos_group': '#131–#136',
-      'teppan_group': '#137–#142',
-      'yakisoba_group': '#143–#146',
-      'sucos_group': '#147–#154',
-      'sake_group': '#155–#164',
-      'refrigerantes_group': '#165–#171',
-      'cervejas_group': '#172–#176',
-      'item_177': '#177',
-      'item_178': '#178',
-      'item_179': '#179',
-      'item_180': '#180',
-      // Os últimos 7 combos promocionais NÃO têm código numérico:
-      'item_combo_camarão_imperial_-_25_peças': '',
-      'item_combo_camarão_-_30_peças': '',
-      'item_combo_joy_-_28_peças': '',
-      'item_combo_misto_-_28_peças': '',
-      'item_combo_salmão_-_30_peças': '',
-      'item_combo_hot_-_30_peças': '',
-      'item_combo_hossomaki_-_28_peças': ''
-    };
-
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
       deliveryActive: true,
@@ -689,6 +840,7 @@
     let allItems = [];
     let currentCategory = 'all';
     let searchQuery = '';
+    let ordersData = { orders: [], abandonedCarts: [] };
 
     const authOverlay = document.getElementById('authOverlay');
     const pinInput = document.getElementById('pinInput');
@@ -697,7 +849,6 @@
     const deliveryStatusBadge = document.getElementById('deliveryStatusBadge');
     const btnStopDelivery = document.getElementById('btnStopDelivery');
     const btnStartDelivery = document.getElementById('btnStartDelivery');
-    const btnAutoDelivery = document.getElementById('btnAutoDelivery');
     const soldOutCount = document.getElementById('soldOutCount');
     const searchInput = document.getElementById('searchInput');
     const categoryPills = document.getElementById('categoryPills');
@@ -711,16 +862,6 @@
     }
 
     async function checkAuth(pin) {
-      try {
-        const res = await fetch('/api/status');
-        if (res.ok) {
-          const data = await res.json();
-          adminState = data;
-        }
-      } catch (e) {
-        console.warn('API status fetch fallback to local', e);
-      }
-
       if (pin === '1234' || pin === 'omaki2026') {
         adminPin = pin;
         localStorage.setItem('omaki_admin_pin', pin);
@@ -751,67 +892,49 @@
       flattenItems();
       renderCategoryPills();
       loadState();
+      loadOrders();
       bindEvents();
     }
 
-    
-
+    // Build the 187 items directly from cardapio.js
     function flattenItems() {
       allItems = [];
       const cData = (typeof CARDAPIO_DATA !== "undefined" ? CARDAPIO_DATA : window.OMAKI_DATA) || {};
-      const dishesList = cData.dishes || [];
-      const itemsList = cData.items || [];
+      const rawItems = cData.items || [];
 
-      // 1. All dishes from menu
-      dishesList.forEach(dish => {
-        let code = '';
-        if (DISH_CODES[dish.id] !== undefined) {
-          code = DISH_CODES[dish.id];
-        } else if (dish.num) {
-          code = '#' + String(dish.num).padStart(3, '0');
-        }
+      rawItems.forEach(it => {
+        const num = it.num;
+        const codeRaw = it.code || (num ? String(num).padStart(3, '0') : '');
+        const code = codeRaw ? '#' + codeRaw : '';
+        const itemId = num ? `item_${num}` : 'item_' + (it.name || '').toLowerCase().replace(/ /g, '_');
 
         allItems.push({
-          id: dish.id,
-          name: dish.title || dish.name,
-          number: dish.num || '',
+          id: itemId,
+          number: num || '',
           code: code,
-          price: dish.price || dish.minPrice || 0,
-          image: dish.photo || dish.image || '/assets/images/raw_sashimi_tradicional.png',
-          category: dish.category || 'Geral',
-          categoryName: dish.category || 'Geral'
+          name: it.name || it.fullName,
+          fullName: it.fullName || it.name,
+          category: it.category || 'Geral',
+          price: it.price || 0,
+          portion: it.portion || '',
+          image: it.photo || it.image || '/assets/images/raw_sashimi_tradicional.png'
         });
       });
 
-      // 2. Also ensure numbered drinks from items are listed with appetizing photos
-      itemsList.forEach(item => {
-        if (item.category && (item.category.includes('Bebida') || item.category.includes('Cerveja') || item.category.includes('Refrigerante') || item.category.includes('Suco') || item.category.includes('Saké'))) {
-          const exists = allItems.some(a => a.id === `item_${item.num}` || a.number === item.num);
-          if (!exists) {
-            allItems.push({
-              id: `item_${item.num}`,
-              name: item.name,
-              number: item.num,
-              code: item.num ? '#' + String(item.num).padStart(3, '0') : '',
-              price: item.price || 0,
-              image: item.photo || item.image || '/assets/images/real_cervejas.jpg',
-              category: item.category,
-              categoryName: item.category
-            });
-          }
-        }
-      });
+      const tabCount = document.getElementById('tabItemsCount');
+      if (tabCount) tabCount.textContent = allItems.length;
     }
 
     function renderCategoryPills() {
-      categoryPills.innerHTML = '<button type="button" class="cat-pill active" data-cat="all">Todos</button>';
+      categoryPills.innerHTML = '<button type="button" class="cat-pill active" data-cat="all">Todos (' + allItems.length + ')</button>';
       const uniqueCats = Array.from(new Set(allItems.map(i => i.category))).filter(Boolean).sort();
       uniqueCats.forEach(cat => {
+        const count = allItems.filter(i => i.category === cat).length;
         const pill = document.createElement('button');
         pill.type = 'button';
         pill.className = 'cat-pill';
         pill.dataset.cat = cat;
-        pill.textContent = cat;
+        pill.textContent = `${cat} (${count})`;
         pill.addEventListener('click', () => {
           document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
           pill.classList.add('active');
@@ -834,21 +957,11 @@
         const res = await fetch('/api/status?t=' + Date.now());
         if (res.ok) {
           adminState = await res.json();
-          localStorage.setItem('omaki_admin_state', JSON.stringify(adminState));
-        } else {
-          fallbackLocalState();
         }
-      } catch (err) {
-        fallbackLocalState();
+      } catch (e) {
+        console.warn('Erro ao carregar status operacional:', e);
       }
       updateUI();
-    }
-
-    function fallbackLocalState() {
-      const saved = localStorage.getItem('omaki_admin_state');
-      if (saved) {
-        try { adminState = JSON.parse(saved); } catch(e) {}
-      }
     }
 
     function getBrasiliaMinutes() {
@@ -870,13 +983,11 @@
     }
 
     function updateUI() {
-      // 1. Delivery UI
       const curMins = getBrasiliaMinutes();
       const startMins = 18 * 60 + 20; // 18:20
       const endMins = 22 * 60 + 30;   // 22:30
       const inAutoWindow = curMins >= startMins && curMins < endMins;
 
-      // Limitador absoluto: passou das 22:30 ou antes das 18:20, sempre encerrado
       let effectiveOpen = false;
       if (inAutoWindow) {
         if (adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) {
@@ -890,22 +1001,17 @@
 
       if (effectiveOpen) {
         deliveryStatusBadge.className = 'status-badge badge-open';
-        deliveryStatusBadge.style.background = '';
-        deliveryStatusBadge.style.color = '';
         deliveryStatusBadge.textContent = '🟢 Entregas ABERTAS';
       } else if (curMins < startMins) {
-        deliveryStatusBadge.className = 'status-badge badge-auto';
+        deliveryStatusBadge.className = 'status-badge';
         deliveryStatusBadge.style.background = 'rgba(234, 179, 8, 0.15)';
         deliveryStatusBadge.style.color = '#fbbf24';
-        deliveryStatusBadge.textContent = '🟡 Aceitando Encomendas (Entregas às 18:20)';
+        deliveryStatusBadge.textContent = '🟡 Encomendas (Entregas às 18:20)';
       } else {
         deliveryStatusBadge.className = 'status-badge badge-closed';
-        deliveryStatusBadge.style.background = '';
-        deliveryStatusBadge.style.color = '';
         deliveryStatusBadge.textContent = '🔴 Entregas ENCERRADAS';
       }
 
-      // 2. Sold out count
       const count = (adminState.soldOutIds || []).length;
       soldOutCount.textContent = count === 1 ? '1 item esgotado' : `${count} itens esgotados`;
 
@@ -919,7 +1025,10 @@
       const filtered = allItems.filter(item => {
         const matchCat = currentCategory === 'all' || item.category === currentCategory;
         const q = searchQuery.toLowerCase().trim();
-        const matchSearch = !q || item.name.toLowerCase().includes(q) || (item.code && item.code.toLowerCase().includes(q)) || (item.number && item.number.toString().includes(q));
+        const matchSearch = !q || 
+                            item.name.toLowerCase().includes(q) || 
+                            (item.code && item.code.toLowerCase().includes(q)) || 
+                            (item.number && item.number.toString().includes(q));
         return matchCat && matchSearch;
       });
 
@@ -944,10 +1053,10 @@
             <div class="item-texts">
               <div class="item-name-row">
                 ${badgeHtml}
-                <span class="item-name">${item.name}</span>
+                <span class="item-name" title="${item.fullName}">${item.name}</span>
               </div>
               <div class="item-meta">
-                <span class="item-price">${priceFmt}</span> • <span>${item.categoryName}</span>
+                <span class="item-price">${priceFmt}</span> ${item.portion ? `• <span>${item.portion}</span>` : ''} • <span>${item.category}</span>
               </div>
             </div>
           </div>
@@ -979,63 +1088,227 @@
         adminState.soldOutIds.push(itemId);
         showToast('Item marcado como ESGOTADO!');
       }
-      updateUI();
-      saveState();
+      renderItems();
+      await saveState();
     }
 
-    async function setDeliveryState(manualOverride, reason = '') {
-      adminState.manualDeliveryOverride = manualOverride;
-      adminState.deliveryActive = manualOverride !== null ? manualOverride : true;
+    async function setDeliveryState(active, reason = '') {
+      adminState.deliveryActive = active;
+      adminState.manualDeliveryOverride = active;
       adminState.deliveryClosedReason = reason;
-
-      if (manualOverride === false) {
-        showToast('Entregas pausadas! Clientes verão apenas retirada.');
-      } else if (manualOverride === true) {
-        showToast('Entregas ativadas com sucesso!');
-      } else {
-        showToast('Horário automático (18:20 às 22:30) restaurado!');
-      }
-
       updateUI();
-      saveState();
+      await saveState();
+      showToast(active ? 'Entregas reativadas!' : 'Entregas encerradas!');
     }
 
     async function saveState() {
-      localStorage.setItem('omaki_admin_state', JSON.stringify(adminState));
       try {
+        const payload = {
+          pin: adminPin,
+          deliveryActive: adminState.deliveryActive,
+          manualDeliveryOverride: adminState.manualDeliveryOverride,
+          deliveryClosedReason: adminState.deliveryClosedReason || '',
+          soldOutIds: adminState.soldOutIds || []
+        };
         const res = await fetch('/api/status', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            pin: adminPin,
-            deliveryActive: adminState.deliveryActive,
-            manualDeliveryOverride: adminState.manualDeliveryOverride,
-            deliveryClosedReason: adminState.deliveryClosedReason,
-            soldOutIds: adminState.soldOutIds
-          })
+          body: JSON.stringify(payload)
         });
         if (!res.ok) {
-          console.warn('API save returned non-200');
+          const err = await res.json();
+          showToast('Aviso: ' + (err.error || 'Erro ao sincronizar.'));
         }
-      } catch (err) {
-        console.warn('Network error saving to API, stored in localStorage', err);
+      } catch (e) {
+        showToast('Erro de rede ao salvar status.');
       }
+    }
+
+    // --- TAB 2 & 3: ORDERS & METRICS ---
+    async function loadOrders() {
+      try {
+        const res = await fetch('/api/orders?t=' + Date.now());
+        if (res.ok) {
+          ordersData = await res.json();
+          renderOrders();
+          renderMetrics();
+        }
+      } catch (e) {
+        console.warn('Erro ao carregar pedidos:', e);
+      }
+    }
+
+    function renderOrders() {
+      const orders = ordersData.orders || [];
+      const countBadge = document.getElementById('tabOrdersCount');
+      if (countBadge) countBadge.textContent = orders.length;
+
+      const container = document.getElementById('ordersListContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="empty-card">
+            <h3>Nenhum pedido registrado ainda hoje</h3>
+            <p>Assim que os clientes clicarem em <strong>Enviar Pedido via WhatsApp</strong> no cardápio, os pedidos aparecerão aqui em tempo real com todos os detalhes e comanda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      orders.forEach(order => {
+        const card = document.createElement('div');
+        card.className = 'order-card';
+
+        const dateObj = new Date(order.createdAt);
+        const timeStr = dateObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
+        const dateStr = dateObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'America/Sao_Paulo' });
+        const isDelivery = order.deliveryType === 'delivery';
+
+        const itemsHtml = (order.items || []).map(i => `<div>• <strong>${i.qty}x</strong> ${i.name}${i.option ? ` (${i.option})` : ''} — R$ ${(i.price * i.qty).toFixed(2).replace('.', ',')}</div>`).join('');
+
+        const phoneClean = (order.customerPhone || '').replace(/\D/g, '');
+        const waLink = phoneClean ? `https://wa.me/55${phoneClean}?text=Ol%C3%A1%20${encodeURIComponent(order.customerName)}!%20Recebemos%20seu%20pedido%20no%20Omaki%20Sushi.` : '#';
+
+        card.innerHTML = `
+          <div class="order-header-row">
+            <span class="order-id">${order.id || 'OMK-0000'}</span>
+            <span class="order-delivery-pill">${isDelivery ? '🛵 Entrega' : '🛍️ Retirada no Balcão'}</span>
+            <span class="order-time">⏰ ${dateStr} às ${timeStr}</span>
+          </div>
+
+          <div class="order-customer-row">
+            <span class="order-customer-info">👤 ${order.customerName} ${order.customerPhone ? `• ${order.customerPhone}` : ''}</span>
+            ${phoneClean ? `<a href="${waLink}" target="_blank" class="btn-wa-direct">💬 WhatsApp</a>` : ''}
+          </div>
+
+          ${isDelivery && order.address ? `<div style="font-size:0.80rem; color:#94a3b8;">📍 <strong>Endereço:</strong> ${order.address} ${order.neighborhood ? `(${order.neighborhood})` : ''}</div>` : ''}
+
+          <div class="order-items-box">
+            ${itemsHtml || '<div>Nenhum item discriminado</div>'}
+          </div>
+
+          <div class="order-total-row">
+            <span style="font-size:0.82rem; color:#94a3b8;">💳 ${order.paymentMethod || 'PIX'} ${order.changeFor ? `(Troco para R$ ${order.changeFor})` : ''}</span>
+            <span style="color:var(--accent-gold);">Total: R$ ${(order.total || order.subtotal || 0).toFixed(2).replace('.', ',')}</span>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function renderMetrics() {
+      const orders = ordersData.orders || [];
+      const abandoned = ordersData.abandonedCarts || [];
+
+      // Metrics calculation
+      const totalRevenue = orders.reduce((sum, o) => sum + (o.total || o.subtotal || 0), 0);
+      const totalOrdersCount = orders.length;
+      const totalAbandonedCount = abandoned.length;
+      const totalLeads = totalOrdersCount + totalAbandonedCount;
+      const convRate = totalLeads > 0 ? Math.round((totalOrdersCount / totalLeads) * 100) : 0;
+
+      document.getElementById('metricTotalOrders').textContent = totalOrdersCount;
+      document.getElementById('metricTotalRevenue').textContent = `R$ ${totalRevenue.toFixed(2).replace('.', ',')}`;
+      document.getElementById('metricAbandonedCarts').textContent = totalAbandonedCount;
+      document.getElementById('metricConversionRate').textContent = `${convRate}%`;
+
+      // Render Abandoned Carts List
+      const container = document.getElementById('abandonedListContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (abandoned.length === 0) {
+        container.innerHTML = `
+          <div class="empty-card">
+            <h3>Nenhum carrinho abandonado registrado</h3>
+            <p>Excelente sinal! Todas as pessoas que iniciaram pedidos completaram o envio ou ainda não deixaram itens na sacola.</p>
+          </div>
+        `;
+        return;
+      }
+
+      abandoned.forEach(abn => {
+        const card = document.createElement('div');
+        card.className = 'order-card';
+        card.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+
+        const dateObj = new Date(abn.createdAt);
+        const timeStr = dateObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
+        const dateStr = dateObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'America/Sao_Paulo' });
+
+        const phoneClean = (abn.customerPhone || '').replace(/\D/g, '');
+        const recoveryMsg = `Ol%C3%A1${abn.customerName !== 'Não informado' ? ' ' + encodeURIComponent(abn.customerName) : ''}!%20Vi%20que%20voc%C3%AA%20estava%20montando%20um%20pedido%20no%20Omaki%20Sushi.%20Ficou%20com%20alguma%20d%C3%BAvida%20ou%20gostaria%20que%20eu%20finalizasse%20por%20aqui%20para%20voc%C3%AA%3F`;
+        const waLink = phoneClean ? `https://wa.me/55${phoneClean}?text=${recoveryMsg}` : '#';
+
+        card.innerHTML = `
+          <div class="order-header-row">
+            <span style="font-weight:800; color:#fbbf24;">${abn.id || 'ABN-0000'}</span>
+            <span style="font-size:0.74rem; background:rgba(245, 158, 11, 0.15); color:#fbbf24; padding:3px 8px; border-radius:6px; font-weight:700;">Abandonou no Checkout</span>
+            <span class="order-time">⏰ ${dateStr} às ${timeStr}</span>
+          </div>
+
+          <div class="order-customer-row">
+            <span class="order-customer-info">👤 ${abn.customerName} ${abn.customerPhone ? `• ${abn.customerPhone}` : '<small style=\"color:#94a3b8;\">(Não informou WhatsApp)</small>'}</span>
+            ${phoneClean ? `<a href="${waLink}" target="_blank" class="btn-wa-direct">💬 Recuperar no WhatsApp</a>` : ''}
+          </div>
+
+          <div class="order-items-box">
+            <strong>Itens na Sacola:</strong> ${abn.itemsSummary || `${abn.itemsCount} itens`}
+          </div>
+
+          <div class="order-total-row">
+            <span style="font-size:0.80rem; color:#94a3b8;">Valor na Sacola:</span>
+            <span style="color:#fbbf24;">R$ ${(abn.subtotal || 0).toFixed(2).replace('.', ',')}</span>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
     }
 
     function bindEvents() {
       btnStopDelivery.addEventListener('click', () => {
-        setDeliveryState(false, 'Equipe pausou temporariamente as entregas');
+        setDeliveryState(false, 'Entregas encerradas mais cedo pela equipe.');
       });
 
       btnStartDelivery.addEventListener('click', () => {
         setDeliveryState(true, '');
       });
 
-
-
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value;
         renderItems();
+      });
+
+      const btnRefresh = document.getElementById('btnRefreshOrders');
+      if (btnRefresh) {
+        btnRefresh.addEventListener('click', () => {
+          loadOrders();
+          showToast('Lista de pedidos atualizada!');
+        });
+      }
+
+      // Tab Switching
+      document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+          btn.classList.add('active');
+          const tab = btn.dataset.tab;
+          if (tab === 'menu') {
+            document.getElementById('tabContentMenu').classList.add('active');
+          } else if (tab === 'orders') {
+            document.getElementById('tabContentOrders').classList.add('active');
+            loadOrders();
+          } else if (tab === 'metrics') {
+            document.getElementById('tabContentMetrics').classList.add('active');
+            loadOrders();
+          }
+        });
       });
     }
   </script>

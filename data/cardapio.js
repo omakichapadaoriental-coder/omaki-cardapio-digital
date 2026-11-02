@@ -172,7 +172,7 @@ const CARDAPIO_DATA = {
       "description": "Camarão, Philadelphia e alho-poró",
       "portion": "2 un",
       "page": "Pág 1",
-      "price": 33.9,
+      "price": 34.9,
       "photo": "assets/images/raw_harumaki.png"
     },
     {
@@ -184,7 +184,7 @@ const CARDAPIO_DATA = {
       "description": "Queijo",
       "portion": "2 un",
       "page": "Pág 1",
-      "price": 29.9,
+      "price": 30.9,
       "photo": "assets/images/Harumaki_Romeu_e_Julieta.png"
     },
     {
@@ -196,7 +196,7 @@ const CARDAPIO_DATA = {
       "description": "Goiabada e queijo",
       "portion": "2 un",
       "page": "Pág 1",
-      "price": 28.9,
+      "price": 29.9,
       "photo": "assets/images/Harumaki_Romeu_e_Julieta.png"
     },
     {
@@ -208,7 +208,7 @@ const CARDAPIO_DATA = {
       "description": "Banana com canela e açúcar",
       "portion": "2 un",
       "page": "Pág 1",
-      "price": 27.9,
+      "price": 28.9,
       "photo": "assets/images/Harumaki_de_Banana_com_Canela.png"
     },
     {
@@ -220,7 +220,7 @@ const CARDAPIO_DATA = {
       "description": "Guioza bovino/suíno no vapor e selado",
       "portion": "6 un",
       "page": "Pág 1",
-      "price": 43.9,
+      "price": 44.9,
       "photo": "assets/images/real_guioza.jpg"
     },
     {
@@ -232,7 +232,7 @@ const CARDAPIO_DATA = {
       "description": "Joy de goiaba, Philadelphia, Nutella e raspas de limão",
       "portion": "8 un",
       "page": "Pág 1",
-      "price": 37.9,
+      "price": 38.9,
       "photo": "assets/images/real_joy_goiaba.jpg"
     },
     {
@@ -244,7 +244,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, gergelim, azeite trufado, flor de sal, gengibre picado, cebolinha, geleia de pimenta e Queensberry",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 64.9,
+      "price": 65.9,
       "photo": "assets/images/raw_tataki.jpeg"
     },
     {
@@ -256,7 +256,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão 80g, manga 20g, tomate cereja 20g, azeite, limão, shoyu, cebolinha",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 62.9,
+      "price": 63.9,
       "photo": "assets/images/raw_tataki.jpeg"
     },
     {
@@ -268,7 +268,7 @@ const CARDAPIO_DATA = {
       "description": "Camarão, azeite, limão, shoyu, cebolinha e furikake",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 61.9,
+      "price": 62.9,
       "photo": "assets/images/raw_tataki.jpeg"
     },
     {
@@ -280,7 +280,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, tilápia, anchova defumada, limão, shoyu, cebolinha e furikake",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 56.9,
+      "price": 57.9,
       "photo": "assets/images/raw_tataki.jpeg"
     },
     {
@@ -292,7 +292,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão 120g, limão, shoyu 10ml, azeite extra virgem 10ml, cebolinha e furikake",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 55.9,
+      "price": 56.9,
       "photo": "assets/images/raw_tataki.jpeg"
     },
     {
@@ -304,7 +304,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, peixe branco, manga, cebola roxa e molho cítrico",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 58.9,
+      "price": 59.9,
       "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
@@ -316,7 +316,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão 120g, cebola roxa 60g, azeite, limão, sal rosa, ajinomoto e cebolinha",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 55.9,
+      "price": 56.9,
       "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
@@ -328,7 +328,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, tilápia e anchova defumada com cebola roxa e azeite",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 54.9,
+      "price": 55.9,
       "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
@@ -340,7 +340,7 @@ const CARDAPIO_DATA = {
       "description": "Peixe branco / tilápia limpa, cebola roxa, limão, azeite e temperos",
       "portion": "200g",
       "page": "Pág 1",
-      "price": 51.9,
+      "price": 52.9,
       "photo": "assets/images/raw_ceviche.jpeg"
     },
     {
@@ -352,7 +352,7 @@ const CARDAPIO_DATA = {
       "description": "Camarão imperial empanado panko 6 un, cream cheese Philadelphia, molho tarê e cebolinha",
       "portion": "6 un",
       "page": "Pág 1",
-      "price": 54.9,
+      "price": 55.9,
       "photo": "assets/images/raw_camarao_imperial.png"
     },
     {
@@ -364,7 +364,7 @@ const CARDAPIO_DATA = {
       "description": "Camarão imperial empanado panko 6 un, maionese japonesa e molho sriracha",
       "portion": "6 un",
       "page": "Pág 1",
-      "price": 52.9,
+      "price": 53.9,
       "photo": "assets/images/raw_camarao_imperial.png"
     },
     {
@@ -376,7 +376,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, azeite trufado, shoyu, limão siciliano, furikake, cebolinha e sal rosa",
       "portion": "12 fatias",
       "page": "Pág 2",
-      "price": 58.9,
+      "price": 59.9,
       "photo": "assets/images/raw_carpaccio.jpeg"
     },
     {
@@ -388,7 +388,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, azeite, limão, shoyu, cebolinha, furikake e flor de sal",
       "portion": "12 fatias",
       "page": "Pág 2",
-      "price": 56.9,
+      "price": 57.9,
       "photo": "assets/images/raw_carpaccio.jpeg"
     },
     {
@@ -400,7 +400,7 @@ const CARDAPIO_DATA = {
       "description": "Peixe branco, limão, azeite, sal rosa, cebolinha e furikake",
       "portion": "12 fatias",
       "page": "Pág 2",
-      "price": 54.9,
+      "price": 55.9,
       "photo": "assets/images/raw_carpaccio.jpeg"
     },
     {
@@ -412,7 +412,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, tilápia, anchova defumada, Philadelphia, tarê e cebolinha",
       "portion": "Porção",
       "page": "Pág 2",
-      "price": 56.9,
+      "price": 57.9,
       "photo": "assets/images/raw_oishi.jpeg"
     },
     {
@@ -424,7 +424,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, Philadelphia, tarê, geleia de pimenta, cebolinha e furikake",
       "portion": "Porção",
       "page": "Pág 2",
-      "price": 54.9,
+      "price": 55.9,
       "photo": "assets/images/raw_oishi.jpeg"
     },
     {
@@ -436,7 +436,7 @@ const CARDAPIO_DATA = {
       "description": "Shimeji na manteiga com shoyu e cebolinha",
       "portion": "200g",
       "page": "Pág 2",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_kobachi.jpeg"
     },
     {
@@ -448,7 +448,7 @@ const CARDAPIO_DATA = {
       "description": "Caldo de soja missô com tofu e cebolinha",
       "portion": "200ml",
       "page": "Pág 2",
-      "price": 25.9,
+      "price": 26.9,
       "photo": "assets/images/raw_kobachi.jpeg"
     },
     {
@@ -460,7 +460,7 @@ const CARDAPIO_DATA = {
       "description": "Salada de pepino agridoce com gergelim",
       "portion": "150g",
       "page": "Pág 2",
-      "price": 24.9,
+      "price": 25.9,
       "photo": "assets/images/raw_kobachi.jpeg"
     },
     {
@@ -472,7 +472,7 @@ const CARDAPIO_DATA = {
       "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e furikake",
       "portion": "6 un",
       "page": "Pág 2",
-      "price": 39.9,
+      "price": 40.9,
       "photo": "assets/images/raw_gunkan.png"
     },
     {
@@ -484,7 +484,7 @@ const CARDAPIO_DATA = {
       "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e couve crispy",
       "portion": "6 un",
       "page": "Pág 2",
-      "price": 39.9,
+      "price": 40.9,
       "photo": "assets/images/raw_gunkan.png"
     },
     {
@@ -496,7 +496,7 @@ const CARDAPIO_DATA = {
       "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e alho-poró crocante",
       "portion": "6 un",
       "page": "Pág 2",
-      "price": 39.9,
+      "price": 40.9,
       "photo": "assets/images/raw_gunkan.png"
     },
     {
@@ -508,7 +508,7 @@ const CARDAPIO_DATA = {
       "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e cebolinha fresca",
       "portion": "6 un",
       "page": "Pág 2",
-      "price": 38.9,
+      "price": 39.9,
       "photo": "assets/images/raw_gunkan.png"
     },
     {
@@ -520,7 +520,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari, alga nori, tomate seco, pepino e manga",
       "portion": "10 un",
       "page": "Pág 2",
-      "price": 47.9,
+      "price": 48.9,
       "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
@@ -532,7 +532,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari, alga nori, pepino, manga e gergelim torrado",
       "portion": "10 un",
       "page": "Pág 2",
-      "price": 46.9,
+      "price": 47.9,
       "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
@@ -544,7 +544,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari, alga nori, pepino, manga e cenoura em tiras",
       "portion": "10 un",
       "page": "Pág 2",
-      "price": 45.9,
+      "price": 46.9,
       "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
@@ -556,7 +556,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari, alga nori e shimeji salteado",
       "portion": "10 un",
       "page": "Pág 2",
-      "price": 45.9,
+      "price": 46.9,
       "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
@@ -568,7 +568,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari, alga nori e avocado fresco",
       "portion": "10 un",
       "page": "Pág 2",
-      "price": 42.9,
+      "price": 43.9,
       "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
@@ -580,7 +580,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari, alga nori e pepino japonês em tiras",
       "portion": "10 un",
       "page": "Pág 2",
-      "price": 41.9,
+      "price": 42.9,
       "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
@@ -592,7 +592,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari, alga nori e manga fresca",
       "portion": "10 un",
       "page": "Pág 2",
-      "price": 41.9,
+      "price": 42.9,
       "photo": "assets/images/raw_futomaki_vegano.jpeg"
     },
     {
@@ -604,7 +604,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi de salmão especial com lâminas maçaricadas e molho do chef",
       "portion": "10 fatias",
       "page": "Pág 3",
-      "price": 54.9,
+      "price": 55.9,
       "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
@@ -616,7 +616,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi de salmão selado com toque picante e flor de sal",
       "portion": "10 fatias",
       "page": "Pág 3",
-      "price": 53.9,
+      "price": 54.9,
       "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
@@ -628,7 +628,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi de salmão fresco com redução de frutas e gergelim",
       "portion": "10 fatias",
       "page": "Pág 3",
-      "price": 52.9,
+      "price": 53.9,
       "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
@@ -640,7 +640,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi nobre de salmão maçaricado com azeite trufado e flor de sal",
       "portion": "10 fatias",
       "page": "Pág 3",
-      "price": 57.9,
+      "price": 58.9,
       "photo": "assets/images/raw_sashimi_especial.jpeg"
     },
     {
@@ -652,7 +652,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão empanado, alho-poró, limão siciliano, azeite trufado, tarê, molho de ostra, cebolinha",
       "portion": "10 un",
       "page": "Pág 3",
-      "price": 58.9,
+      "price": 59.9,
       "photo": "assets/images/raw_esp_41_elegancia.jpeg"
     },
     {
@@ -664,7 +664,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, avocado, geleia de morango com gengibre em conserva (gari)",
       "portion": "10 un",
       "page": "Pág 3",
-      "price": 58.9,
+      "price": 59.9,
       "photo": "assets/images/raw_esp_42_morango.jpeg"
     },
     {
@@ -676,7 +676,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão maçaricado, azeite trufado, raspas de limão siciliano e flor de sal",
       "portion": "10 un",
       "page": "Pág 3",
-      "price": 57.9,
+      "price": 58.9,
       "photo": "assets/images/raw_esp_43_trufado.jpeg"
     },
     {
@@ -688,7 +688,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, pasta de umeboshi tradicional e fatias de avocado",
       "portion": "10 un",
       "page": "Pág 3",
-      "price": 56.9,
+      "price": 57.9,
       "photo": "assets/images/raw_esp_44_chef.jpeg"
     },
     {
@@ -712,7 +712,7 @@ const CARDAPIO_DATA = {
       "description": "Pele de salmão grelhada crocante, cebolinha, flor de sal e furikake",
       "portion": "10 un",
       "page": "Pág 4",
-      "price": 55.9,
+      "price": 56.9,
       "photo": "assets/images/raw_esp_46_skin_salmao.jpeg"
     },
     {
@@ -724,7 +724,7 @@ const CARDAPIO_DATA = {
       "description": "Lâmina de salmão maçaricado, cream cheese, azeite trufado, geleia de pimenta e Queensberry",
       "portion": "2 un",
       "page": "Pág 4",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_esp_47_joy_macaricado.jpeg"
     },
     {
@@ -736,7 +736,7 @@ const CARDAPIO_DATA = {
       "description": "Manta de salmão selado maçaricado externo, 70g shari, 50g camarão menor, 60g cream cheese, crispy alho-poró 9g, tarê 26ml",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 66.9,
+      "price": 67.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -748,7 +748,7 @@ const CARDAPIO_DATA = {
       "description": "Manta de salmão selado, 70g shari, 2un camarão imperial empanado (48g), cream cheese, alho-poró, tarê",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 66.9,
+      "price": 67.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -760,7 +760,7 @@ const CARDAPIO_DATA = {
       "description": "91g salmão selado externo, 70g shari, 102g recheio salmão/CC 60/40, alho-poró 9g, tarê 26ml (300g reais de bancada)",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 65.9,
+      "price": 66.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -772,7 +772,7 @@ const CARDAPIO_DATA = {
       "description": "Temaki totalmente empanado na farinha panko, frito e cortado ao meio com tarê",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 51.9,
+      "price": 52.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -784,7 +784,7 @@ const CARDAPIO_DATA = {
       "description": "Temaki frito tradicional com salmão grelhado e cream cheese",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -796,7 +796,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão em cubos, camarão limpo cozido, cream cheese e cebolinha",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -808,7 +808,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão cru batido com cream cheese e cebolinha fresca (244g reais bancada)",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 47.9,
+      "price": 48.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -820,7 +820,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão cru em cubos, cream cheese, geleia de pimenta agridoce e furikake",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 47.9,
+      "price": 48.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -832,7 +832,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão cru em cubos, cream cheese e alho-poró crocante",
       "portion": "180g",
       "page": "Pág 4",
-      "price": 46.9,
+      "price": 47.9,
       "photo": "assets/images/raw_temaki.png"
     },
     {
@@ -844,7 +844,7 @@ const CARDAPIO_DATA = {
       "description": "Shakemaki Salmão, 05 Uramaki Salmão, 03 Niguiri Salmão, 02 Niguiri Salmão Geleia Pimenta, 05 Sashimi Salmão, 05 Sashimi Tilápia c/ Limão",
       "portion": "25 peças",
       "page": "Pág 5",
-      "price": 141.9,
+      "price": 143.9,
       "photo": "assets/images/raw_combo_1_chef.jpeg"
     },
     {
@@ -856,7 +856,7 @@ const CARDAPIO_DATA = {
       "description": "Shakemaki Salmão, 05 Uramaki Salmão, 05 Joy Cebolinha, 05 Hossomaki Salmão/Philadelphia, 05 Niguiri Salmão, 05 Niguiri Tilápia Limão/Geleia",
       "portion": "35 peças",
       "page": "Pág 5",
-      "price": 161.9,
+      "price": 163.9,
       "photo": "assets/images/raw_combo_4_chef.jpeg"
     },
     {
@@ -868,7 +868,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki Salmão, 05 Sashimi Salmão, 05 Sashimi Salmão Maçaricado, 05 Joy Philadelphia, 05 Uramaki Joy Camarão Imperial, 05 Niguiri Salmão, 05 Shakemaki",
       "portion": "40 peças",
       "page": "Pág 5",
-      "price": 205.9,
+      "price": 207.9,
       "photo": "assets/images/raw_combo_5_chef.jpeg"
     },
     {
@@ -880,7 +880,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi Salmão, 10 Joy Alho-poró, 10 Uramaki Salmão, 05 Sashimi Anchova, 05 Uramaki Joy Salmão Furikake, 05 Shakemaki, 05 Uramaki Joy Camarão Imperial, 05 Niguiri Salmão, 05 Niguiri Tilápia",
       "portion": "60 peças",
       "page": "Pág 5",
-      "price": 320.9,
+      "price": 322.9,
       "photo": "assets/images/real_combo_8_chef.png"
     },
     {
@@ -892,7 +892,7 @@ const CARDAPIO_DATA = {
       "description": "Big Hot empanado recheado com camarão imperial, cream cheese, tarê, cebolinha e gergelim",
       "portion": "2 un",
       "page": "Pág 5",
-      "price": 59.9,
+      "price": 60.9,
       "photo": "assets/images/raw_bighot.png"
     },
     {
@@ -904,7 +904,7 @@ const CARDAPIO_DATA = {
       "description": "Big Hot empanado recheado com salmão e camarão imperial, cream cheese, tarê e gergelim",
       "portion": "2 un",
       "page": "Pág 5",
-      "price": 58.9,
+      "price": 59.9,
       "photo": "assets/images/raw_bighot.png"
     },
     {
@@ -916,7 +916,7 @@ const CARDAPIO_DATA = {
       "description": "Big Hot empanado recheado com salmão, cream cheese, alho-poró, tarê e cebolinha",
       "portion": "2 un",
       "page": "Pág 5",
-      "price": 57.9,
+      "price": 58.9,
       "photo": "assets/images/raw_bighot.png"
     },
     {
@@ -928,7 +928,7 @@ const CARDAPIO_DATA = {
       "description": "105g de salmão filé e 40g de cream cheese envoltos em nori, empanados e fritos",
       "portion": "10 un",
       "page": "Pág 6",
-      "price": 56.9,
+      "price": 57.9,
       "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
@@ -940,7 +940,7 @@ const CARDAPIO_DATA = {
       "description": "Hot Roll filadélfia tradicional coberto com couve crispy crocante e tarê",
       "portion": "10 un",
       "page": "Pág 6",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
@@ -952,7 +952,7 @@ const CARDAPIO_DATA = {
       "description": "Hot Roll filadélfia tradicional coberto com alho-poró crocante e tarê",
       "portion": "10 un",
       "page": "Pág 6",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
@@ -964,7 +964,7 @@ const CARDAPIO_DATA = {
       "description": "Hot Roll recheado com 25g de camarão menor limpo, cream cheese e tarê",
       "portion": "10 un",
       "page": "Pág 6",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
@@ -976,7 +976,7 @@ const CARDAPIO_DATA = {
       "description": "Hot Roll filadélfia tradicional com cobertura generosa de molho tarê e gergelim",
       "portion": "10 un",
       "page": "Pág 6",
-      "price": 47.9,
+      "price": 48.9,
       "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
@@ -988,7 +988,7 @@ const CARDAPIO_DATA = {
       "description": "Hot Roll clássico com 60g salmão, 30g cream cheese, alga e arroz empanado",
       "portion": "10 un",
       "page": "Pág 6",
-      "price": 46.9,
+      "price": 47.9,
       "photo": "assets/images/raw_hotroll.jpeg"
     },
     {
@@ -1108,7 +1108,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, camarão menor, cream cheese, tarê, gergelim e flor de sal",
       "portion": "6 un",
       "page": "Pág 6",
-      "price": 48.9,
+      "price": 49.9,
       "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
@@ -1120,7 +1120,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, camarão menor, cream cheese e couve crispy",
       "portion": "6 un",
       "page": "Pág 6",
-      "price": 47.9,
+      "price": 48.9,
       "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
@@ -1132,7 +1132,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, camarão menor, cream cheese, geleia de maracujá, azeite e flor de sal",
       "portion": "6 un",
       "page": "Pág 6",
-      "price": 46.9,
+      "price": 47.9,
       "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
@@ -1144,7 +1144,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, camarão menor, cream cheese e geleia de pimenta picante",
       "portion": "6 un",
       "page": "Pág 6",
-      "price": 44.9,
+      "price": 45.9,
       "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
@@ -1156,7 +1156,7 @@ const CARDAPIO_DATA = {
       "description": "Salmão, camarão menor, cream cheese, azeite, limão, shoyu e furikake",
       "portion": "6 un",
       "page": "Pág 6",
-      "price": 43.9,
+      "price": 44.9,
       "photo": "assets/images/raw_joy_ebifry.png"
     },
     {
@@ -1168,7 +1168,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 90g, alga e camarão imperial crocante",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 49.9,
+      "price": 50.9,
       "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
@@ -1180,7 +1180,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 90g, alga, 25g camarão menor e cream cheese",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 46.9,
+      "price": 47.9,
       "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
@@ -1192,7 +1192,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 90g, alga, 40g salmão e 30g cream cheese",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 45.9,
+      "price": 46.9,
       "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
@@ -1204,7 +1204,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 90g, alga e 40g filé de salmão puro",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 44.9,
+      "price": 45.9,
       "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
@@ -1216,7 +1216,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 90g, alga, kani e cream cheese",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 42.9,
+      "price": 43.9,
       "photo": "assets/images/raw_hossomaki.jpeg"
     },
     {
@@ -1228,7 +1228,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 130g, alga, camarão imperial crocante e cream cheese",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 49.9,
+      "price": 50.9,
       "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
@@ -1240,7 +1240,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 130g, alga, 40g camarão menor e cream cheese",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 46.9,
+      "price": 47.9,
       "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
@@ -1252,7 +1252,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 130g, alga, 40g salmão filé e 40g cream cheese",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 45.9,
+      "price": 46.9,
       "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
@@ -1264,7 +1264,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 130g, alga e filé de salmão puro",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 44.9,
+      "price": 45.9,
       "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
@@ -1276,7 +1276,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 130g, alga, kani kama e cream cheese",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 44.9,
+      "price": 45.9,
       "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
@@ -1288,7 +1288,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari 130g, alga, pele de salmão grelhada crocante e tarê",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 42.9,
+      "price": 43.9,
       "photo": "assets/images/raw_uramaki_tradicional.jpeg"
     },
     {
@@ -1300,7 +1300,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki joy com camarão menor, cream cheese, geleia de pimenta e furikake",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 50.9,
+      "price": 51.9,
       "photo": "assets/images/raw_uramaki_joy.jpeg"
     },
     {
@@ -1312,7 +1312,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki joy com salmão batido, cream cheese, geleia de pimenta e furikake",
       "portion": "10 un",
       "page": "Pág 7",
-      "price": 49.9,
+      "price": 50.9,
       "photo": "assets/images/raw_uramaki_joy.jpeg"
     },
     {
@@ -1324,7 +1324,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g, lâmina salmão, azeite trufado, flor de sal e raspas de limão",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 43.9,
+      "price": 44.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1336,7 +1336,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g, lâmina de salmão fresco e pasta de ameixa umeboshi",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 36.9,
+      "price": 37.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1348,7 +1348,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g, filé de tilápia, limão, geleia de pimenta e furikake",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 36.9,
+      "price": 37.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1360,7 +1360,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g, salmão maçaricado, cream cheese, molho tarê e alho-poró",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 35.9,
+      "price": 36.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1372,7 +1372,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g, salmão selado no maçarico com flor de sal",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 33.9,
+      "price": 34.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1384,7 +1384,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g e lâmina de salmão nobre fresco",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 35.9,
+      "price": 36.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1396,7 +1396,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g, pele de salmão crocante grelhada e molho tarê",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 34.9,
+      "price": 35.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1408,7 +1408,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz shari bolinha 19g, filé de tilápia fresca e rodela de limão",
       "portion": "4 un",
       "page": "Pág 7",
-      "price": 34.9,
+      "price": 35.9,
       "photo": "assets/images/raw_niguiri.jpeg"
     },
     {
@@ -1420,7 +1420,7 @@ const CARDAPIO_DATA = {
       "description": "150g arroz shari, salmão fresco em cubos, mix rico de acompanhamentos e molho",
       "portion": "80g Salmão",
       "page": "Pág 8",
-      "price": 71.9,
+      "price": 72.9,
       "photo": "assets/images/raw_poke.jpeg"
     },
     {
@@ -1432,7 +1432,7 @@ const CARDAPIO_DATA = {
       "description": "150g arroz shari, salmão em cubos, azeite trufado, flor de sal e raspas de limão",
       "portion": "80g Proteína",
       "page": "Pág 8",
-      "price": 70.9,
+      "price": 71.9,
       "photo": "assets/images/raw_poke.jpeg"
     },
     {
@@ -1444,7 +1444,7 @@ const CARDAPIO_DATA = {
       "description": "150g arroz shari, 80g salmão fresco em cubos, 6 acompanhamentos e molho da casa",
       "portion": "80g Proteína",
       "page": "Pág 8",
-      "price": 67.9,
+      "price": 68.9,
       "photo": "assets/images/raw_poke.jpeg"
     },
     {
@@ -1456,7 +1456,7 @@ const CARDAPIO_DATA = {
       "description": "150g arroz shari, salmão picado com cream cheese Philadelphia e acompanhamentos",
       "portion": "80g Proteína",
       "page": "Pág 8",
-      "price": 65.9,
+      "price": 66.9,
       "photo": "assets/images/raw_poke.jpeg"
     },
     {
@@ -1468,7 +1468,7 @@ const CARDAPIO_DATA = {
       "description": "150g arroz shari, 4 unidades de camarão imperial empanado e acompanhamentos",
       "portion": "4un Camarão",
       "page": "Pág 8",
-      "price": 64.9,
+      "price": 65.9,
       "photo": "assets/images/raw_poke.jpeg"
     },
     {
@@ -1480,7 +1480,7 @@ const CARDAPIO_DATA = {
       "description": "150g arroz shari, shimeji salteado na manteiga com shoyu e acompanhamentos",
       "portion": "80g Shimeji",
       "page": "Pág 8",
-      "price": 61.9,
+      "price": 62.9,
       "photo": "assets/images/raw_poke.jpeg"
     },
     {
@@ -1804,7 +1804,7 @@ const CARDAPIO_DATA = {
       "description": "200g filé de salmão grelhado na chapa com legumes refogados",
       "portion": "200g Proteína",
       "page": "Pág 8",
-      "price": 76.9,
+      "price": 77.9,
       "photo": "assets/images/raw_teppan.jpeg"
     },
     {
@@ -1816,7 +1816,7 @@ const CARDAPIO_DATA = {
       "description": "200g filé de tilápia grelhada na chapa com legumes refogados",
       "portion": "200g Proteína",
       "page": "Pág 8",
-      "price": 75.9,
+      "price": 76.9,
       "photo": "assets/images/raw_teppan.jpeg"
     },
     {
@@ -1828,7 +1828,7 @@ const CARDAPIO_DATA = {
       "description": "Arroz japonês branco cozido sem tempero",
       "portion": "200g",
       "page": "Pág 8",
-      "price": 39.9,
+      "price": 40.9,
       "photo": "assets/images/raw_teppan.jpeg"
     },
     {
@@ -1840,7 +1840,7 @@ const CARDAPIO_DATA = {
       "description": "Macarrão para yakisoba, legumes refogados, molho especial e 120g de camarão limpo",
       "portion": "400g",
       "page": "Pág 8",
-      "price": 61.9,
+      "price": 62.9,
       "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
@@ -1852,7 +1852,7 @@ const CARDAPIO_DATA = {
       "description": "Macarrão para yakisoba, legumes refogados, molho especial, carne bovina e frango",
       "portion": "400g",
       "page": "Pág 8",
-      "price": 58.9,
+      "price": 59.9,
       "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
@@ -1864,7 +1864,7 @@ const CARDAPIO_DATA = {
       "description": "Macarrão para yakisoba, legumes refogados, molho especial e tiras de carne bovina",
       "portion": "400g",
       "page": "Pág 8",
-      "price": 57.9,
+      "price": 58.9,
       "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
@@ -1876,7 +1876,7 @@ const CARDAPIO_DATA = {
       "description": "Macarrão para yakisoba, legumes refogados, molho especial e cubos de peito de frango",
       "portion": "400g",
       "page": "Pág 8",
-      "price": 54.9,
+      "price": 55.9,
       "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
@@ -1888,7 +1888,7 @@ const CARDAPIO_DATA = {
       "description": "Macarrão para yakisoba, acelga, cenoura, brócolis, repolho, couve-flor e molho especial",
       "portion": "400g",
       "page": "Pág 8",
-      "price": 45.9,
+      "price": 46.9,
       "photo": "assets/images/raw_yakisoba.jpeg"
     },
     {
@@ -2284,7 +2284,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi salmão, 02 Joy cebolinha, 04 Niguiri salmão, 05 Uramaki joy salmão geleia de pimenta, 05 Uramaki joy camarão geleia de pimenta, 10 Uramaki skin, 10 Uramaki salmão",
       "portion": "40 peças",
       "page": "Pág 10",
-      "price": 132.0,
+      "price": 134.0,
       "photo": "assets/images/raw_combo_177_omaki.png"
     },
     {
@@ -2296,7 +2296,7 @@ const CARDAPIO_DATA = {
       "description": "Hossomaki, 10 Uramaki skin, 10 Uramaki salmão, 05 Hot poró, 05 Hot Filadélfia",
       "portion": "40 peças",
       "page": "Pág 10",
-      "price": 118.0,
+      "price": 120.0,
       "photo": "assets/images/raw_combo_178_chapada.jpeg"
     },
     {
@@ -2308,7 +2308,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
       "portion": "36 peças",
       "page": "Pág 10",
-      "price": 107.0,
+      "price": 109.0,
       "photo": "assets/images/raw_combo_179_oriental.jpeg"
     },
     {
@@ -2320,7 +2320,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão, 10 Uramaki salmão, 10 Uramaki skin",
       "portion": "30 peças",
       "page": "Pág 10",
-      "price": 119.0,
+      "price": 121.0,
       "photo": "assets/images/raw_combo_180_guia.jpeg"
     },
     {
@@ -2332,7 +2332,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki joy camarão c/ geleia de pimenta e furikake, 04 Camarão imperial, 04 Sashimis salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha e Philadelphia, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
       "portion": "25 pçs",
       "page": "Pág 11",
-      "price": 138.9,
+      "price": 140.9,
       "photo": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
       "isNew": true
     },
@@ -2345,7 +2345,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki skin Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia c/ geleia e furikake, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 04 Camarão imperial.",
       "portion": "30 pçs",
       "page": "Pág 11",
-      "price": 144.9,
+      "price": 146.9,
       "photo": "assets/images/raw_combo_camarao_30pc.jpeg",
       "isNew": true
     },
@@ -2358,7 +2358,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki skin Philadelphia, 05 Uramaki joy salmão geleia pimenta furikake, 05 Uramaki joy camarão geleia pimenta furikake, 04 Sashimis salmão, 04 Joy cebolinha.",
       "portion": "28 pçs",
       "page": "Pág 11",
-      "price": 136.9,
+      "price": 138.9,
       "photo": "assets/images/raw_combo_joy_28pc.jpeg",
       "isNew": true
     },
@@ -2371,7 +2371,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri tilápia c/ geleia e furikake, 02 Niguiri salmão.",
       "portion": "28 pçs",
       "page": "Pág 11",
-      "price": 138.9,
+      "price": 140.9,
       "photo": "assets/images/raw_combo_misto_28pc.jpeg",
       "isNew": true
     },
@@ -2384,7 +2384,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki skin Philadelphia, 10 Hossomaki Philadelphia, 04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão.",
       "portion": "30 pçs",
       "page": "Pág 12",
-      "price": 129.9,
+      "price": 131.9,
       "photo": "assets/images/raw_combo_salmao_30pc.jpeg",
       "isNew": true
     },
@@ -2397,7 +2397,7 @@ const CARDAPIO_DATA = {
       "description": "Uramaki skin Philadelphia, 05 Uramaki joy camarão c/ geleia e furikake, 05 Uramaki joy salmão c/ geleia e furikake, 05 Hot couve crispy, 05 Hot Philadelphia.",
       "portion": "30 pçs",
       "page": "Pág 12",
-      "price": 129.9,
+      "price": 131.9,
       "photo": "assets/images/raw_combo_hot_30pc.jpeg",
       "isNew": true
     },
@@ -2410,7 +2410,7 @@ const CARDAPIO_DATA = {
       "description": "Hossomaki Philadelphia, 04 Sashimi salmão, 04 Sashimi tilápia, 04 Joy cebolinha, 02 Gunkan alho-poró, 02 Niguiri salmão, 02 Niguiri tilápia c/ geleia e furikake.",
       "portion": "28 pçs",
       "page": "Pág 12",
-      "price": 126.9,
+      "price": 128.9,
       "photo": "assets/images/raw_combo_hossomaki_28pc.jpeg",
       "isNew": true
     }
@@ -2426,9 +2426,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_harumaki.png",
       "image": "assets/images/raw_harumaki.png",
       "description": "Rolinho primavera crocante frito na hora. Escolha o recheio.",
-      "price": 33.9,
+      "price": 28.9,
       "basePrice": 27.9,
-      "maxPrice": 33.9,
+      "maxPrice": 34.9,
       "priceLabel": "A partir de R$ 27,90",
       "page": "Pág 1",
       "options": [
@@ -2438,7 +2438,7 @@ const CARDAPIO_DATA = {
           "name": "Camarão, Philadelphia e alho-poró",
           "fullName": "Camarão, Philadelphia e alho-poró",
           "description": "Camarão, Philadelphia e alho-poró",
-          "price": 33.9,
+          "price": 34.9,
           "portion": "2 un"
         },
         {
@@ -2447,7 +2447,7 @@ const CARDAPIO_DATA = {
           "name": "Queijo",
           "fullName": "Queijo",
           "description": "Queijo",
-          "price": 29.9,
+          "price": 30.9,
           "portion": "2 un"
         },
         {
@@ -2456,7 +2456,7 @@ const CARDAPIO_DATA = {
           "name": "Romeu e Julieta",
           "fullName": "Romeu e Julieta",
           "description": "Goiabada e queijo",
-          "price": 28.9,
+          "price": 29.9,
           "portion": "2 un"
         },
         {
@@ -2465,7 +2465,7 @@ const CARDAPIO_DATA = {
           "name": "Banana com Canela e açúcar",
           "fullName": "Banana com Canela e açúcar",
           "description": "Banana com canela e açúcar",
-          "price": 27.9,
+          "price": 28.9,
           "portion": "2 un"
         }
       ],
@@ -2476,7 +2476,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 28.9
     },
     {
       "id": "item_5",
@@ -2490,7 +2491,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/real_guioza.jpg",
       "image": "assets/images/real_guioza.jpg",
       "description": "Guioza bovino/suíno no vapor e selado",
-      "price": 43.9,
+      "price": 44.9,
       "priceLabel": "R$ 43,90",
       "page": "Pág 1",
       "isNew": false,
@@ -2527,7 +2528,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/real_joy_goiaba.jpg",
       "image": "assets/images/real_joy_goiaba.jpg",
       "description": "Joy de goiaba, Philadelphia, Nutella e raspas de limão",
-      "price": 37.9,
+      "price": 38.9,
       "priceLabel": "R$ 37,90",
       "page": "Pág 1",
       "isNew": false,
@@ -2562,9 +2563,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_tataki.jpeg",
       "image": "assets/images/raw_tataki.jpeg",
       "description": "Salmão fresco com raspas de limão, azeite, shoyu e temperos do Chef. Escolha o sabor.",
-      "price": 64.9,
+      "price": 56.9,
       "basePrice": 55.9,
-      "maxPrice": 64.9,
+      "maxPrice": 65.9,
       "priceLabel": "A partir de R$ 55,90",
       "page": "Pág 1",
       "options": [
@@ -2574,7 +2575,7 @@ const CARDAPIO_DATA = {
           "name": "Tataki Imperial",
           "fullName": "Tataki Imperial",
           "description": "Salmão, gergelim, azeite trufado, flor de sal, gengibre picado, cebolinha, geleia de pimenta e Queensberry",
-          "price": 64.9,
+          "price": 65.9,
           "portion": "200g"
         },
         {
@@ -2583,7 +2584,7 @@ const CARDAPIO_DATA = {
           "name": "Tataki Toque Dourado",
           "fullName": "Tataki Toque Dourado",
           "description": "Salmão 80g, manga 20g, tomate cereja 20g, azeite, limão, shoyu, cebolinha",
-          "price": 62.9,
+          "price": 63.9,
           "portion": "200g"
         },
         {
@@ -2592,7 +2593,7 @@ const CARDAPIO_DATA = {
           "name": "Tataki de Camarão",
           "fullName": "Tataki de Camarão",
           "description": "Camarão, azeite, limão, shoyu, cebolinha e furikake",
-          "price": 61.9,
+          "price": 62.9,
           "portion": "200g"
         },
         {
@@ -2601,7 +2602,7 @@ const CARDAPIO_DATA = {
           "name": "Tataki Misto (Salmão, Tilápia e Anchova)",
           "fullName": "Tataki Misto (Salmão, Tilápia e Anchova)",
           "description": "Salmão, tilápia, anchova defumada, limão, shoyu, cebolinha e furikake",
-          "price": 56.9,
+          "price": 57.9,
           "portion": "200g"
         },
         {
@@ -2610,7 +2611,7 @@ const CARDAPIO_DATA = {
           "name": "Tataki de Salmão Tradicional",
           "fullName": "Tataki de Salmão Tradicional",
           "description": "Salmão 120g, limão, shoyu 10ml, azeite extra virgem 10ml, cebolinha e furikake",
-          "price": 55.9,
+          "price": 56.9,
           "portion": "200g"
         }
       ],
@@ -2621,7 +2622,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 56.9
     },
     {
       "id": "ceviche_group",
@@ -2633,9 +2635,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_ceviche.jpeg",
       "image": "assets/images/raw_ceviche.jpeg",
       "description": "Cubos marinados em molho cítrico especial da casa e cebola roxa. Escolha a sua combinação.",
-      "price": 58.9,
+      "price": 52.9,
       "basePrice": 51.9,
-      "maxPrice": 58.9,
+      "maxPrice": 59.9,
       "priceLabel": "A partir de R$ 51,90",
       "page": "Pág 1",
       "options": [
@@ -2645,7 +2647,7 @@ const CARDAPIO_DATA = {
           "name": "Ceviche tropical",
           "fullName": "Ceviche tropical",
           "description": "Salmão, peixe branco, manga, cebola roxa e molho cítrico",
-          "price": 58.9,
+          "price": 59.9,
           "portion": "200g"
         },
         {
@@ -2654,7 +2656,7 @@ const CARDAPIO_DATA = {
           "name": "Ceviche de Salmão",
           "fullName": "Ceviche de Salmão",
           "description": "Salmão 120g, cebola roxa 60g, azeite, limão, sal rosa, ajinomoto e cebolinha",
-          "price": 55.9,
+          "price": 56.9,
           "portion": "200g"
         },
         {
@@ -2663,7 +2665,7 @@ const CARDAPIO_DATA = {
           "name": "Ceviche Misto",
           "fullName": "Ceviche Misto",
           "description": "Salmão, tilápia e anchova defumada com cebola roxa e azeite",
-          "price": 54.9,
+          "price": 55.9,
           "portion": "200g"
         },
         {
@@ -2672,7 +2674,7 @@ const CARDAPIO_DATA = {
           "name": "Ceviche de Peixe branco",
           "fullName": "Ceviche de Peixe branco",
           "description": "Peixe branco / tilápia limpa, cebola roxa, limão, azeite e temperos",
-          "price": 51.9,
+          "price": 52.9,
           "portion": "200g"
         }
       ],
@@ -2683,7 +2685,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 52.9
     },
     {
       "id": "camarao_imperial_group",
@@ -2695,9 +2698,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_camarao_imperial.png",
       "image": "assets/images/raw_camarao_imperial.png",
       "description": "Camarões empanados super crocantes com molho especial. Escolha a finalização.",
-      "price": 54.9,
+      "price": 53.9,
       "basePrice": 52.9,
-      "maxPrice": 54.9,
+      "maxPrice": 55.9,
       "priceLabel": "A partir de R$ 52,90",
       "page": "Pág 1",
       "options": [
@@ -2707,7 +2710,7 @@ const CARDAPIO_DATA = {
           "name": "Camarão crocante, Philadelphia, tarê e cebolinha",
           "fullName": "Camarão crocante, Philadelphia, tarê e cebolinha",
           "description": "Camarão imperial empanado panko 6 un, cream cheese Philadelphia, molho tarê e cebolinha",
-          "price": 54.9,
+          "price": 55.9,
           "portion": "6 un"
         },
         {
@@ -2716,7 +2719,7 @@ const CARDAPIO_DATA = {
           "name": "Camarão crocante, maionese e sriracha",
           "fullName": "Camarão crocante, maionese e sriracha",
           "description": "Camarão imperial empanado panko 6 un, maionese japonesa e molho sriracha",
-          "price": 52.9,
+          "price": 53.9,
           "portion": "6 un"
         }
       ],
@@ -2727,7 +2730,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 53.9
     },
     {
       "id": "carpaccio_group",
@@ -2739,9 +2743,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_carpaccio.jpeg",
       "image": "assets/images/raw_carpaccio.jpeg",
       "description": "Finas fatias com azeite, flor de sal, limão e especiarias. Escolha o corte.",
-      "price": 58.9,
+      "price": 55.9,
       "basePrice": 54.9,
-      "maxPrice": 58.9,
+      "maxPrice": 59.9,
       "priceLabel": "A partir de R$ 54,90",
       "page": "Pág 2",
       "options": [
@@ -2751,7 +2755,7 @@ const CARDAPIO_DATA = {
           "name": "Carpaccio Salmão Trufado c/ Flor de Sal",
           "fullName": "Carpaccio Salmão Trufado c/ Flor de Sal",
           "description": "Salmão, azeite trufado, shoyu, limão siciliano, furikake, cebolinha e sal rosa",
-          "price": 58.9,
+          "price": 59.9,
           "portion": "12 fatias"
         },
         {
@@ -2760,7 +2764,7 @@ const CARDAPIO_DATA = {
           "name": "Carpaccio de Salmão Tradicional",
           "fullName": "Carpaccio de Salmão Tradicional",
           "description": "Salmão, azeite, limão, shoyu, cebolinha, furikake e flor de sal",
-          "price": 56.9,
+          "price": 57.9,
           "portion": "12 fatias"
         },
         {
@@ -2769,7 +2773,7 @@ const CARDAPIO_DATA = {
           "name": "Carpaccio de Peixe branco",
           "fullName": "Carpaccio de Peixe branco",
           "description": "Peixe branco, limão, azeite, sal rosa, cebolinha e furikake",
-          "price": 54.9,
+          "price": 55.9,
           "portion": "12 fatias"
         }
       ],
@@ -2780,7 +2784,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 55.9
     },
     {
       "id": "oishi_group",
@@ -2792,9 +2797,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_oishi.jpeg",
       "image": "assets/images/raw_oishi.jpeg",
       "description": "Especialidade da casa com peixes nobres e molhos especiais. Escolha a combinação.",
-      "price": 56.9,
+      "price": 55.9,
       "basePrice": 54.9,
-      "maxPrice": 56.9,
+      "maxPrice": 57.9,
       "priceLabel": "A partir de R$ 54,90",
       "page": "Pág 2",
       "options": [
@@ -2804,7 +2809,7 @@ const CARDAPIO_DATA = {
           "name": "Oishi Misto",
           "fullName": "Oishi Misto",
           "description": "Salmão, tilápia, anchova defumada, Philadelphia, tarê e cebolinha",
-          "price": 56.9,
+          "price": 57.9,
           "portion": "Porção"
         },
         {
@@ -2813,7 +2818,7 @@ const CARDAPIO_DATA = {
           "name": "Oishi Salmão",
           "fullName": "Oishi Salmão",
           "description": "Salmão, Philadelphia, tarê, geleia de pimenta, cebolinha e furikake",
-          "price": 54.9,
+          "price": 55.9,
           "portion": "Porção"
         }
       ],
@@ -2824,7 +2829,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 55.9
     },
     {
       "id": "kobachi_group",
@@ -2836,9 +2842,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_kobachi.jpeg",
       "image": "assets/images/raw_kobachi.jpeg",
       "description": "Porções tradicionais japonesas: Shimeji na manteiga, Missoshiru artesanal ou Sunomono refrescante.",
-      "price": 48.9,
+      "price": 25.9,
       "basePrice": 24.9,
-      "maxPrice": 48.9,
+      "maxPrice": 49.9,
       "priceLabel": "A partir de R$ 24,90",
       "page": "Pág 2",
       "options": [
@@ -2848,7 +2854,7 @@ const CARDAPIO_DATA = {
           "name": "Shimeji",
           "fullName": "Shimeji",
           "description": "Shimeji na manteiga com shoyu e cebolinha (200g)",
-          "price": 48.9,
+          "price": 49.9,
           "portion": "200g"
         },
         {
@@ -2857,7 +2863,7 @@ const CARDAPIO_DATA = {
           "name": "Missoshiru 200ml",
           "fullName": "Missoshiru 200ml",
           "description": "Caldo tradicional de soja missô com tofu e cebolinha (200ml)",
-          "price": 25.9,
+          "price": 26.9,
           "portion": "200ml"
         },
         {
@@ -2866,7 +2872,7 @@ const CARDAPIO_DATA = {
           "name": "Sunomono",
           "fullName": "Sunomono",
           "description": "Salada tradicional de pepino agridoce com gergelim (200g)",
-          "price": 24.9,
+          "price": 25.9,
           "portion": "200g"
         }
       ],
@@ -2878,7 +2884,8 @@ const CARDAPIO_DATA = {
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
       ],
-      "portionBadge": "200g"
+      "portionBadge": "200g",
+      "minPrice": 25.9
     },
     {
       "id": "gunkan_group",
@@ -2892,7 +2899,7 @@ const CARDAPIO_DATA = {
       "description": "Todos levam tártare de salmão, arroz e cream cheese Philadelphia. Escolha o acabamento.",
       "price": 39.9,
       "basePrice": 38.9,
-      "maxPrice": 39.9,
+      "maxPrice": 40.9,
       "priceLabel": "A partir de R$ 38,90",
       "page": "Pág 2",
       "options": [
@@ -2902,7 +2909,7 @@ const CARDAPIO_DATA = {
           "name": "Gunkan Furikake",
           "fullName": "Gunkan Furikake",
           "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e furikake",
-          "price": 39.9,
+          "price": 40.9,
           "portion": "6 un"
         },
         {
@@ -2911,7 +2918,7 @@ const CARDAPIO_DATA = {
           "name": "Gunkan Couve crispy",
           "fullName": "Gunkan Couve crispy",
           "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e couve crispy",
-          "price": 39.9,
+          "price": 40.9,
           "portion": "6 un"
         },
         {
@@ -2920,7 +2927,7 @@ const CARDAPIO_DATA = {
           "name": "Gunkan Alho-poró",
           "fullName": "Gunkan Alho-poró",
           "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e alho-poró crocante",
-          "price": 39.9,
+          "price": 40.9,
           "portion": "6 un"
         },
         {
@@ -2929,7 +2936,7 @@ const CARDAPIO_DATA = {
           "name": "Gunkan Cebolinha",
           "fullName": "Gunkan Cebolinha",
           "description": "Tártare de salmão, arroz shari 8g, Philadelphia 10g e cebolinha fresca",
-          "price": 38.9,
+          "price": 39.9,
           "portion": "6 un"
         }
       ],
@@ -2940,7 +2947,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 39.9
     },
     {
       "id": "vegano_group",
@@ -2952,9 +2960,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_futomaki_vegano.jpeg",
       "image": "assets/images/raw_futomaki_vegano.jpeg",
       "description": "Opções leves e frescas com ou sem Philadelphia. Escolha o sabor.",
-      "price": 47.9,
+      "price": 42.9,
       "basePrice": 41.9,
-      "maxPrice": 47.9,
+      "maxPrice": 48.9,
       "priceLabel": "A partir de R$ 41,90",
       "page": "Pág 2",
       "options": [
@@ -2964,7 +2972,7 @@ const CARDAPIO_DATA = {
           "name": "Futomaki Tomate seco, pepino e manga",
           "fullName": "Futomaki Tomate seco, pepino e manga",
           "description": "Arroz shari, alga nori, tomate seco, pepino e manga",
-          "price": 47.9,
+          "price": 48.9,
           "portion": "10 un"
         },
         {
@@ -2973,7 +2981,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki Califórnia, pepino, manga e gergelim",
           "fullName": "Uramaki Califórnia, pepino, manga e gergelim",
           "description": "Arroz shari, alga nori, pepino, manga e gergelim torrado",
-          "price": 46.9,
+          "price": 47.9,
           "portion": "10 un"
         },
         {
@@ -2982,7 +2990,7 @@ const CARDAPIO_DATA = {
           "name": "Futomaki Pepino, manga e cenoura",
           "fullName": "Futomaki Pepino, manga e cenoura",
           "description": "Arroz shari, alga nori, pepino, manga e cenoura em tiras",
-          "price": 45.9,
+          "price": 46.9,
           "portion": "10 un"
         },
         {
@@ -2991,7 +2999,7 @@ const CARDAPIO_DATA = {
           "name": "Futomaki Shimeji",
           "fullName": "Futomaki Shimeji",
           "description": "Arroz shari, alga nori e shimeji salteado",
-          "price": 45.9,
+          "price": 46.9,
           "portion": "10 un"
         },
         {
@@ -3000,7 +3008,7 @@ const CARDAPIO_DATA = {
           "name": "Futomaki Avocado",
           "fullName": "Futomaki Avocado",
           "description": "Arroz shari, alga nori e avocado fresco",
-          "price": 42.9,
+          "price": 43.9,
           "portion": "10 un"
         },
         {
@@ -3009,7 +3017,7 @@ const CARDAPIO_DATA = {
           "name": "Futomaki Pepino",
           "fullName": "Futomaki Pepino",
           "description": "Arroz shari, alga nori e pepino japonês em tiras",
-          "price": 41.9,
+          "price": 42.9,
           "portion": "10 un"
         },
         {
@@ -3018,7 +3026,7 @@ const CARDAPIO_DATA = {
           "name": "Futomaki Manga",
           "fullName": "Futomaki Manga",
           "description": "Arroz shari, alga nori e manga fresca",
-          "price": 41.9,
+          "price": 42.9,
           "portion": "10 un"
         }
       ],
@@ -3029,7 +3037,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 42.9
     },
     {
       "id": "sashimi_especial_group",
@@ -3041,9 +3050,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_sashimi_especial.jpeg",
       "image": "assets/images/raw_sashimi_especial.jpeg",
       "description": "Lâminas nobres de salmão com molhos autorais do sushiman.",
-      "price": 57.9,
+      "price": 53.9,
       "basePrice": 52.9,
-      "maxPrice": 57.9,
+      "maxPrice": 58.9,
       "priceLabel": "A partir de R$ 52,90",
       "page": "Pág 3",
       "options": [
@@ -3053,7 +3062,7 @@ const CARDAPIO_DATA = {
           "name": "Sashimi Mistério do Chef",
           "fullName": "Sashimi Mistério do Chef",
           "description": "Sashimi de salmão especial com lâminas maçaricadas e molho do chef",
-          "price": 54.9,
+          "price": 55.9,
           "portion": "10 fatias"
         },
         {
@@ -3062,7 +3071,7 @@ const CARDAPIO_DATA = {
           "name": "Sashimi Neve Ardente",
           "fullName": "Sashimi Neve Ardente",
           "description": "Sashimi de salmão selado com toque picante e flor de sal",
-          "price": 53.9,
+          "price": 54.9,
           "portion": "10 fatias"
         },
         {
@@ -3071,7 +3080,7 @@ const CARDAPIO_DATA = {
           "name": "Sashimi Sabor de Verão",
           "fullName": "Sashimi Sabor de Verão",
           "description": "Sashimi de salmão fresco com redução de frutas e gergelim",
-          "price": 52.9,
+          "price": 53.9,
           "portion": "10 fatias"
         },
         {
@@ -3080,7 +3089,7 @@ const CARDAPIO_DATA = {
           "name": "Sashimi Tesouro do Chef",
           "fullName": "Sashimi Tesouro do Chef",
           "description": "Sashimi nobre de salmão maçaricado com azeite trufado e flor de sal",
-          "price": 57.9,
+          "price": 58.9,
           "portion": "10 fatias"
         }
       ],
@@ -3091,7 +3100,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 53.9
     },
     {
       "id": "item_41",
@@ -3105,7 +3115,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_esp_41_elegancia.jpeg",
       "image": "assets/images/raw_esp_41_elegancia.jpeg",
       "description": "Salmão empanado, alho-poró, limão siciliano, azeite trufado, tarê, molho de ostra, cebolinha",
-      "price": 58.9,
+      "price": 59.9,
       "priceLabel": "R$ 58,90",
       "page": "Pág 3",
       "isNew": false,
@@ -3142,7 +3152,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_esp_42_morango.jpeg",
       "image": "assets/images/raw_esp_42_morango.jpeg",
       "description": "Salmão, avocado, geleia de morango com gengibre em conserva (gari)",
-      "price": 58.9,
+      "price": 59.9,
       "priceLabel": "R$ 58,90",
       "page": "Pág 3",
       "isNew": false,
@@ -3179,7 +3189,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_esp_43_trufado.jpeg",
       "image": "assets/images/raw_esp_43_trufado.jpeg",
       "description": "Salmão maçaricado, azeite trufado, raspas de limão siciliano e flor de sal",
-      "price": 57.9,
+      "price": 58.9,
       "priceLabel": "R$ 57,90",
       "page": "Pág 3",
       "isNew": false,
@@ -3216,7 +3226,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_esp_44_chef.jpeg",
       "image": "assets/images/raw_esp_44_chef.jpeg",
       "description": "Salmão, pasta de umeboshi tradicional e fatias de avocado",
-      "price": 56.9,
+      "price": 57.9,
       "priceLabel": "R$ 56,90",
       "page": "Pág 3",
       "isNew": false,
@@ -3290,7 +3300,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_esp_46_skin_salmao.jpeg",
       "image": "assets/images/raw_esp_46_skin_salmao.jpeg",
       "description": "Pele de salmão grelhada crocante, cebolinha, flor de sal e furikake",
-      "price": 55.9,
+      "price": 56.9,
       "priceLabel": "R$ 55,90",
       "page": "Pág 4",
       "isNew": false,
@@ -3327,7 +3337,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_esp_47_joy_macaricado.jpeg",
       "image": "assets/images/raw_esp_47_joy_macaricado.jpeg",
       "description": "Lâmina de salmão maçaricado, cream cheese, azeite trufado, geleia de pimenta e Queensberry",
-      "price": 48.9,
+      "price": 49.9,
       "priceLabel": "R$ 48,90",
       "page": "Pág 4",
       "isNew": false,
@@ -3362,9 +3372,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_temaki.png",
       "image": "assets/images/raw_temaki.png",
       "description": "Todos levam cream cheese Philadelphia e alga crocante. Escolha o recheio.",
-      "price": 66.9,
+      "price": 47.9,
       "basePrice": 46.9,
-      "maxPrice": 66.9,
+      "maxPrice": 67.9,
       "priceLabel": "A partir de R$ 46,90",
       "page": "Pág 4",
       "options": [
@@ -3374,7 +3384,7 @@ const CARDAPIO_DATA = {
           "name": "Supremo de camarão, cebolinha, tarê, alho-poró e gergelim",
           "fullName": "Supremo de camarão, cebolinha, tarê, alho-poró e gergelim",
           "description": "Manta de salmão selado maçaricado externo, 70g shari, 50g camarão menor, 60g cream cheese, crispy alho-poró 9g, tarê 26ml",
-          "price": 66.9,
+          "price": 67.9,
           "portion": "180g"
         },
         {
@@ -3383,7 +3393,7 @@ const CARDAPIO_DATA = {
           "name": "Supremo de camarão imperial, cebolinha, tarê, alho-poró e gergelim",
           "fullName": "Supremo de camarão imperial, cebolinha, tarê, alho-poró e gergelim",
           "description": "Manta de salmão selado, 70g shari, 2un camarão imperial empanado (48g), cream cheese, alho-poró, tarê",
-          "price": 66.9,
+          "price": 67.9,
           "portion": "180g"
         },
         {
@@ -3392,7 +3402,7 @@ const CARDAPIO_DATA = {
           "name": "Supremo de salmão, cebolinha, tarê, alho-poró e gergelim",
           "fullName": "Supremo de salmão, cebolinha, tarê, alho-poró e gergelim",
           "description": "91g salmão selado externo, 70g shari, 102g recheio salmão/CC 60/40, alho-poró 9g, tarê 26ml (300g reais de bancada)",
-          "price": 65.9,
+          "price": 66.9,
           "portion": "180g"
         },
         {
@@ -3401,7 +3411,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Philadelphia empanado por fora e cortado ao meio",
           "fullName": "Hot Philadelphia empanado por fora e cortado ao meio",
           "description": "Temaki totalmente empanado na farinha panko, frito e cortado ao meio com tarê",
-          "price": 51.9,
+          "price": 52.9,
           "portion": "180g"
         },
         {
@@ -3410,7 +3420,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Philadelphia",
           "fullName": "Hot Philadelphia",
           "description": "Temaki frito tradicional com salmão grelhado e cream cheese",
-          "price": 48.9,
+          "price": 49.9,
           "portion": "180g"
         },
         {
@@ -3419,7 +3429,7 @@ const CARDAPIO_DATA = {
           "name": "Salmão, Camarão e Cebolinha",
           "fullName": "Salmão, Camarão e Cebolinha",
           "description": "Salmão em cubos, camarão limpo cozido, cream cheese e cebolinha",
-          "price": 48.9,
+          "price": 49.9,
           "portion": "180g"
         },
         {
@@ -3428,7 +3438,7 @@ const CARDAPIO_DATA = {
           "name": "Salmão e Cebolinha",
           "fullName": "Salmão e Cebolinha",
           "description": "Salmão cru batido com cream cheese e cebolinha fresca (244g reais bancada)",
-          "price": 47.9,
+          "price": 48.9,
           "portion": "180g"
         },
         {
@@ -3437,7 +3447,7 @@ const CARDAPIO_DATA = {
           "name": "Salmão, geleia de pimenta e furikake",
           "fullName": "Salmão, geleia de pimenta e furikake",
           "description": "Salmão cru em cubos, cream cheese, geleia de pimenta agridoce e furikake",
-          "price": 47.9,
+          "price": 48.9,
           "portion": "180g"
         },
         {
@@ -3446,7 +3456,7 @@ const CARDAPIO_DATA = {
           "name": "Salmão e alho-poró",
           "fullName": "Salmão e alho-poró",
           "description": "Salmão cru em cubos, cream cheese e alho-poró crocante",
-          "price": 46.9,
+          "price": 47.9,
           "portion": "180g"
         }
       ],
@@ -3457,7 +3467,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 47.9
     },
     {
       "id": "item_57",
@@ -3471,7 +3482,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_1_chef.jpeg",
       "image": "assets/images/raw_combo_1_chef.jpeg",
       "description": "05 Sashimis de Salmão, 05 Sashimis de tilápia com limão, 05 Shakemaki - Salmão, 05 Uramaki de salmão, 03 Niguiri de salmão, 02 Niguiri de salmão e geleia de pimenta",
-      "price": 141.9,
+      "price": 143.9,
       "priceLabel": "R$ 141,90",
       "page": "Pág 5",
       "isNew": false,
@@ -3508,7 +3519,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_4_chef.jpeg",
       "image": "assets/images/raw_combo_4_chef.jpeg",
       "description": "10 Shakemaki - Salmão, 05 Uramaki de salmão, 05 Joy de cebolinha, 05 Hossomaki, salmão e Philadelphia, 05 Niguiri de salmão, 05 Niguiri de tilápia com limão e geleia de pimenta",
-      "price": 161.9,
+      "price": 163.9,
       "priceLabel": "R$ 161,90",
       "page": "Pág 5",
       "isNew": false,
@@ -3545,7 +3556,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_5_chef.jpeg",
       "image": "assets/images/raw_combo_5_chef.jpeg",
       "description": "10 Uramaki de salmão, 05 Sashimis de salmão, 05 Sashimis de salmão maçaricado, 05 Joy com Philadelphia, 05 Uramaki joy de camarão imperial, 05 Niguiri de salmão, 05 Shakemaki - Salmão",
-      "price": 205.9,
+      "price": 207.9,
       "priceLabel": "R$ 205,90",
       "page": "Pág 5",
       "isNew": false,
@@ -3582,7 +3593,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/real_combo_8_chef.png",
       "image": "assets/images/real_combo_8_chef.png",
       "description": "10 Sashimi de salmão, 10 Joy com alho-poró, 10 Uramaki de salmão, 05 Sashimi de anchova defumada, 05 Uramaki joy salmão com furikake, 05 Shakemaki - salmão, 05 Uramaki joy camarão imperial, 05 Niguiri de salmão, 05 Niguiri de tilápia com limão",
-      "price": 320.9,
+      "price": 322.9,
       "priceLabel": "R$ 320,90",
       "page": "Pág 5",
       "isNew": false,
@@ -3617,9 +3628,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_bighot.png",
       "image": "assets/images/raw_bighot.png",
       "description": "Hot rolls gigantes empanados e fritos, finalizados com tarê e cebolinha.",
-      "price": 59.9,
+      "price": 58.9,
       "basePrice": 57.9,
-      "maxPrice": 59.9,
+      "maxPrice": 60.9,
       "priceLabel": "A partir de R$ 57,90",
       "page": "Pág 5",
       "options": [
@@ -3629,7 +3640,7 @@ const CARDAPIO_DATA = {
           "name": "Big Hot Camarão Imperial, Philadelphia, tarê, cebolinha, gergelim",
           "fullName": "Big Hot Camarão Imperial, Philadelphia, tarê, cebolinha, gergelim",
           "description": "Big Hot empanado recheado com camarão imperial, cream cheese, tarê, cebolinha e gergelim",
-          "price": 59.9,
+          "price": 60.9,
           "portion": "2 un"
         },
         {
@@ -3638,7 +3649,7 @@ const CARDAPIO_DATA = {
           "name": "Big Hot Misto Salmão e Camarão Imperial, Philadelphia, tarê, cebolinha e gergelim",
           "fullName": "Big Hot Misto Salmão e Camarão Imperial, Philadelphia, tarê, cebolinha e gergelim",
           "description": "Big Hot empanado recheado com salmão e camarão imperial, cream cheese, tarê e gergelim",
-          "price": 58.9,
+          "price": 59.9,
           "portion": "2 un"
         },
         {
@@ -3647,7 +3658,7 @@ const CARDAPIO_DATA = {
           "name": "Big Hot Salmão, Philadelphia, tarê, cebolinha, alho-poró",
           "fullName": "Big Hot Salmão, Philadelphia, tarê, cebolinha, alho-poró",
           "description": "Big Hot empanado recheado com salmão, cream cheese, alho-poró, tarê e cebolinha",
-          "price": 57.9,
+          "price": 58.9,
           "portion": "2 un"
         }
       ],
@@ -3658,7 +3669,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 58.9
     },
     {
       "id": "hotrolls_group",
@@ -3670,9 +3682,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_hotroll.jpeg",
       "image": "assets/images/raw_hotroll.jpeg",
       "description": "Rolls empanados e crocantes com cream cheese Philadelphia. Escolha o recheio e finalização.",
-      "price": 56.9,
+      "price": 47.9,
       "basePrice": 46.9,
-      "maxPrice": 56.9,
+      "maxPrice": 57.9,
       "priceLabel": "A partir de R$ 46,90",
       "page": "Pág 6",
       "options": [
@@ -3682,7 +3694,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Philadelphia sem arroz",
           "fullName": "Hot Philadelphia sem arroz",
           "description": "105g de salmão filé e 40g de cream cheese envoltos em nori, empanados e fritos",
-          "price": 56.9,
+          "price": 57.9,
           "portion": "10 un"
         },
         {
@@ -3691,7 +3703,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Roll Couve crispy",
           "fullName": "Hot Roll Couve crispy",
           "description": "Hot Roll filadélfia tradicional coberto com couve crispy crocante e tarê",
-          "price": 48.9,
+          "price": 49.9,
           "portion": "10 un"
         },
         {
@@ -3700,7 +3712,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Roll Alho-poró",
           "fullName": "Hot Roll Alho-poró",
           "description": "Hot Roll filadélfia tradicional coberto com alho-poró crocante e tarê",
-          "price": 48.9,
+          "price": 49.9,
           "portion": "10 un"
         },
         {
@@ -3709,7 +3721,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Roll Camarão",
           "fullName": "Hot Roll Camarão",
           "description": "Hot Roll recheado com 25g de camarão menor limpo, cream cheese e tarê",
-          "price": 48.9,
+          "price": 49.9,
           "portion": "10 un"
         },
         {
@@ -3718,7 +3730,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Roll Tarê",
           "fullName": "Hot Roll Tarê",
           "description": "Hot Roll filadélfia tradicional com cobertura generosa de molho tarê e gergelim",
-          "price": 47.9,
+          "price": 48.9,
           "portion": "10 un"
         },
         {
@@ -3727,7 +3739,7 @@ const CARDAPIO_DATA = {
           "name": "Hot Roll Philadelphia",
           "fullName": "Hot Roll Philadelphia",
           "description": "Hot Roll clássico com 60g salmão, 30g cream cheese, alga e arroz empanado",
-          "price": 46.9,
+          "price": 47.9,
           "portion": "10 un"
         }
       ],
@@ -3738,7 +3750,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 47.9
     },
     {
       "id": "sashimi_trad_group",
@@ -3750,7 +3763,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_sashimi_tradicional.png",
       "image": "assets/images/raw_sashimi_tradicional.png",
       "description": "Fatias frescas de salmão e tilápia fresca com flor de sal e limão.",
-      "price": 42.9,
+      "price": 36.9,
       "basePrice": 36.9,
       "maxPrice": 42.9,
       "priceLabel": "A partir de R$ 36,90",
@@ -3791,7 +3804,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 36.9
     },
     {
       "id": "joy_trad_group",
@@ -3803,7 +3817,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/real_joy_tradicional_authentic.png?v=20261101_omaki_v14",
       "image": "assets/images/real_joy_tradicional_authentic.png?v=20261101_omaki_v14",
       "description": "Fatias nobres de salmão maçaricado ou fresco enrolados com Philadelphia.",
-      "price": 36.9,
+      "price": 32.9,
       "basePrice": 32.9,
       "maxPrice": 36.9,
       "priceLabel": "A partir de R$ 32,90",
@@ -3871,7 +3885,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 32.9
     },
     {
       "id": "joy_ebifry_group",
@@ -3883,9 +3898,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_joy_ebifry.png",
       "image": "assets/images/raw_joy_ebifry.png",
       "description": "Contém salmão, camarão empanado crocante e Philadelphia. Escolha o topping.",
-      "price": 48.9,
+      "price": 44.9,
       "basePrice": 43.9,
-      "maxPrice": 48.9,
+      "maxPrice": 49.9,
       "priceLabel": "A partir de R$ 43,90",
       "page": "Pág 6",
       "options": [
@@ -3895,7 +3910,7 @@ const CARDAPIO_DATA = {
           "name": "Joy Ebi Fry, tarê, gergelim e flor de sal",
           "fullName": "Joy Ebi Fry, tarê, gergelim e flor de sal",
           "description": "Salmão, camarão menor, cream cheese, tarê, gergelim e flor de sal",
-          "price": 48.9,
+          "price": 49.9,
           "portion": "6 un"
         },
         {
@@ -3904,7 +3919,7 @@ const CARDAPIO_DATA = {
           "name": "Joy Ebi Fry Couve Crispy",
           "fullName": "Joy Ebi Fry Couve Crispy",
           "description": "Salmão, camarão menor, cream cheese e couve crispy",
-          "price": 47.9,
+          "price": 48.9,
           "portion": "6 un"
         },
         {
@@ -3913,7 +3928,7 @@ const CARDAPIO_DATA = {
           "name": "Joy Ebi Fry Geleia de maracujá, cebolinha, azeite e flor de sal",
           "fullName": "Joy Ebi Fry Geleia de maracujá, cebolinha, azeite e flor de sal",
           "description": "Salmão, camarão menor, cream cheese, geleia de maracujá, azeite e flor de sal",
-          "price": 46.9,
+          "price": 47.9,
           "portion": "6 un"
         },
         {
@@ -3922,7 +3937,7 @@ const CARDAPIO_DATA = {
           "name": "Joy Ebi Fry Spicy geleia de pimenta",
           "fullName": "Joy Ebi Fry Spicy geleia de pimenta",
           "description": "Salmão, camarão menor, cream cheese e geleia de pimenta picante",
-          "price": 44.9,
+          "price": 45.9,
           "portion": "6 un"
         },
         {
@@ -3931,7 +3946,7 @@ const CARDAPIO_DATA = {
           "name": "Joy Ebi Fry Camarão com azeite, limão, shoyu, furikake e cebolinha",
           "fullName": "Joy Ebi Fry Camarão com azeite, limão, shoyu, furikake e cebolinha",
           "description": "Salmão, camarão menor, cream cheese, azeite, limão, shoyu e furikake",
-          "price": 43.9,
+          "price": 44.9,
           "portion": "6 un"
         }
       ],
@@ -3942,7 +3957,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 44.9
     },
     {
       "id": "hossomaki_group",
@@ -3954,9 +3970,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_hossomaki.jpeg",
       "image": "assets/images/raw_hossomaki.jpeg",
       "description": "Uramakis finos com alga nori por fora. Escolha o recheio.",
-      "price": 49.9,
+      "price": 43.9,
       "basePrice": 42.9,
-      "maxPrice": 49.9,
+      "maxPrice": 50.9,
       "priceLabel": "A partir de R$ 42,90",
       "page": "Pág 7",
       "options": [
@@ -3966,7 +3982,7 @@ const CARDAPIO_DATA = {
           "name": "Hossomaki Camarão imperial",
           "fullName": "Hossomaki Camarão imperial",
           "description": "Arroz shari 90g, alga e camarão imperial crocante",
-          "price": 49.9,
+          "price": 50.9,
           "portion": "10 un"
         },
         {
@@ -3975,7 +3991,7 @@ const CARDAPIO_DATA = {
           "name": "Hossomaki Camarão Philadelphia",
           "fullName": "Hossomaki Camarão Philadelphia",
           "description": "Arroz shari 90g, alga, 25g camarão menor e cream cheese",
-          "price": 46.9,
+          "price": 47.9,
           "portion": "10 un"
         },
         {
@@ -3984,7 +4000,7 @@ const CARDAPIO_DATA = {
           "name": "Hossomaki Salmão e Philadelphia",
           "fullName": "Hossomaki Salmão e Philadelphia",
           "description": "Arroz shari 90g, alga, 40g salmão e 30g cream cheese",
-          "price": 45.9,
+          "price": 46.9,
           "portion": "10 un"
         },
         {
@@ -3993,7 +4009,7 @@ const CARDAPIO_DATA = {
           "name": "Shakemaki - Salmão",
           "fullName": "Shakemaki - Salmão",
           "description": "Arroz shari 90g, alga e 40g filé de salmão puro",
-          "price": 44.9,
+          "price": 45.9,
           "portion": "10 un"
         },
         {
@@ -4002,7 +4018,7 @@ const CARDAPIO_DATA = {
           "name": "Kanimaki - Kani Philadelphia",
           "fullName": "Kanimaki - Kani Philadelphia",
           "description": "Arroz shari 90g, alga, kani e cream cheese",
-          "price": 42.9,
+          "price": 43.9,
           "portion": "10 un"
         }
       ],
@@ -4013,7 +4029,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 43.9
     },
     {
       "id": "uramaki_trad_group",
@@ -4025,9 +4042,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_uramaki_tradicional.jpeg",
       "image": "assets/images/raw_uramaki_tradicional.jpeg",
       "description": "Arroz temperado por fora e gergelim. Todos vêm com cream cheese Philadelphia.",
-      "price": 49.9,
+      "price": 43.9,
       "basePrice": 42.9,
-      "maxPrice": 49.9,
+      "maxPrice": 50.9,
       "priceLabel": "A partir de R$ 42,90",
       "page": "Pág 7",
       "options": [
@@ -4037,7 +4054,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki Camarão imperial",
           "fullName": "Uramaki Camarão imperial",
           "description": "Arroz shari 130g, alga, camarão imperial crocante e cream cheese",
-          "price": 49.9,
+          "price": 50.9,
           "portion": "10 un"
         },
         {
@@ -4046,7 +4063,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki Camarão",
           "fullName": "Uramaki Camarão",
           "description": "Arroz shari 130g, alga, 40g camarão menor e cream cheese",
-          "price": 46.9,
+          "price": 47.9,
           "portion": "10 un"
         },
         {
@@ -4055,7 +4072,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki Salmão",
           "fullName": "Uramaki Salmão",
           "description": "Arroz shari 130g, alga, 40g salmão filé e 40g cream cheese",
-          "price": 45.9,
+          "price": 46.9,
           "portion": "10 un"
         },
         {
@@ -4064,7 +4081,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki Salmão (sem Philadelphia)",
           "fullName": "Uramaki Salmão (sem Philadelphia)",
           "description": "Arroz shari 130g, alga e filé de salmão puro",
-          "price": 44.9,
+          "price": 45.9,
           "portion": "10 un"
         },
         {
@@ -4073,7 +4090,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki Kani",
           "fullName": "Uramaki Kani",
           "description": "Arroz shari 130g, alga, kani kama e cream cheese",
-          "price": 44.9,
+          "price": 45.9,
           "portion": "10 un"
         },
         {
@@ -4082,7 +4099,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki Skin grelhado",
           "fullName": "Uramaki Skin grelhado",
           "description": "Arroz shari 130g, alga, pele de salmão grelhada crocante e tarê",
-          "price": 42.9,
+          "price": 43.9,
           "portion": "10 un"
         }
       ],
@@ -4093,7 +4110,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 43.9
     },
     {
       "id": "uramaki_joy_group",
@@ -4107,7 +4125,7 @@ const CARDAPIO_DATA = {
       "description": "Envoltos em salmão fresco maçaricado, geleia de pimenta e furikake.",
       "price": 50.9,
       "basePrice": 49.9,
-      "maxPrice": 50.9,
+      "maxPrice": 51.9,
       "priceLabel": "A partir de R$ 49,90",
       "page": "Pág 7",
       "options": [
@@ -4117,7 +4135,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki joy, camarão, geleia de pimenta e Furikake",
           "fullName": "Uramaki joy, camarão, geleia de pimenta e Furikake",
           "description": "Uramaki joy com camarão menor, cream cheese, geleia de pimenta e furikake",
-          "price": 50.9,
+          "price": 51.9,
           "portion": "10 un"
         },
         {
@@ -4126,7 +4144,7 @@ const CARDAPIO_DATA = {
           "name": "Uramaki joy, salmão, geleia de pimenta e Furikake",
           "fullName": "Uramaki joy, salmão, geleia de pimenta e Furikake",
           "description": "Uramaki joy com salmão batido, cream cheese, geleia de pimenta e furikake",
-          "price": 49.9,
+          "price": 50.9,
           "portion": "10 un"
         }
       ],
@@ -4137,7 +4155,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 50.9
     },
     {
       "id": "niguiri_group",
@@ -4149,9 +4168,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_niguiri.jpeg",
       "image": "assets/images/raw_niguiri.jpeg",
       "description": "Bolinho de arroz japonês coberto com lâmina de peixe selecionado.",
-      "price": 43.9,
+      "price": 34.9,
       "basePrice": 33.9,
-      "maxPrice": 43.9,
+      "maxPrice": 44.9,
       "priceLabel": "A partir de R$ 33,90",
       "page": "Pág 7",
       "options": [
@@ -4161,7 +4180,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri de salmão, azeite trufado, flor de sal, limão",
           "fullName": "Niguiri de salmão, azeite trufado, flor de sal, limão",
           "description": "Arroz shari bolinha 19g, lâmina salmão, azeite trufado, flor de sal e raspas de limão",
-          "price": 43.9,
+          "price": 44.9,
           "portion": "4 un"
         },
         {
@@ -4170,7 +4189,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri de salmão com umeboshi",
           "fullName": "Niguiri de salmão com umeboshi",
           "description": "Arroz shari bolinha 19g, lâmina de salmão fresco e pasta de ameixa umeboshi",
-          "price": 36.9,
+          "price": 37.9,
           "portion": "4 un"
         },
         {
@@ -4179,7 +4198,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri Tilápia com limão, geleia de pimenta e Furikake",
           "fullName": "Niguiri Tilápia com limão, geleia de pimenta e Furikake",
           "description": "Arroz shari bolinha 19g, filé de tilápia, limão, geleia de pimenta e furikake",
-          "price": 36.9,
+          "price": 37.9,
           "portion": "4 un"
         },
         {
@@ -4188,7 +4207,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri Salmão maçaricado, Philadelphia, tarê, alho-poró",
           "fullName": "Niguiri Salmão maçaricado, Philadelphia, tarê, alho-poró",
           "description": "Arroz shari bolinha 19g, salmão maçaricado, cream cheese, molho tarê e alho-poró",
-          "price": 35.9,
+          "price": 36.9,
           "portion": "4 un"
         },
         {
@@ -4197,7 +4216,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri Salmão Maçaricado, flor de Sal",
           "fullName": "Niguiri Salmão Maçaricado, flor de Sal",
           "description": "Arroz shari bolinha 19g, salmão selado no maçarico com flor de sal",
-          "price": 33.9,
+          "price": 34.9,
           "portion": "4 un"
         },
         {
@@ -4206,7 +4225,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri de Salmão",
           "fullName": "Niguiri de Salmão",
           "description": "Arroz shari bolinha 19g e lâmina de salmão nobre fresco",
-          "price": 35.9,
+          "price": 36.9,
           "portion": "4 un"
         },
         {
@@ -4215,7 +4234,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri Skin Grelhado",
           "fullName": "Niguiri Skin Grelhado",
           "description": "Arroz shari bolinha 19g, pele de salmão crocante grelhada e molho tarê",
-          "price": 34.9,
+          "price": 35.9,
           "portion": "4 un"
         },
         {
@@ -4224,7 +4243,7 @@ const CARDAPIO_DATA = {
           "name": "Niguiri Tilápia com limão",
           "fullName": "Niguiri Tilápia com limão",
           "description": "Arroz shari bolinha 19g, filé de tilápia fresca e rodela de limão",
-          "price": 34.9,
+          "price": 35.9,
           "portion": "4 un"
         }
       ],
@@ -4235,7 +4254,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 34.9
     },
     {
       "id": "poke_group",
@@ -4247,9 +4267,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_poke.jpeg",
       "image": "assets/images/raw_poke.jpeg",
       "description": "Porção 300g • 80g de proteína nobre + 6 acompanhamentos inclusos (obrigatório) + 1 molho incluso (obrigatório).",
-      "price": 71.9,
+      "price": 62.9,
       "basePrice": 61.9,
-      "maxPrice": 71.9,
+      "maxPrice": 72.9,
       "priceLabel": "A partir de R$ 61,90",
       "page": "Pág 8",
       "options": [
@@ -4259,7 +4279,7 @@ const CARDAPIO_DATA = {
           "name": "Poke Salmão Imperial",
           "fullName": "Poke Salmão Imperial",
           "description": "150g arroz shari, salmão fresco em cubos, mix rico de acompanhamentos e molho",
-          "price": 71.9,
+          "price": 72.9,
           "portion": "80g Salmão"
         },
         {
@@ -4268,7 +4288,7 @@ const CARDAPIO_DATA = {
           "name": "Poke Salmão, flor de sal, azeite trufado e limão",
           "fullName": "Poke Salmão, flor de sal, azeite trufado e limão",
           "description": "150g arroz shari, salmão em cubos, azeite trufado, flor de sal e raspas de limão",
-          "price": 70.9,
+          "price": 71.9,
           "portion": "80g Proteína"
         },
         {
@@ -4277,7 +4297,7 @@ const CARDAPIO_DATA = {
           "name": "Poke Salmão",
           "fullName": "Poke Salmão",
           "description": "150g arroz shari, 80g salmão fresco em cubos, 6 acompanhamentos e molho da casa",
-          "price": 67.9,
+          "price": 68.9,
           "portion": "80g Proteína"
         },
         {
@@ -4286,7 +4306,7 @@ const CARDAPIO_DATA = {
           "name": "Poke Tártare de salmão com Philadelphia",
           "fullName": "Poke Tártare de salmão com Philadelphia",
           "description": "150g arroz shari, salmão picado com cream cheese Philadelphia e acompanhamentos",
-          "price": 65.9,
+          "price": 66.9,
           "portion": "80g Proteína"
         },
         {
@@ -4295,7 +4315,7 @@ const CARDAPIO_DATA = {
           "name": "Poke Camarão Imperial (4un)",
           "fullName": "Poke Camarão Imperial (4un)",
           "description": "150g arroz shari, 4 unidades de camarão imperial empanado e acompanhamentos",
-          "price": 64.9,
+          "price": 65.9,
           "portion": "4un Camarão"
         },
         {
@@ -4304,7 +4324,7 @@ const CARDAPIO_DATA = {
           "name": "Poke Shimeji",
           "fullName": "Poke Shimeji",
           "description": "150g arroz shari, shimeji salteado na manteiga com shoyu e acompanhamentos",
-          "price": 61.9,
+          "price": 62.9,
           "portion": "80g Shimeji"
         }
       ],
@@ -4340,7 +4360,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 62.9
     },
     {
       "id": "molhos_group",
@@ -4352,7 +4373,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/molhos_adicionais.jpg",
       "image": "assets/images/molhos_adicionais.jpg",
       "description": "Porções extras de molho teriaky artesanal, alho-poró crocante, geleias e acompanhamentos.",
-      "price": 22.0,
+      "price": 3.0,
       "basePrice": 3.0,
       "maxPrice": 22.0,
       "priceLabel": "A partir de R$ 3,00",
@@ -4413,7 +4434,8 @@ const CARDAPIO_DATA = {
           "portion": "Shot"
         }
       ],
-      "complements": []
+      "complements": [],
+      "minPrice": 3.0
     },
     {
       "id": "teppan_group",
@@ -4425,9 +4447,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_teppan.jpeg",
       "image": "assets/images/raw_teppan.jpeg",
       "description": "200g de proteína nobre grelhada na chapa com legumes refogados e arroz gohan.",
-      "price": 76.9,
+      "price": 40.9,
       "basePrice": 39.9,
-      "maxPrice": 76.9,
+      "maxPrice": 77.9,
       "priceLabel": "A partir de R$ 39,90",
       "page": "Pág 8",
       "options": [
@@ -4437,7 +4459,7 @@ const CARDAPIO_DATA = {
           "name": "Salmão Grelhado",
           "fullName": "Salmão Grelhado",
           "description": "200g filé de salmão grelhado na chapa com legumes refogados",
-          "price": 76.9,
+          "price": 77.9,
           "portion": "200g Proteína"
         },
         {
@@ -4446,7 +4468,7 @@ const CARDAPIO_DATA = {
           "name": "Tilápia Grelhada",
           "fullName": "Tilápia Grelhada",
           "description": "200g filé de tilápia grelhada na chapa com legumes refogados",
-          "price": 75.9,
+          "price": 76.9,
           "portion": "200g Proteína"
         },
         {
@@ -4455,7 +4477,7 @@ const CARDAPIO_DATA = {
           "name": "Arroz Gohan 200g",
           "fullName": "Arroz Gohan 200g",
           "description": "Arroz japonês branco cozido sem tempero",
-          "price": 39.9,
+          "price": 40.9,
           "portion": "200g Gohan"
         }
       ],
@@ -4466,7 +4488,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 40.9
     },
     {
       "id": "yakisoba_group",
@@ -4478,9 +4501,9 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_yakisoba.jpeg",
       "image": "assets/images/raw_yakisoba.jpeg",
       "description": "Macarrão artesanal, legumes selecionados refogados e molho especial do Chef.",
-      "price": 61.9,
+      "price": 46.9,
       "basePrice": 45.9,
-      "maxPrice": 61.9,
+      "maxPrice": 62.9,
       "priceLabel": "A partir de R$ 45,90",
       "page": "Pág 8",
       "options": [
@@ -4490,7 +4513,7 @@ const CARDAPIO_DATA = {
           "name": "Camarão",
           "fullName": "Camarão",
           "description": "Macarrão para yakisoba, legumes refogados, molho especial e 120g de camarão limpo",
-          "price": 61.9,
+          "price": 62.9,
           "portion": "400g"
         },
         {
@@ -4499,7 +4522,7 @@ const CARDAPIO_DATA = {
           "name": "Misto (carne e frango)",
           "fullName": "Misto (carne e frango)",
           "description": "Macarrão para yakisoba, legumes refogados, molho especial, carne bovina e frango",
-          "price": 58.9,
+          "price": 59.9,
           "portion": "400g"
         },
         {
@@ -4508,7 +4531,7 @@ const CARDAPIO_DATA = {
           "name": "Carne",
           "fullName": "Carne",
           "description": "Macarrão para yakisoba, legumes refogados, molho especial e tiras de carne bovina",
-          "price": 57.9,
+          "price": 58.9,
           "portion": "400g"
         },
         {
@@ -4517,7 +4540,7 @@ const CARDAPIO_DATA = {
           "name": "Frango",
           "fullName": "Frango",
           "description": "Macarrão para yakisoba, legumes refogados, molho especial e cubos de peito de frango",
-          "price": 54.9,
+          "price": 55.9,
           "portion": "400g"
         },
         {
@@ -4526,7 +4549,7 @@ const CARDAPIO_DATA = {
           "name": "Vegetariano",
           "fullName": "Vegetariano",
           "description": "Macarrão para yakisoba, acelga, cenoura, brócolis, repolho, couve-flor e molho especial",
-          "price": 45.9,
+          "price": 46.9,
           "portion": "400g"
         }
       ],
@@ -4537,7 +4560,8 @@ const CARDAPIO_DATA = {
         "cmp-134-gari",
         "cmp-135-gergelim",
         "cmp-136-shot-limao"
-      ]
+      ],
+      "minPrice": 46.9
     },
     {
       "id": "sucos_group",
@@ -4628,7 +4652,8 @@ const CARDAPIO_DATA = {
           "portion": "330ml"
         }
       ],
-      "complements": []
+      "complements": [],
+      "minPrice": 16.9
     },
     {
       "id": "sake_group",
@@ -4640,7 +4665,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/real_sake.jpg",
       "image": "assets/images/real_sake.jpg",
       "description": "Doses e garrafas de sakê importado Hakutsuru e nacional Azuma Kirin Dourado.",
-      "price": 619.9,
+      "price": 39.9,
       "basePrice": 39.9,
       "maxPrice": 619.9,
       "priceLabel": "A partir de R$ 39,90",
@@ -4710,7 +4735,8 @@ const CARDAPIO_DATA = {
           "portion": "740ml"
         }
       ],
-      "complements": []
+      "complements": [],
+      "minPrice": 39.9
     },
     {
       "id": "refrigerantes_group",
@@ -4722,7 +4748,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/real_refrigerantes.jpg",
       "image": "assets/images/real_refrigerantes.jpg",
       "description": "Refrigerantes em lata, água mineral com ou sem gás, H2O e Energético Red Bull gelados.",
-      "price": 17.0,
+      "price": 5.0,
       "basePrice": 5.0,
       "maxPrice": 17.0,
       "priceLabel": "A partir de R$ 5,00",
@@ -4810,7 +4836,8 @@ const CARDAPIO_DATA = {
           "portion": "500ml"
         }
       ],
-      "complements": []
+      "complements": [],
+      "minPrice": 5.0
     },
     {
       "id": "cervejas_group",
@@ -4822,7 +4849,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/real_cervejas.jpg",
       "image": "assets/images/real_cervejas.jpg",
       "description": "Heineken, Corona, Stella Artois, Spaten e Antarctica Original trincando de geladas.",
-      "price": 24.0,
+      "price": 13.0,
       "basePrice": 13.0,
       "maxPrice": 24.0,
       "priceLabel": "A partir de R$ 13,00",
@@ -4901,7 +4928,8 @@ const CARDAPIO_DATA = {
           "portion": "600ml"
         }
       ],
-      "complements": []
+      "complements": [],
+      "minPrice": 13.0
     },
     {
       "id": "item_177",
@@ -4915,7 +4943,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_177_omaki.png",
       "image": "assets/images/raw_combo_177_omaki.png",
       "description": "04 Sashimi salmão, 02 Joy cebolinha, 04 Niguiri salmão, 05 Uramaki joy salmão geleia de pimenta, 05 Uramaki joy camarão geleia de pimenta, 10 Uramaki skin, 10 Uramaki salmão",
-      "price": 132.0,
+      "price": 134.0,
       "priceLabel": "R$ 132,00",
       "page": "Pág 10",
       "isNew": false,
@@ -4952,7 +4980,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_178_chapada.jpeg",
       "image": "assets/images/raw_combo_178_chapada.jpeg",
       "description": "10 Hossomaki, 10 Uramaki skin, 10 Uramaki salmão, 05 Hot poró, 05 Hot Filadélfia",
-      "price": 118.0,
+      "price": 120.0,
       "priceLabel": "R$ 118,00",
       "page": "Pág 10",
       "isNew": false,
@@ -4989,7 +5017,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_179_oriental.jpeg",
       "image": "assets/images/raw_combo_179_oriental.jpeg",
       "description": "04 Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
-      "price": 107.0,
+      "price": 109.0,
       "priceLabel": "R$ 107,00",
       "page": "Pág 10",
       "isNew": false,
@@ -5026,7 +5054,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_180_guia.jpeg",
       "image": "assets/images/raw_combo_180_guia.jpeg",
       "description": "04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão, 10 Uramaki salmão, 10 Uramaki skin",
-      "price": 119.0,
+      "price": 121.0,
       "priceLabel": "R$ 119,00",
       "page": "Pág 10",
       "isNew": false,
@@ -5063,7 +5091,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
       "image": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
       "description": "05 Uramaki joy camarão geleia de pimenta e furikake, 04 Camarão imperial, 04 Sashimis salmão, 04 Sashimi de tilápia com geleia de pimenta e furikake, 04 Joy de cebolinha e Philaldelphia, 02 Niguiri de salmão, 02 Niguiri de tilápia com geleia de pimenta e furikake",
-      "price": 138.9,
+      "price": 140.9,
       "priceLabel": "R$ 138,90",
       "page": "Pág 11",
       "isNew": true,
@@ -5101,7 +5129,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_camarao_30pc.jpeg",
       "image": "assets/images/raw_combo_camarao_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 04 Sashimi de salmão, 04 Sashimi de tilápia com geleia de pimenta e furikake, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de tilápia com geleia de pimenta e furikake, 04 Camarão imperial",
-      "price": 144.9,
+      "price": 146.9,
       "priceLabel": "R$ 144,90",
       "page": "Pág 11",
       "isNew": true,
@@ -5139,7 +5167,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_joy_28pc.jpeg",
       "image": "assets/images/raw_combo_joy_28pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy salmão geleia de pimenta furikake, 05 Uramaki joy camarão geleia de pimenta furikake, 04 Sashimis salmão, 04 Joy cebolinha",
-      "price": 136.9,
+      "price": 138.9,
       "priceLabel": "R$ 136,90",
       "page": "Pág 11",
       "isNew": true,
@@ -5177,7 +5205,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_misto_28pc.jpeg",
       "image": "assets/images/raw_combo_misto_28pc.jpeg",
       "description": "05 Uramaki joy de camarão geleia de pimenta e furikake, 05 Uramaki joy salmão geleia de pimenta e furikake, 04 Sashimi de salmão, 04 Sashimi de tilápia, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de tilápia com geleia pimenta e furikake, 02 Niguiri de salmão",
-      "price": 138.9,
+      "price": 140.9,
       "priceLabel": "R$ 138,90",
       "page": "Pág 11",
       "isNew": true,
@@ -5215,7 +5243,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_salmao_30pc.jpeg",
       "image": "assets/images/raw_combo_salmao_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 10 Hossomaki Philadelphia, 04 Sashimi de salmão, 04 Joy de cebolinha, 02 Niguiri de salmão",
-      "price": 129.9,
+      "price": 131.9,
       "priceLabel": "R$ 129,90",
       "page": "Pág 12",
       "isNew": true,
@@ -5253,7 +5281,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_hot_30pc.jpeg",
       "image": "assets/images/raw_combo_hot_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy camarão com geleia de pimenta e furikake, 05 Uramaki joy salmão com geleia de pimenta e furikake, 05 Hot couve crispy, 05 Hot Philadelphia",
-      "price": 129.9,
+      "price": 131.9,
       "priceLabel": "R$ 129,90",
       "page": "Pág 12",
       "isNew": true,
@@ -5291,7 +5319,7 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_hossomaki_28pc.jpeg",
       "image": "assets/images/raw_combo_hossomaki_28pc.jpeg",
       "description": "10 Hossomaki Philadelphia, 04 Sashimi de salmão, 04 Sashimi de tilápia, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de salmão, 02 Niguiri de tilápia com geleia de pimenta e furikake",
-      "price": 126.9,
+      "price": 128.9,
       "priceLabel": "R$ 126,90",
       "page": "Pág 12",
       "isNew": true,

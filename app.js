@@ -906,7 +906,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const isSoldOut = (adminState.soldOutIds || []).includes(dish.id);
+    const soldOuts = adminState.soldOutIds || [];
+    let isSoldOut = false;
+    if (dish.isGrouped && Array.isArray(dish.options) && dish.options.length > 0) {
+      isSoldOut = dish.options.every(opt => 
+        soldOuts.includes('item_' + opt.num) || 
+        soldOuts.includes(String(opt.num)) || 
+        soldOuts.includes(String(opt.code)) ||
+        soldOuts.includes(opt.id)
+      );
+    } else {
+      isSoldOut = soldOuts.includes(dish.id) || 
+                  soldOuts.includes('item_' + dish.num) || 
+                  soldOuts.includes(String(dish.num));
+    }
     if (isSoldOut) {
       card.classList.add('is-sold-out');
     }
@@ -1460,64 +1473,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function renderOptionsList(options) {
-
     if (!modalOptionsList) return;
-
     modalOptionsList.innerHTML = '';
 
+    const soldOuts = adminState.soldOutIds || [];
 
+    // Auto-select first non-sold-out option if current is sold out
+    const isCurrentSoldOut = currentSelectedOption && soldOuts.some(id => 
+      id === 'item_' + currentSelectedOption.num || 
+      id === String(currentSelectedOption.num) || 
+      id === String(currentSelectedOption.code) || 
+      id === currentSelectedOption.id
+    );
+    if (isCurrentSoldOut || !currentSelectedOption) {
+      const firstAvailable = options.find(opt => !soldOuts.some(id => 
+        id === 'item_' + opt.num || id === String(opt.num) || id === String(opt.code) || id === opt.id
+      ));
+      currentSelectedOption = firstAvailable || null;
+    }
 
     options.forEach(opt => {
-
-      const isSelected = currentSelectedOption && (String(opt.code) === String(currentSelectedOption.code) || opt.num === currentSelectedOption.num);
+      const isOptionSoldOut = soldOuts.some(id => 
+        id === 'item_' + opt.num || id === String(opt.num) || id === String(opt.code) || id === opt.id
+      );
+      const isSelected = !isOptionSoldOut && currentSelectedOption && (String(opt.code) === String(currentSelectedOption.code) || opt.num === currentSelectedOption.num);
 
       const row = document.createElement('label');
-
-      row.className = `option-item ${isSelected ? 'selected' : ''}`;
+      row.className = `option-item ${isSelected ? 'selected' : ''} ${isOptionSoldOut ? 'option-sold-out' : ''}`;
+      if (isOptionSoldOut) {
+        row.style.opacity = '0.45';
+        row.style.cursor = 'not-allowed';
+      }
 
       row.innerHTML = `
-
         <div class="option-left">
-
-          <input type="radio" name="modalDishOptionRadio" value="${opt.code || opt.num}" ${isSelected ? 'checked' : ''} style="display:none;">
+          <input type="radio" name="modalDishOptionRadio" value="${opt.code || opt.num}" ${isSelected ? 'checked' : ''} ${isOptionSoldOut ? 'disabled' : ''} style="display:none;">
           <span class="option-radio-custom" aria-hidden="true"></span>
-
           <div class="option-details">
-
-            <span class="option-name">${opt.name}</span>
-
+            <span class="option-name">${opt.name} ${isOptionSoldOut ? '<span style="color:#ef4444; font-size:0.75rem; font-weight:700; margin-left:6px;">(Esgotado Hoje)</span>' : ''}</span>
             ${opt.description && opt.description !== opt.name ? `<p class="option-desc">${opt.description}</p>` : ''}
-
           </div>
-
         </div>
-
         <span class="option-price">${formatMoney(opt.price)}</span>
-
       `;
 
-
-
-      row.querySelector('input').addEventListener('change', () => {
-
-        currentSelectedOption = opt;
-
-        document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
-
-        row.classList.add('selected');
-
-        updateModalHeaderWithOption(opt);
-
-        updateModalTotal();
-
-      });
-
-
+      if (!isOptionSoldOut) {
+        row.querySelector('input').addEventListener('change', () => {
+          currentSelectedOption = opt;
+          document.querySelectorAll('.option-item').forEach(el => el.classList.remove('selected'));
+          row.classList.add('selected');
+          updateModalHeaderWithOption(opt);
+          updateModalTotal();
+        });
+      }
 
       modalOptionsList.appendChild(row);
-
     });
 
+    if (modalAddBtn) {
+      if (!currentSelectedOption) {
+        modalAddBtn.disabled = true;
+        modalAddBtn.textContent = 'Opções Esgotadas';
+        modalAddBtn.style.opacity = '0.5';
+      } else {
+        modalAddBtn.disabled = false;
+        modalAddBtn.style.opacity = '1';
+      }
+    }
   }
 
 
@@ -3098,6 +3120,36 @@ document.addEventListener('DOMContentLoaded', () => {
       const waUrl = `https://api.whatsapp.com/send?phone=${storeWhatsApp}&text=${encodeURIComponent(msg)}`;
 
 
+
+      // Envio de registro silencioso para /api/orders
+      try {
+        const orderPayload = {
+          action: 'new_order',
+          order: {
+            customerName,
+            customerPhone,
+            deliveryType,
+            address: fullAddress,
+            neighborhood: (typeof neighborhood !== 'undefined' ? neighborhood : '') || '',
+            paymentMethod: (typeof paymentMethod !== 'undefined' && paymentMethod === 'pix') ? 'PIX' : ((typeof paymentMethod !== 'undefined' && paymentMethod === 'card') ? 'Cartão' : 'Dinheiro'),
+            changeFor: (typeof changeFor !== 'undefined' ? changeFor : '') || '',
+            subtotal,
+            total: subtotal,
+            notes: (typeof orderNotes !== 'undefined' && orderNotes) ? orderNotes.value.trim() : '',
+            items: cart.map(e => ({
+              name: e.item.name || e.item.title,
+              qty: e.qty,
+              price: e.item.price,
+              option: e.option ? e.option.name : null
+            }))
+          }
+        };
+        fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderPayload)
+        }).catch(err => console.warn('Order logging error:', err));
+      } catch (err) {}
 
       window.open(waUrl, '_blank');
 

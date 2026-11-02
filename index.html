@@ -25,7 +25,68 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20261102_omaki_v36">
+  <link rel="stylesheet" href="style.css?v=20261102_omaki_v37">
+  <style>
+    /* Checkout Spacing Overrides (Anti-Cache) */
+    .checkout-form {
+      padding-top: 14px !important;
+    }
+    .form-section-title {
+      font-size: 0.95rem !important;
+      font-weight: 800 !important;
+      color: #e5c07b !important;
+      margin-top: 18px !important;
+      margin-bottom: 16px !important;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.14) !important;
+      padding-bottom: 8px !important;
+    }
+    .delivery-toggle-group {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 12px !important;
+      margin-top: 10px !important;
+      margin-bottom: 18px !important;
+    }
+    .delivery-toggle-btn {
+      background: #0f172a !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      border-radius: 12px !important;
+      padding: 13px 12px !important;
+      color: #94a3b8 !important;
+      font-size: 0.85rem !important;
+      font-weight: 700 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      cursor: pointer !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+      transition: all 0.2s ease !important;
+    }
+    .delivery-toggle-btn:hover {
+      background: #1e293b !important;
+      border-color: rgba(229, 192, 123, 0.4) !important;
+      color: #ffffff !important;
+    }
+    .delivery-toggle-btn.active {
+      background: linear-gradient(135deg, rgba(139, 26, 43, 0.6), rgba(74, 14, 23, 0.8)) !important;
+      border: 1.5px solid #e5c07b !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(229, 192, 123, 0.22) !important;
+    }
+    .takeaway-notice {
+      margin-top: 14px !important;
+      background: rgba(17, 24, 39, 0.95) !important;
+      border: 1px solid rgba(229, 192, 123, 0.35) !important;
+      border-radius: 14px !important;
+      padding: 18px 16px !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+    .takeaway-badge {
+      margin-bottom: 6px !important;
+      padding: 5px 12px !important;
+    }
+  </style>
 
 </head>
 
@@ -966,9 +1027,9 @@
 
   <!-- Scripts -->
 
-  <script src="data/cardapio.js?v=20261102_omaki_v36" charset="UTF-8"></script>
+  <script src="data/cardapio.js?v=20261102_omaki_v37" charset="UTF-8"></script>
 
-  <script src="app.js?v=20261102_omaki_v36" charset="UTF-8"></script>
+  <script src="app.js?v=20261102_omaki_v37" charset="UTF-8"></script>
 
 </body>
 
