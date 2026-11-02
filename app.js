@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     { id: 'cat-combos-chef', title: '🍱 Combos do Chef', match: d => d.category.includes('Combos do Chef') || (d.num && d.num >= 57 && d.num <= 60) },
 
-    { id: 'cat-especiais', title: '✨ Especiais do Chef', match: d => d.category.includes('Especiais') || (d.num && d.num >= 41 && d.num <= 47) },
+    { id: 'cat-especiais', title: '⭐ Especiais do Chef', match: d => d.category.includes('Especiais') || (d.num && d.num >= 41 && d.num <= 47) },
 
     { id: 'cat-entradas', title: '🥢 Entradas & Harumakis', match: d => d.category.includes('Harumaki') || d.category.includes('Entradas') || d.id === 'harumaki_group' || d.id === 'kobachi_group' || (d.num && d.num <= 6) },
 
@@ -846,7 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } else if (dish.isNew) {
 
-      tagBadge = `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">✨ NOVO</span>`;
+      tagBadge = `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">NOVO</span>`;
 
     }
 
@@ -1123,7 +1123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (modalItemNum) {
 
-        modalItemNum.textContent = dish.num ? `#${String(dish.num).padStart(3, '0')}` : '✨ PROMO';
+        modalItemNum.textContent = dish.num ? `#${String(dish.num).padStart(3, '0')}` : 'PROMO';
 
         modalItemNum.style.background = dish.num ? 'rgba(7, 10, 17, 0.9)' : '#8b1e3f';
 
@@ -1305,6 +1305,10 @@ document.addEventListener('DOMContentLoaded', () => {
     itemModal.style.display = 'flex';
 
     document.body.style.overflow = 'hidden';
+
+    try {
+      history.pushState({ omakiView: 'item-modal' }, '');
+    } catch (e) {}
 
   }
 
@@ -1522,7 +1526,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!opt) return;
     if (modalItemPrice) modalItemPrice.textContent = formatMoney(opt.price);
     if (modalItemNum) {
-      modalItemNum.textContent = opt.num ? `#${String(opt.num).padStart(3, '0')}` : '✨ PROMO';
+      modalItemNum.textContent = opt.num ? `#${String(opt.num).padStart(3, '0')}` : 'PROMO';
       modalItemNum.style.background = 'rgba(7, 10, 17, 0.9)';
       modalItemNum.style.borderColor = 'var(--accent-gold)';
       modalItemNum.style.color = 'var(--accent-gold)';
@@ -2477,11 +2481,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (backCartDrawerBtn) backCartDrawerBtn.addEventListener('click', () => closeCartDrawer());
 
   // Gestural / Native Back Navigation (PopState)
+  try {
+    if (!history.state || !history.state.omakiView) {
+      history.replaceState({ omakiView: 'root' }, '');
+    }
+  } catch (e) {}
+
   window.addEventListener('popstate', (e) => {
-    if (itemModal && itemModal.style.display === 'flex') {
+    if (customAlertOverlay && (customAlertOverlay.style.display === 'flex' || customAlertOverlay.style.display === 'block')) {
+      closeCustomAlert(true);
+      return;
+    }
+    if (itemModal && (itemModal.style.display === 'flex' || itemModal.style.display === 'block')) {
       closeItemModal(true);
-    } else if (cartDrawer && (cartDrawer.style.display === 'flex' || cartDrawer.style.display === 'block')) {
+      return;
+    }
+    if (cartDrawer && (cartDrawer.style.display === 'flex' || cartDrawer.style.display === 'block')) {
       closeCartDrawer(true);
+      return;
     }
   });
   if (cartDrawer) {
@@ -3215,7 +3232,7 @@ document.addEventListener('DOMContentLoaded', () => {
       badgeSuffix = ' • Entregas às 18:20';
       badgeTheme = 'amber';
       noticeType = 'preorder';
-      noticeIcon = '✨';
+      noticeIcon = '🍱';
       noticeTitle = 'Faça seu Pedido com Antecedência!';
       noticeText = 'Nosso serviço de entregas inicia às 18:20. Você já pode enviar seu pedido para garantir sua posição na fila de preparo de hoje, ou escolher retirada no balcão!';
       btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido Antecipado via WhatsApp';
@@ -3232,8 +3249,17 @@ document.addEventListener('DOMContentLoaded', () => {
       noticeText = 'Nossos motoboys já finalizaram os envios de hoje. O balcão segue <strong>aberto para retirada até as 23:00</strong>!';
       btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido para Retirada via WhatsApp';
     }
-    // 6. Pausa manual da equipe pelo painel
-    else if (adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) {
+    // 6. Pausa manual da equipe pelo painel (com expiração diária automática)
+    else if ((adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) && (() => {
+      if (!adminState.lastUpdated) return true;
+      try {
+        const updateDate = new Date(adminState.lastUpdated).toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+        const todayDate = new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+        return updateDate === todayDate;
+      } catch (e) {
+        return true;
+      }
+    })()) {
       operationalMode = 'manual_takeaway';
       badgeText = 'Só Retirada';
       badgeSuffix = ' no Balcão';

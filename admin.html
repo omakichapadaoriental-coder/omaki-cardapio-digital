@@ -398,6 +398,42 @@
       min-width: 0;
     }
 
+    .item-name-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    .item-code-badge {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Plus Jakarta Sans', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 1px 7px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .item-promo-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #f43f5e;
+      background: rgba(244, 63, 94, 0.12);
+      border: 1px solid rgba(244, 63, 94, 0.32);
+      padding: 1px 6px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
     .item-name {
       font-size: 0.92rem;
       font-weight: 700;
@@ -662,6 +698,62 @@
       bindEvents();
     }
 
+    const DISH_CODES = {
+      'harumaki_group': '#001–#004',
+      'item_5': '#005',
+      'item_6': '#006',
+      'tataki_group': '#007–#011',
+      'ceviche_group': '#012–#015',
+      'camarao_imperial_group': '#016–#017',
+      'carpaccio_group': '#018–#020',
+      'oishi_group': '#021–#022',
+      'kobachi_group': '#023–#024',
+      'gunkan_group': '#025–#030',
+      'vegano_group': '#031–#032',
+      'sashimi_especial_group': '#033–#040',
+      'item_41': '#041',
+      'item_42': '#042',
+      'item_43': '#043',
+      'item_44': '#044',
+      'item_45': '#045',
+      'item_46': '#046',
+      'item_47': '#047',
+      'temaki_group': '#048–#056',
+      'item_57': '#057',
+      'item_58': '#058',
+      'item_59': '#059',
+      'item_60': '#060',
+      'bighot_group': '#061–#062',
+      'hotrolls_group': '#063–#069',
+      'sashimi_trad_group': '#070–#076',
+      'joy_trad_group': '#077–#082',
+      'joy_ebifry_group': '#083–#085',
+      'hossomaki_group': '#086–#091',
+      'uramaki_trad_group': '#092–#098',
+      'uramaki_joy_group': '#099–#104',
+      'poke_group': '#105–#109',
+      'niguiri_group': '#110–#118',
+      'molhos_group': '#131–#136',
+      'teppan_group': '#137–#142',
+      'yakisoba_group': '#143–#146',
+      'sucos_group': '#147–#154',
+      'sake_group': '#155–#164',
+      'refrigerantes_group': '#165–#171',
+      'cervejas_group': '#172–#176',
+      'item_177': '#177',
+      'item_178': '#178',
+      'item_179': '#179',
+      'item_180': '#180',
+      // Os últimos 7 combos promocionais NÃO têm código numérico:
+      'item_combo_camarão_imperial_-_25_peças': '',
+      'item_combo_camarão_-_30_peças': '',
+      'item_combo_joy_-_28_peças': '',
+      'item_combo_misto_-_28_peças': '',
+      'item_combo_salmão_-_30_peças': '',
+      'item_combo_hot_-_30_peças': '',
+      'item_combo_hossomaki_-_28_peças': ''
+    };
+
     function flattenItems() {
       allItems = [];
       const cData = (typeof CARDAPIO_DATA !== "undefined" ? CARDAPIO_DATA : window.OMAKI_DATA) || {};
@@ -670,18 +762,26 @@
 
       // 1. All dishes from menu
       dishesList.forEach(dish => {
+        let code = '';
+        if (DISH_CODES[dish.id] !== undefined) {
+          code = DISH_CODES[dish.id];
+        } else if (dish.num) {
+          code = '#' + String(dish.num).padStart(3, '0');
+        }
+
         allItems.push({
           id: dish.id,
           name: dish.title || dish.name,
           number: dish.num || '',
+          code: code,
           price: dish.price || dish.minPrice || 0,
-          image: dish.photo || dish.image || 'assets/logo-white.png',
+          image: dish.photo || dish.image || 'assets/images/raw_sashimi_tradicional.png',
           category: dish.category || 'Geral',
           categoryName: dish.category || 'Geral'
         });
       });
 
-      // 2. Also ensure numbered drinks from items are listed
+      // 2. Also ensure numbered drinks from items are listed with appetizing photos
       itemsList.forEach(item => {
         if (item.category && (item.category.includes('Bebida') || item.category.includes('Cerveja') || item.category.includes('Refrigerante') || item.category.includes('Suco') || item.category.includes('Saké'))) {
           const exists = allItems.some(a => a.id === `item_${item.num}` || a.number === item.num);
@@ -690,8 +790,9 @@
               id: `item_${item.num}`,
               name: item.name,
               number: item.num,
+              code: item.num ? '#' + String(item.num).padStart(3, '0') : '',
               price: item.price || 0,
-              image: item.image || 'assets/logo-white.png',
+              image: item.photo || item.image || 'assets/images/real_cervejas.jpg',
               category: item.category,
               categoryName: item.category
             });
@@ -816,7 +917,7 @@
       const filtered = allItems.filter(item => {
         const matchCat = currentCategory === 'all' || item.category === currentCategory;
         const q = searchQuery.toLowerCase().trim();
-        const matchSearch = !q || item.name.toLowerCase().includes(q) || item.number.toString().includes(q);
+        const matchSearch = !q || item.name.toLowerCase().includes(q) || (item.code && item.code.toLowerCase().includes(q)) || (item.number && item.number.toString().includes(q));
         return matchCat && matchSearch;
       });
 
@@ -831,12 +932,18 @@
         row.className = `item-row ${isSoldOut ? 'is-sold-out' : ''}`;
 
         const priceFmt = typeof item.price === 'number' ? `R$ ${item.price.toFixed(2).replace('.', ',')}` : '';
+        const badgeHtml = item.code 
+          ? `<span class="item-code-badge">${item.code}</span>` 
+          : `<span class="item-promo-badge">PROMO</span>`;
 
         row.innerHTML = `
           <div class="item-info">
-            <img src="${item.image || 'assets/logo-white.png'}" class="item-thumb" alt="${item.name}" onerror="this.src='assets/logo-white.png'">
+            <img src="${item.image || 'assets/images/raw_sashimi_tradicional.png'}" class="item-thumb" alt="${item.name}" onerror="this.src='assets/images/raw_sashimi_tradicional.png'">
             <div class="item-texts">
-              <div class="item-name">${item.number ? '#' + item.number + ' ' : ''}${item.name}</div>
+              <div class="item-name-row">
+                ${badgeHtml}
+                <span class="item-name">${item.name}</span>
+              </div>
               <div class="item-meta">
                 <span class="item-price">${priceFmt}</span> • <span>${item.categoryName}</span>
               </div>
