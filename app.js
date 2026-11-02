@@ -2494,16 +2494,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnTypeDelivery) {
     btnTypeDelivery.addEventListener('click', () => {
       if (btnTypeDelivery.classList.contains('btn-delivery-disabled')) {
-        const curMinsD = getBrasiliaMinutes();
-        if (curMinsD >= 23*60 || curMinsD < 18*60+20) {
-          showCustomAlert('Restaurante Fechado', 'Nosso horário de funcionamento encerrou às 23:00. Reabriremos hoje às 18:20.');
+        const { curMins: curMinsD } = getBrasiliaDateTime();
+        if (curMinsD >= 22 * 60 + 30 && curMinsD < 23 * 60) {
+          showCustomAlert('Entregas Encerradas', 'Os motoboys finalizaram os envios de hoje às 22:30. Selecione Retirada no Balcão para buscar seu pedido até as 23:00!');
         } else {
-          showCustomAlert('Entregas Encerradas', 'Entregas por motoboy encerram às 22:30. Selecione Retirada no Balcão para concluir seu pedido.');
+          showCustomAlert('Entregas Pausadas', 'As entregas por motoboy estão pausadas temporariamente pela equipe. Por favor, selecione Retirada no Balcão.');
         }
-        return;
-      }
-      if (btnTypeDelivery.classList.contains('btn-delivery-disabled')) {
-        showCustomAlert('Entregas Encerradas', 'As entregas por motoboy estão indisponíveis no momento. Por favor, selecione Retirada no Balcão.');
         return;
       }
       deliveryType = 'delivery';
@@ -2518,10 +2514,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnTypeTakeaway) {
     btnTypeTakeaway.addEventListener('click', () => {
-      if (btnTypeTakeaway.classList.contains('btn-delivery-disabled')) {
-        showCustomAlert('Restaurante Fechado', 'Nosso horário de funcionamento encerrou às 23:00. Reabriremos hoje às 18:20.');
-        return;
-      }
       deliveryType = 'takeaway';
       btnTypeTakeaway.classList.add('active');
       btnTypeDelivery.classList.remove('active');
@@ -2740,21 +2732,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sendWhatsAppOrderBtn.addEventListener('click', () => {
 
-      const dtCheck = getBrasiliaDateTime();
-      if (dtCheck.day === 3) {
-        showCustomAlert('Fechado às Quartas', 'Às quartas-feiras a casa está fechada para folga da equipe. O cardápio está disponível para consulta e reabriremos nesta quinta-feira às 18:20!');
-        return;
-      }
-      if (dtCheck.day === 2 && dtCheck.curMins >= 23 * 60) {
-        showCustomAlert('Restaurante Fechado', 'Atendimento de terça-feira encerrado às 23:00. Amanhã (quarta-feira) é nossa folga e reabriremos na quinta-feira às 18:20!');
-        return;
-      }
-      if (dtCheck.curMins >= 23 * 60 || dtCheck.curMins < 18 * 60 + 20) {
-        const when = dtCheck.curMins >= 23 * 60 ? 'amanhã' : 'hoje';
-        showCustomAlert('Restaurante Fechado', `Nosso atendimento encerrou às 23:00. O cardápio permanece disponível para consulta e reabriremos ${when} às 18:20!`);
-        return;
-      }
-
       if (cart.length === 0) {
 
         showCustomAlert('Sacola Vazia', 'Sua sacola está vazia. Adicione pratos deliciosos antes de enviar o pedido!');
@@ -2919,14 +2896,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
       // Build formatted WhatsApp Message with canonical tags [#007]
+      const { day: dtDay, curMins: dtCurMins } = getBrasiliaDateTime();
+      const startDeliveryMins = 18 * 60 + 20; // 18:20
+      const deliveryCutoffMins = 22 * 60 + 30; // 22:30
+      const storeCloseMins = 23 * 60; // 23:00
 
-      let msg = `${WA_ICONS.sushi} *NOVO PEDIDO — OMAKI SUSHI*\n`;
+      let headerTitle = `${WA_ICONS.sushi} *NOVO PEDIDO — OMAKI SUSHI*\n`;
+      let timeScheduleNote = '';
+
+      if (dtDay === 3) {
+        headerTitle = `${WA_ICONS.sushi} *ENCOMENDA PARA QUINTA-FEIRA — OMAKI SUSHI*\n`;
+        timeScheduleNote = `🌿 *Agendamento:* Encomenda enviada na quarta-feira (Folga semanal). Válida para quinta-feira a partir das 18:20.\n`;
+      } else if (dtDay === 2 && dtCurMins >= storeCloseMins) {
+        headerTitle = `${WA_ICONS.sushi} *ENCOMENDA PARA QUINTA-FEIRA — OMAKI SUSHI*\n`;
+        timeScheduleNote = `🌿 *Agendamento:* Encomenda pós-expediente de terça-feira. Quarta é folga; válida para quinta a partir das 18:20.\n`;
+      } else if (dtCurMins >= storeCloseMins) {
+        headerTitle = `${WA_ICONS.sushi} *ENCOMENDA ANTECIPADA — OMAKI SUSHI*\n`;
+        timeScheduleNote = `🌙 *Agendamento:* Encomenda enviada pós-expediente noturno. Válida para o próximo expediente às 18:20.\n`;
+      } else if (dtCurMins < startDeliveryMins) {
+        headerTitle = `${WA_ICONS.sushi} *PEDIDO ANTECIPADO (ENCOMENDA) — OMAKI SUSHI*\n`;
+        if (deliveryType === 'delivery') {
+          timeScheduleNote = `⏰ *Previsão de Saída:* Encomenda com entrega a partir das 18:20 (Fila prioritária de hoje).\n`;
+        } else {
+          timeScheduleNote = `⏰ *Previsão de Retirada:* Encomenda para Retirada no Balcão a partir das 18:20.\n`;
+        }
+      } else if (dtCurMins >= deliveryCutoffMins) {
+        headerTitle = `${WA_ICONS.sushi} *PEDIDO PARA RETIRADA NO BALCÃO — OMAKI SUSHI*\n`;
+        timeScheduleNote = `🛍️ *Retirada:* Pedido realizado após as 22:30 (Motoboys encerrados, balcão até 23:00).\n`;
+      }
+
+      let msg = headerTitle;
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
 
       msg += `${WA_ICONS.client} *Cliente:* ${customerName}\n`;
 
       msg += `${WA_ICONS.phone} *WhatsApp:* ${customerPhone}\n`;
+
+      if (timeScheduleNote) {
+        msg += timeScheduleNote;
+      }
 
 
 
@@ -3141,62 +3150,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function checkDeliveryAvailability() {
     const { day, curMins } = getBrasiliaDateTime();
-    const startMins = 18 * 60 + 20; // 18:20
-    const deliveryCutoffMins = 22 * 60 + 30; // 22:30
-    const storeCloseMins = 23 * 60; // 23:00 (Fechamento total)
+    const startDeliveryMins = 18 * 60 + 20; // 18:20 (Início dos motoboys)
+    const deliveryCutoffMins = 22 * 60 + 30; // 22:30 (Fim dos motoboys)
+    const storeCloseMins = 23 * 60; // 23:00 (Fim do expediente noturno)
 
-    // Determina o estado operacional da loja:
-    // 'open' (18:20 - 22:30) | 'takeaway_only' (22:30 - 23:00) | 'closed' (23:00 - 18:20 ou Quarta-feira o dia todo)
-    let storeState = 'open';
-    let statusBadgeText = 'Aberto';
-    let statusBadgeSuffix = ' para Pedidos';
-    let statusBannerHtml = '';
-    let btnCloseTxt = '';
+    // Modos operacionais:
+    // 1. 'wednesday_closed' (Quarta-feira o dia todo)
+    // 2. 'preorder' (Antes das 18:20 de seg a dom exceto qua: aceita encomendas e retirada)
+    // 3. 'open' (18:20 às 22:30: pronta entrega e retirada a todo vapor)
+    // 4. 'takeaway_only' (22:30 às 23:00: motoboy encerrou, balcão aberto para retirada)
+    // 5. 'night_closed' (após as 23:00: cozinha encerrou por hoje, aceita encomendas para o dia seguinte)
+    // 6. 'manual_takeaway' (se o admin desativar delivery manualmente)
 
-    // 1. Quarta-feira fechado o dia todo (day === 3)
+    let operationalMode = 'open';
+    let badgeText = 'Aberto';
+    let badgeSuffix = ' para Pedidos';
+    let badgeTheme = 'green'; // 'green' | 'amber' | 'slate'
+    let noticeType = ''; // 'preorder' | 'takeaway' | 'closed' | ''
+    let noticeIcon = '';
+    let noticeTitle = '';
+    let noticeText = '';
+    let btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido via WhatsApp';
+
+    // 1. Quarta-feira folga semanal da equipe (dia todo)
     if (day === 3) {
-      storeState = 'closed';
-      statusBadgeText = 'Fechado às Quartas';
-      statusBadgeSuffix = ' • Abre Quinta às 18:20';
-      btnCloseTxt = '🔒 Fechado às Quartas (Abre Quinta às 18:20)';
-      statusBannerHtml = '🔴 <strong>Restaurante Fechado:</strong> Às quartas-feiras fazemos nossa pausa operacional e folga semanal. O cardápio está aberto para consulta e reabriremos nesta <strong>quinta-feira às 18:20</strong>!';
+      operationalMode = 'wednesday_closed';
+      badgeText = 'Folga Semanal';
+      badgeSuffix = ' • Reabre Quinta às 18:20';
+      badgeTheme = 'amber';
+      noticeType = 'closed';
+      noticeIcon = '🌿';
+      noticeTitle = 'Quarta-feira: Descanso da Equipe';
+      noticeText = 'Hoje nossa equipe faz uma pausa operacional para reposição de pescados frescos. Você já pode enviar sua <strong>encomenda antecipada para quinta-feira</strong> a partir das 18:20!';
+      btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Encomenda para Quinta via WhatsApp';
     }
-    // 2. Terça-feira após as 23:00 (vai virar quarta-feira, reabre quinta)
+    // 2. Terça-feira após as 23:00 (vai virar quarta-feira de folga, reabre quinta)
     else if (day === 2 && curMins >= storeCloseMins) {
-      storeState = 'closed';
-      statusBadgeText = 'Fechado';
-      statusBadgeSuffix = ' • Abre Quinta às 18:20';
-      btnCloseTxt = '🔒 Restaurante Fechado (Abre Quinta às 18:20)';
-      statusBannerHtml = '🔴 <strong>Restaurante Fechado:</strong> Atendimento encerrou às 23:00. Amanhã (quarta-feira) é nossa folga semanal e reabriremos nesta <strong>quinta-feira às 18:20</strong>!';
+      operationalMode = 'wednesday_closed';
+      badgeText = 'Fechado por Hoje';
+      badgeSuffix = ' • Reabre Quinta às 18:20';
+      badgeTheme = 'amber';
+      noticeType = 'closed';
+      noticeIcon = '🌙';
+      noticeTitle = 'Atendimento Encerrado por Hoje';
+      noticeText = 'Nossa cozinha encerrou a produção desta noite. Amanhã (quarta-feira) é nossa folga semanal. Envie sua <strong>encomenda antecipada para quinta-feira</strong> a partir das 18:20!';
+      btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Encomenda para Quinta via WhatsApp';
     }
-    // 3. Fora do horário (após as 23:00 ou antes das 18:20)
-    else if (curMins >= storeCloseMins || curMins < startMins) {
-      storeState = 'closed';
-      const when = curMins >= storeCloseMins ? 'amanhã' : 'hoje';
-      statusBadgeText = 'Fechado';
-      statusBadgeSuffix = ` • Abre ${when} às 18:20`;
-      btnCloseTxt = `🔒 Restaurante Fechado (Abre ${when} às 18:20)`;
-      statusBannerHtml = `🔴 <strong>Restaurante Fechado:</strong> Atendimento encerrou às 23:00. O cardápio permanece disponível para consulta e reabriremos <strong>${when} às 18:20</strong>!`;
+    // 3. Demais noites após as 23:00 (pós-expediente noturno)
+    else if (curMins >= storeCloseMins) {
+      operationalMode = 'night_closed';
+      badgeText = 'Fechado por Hoje';
+      badgeSuffix = ' • Reabre amanhã às 18:20';
+      badgeTheme = 'slate';
+      noticeType = 'closed';
+      noticeIcon = '🌙';
+      noticeTitle = 'Atendimento Encerrado por Hoje';
+      noticeText = 'Nossa cozinha encerrou a produção desta noite. O cardápio segue aberto para você <strong>antecipar sua encomenda para amanhã</strong> a partir das 18:20!';
+      btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Encomenda para Amanhã via WhatsApp';
     }
-    // 4. Janela de corte de delivery (22:30 às 23:00)
+    // 4. Período Diurno / Antes das 18:20 (Aceitando encomendas e retirada)
+    else if (curMins < startDeliveryMins) {
+      operationalMode = 'preorder';
+      badgeText = 'Pré-pedidos';
+      badgeSuffix = ' • Entregas às 18:20';
+      badgeTheme = 'amber';
+      noticeType = 'preorder';
+      noticeIcon = '✨';
+      noticeTitle = 'Faça seu Pedido com Antecedência!';
+      noticeText = 'Nosso serviço de entregas inicia às 18:20. Você já pode enviar seu pedido para garantir sua posição na fila de preparo de hoje, ou escolher retirada no balcão!';
+      btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido Antecipado via WhatsApp';
+    }
+    // 5. Corte de motoboy (22:30 às 23:00)
     else if (curMins >= deliveryCutoffMins) {
-      storeState = 'takeaway_only';
-      statusBadgeText = 'Só Retirada';
-      statusBadgeSuffix = ' no Balcão';
-      statusBannerHtml = '🛵 <strong>Aviso:</strong> Entregas por motoboy encerradas às 22:30. Pedidos disponíveis exclusivamente para <strong>Retirada no Balcão até as 23:00</strong>.';
+      operationalMode = 'takeaway_only';
+      badgeText = 'Só Retirada';
+      badgeSuffix = ' no Balcão';
+      badgeTheme = 'amber';
+      noticeType = 'takeaway';
+      noticeIcon = '🛍️';
+      noticeTitle = 'Entregas Encerradas às 22:30';
+      noticeText = 'Nossos motoboys já finalizaram os envios de hoje. O balcão segue <strong>aberto para retirada até as 23:00</strong>!';
+      btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido para Retirada via WhatsApp';
     }
-    // 5. Pausa manual da equipe durante expediente
+    // 6. Pausa manual da equipe pelo painel
     else if (adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) {
-      storeState = 'takeaway_only';
-      statusBadgeText = 'Só Retirada';
-      statusBadgeSuffix = ' no Balcão';
-      statusBannerHtml = `⚠️ <strong>Aviso:</strong> ${adminState.deliveryClosedReason || 'Entregas pausadas temporariamente pela equipe. Pedidos disponíveis para Retirada no Balcão.'}`;
+      operationalMode = 'manual_takeaway';
+      badgeText = 'Só Retirada';
+      badgeSuffix = ' no Balcão';
+      badgeTheme = 'amber';
+      noticeType = 'takeaway';
+      noticeIcon = '⚠️';
+      noticeTitle = 'Entregas Temporariamente Pausadas';
+      noticeText = adminState.deliveryClosedReason || 'Entregas pausadas temporariamente pela equipe. Pedidos disponíveis para <strong>Retirada no Balcão</strong>!';
+      btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido para Retirada via WhatsApp';
     }
-    // 6. Aberto Total
+    // 7. Aberto Total (18:20 às 22:30)
     else {
-      storeState = 'open';
-      statusBadgeText = 'Aberto';
-      statusBadgeSuffix = ' para Pedidos';
+      operationalMode = 'open';
+      badgeText = 'Aberto';
+      badgeSuffix = ' para Pedidos';
+      badgeTheme = 'green';
+      noticeType = '';
+      btnWhatsAppText = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido via WhatsApp';
     }
 
     // 1. Atualiza o selo do cabeçalho
@@ -3204,69 +3259,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerStatusText = document.getElementById('headerStatusText');
 
     if (headerStatusBadge && headerStatusText) {
-      if (storeState === 'open') {
-        headerStatusBadge.className = 'status-badge';
+      headerStatusBadge.className = 'status-badge';
+      if (badgeTheme === 'green') {
         headerStatusBadge.style.borderColor = 'rgba(34, 197, 94, 0.3)';
         headerStatusBadge.style.background = 'rgba(34, 197, 94, 0.12)';
         headerStatusBadge.style.color = '#4ade80';
-        headerStatusText.innerHTML = `<span class="status-label">${statusBadgeText}</span><span class="status-suffix">${statusBadgeSuffix}</span>`;
-      } else if (storeState === 'takeaway_only') {
-        headerStatusBadge.className = 'status-badge';
+      } else if (badgeTheme === 'amber') {
         headerStatusBadge.style.borderColor = 'rgba(245, 158, 11, 0.35)';
         headerStatusBadge.style.background = 'rgba(245, 158, 11, 0.12)';
         headerStatusBadge.style.color = '#fbbf24';
-        headerStatusText.innerHTML = `<span class="status-label">${statusBadgeText}</span><span class="status-suffix">${statusBadgeSuffix}</span>`;
       } else {
-        headerStatusBadge.className = 'status-badge';
-        headerStatusBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
-        headerStatusBadge.style.background = 'rgba(239, 68, 68, 0.14)';
-        headerStatusBadge.style.color = '#f87171';
-        headerStatusText.innerHTML = `<span class="status-label">${statusBadgeText}</span><span class="status-suffix">${statusBadgeSuffix}</span>`;
+        headerStatusBadge.style.borderColor = 'rgba(148, 163, 184, 0.3)';
+        headerStatusBadge.style.background = 'rgba(148, 163, 184, 0.12)';
+        headerStatusBadge.style.color = '#cbd5e1';
+      }
+      headerStatusText.innerHTML = `<span class="status-label">${badgeText}</span><span class="status-suffix">${badgeSuffix}</span>`;
+    }
+
+    // 2. Atualiza o box informativo de aviso no drawer (sem banner vermelho feio!)
+    const noticeBox = document.getElementById('operationalNoticeBox');
+    const oldBanner = document.getElementById('deliveryCutoffBanner');
+    if (oldBanner) oldBanner.remove();
+
+    if (noticeBox) {
+      if (noticeType) {
+        noticeBox.className = `operational-notice-card notice-${noticeType}`;
+        noticeBox.style.display = 'flex';
+        noticeBox.innerHTML = `
+          <span class="notice-icon">${noticeIcon}</span>
+          <div class="notice-content">
+            <span class="notice-title">${noticeTitle}</span>
+            <p class="notice-text">${noticeText}</p>
+          </div>
+        `;
+      } else {
+        noticeBox.style.display = 'none';
+        noticeBox.innerHTML = '';
       }
     }
 
-    // 2. Banner de corte / aviso no drawer
-    let cutoffBanner = document.getElementById('deliveryCutoffBanner');
-    if (!cutoffBanner && btnTypeDelivery && btnTypeDelivery.parentNode) {
-      cutoffBanner = document.createElement('div');
-      cutoffBanner.id = 'deliveryCutoffBanner';
-      cutoffBanner.className = 'delivery-cutoff-banner';
-      btnTypeDelivery.parentNode.parentNode.insertBefore(cutoffBanner, btnTypeDelivery.parentNode);
-    }
-
-    if (storeState === 'closed') {
-      if (cutoffBanner) {
-        cutoffBanner.style.display = 'block';
-        cutoffBanner.style.background = 'rgba(239, 68, 68, 0.12)';
-        cutoffBanner.style.borderColor = 'rgba(239, 68, 68, 0.35)';
-        cutoffBanner.style.color = '#fca5a5';
-        cutoffBanner.innerHTML = statusBannerHtml;
-      }
-      if (btnTypeDelivery) {
-        btnTypeDelivery.classList.add('btn-delivery-disabled');
-        btnTypeDelivery.style.opacity = '0.4';
-        btnTypeDelivery.style.cursor = 'not-allowed';
-      }
-      if (btnTypeTakeaway) {
-        btnTypeTakeaway.classList.add('btn-delivery-disabled');
-        btnTypeTakeaway.style.opacity = '0.4';
-        btnTypeTakeaway.style.cursor = 'not-allowed';
-      }
-      if (sendWhatsAppOrderBtn) {
-        sendWhatsAppOrderBtn.disabled = true;
-        sendWhatsAppOrderBtn.style.opacity = '0.6';
-        sendWhatsAppOrderBtn.style.cursor = 'not-allowed';
-        sendWhatsAppOrderBtn.style.background = '#334155';
-        sendWhatsAppOrderBtn.innerHTML = btnCloseTxt;
-      }
-    } else if (storeState === 'takeaway_only') {
-      if (cutoffBanner) {
-        cutoffBanner.style.display = 'block';
-        cutoffBanner.style.background = 'rgba(245, 158, 11, 0.1)';
-        cutoffBanner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
-        cutoffBanner.style.color = '#fcd34d';
-        cutoffBanner.innerHTML = `⚠️ <strong>Aviso:</strong> ${statusReason}`;
-      }
+    // 3. Configuração dos botões de Entrega vs Retirada
+    if (operationalMode === 'takeaway_only' || operationalMode === 'manual_takeaway') {
+      // Bloqueia apenas Entrega no corte das 22:30 ou pausa manual
       if (btnTypeDelivery) {
         btnTypeDelivery.classList.add('btn-delivery-disabled');
         btnTypeDelivery.style.opacity = '0.5';
@@ -3286,16 +3320,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (deliveryFeeSummaryLine) deliveryFeeSummaryLine.style.display = 'none';
         updateTotals();
       }
-      if (sendWhatsAppOrderBtn) {
-        sendWhatsAppOrderBtn.disabled = false;
-        sendWhatsAppOrderBtn.style.opacity = '1';
-        sendWhatsAppOrderBtn.style.cursor = 'pointer';
-        sendWhatsAppOrderBtn.style.background = '';
-        sendWhatsAppOrderBtn.innerHTML = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido via WhatsApp';
-      }
     } else {
-      // Aberto Total (Delivery e Retirada)
-      if (cutoffBanner) cutoffBanner.style.display = 'none';
+      // Em todos os outros modos (preorder, open, night_closed, wednesday_closed):
+      // AMBOS OS MODOS ESTÃO DISPONÍVEIS para o cliente escolher ou antecipar!
       if (btnTypeDelivery) {
         btnTypeDelivery.classList.remove('btn-delivery-disabled');
         btnTypeDelivery.style.opacity = '1';
@@ -3306,13 +3333,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btnTypeTakeaway.style.opacity = '1';
         btnTypeTakeaway.style.cursor = 'pointer';
       }
-      if (sendWhatsAppOrderBtn) {
-        sendWhatsAppOrderBtn.disabled = false;
-        sendWhatsAppOrderBtn.style.opacity = '1';
-        sendWhatsAppOrderBtn.style.cursor = 'pointer';
-        sendWhatsAppOrderBtn.style.background = '';
-        sendWhatsAppOrderBtn.innerHTML = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido via WhatsApp';
-      }
+    }
+
+    // 4. Botão de Envio do WhatsApp: SEMPRE LIBERADO E CLICÁVEL!
+    if (sendWhatsAppOrderBtn) {
+      sendWhatsAppOrderBtn.disabled = false;
+      sendWhatsAppOrderBtn.style.opacity = '1';
+      sendWhatsAppOrderBtn.style.cursor = 'pointer';
+      sendWhatsAppOrderBtn.style.background = '';
+      sendWhatsAppOrderBtn.innerHTML = btnWhatsAppText;
     }
   }
 

@@ -787,9 +787,18 @@
 
       if (effectiveOpen) {
         deliveryStatusBadge.className = 'status-badge badge-open';
+        deliveryStatusBadge.style.background = '';
+        deliveryStatusBadge.style.color = '';
         deliveryStatusBadge.textContent = '🟢 Entregas ABERTAS';
+      } else if (curMins < startMins) {
+        deliveryStatusBadge.className = 'status-badge badge-auto';
+        deliveryStatusBadge.style.background = 'rgba(234, 179, 8, 0.15)';
+        deliveryStatusBadge.style.color = '#fbbf24';
+        deliveryStatusBadge.textContent = '🟡 Aceitando Encomendas (Entregas às 18:20)';
       } else {
         deliveryStatusBadge.className = 'status-badge badge-closed';
+        deliveryStatusBadge.style.background = '';
+        deliveryStatusBadge.style.color = '';
         deliveryStatusBadge.textContent = '🔴 Entregas ENCERRADAS';
       }
 

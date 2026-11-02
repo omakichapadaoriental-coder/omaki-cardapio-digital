@@ -3349,3 +3349,81 @@ option {
 .wa-tip-text strong {
   color: #ffffff;
 }
+
+/* Card de Informação Operacional Elegante (Substitui o antigo banner de erro vermelho) */
+.operational-notice-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-top: 4px;
+  margin-bottom: 14px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.operational-notice-card.notice-preorder {
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.12), rgba(30, 41, 59, 0.75));
+  border: 1px solid rgba(234, 179, 8, 0.38);
+  color: #fef08a;
+}
+
+.operational-notice-card.notice-takeaway {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(30, 41, 59, 0.75));
+  border: 1px solid rgba(59, 130, 246, 0.38);
+  color: #bfdbfe;
+}
+
+.operational-notice-card.notice-closed {
+  background: linear-gradient(135deg, rgba(148, 163, 184, 0.1), rgba(30, 41, 59, 0.75));
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #cbd5e1;
+}
+
+.operational-notice-card .notice-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.operational-notice-card .notice-content {
+  flex: 1;
+}
+
+.operational-notice-card .notice-title {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+  font-size: 0.86rem;
+  letter-spacing: -0.01em;
+}
+
+.operational-notice-card.notice-preorder .notice-title {
+  color: #facc15;
+}
+
+.operational-notice-card.notice-takeaway .notice-title {
+  color: #60a5fa;
+}
+
+.operational-notice-card.notice-closed .notice-title {
+  color: #f1f5f9;
+}
+
+.operational-notice-card .notice-text {
+  margin: 0;
+  font-size: 0.78rem;
+  color: inherit;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+.operational-notice-card .notice-text strong {
+  color: #ffffff;
+}
