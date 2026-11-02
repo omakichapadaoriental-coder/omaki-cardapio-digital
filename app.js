@@ -2740,6 +2740,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sendWhatsAppOrderBtn.addEventListener('click', () => {
 
+      const dtCheck = getBrasiliaDateTime();
+      if (dtCheck.day === 3) {
+        showCustomAlert('Fechado às Quartas', 'Às quartas-feiras a casa está fechada para folga da equipe. O cardápio está disponível para consulta e reabriremos nesta quinta-feira às 18:20!');
+        return;
+      }
+      if (dtCheck.day === 2 && dtCheck.curMins >= 23 * 60) {
+        showCustomAlert('Restaurante Fechado', 'Atendimento de terça-feira encerrado às 23:00. Amanhã (quarta-feira) é nossa folga e reabriremos na quinta-feira às 18:20!');
+        return;
+      }
+      if (dtCheck.curMins >= 23 * 60 || dtCheck.curMins < 18 * 60 + 20) {
+        const when = dtCheck.curMins >= 23 * 60 ? 'amanhã' : 'hoje';
+        showCustomAlert('Restaurante Fechado', `Nosso atendimento encerrou às 23:00. O cardápio permanece disponível para consulta e reabriremos ${when} às 18:20!`);
+        return;
+      }
+
       if (cart.length === 0) {
 
         showCustomAlert('Sacola Vazia', 'Sua sacola está vazia. Adicione pratos deliciosos antes de enviar o pedido!');
@@ -3107,28 +3122,81 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function getBrasiliaDateTime() {
+    try {
+      const dateStr = new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' });
+      const brDate = new Date(dateStr);
+      return {
+        day: brDate.getDay(), // 0=Dom, 1=Seg, 2=Ter, 3=Qua, 4=Qui, 5=Sex, 6=Sab
+        curMins: brDate.getHours() * 60 + brDate.getMinutes()
+      };
+    } catch (e) {
+      const now = new Date();
+      return {
+        day: now.getDay(),
+        curMins: now.getHours() * 60 + now.getMinutes()
+      };
+    }
+  }
+
   function checkDeliveryAvailability() {
-    const curMins = getBrasiliaMinutes();
+    const { day, curMins } = getBrasiliaDateTime();
     const startMins = 18 * 60 + 20; // 18:20
     const deliveryCutoffMins = 22 * 60 + 30; // 22:30
     const storeCloseMins = 23 * 60; // 23:00 (Fechamento total)
 
     // Determina o estado operacional da loja:
-    // 'open' (18:20 - 22:30) | 'takeaway_only' (22:30 - 23:00) | 'closed' (23:00 - 18:20)
+    // 'open' (18:20 - 22:30) | 'takeaway_only' (22:30 - 23:00) | 'closed' (23:00 - 18:20 ou Quarta-feira o dia todo)
     let storeState = 'open';
-    let statusReason = '';
+    let statusBadgeText = 'Aberto';
+    let statusBadgeSuffix = ' para Pedidos';
+    let statusBannerHtml = '';
+    let btnCloseTxt = '';
 
-    if (curMins >= storeCloseMins || curMins < startMins) {
+    // 1. Quarta-feira fechado o dia todo (day === 3)
+    if (day === 3) {
       storeState = 'closed';
-      statusReason = 'Nosso atendimento encerrou às 23:00. O cardápio está aberto para consulta e reabriremos para pedidos hoje às 18:20!';
-    } else if (curMins >= deliveryCutoffMins) {
+      statusBadgeText = 'Fechado às Quartas';
+      statusBadgeSuffix = ' • Abre Quinta às 18:20';
+      btnCloseTxt = '🔒 Fechado às Quartas (Abre Quinta às 18:20)';
+      statusBannerHtml = '🔴 <strong>Restaurante Fechado:</strong> Às quartas-feiras fazemos nossa pausa operacional e folga semanal. O cardápio está aberto para consulta e reabriremos nesta <strong>quinta-feira às 18:20</strong>!';
+    }
+    // 2. Terça-feira após as 23:00 (vai virar quarta-feira, reabre quinta)
+    else if (day === 2 && curMins >= storeCloseMins) {
+      storeState = 'closed';
+      statusBadgeText = 'Fechado';
+      statusBadgeSuffix = ' • Abre Quinta às 18:20';
+      btnCloseTxt = '🔒 Restaurante Fechado (Abre Quinta às 18:20)';
+      statusBannerHtml = '🔴 <strong>Restaurante Fechado:</strong> Atendimento encerrou às 23:00. Amanhã (quarta-feira) é nossa folga semanal e reabriremos nesta <strong>quinta-feira às 18:20</strong>!';
+    }
+    // 3. Fora do horário (após as 23:00 ou antes das 18:20)
+    else if (curMins >= storeCloseMins || curMins < startMins) {
+      storeState = 'closed';
+      const when = curMins >= storeCloseMins ? 'amanhã' : 'hoje';
+      statusBadgeText = 'Fechado';
+      statusBadgeSuffix = ` • Abre ${when} às 18:20`;
+      btnCloseTxt = `🔒 Restaurante Fechado (Abre ${when} às 18:20)`;
+      statusBannerHtml = `🔴 <strong>Restaurante Fechado:</strong> Atendimento encerrou às 23:00. O cardápio permanece disponível para consulta e reabriremos <strong>${when} às 18:20</strong>!`;
+    }
+    // 4. Janela de corte de delivery (22:30 às 23:00)
+    else if (curMins >= deliveryCutoffMins) {
       storeState = 'takeaway_only';
-      statusReason = 'Entregas por motoboy encerradas às 22:30. Pedidos disponíveis exclusivamente para Retirada no Balcão até as 23:00.';
-    } else if (adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) {
+      statusBadgeText = 'Só Retirada';
+      statusBadgeSuffix = ' no Balcão';
+      statusBannerHtml = '🛵 <strong>Aviso:</strong> Entregas por motoboy encerradas às 22:30. Pedidos disponíveis exclusivamente para <strong>Retirada no Balcão até as 23:00</strong>.';
+    }
+    // 5. Pausa manual da equipe durante expediente
+    else if (adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) {
       storeState = 'takeaway_only';
-      statusReason = adminState.deliveryClosedReason || 'Entregas pausadas temporariamente pela equipe. Pedidos disponíveis para Retirada no Balcão.';
-    } else {
+      statusBadgeText = 'Só Retirada';
+      statusBadgeSuffix = ' no Balcão';
+      statusBannerHtml = `⚠️ <strong>Aviso:</strong> ${adminState.deliveryClosedReason || 'Entregas pausadas temporariamente pela equipe. Pedidos disponíveis para Retirada no Balcão.'}`;
+    }
+    // 6. Aberto Total
+    else {
       storeState = 'open';
+      statusBadgeText = 'Aberto';
+      statusBadgeSuffix = ' para Pedidos';
     }
 
     // 1. Atualiza o selo do cabeçalho
@@ -3141,19 +3209,19 @@ document.addEventListener('DOMContentLoaded', () => {
         headerStatusBadge.style.borderColor = 'rgba(34, 197, 94, 0.3)';
         headerStatusBadge.style.background = 'rgba(34, 197, 94, 0.12)';
         headerStatusBadge.style.color = '#4ade80';
-        headerStatusText.innerHTML = '<span class="status-label">Aberto</span><span class="status-suffix"> para Pedidos</span>';
+        headerStatusText.innerHTML = `<span class="status-label">${statusBadgeText}</span><span class="status-suffix">${statusBadgeSuffix}</span>`;
       } else if (storeState === 'takeaway_only') {
         headerStatusBadge.className = 'status-badge';
         headerStatusBadge.style.borderColor = 'rgba(245, 158, 11, 0.35)';
         headerStatusBadge.style.background = 'rgba(245, 158, 11, 0.12)';
         headerStatusBadge.style.color = '#fbbf24';
-        headerStatusText.innerHTML = '<span class="status-label">Só Retirada</span><span class="status-suffix"> no Balcão</span>';
+        headerStatusText.innerHTML = `<span class="status-label">${statusBadgeText}</span><span class="status-suffix">${statusBadgeSuffix}</span>`;
       } else {
         headerStatusBadge.className = 'status-badge';
         headerStatusBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
         headerStatusBadge.style.background = 'rgba(239, 68, 68, 0.14)';
         headerStatusBadge.style.color = '#f87171';
-        headerStatusText.innerHTML = '<span class="status-label">Fechado</span><span class="status-suffix"> • Abre às 18:20</span>';
+        headerStatusText.innerHTML = `<span class="status-label">${statusBadgeText}</span><span class="status-suffix">${statusBadgeSuffix}</span>`;
       }
     }
 
@@ -3172,7 +3240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cutoffBanner.style.background = 'rgba(239, 68, 68, 0.12)';
         cutoffBanner.style.borderColor = 'rgba(239, 68, 68, 0.35)';
         cutoffBanner.style.color = '#fca5a5';
-        cutoffBanner.innerHTML = `🔴 <strong>Restaurante Fechado:</strong> Atendimento encerrou às 23:00. O cardápio permanece disponível para consulta e reabriremos para pedidos às <strong>18:20</strong>!`;
+        cutoffBanner.innerHTML = statusBannerHtml;
       }
       if (btnTypeDelivery) {
         btnTypeDelivery.classList.add('btn-delivery-disabled');
@@ -3189,7 +3257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sendWhatsAppOrderBtn.style.opacity = '0.6';
         sendWhatsAppOrderBtn.style.cursor = 'not-allowed';
         sendWhatsAppOrderBtn.style.background = '#334155';
-        sendWhatsAppOrderBtn.innerHTML = '🔒 Restaurante Fechado (Abre hoje às 18:20)';
+        sendWhatsAppOrderBtn.innerHTML = btnCloseTxt;
       }
     } else if (storeState === 'takeaway_only') {
       if (cutoffBanner) {
