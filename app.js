@@ -1132,6 +1132,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modalOptionsSection.style.display = 'none';
 
+      if (modalAddToCartBtn) {
+        modalAddToCartBtn.disabled = false;
+        modalAddToCartBtn.style.opacity = '1';
+        const spanText = modalAddToCartBtn.querySelector('span');
+        if (spanText) spanText.textContent = 'Adicionar à Sacola';
+      }
+
       if (modalItemPrice) modalItemPrice.textContent = formatMoney(dish.price);
 
       if (modalItemNum) {
@@ -1530,14 +1537,16 @@ document.addEventListener('DOMContentLoaded', () => {
       modalOptionsList.appendChild(row);
     });
 
-    if (modalAddBtn) {
+    if (modalAddToCartBtn) {
+      const spanText = modalAddToCartBtn.querySelector('span');
       if (!currentSelectedOption) {
-        modalAddBtn.disabled = true;
-        modalAddBtn.textContent = 'Opções Esgotadas';
-        modalAddBtn.style.opacity = '0.5';
+        modalAddToCartBtn.disabled = true;
+        modalAddToCartBtn.style.opacity = '0.5';
+        if (spanText) spanText.textContent = 'Opções Esgotadas';
       } else {
-        modalAddBtn.disabled = false;
-        modalAddBtn.style.opacity = '1';
+        modalAddToCartBtn.disabled = false;
+        modalAddToCartBtn.style.opacity = '1';
+        if (spanText) spanText.textContent = 'Adicionar à Sacola';
       }
     }
   }
@@ -2395,28 +2404,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  function calculatePackagingFee() {
-    if (!cart || cart.length === 0) return 0;
-    let fee = 0;
+  function getPackagingInfo() {
+    if (!cart || cart.length === 0) return { fee: 0, label: '', tier: 'none' };
+    const exemptKeywords = ['sak', 'cerveja', 'refrigerante', 'bebida', 'suco', 'dose', 'agua', 'água', 'adicionais', 'molho', 'acompanhamento', 'descart'];
+    let hasFood = false;
+    let maxComboPieces = 0;
+
     cart.forEach(entry => {
       const item = entry.item;
       const cat = (item.category || '').toLowerCase();
       const name = (item.name || item.title || '').toLowerCase();
+      const portion = (item.portion || '').toLowerCase();
+      const desc = (item.description || '').toLowerCase();
 
-      // Isenções: bebidas, doses, sucos, cervejas, sakês, águas, descartáveis e complementos
-      const isExempt = ['sak', 'cerveja', 'refrigerante', 'bebida', 'suco', 'dose', 'agua', 'água', 'adicionais', 'molho', 'acompanhamento', 'descart'].some(k => cat.includes(k) || name.includes(k));
+      const isExempt = exemptKeywords.some(k => cat.includes(k) || name.includes(k));
       if (isExempt) return;
 
-      // Se for combo: 2 reais por combo
-      const isCombo = cat.includes('combo') || name.includes('combo');
+      hasFood = true;
+      const isCombo = cat.includes('combo') || name.includes('combo') || (item.num && item.num >= 57 && item.num <= 60) || (item.num && item.num >= 177 && item.num <= 187);
       if (isCombo) {
-        fee += 2.0 * entry.qty;
-      } else {
-        // Demais itens de comida: 1 real por item
-        fee += 1.0 * entry.qty;
+        const text = `${name} ${portion} ${desc}`;
+        const match = text.match(/(\d+)\s*(?:peças|pecas|pçs|pcs|un)/i);
+        let pieces = match ? parseInt(match[1], 10) : 0;
+        if (!pieces) {
+          if (name.includes('combo 8')) pieces = 60;
+          else if (name.includes('combo 5') || name.includes('omaki') || name.includes('chapada')) pieces = 40;
+          else if (name.includes('oriental')) pieces = 36;
+          else if (name.includes('combo 4')) pieces = 35;
+          else if (name.includes('combo 1') || name.includes('imperial')) pieces = 25;
+          else if (name.includes('joy') || name.includes('misto') || name.includes('hossomaki')) pieces = 28;
+          else if (name.includes('camarão') || name.includes('salmão') || name.includes('hot') || name.includes('guia')) pieces = 30;
+          else pieces = 25;
+        }
+        if (pieces > maxComboPieces) maxComboPieces = pieces;
       }
     });
-    return fee;
+
+    if (!hasFood) return { fee: 0, label: '', tier: 'exempt' };
+    // Regra Omaki:
+    // Combos acima de 35 peças é a embalagem grande que custa 4 reais (>= 35)
+    // Entre 25 a 34 peças é a média e custa 3 reais
+    // Para menos que isso (< 25 peças ou itens normais) é a embalagem pequena que custa 2 reais
+    if (maxComboPieces >= 35) return { fee: 4.0, label: 'Embalagem (Grande)', tier: 'large' };
+    if (maxComboPieces >= 25) return { fee: 3.0, label: 'Embalagem (Média)', tier: 'medium' };
+    return { fee: 2.0, label: 'Embalagem (Pequena)', tier: 'small' };
+  }
+
+  function calculatePackagingFee() {
+    return getPackagingInfo().fee;
   }
 
   // Update Cart Totals & UI Badges
@@ -2435,13 +2470,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (summarySubtotal) summarySubtotal.textContent = formatMoney(subtotal);
 
+    const pkg = getPackagingInfo();
     const packagingLine = document.getElementById('packagingFeeSummaryLine');
     const summaryPackaging = document.getElementById('summaryPackagingFee');
+    const summaryPackagingLabel = document.getElementById('summaryPackagingLabel');
     if (packagingLine) {
       packagingLine.style.display = packagingFee > 0 ? 'flex' : 'none';
     }
     if (summaryPackaging) {
       summaryPackaging.textContent = formatMoney(packagingFee);
+    }
+    if (summaryPackagingLabel && pkg.label) {
+      summaryPackagingLabel.textContent = pkg.label + ':';
     }
 
     if (deliveryFeeSummaryLine) {
@@ -3123,13 +3163,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Packaging & grandTotal already computed above
+// Packaging & grandTotal computed
+      const pkgInfo = getPackagingInfo();
 
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
       msg += `💰 *RESUMO DO PEDIDO:*\n`;
       msg += `• *Subtotal dos Itens:* ${formatMoney(subtotal)}\n`;
       if (packagingFee > 0) {
-        msg += `• *Embalagem:* ${formatMoney(packagingFee)}\n`;
+        msg += `• *${pkgInfo.label}:* ${formatMoney(packagingFee)}\n`;
       }
 
       if (deliveryType === 'delivery') {
