@@ -2308,7 +2308,7 @@ const CARDAPIO_DATA = {
       "description": "Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
       "portion": "36 peças",
       "page": "Pág 10",
-      "price": 109.0,
+      "price": 121.0,
       "photo": "assets/images/raw_combo_179_oriental.jpeg"
     },
     {
@@ -2429,7 +2429,7 @@ const CARDAPIO_DATA = {
       "price": 28.9,
       "basePrice": 27.9,
       "maxPrice": 34.9,
-      "priceLabel": "A partir de R$ 27,90",
+      "priceLabel": "A partir de R$ 28,90",
       "page": "Pág 1",
       "options": [
         {
@@ -2492,7 +2492,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/real_guioza.jpg",
       "description": "Guioza bovino/suíno no vapor e selado",
       "price": 44.9,
-      "priceLabel": "R$ 43,90",
+      "priceLabel": "R$ 44,90",
       "page": "Pág 1",
       "isNew": false,
       "rawItem": {
@@ -2529,7 +2529,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/real_joy_goiaba.jpg",
       "description": "Joy de goiaba, Philadelphia, Nutella e raspas de limão",
       "price": 38.9,
-      "priceLabel": "R$ 37,90",
+      "priceLabel": "R$ 38,90",
       "page": "Pág 1",
       "isNew": false,
       "rawItem": {
@@ -2566,7 +2566,7 @@ const CARDAPIO_DATA = {
       "price": 56.9,
       "basePrice": 55.9,
       "maxPrice": 65.9,
-      "priceLabel": "A partir de R$ 55,90",
+      "priceLabel": "A partir de R$ 56,90",
       "page": "Pág 1",
       "options": [
         {
@@ -2638,7 +2638,7 @@ const CARDAPIO_DATA = {
       "price": 52.9,
       "basePrice": 51.9,
       "maxPrice": 59.9,
-      "priceLabel": "A partir de R$ 51,90",
+      "priceLabel": "A partir de R$ 52,90",
       "page": "Pág 1",
       "options": [
         {
@@ -2701,7 +2701,7 @@ const CARDAPIO_DATA = {
       "price": 53.9,
       "basePrice": 52.9,
       "maxPrice": 55.9,
-      "priceLabel": "A partir de R$ 52,90",
+      "priceLabel": "A partir de R$ 53,90",
       "page": "Pág 1",
       "options": [
         {
@@ -2746,7 +2746,7 @@ const CARDAPIO_DATA = {
       "price": 55.9,
       "basePrice": 54.9,
       "maxPrice": 59.9,
-      "priceLabel": "A partir de R$ 54,90",
+      "priceLabel": "A partir de R$ 55,90",
       "page": "Pág 2",
       "options": [
         {
@@ -2800,7 +2800,7 @@ const CARDAPIO_DATA = {
       "price": 55.9,
       "basePrice": 54.9,
       "maxPrice": 57.9,
-      "priceLabel": "A partir de R$ 54,90",
+      "priceLabel": "A partir de R$ 55,90",
       "page": "Pág 2",
       "options": [
         {
@@ -2845,7 +2845,7 @@ const CARDAPIO_DATA = {
       "price": 25.9,
       "basePrice": 24.9,
       "maxPrice": 49.9,
-      "priceLabel": "A partir de R$ 24,90",
+      "priceLabel": "A partir de R$ 25,90",
       "page": "Pág 2",
       "options": [
         {
@@ -2900,7 +2900,7 @@ const CARDAPIO_DATA = {
       "price": 39.9,
       "basePrice": 38.9,
       "maxPrice": 40.9,
-      "priceLabel": "A partir de R$ 38,90",
+      "priceLabel": "A partir de R$ 39,90",
       "page": "Pág 2",
       "options": [
         {
@@ -2963,7 +2963,7 @@ const CARDAPIO_DATA = {
       "price": 42.9,
       "basePrice": 41.9,
       "maxPrice": 48.9,
-      "priceLabel": "A partir de R$ 41,90",
+      "priceLabel": "A partir de R$ 42,90",
       "page": "Pág 2",
       "options": [
         {
@@ -3053,7 +3053,7 @@ const CARDAPIO_DATA = {
       "price": 53.9,
       "basePrice": 52.9,
       "maxPrice": 58.9,
-      "priceLabel": "A partir de R$ 52,90",
+      "priceLabel": "A partir de R$ 53,90",
       "page": "Pág 3",
       "options": [
         {
@@ -3116,7 +3116,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_esp_41_elegancia.jpeg",
       "description": "Salmão empanado, alho-poró, limão siciliano, azeite trufado, tarê, molho de ostra, cebolinha",
       "price": 59.9,
-      "priceLabel": "R$ 58,90",
+      "priceLabel": "R$ 59,90",
       "page": "Pág 3",
       "isNew": false,
       "rawItem": {
@@ -3153,7 +3153,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_esp_42_morango.jpeg",
       "description": "Salmão, avocado, geleia de morango com gengibre em conserva (gari)",
       "price": 59.9,
-      "priceLabel": "R$ 58,90",
+      "priceLabel": "R$ 59,90",
       "page": "Pág 3",
       "isNew": false,
       "rawItem": {
@@ -3190,7 +3190,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_esp_43_trufado.jpeg",
       "description": "Salmão maçaricado, azeite trufado, raspas de limão siciliano e flor de sal",
       "price": 58.9,
-      "priceLabel": "R$ 57,90",
+      "priceLabel": "R$ 58,90",
       "page": "Pág 3",
       "isNew": false,
       "rawItem": {
@@ -3227,7 +3227,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_esp_44_chef.jpeg",
       "description": "Salmão, pasta de umeboshi tradicional e fatias de avocado",
       "price": 57.9,
-      "priceLabel": "R$ 56,90",
+      "priceLabel": "R$ 57,90",
       "page": "Pág 3",
       "isNew": false,
       "rawItem": {
@@ -3301,7 +3301,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_esp_46_skin_salmao.jpeg",
       "description": "Pele de salmão grelhada crocante, cebolinha, flor de sal e furikake",
       "price": 56.9,
-      "priceLabel": "R$ 55,90",
+      "priceLabel": "R$ 56,90",
       "page": "Pág 4",
       "isNew": false,
       "rawItem": {
@@ -3338,7 +3338,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_esp_47_joy_macaricado.jpeg",
       "description": "Lâmina de salmão maçaricado, cream cheese, azeite trufado, geleia de pimenta e Queensberry",
       "price": 49.9,
-      "priceLabel": "R$ 48,90",
+      "priceLabel": "R$ 49,90",
       "page": "Pág 4",
       "isNew": false,
       "rawItem": {
@@ -3375,7 +3375,7 @@ const CARDAPIO_DATA = {
       "price": 47.9,
       "basePrice": 46.9,
       "maxPrice": 67.9,
-      "priceLabel": "A partir de R$ 46,90",
+      "priceLabel": "A partir de R$ 47,90",
       "page": "Pág 4",
       "options": [
         {
@@ -3483,7 +3483,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_1_chef.jpeg",
       "description": "05 Sashimis de Salmão, 05 Sashimis de tilápia com limão, 05 Shakemaki - Salmão, 05 Uramaki de salmão, 03 Niguiri de salmão, 02 Niguiri de salmão e geleia de pimenta",
       "price": 143.9,
-      "priceLabel": "R$ 141,90",
+      "priceLabel": "R$ 143,90",
       "page": "Pág 5",
       "isNew": false,
       "rawItem": {
@@ -3520,7 +3520,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_4_chef.jpeg",
       "description": "10 Shakemaki - Salmão, 05 Uramaki de salmão, 05 Joy de cebolinha, 05 Hossomaki, salmão e Philadelphia, 05 Niguiri de salmão, 05 Niguiri de tilápia com limão e geleia de pimenta",
       "price": 163.9,
-      "priceLabel": "R$ 161,90",
+      "priceLabel": "R$ 163,90",
       "page": "Pág 5",
       "isNew": false,
       "rawItem": {
@@ -3557,7 +3557,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_5_chef.jpeg",
       "description": "10 Uramaki de salmão, 05 Sashimis de salmão, 05 Sashimis de salmão maçaricado, 05 Joy com Philadelphia, 05 Uramaki joy de camarão imperial, 05 Niguiri de salmão, 05 Shakemaki - Salmão",
       "price": 207.9,
-      "priceLabel": "R$ 205,90",
+      "priceLabel": "R$ 207,90",
       "page": "Pág 5",
       "isNew": false,
       "rawItem": {
@@ -3594,7 +3594,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/real_combo_8_chef.png",
       "description": "10 Sashimi de salmão, 10 Joy com alho-poró, 10 Uramaki de salmão, 05 Sashimi de anchova defumada, 05 Uramaki joy salmão com furikake, 05 Shakemaki - salmão, 05 Uramaki joy camarão imperial, 05 Niguiri de salmão, 05 Niguiri de tilápia com limão",
       "price": 322.9,
-      "priceLabel": "R$ 320,90",
+      "priceLabel": "R$ 322,90",
       "page": "Pág 5",
       "isNew": false,
       "rawItem": {
@@ -3631,7 +3631,7 @@ const CARDAPIO_DATA = {
       "price": 58.9,
       "basePrice": 57.9,
       "maxPrice": 60.9,
-      "priceLabel": "A partir de R$ 57,90",
+      "priceLabel": "A partir de R$ 58,90",
       "page": "Pág 5",
       "options": [
         {
@@ -3685,7 +3685,7 @@ const CARDAPIO_DATA = {
       "price": 47.9,
       "basePrice": 46.9,
       "maxPrice": 57.9,
-      "priceLabel": "A partir de R$ 46,90",
+      "priceLabel": "A partir de R$ 47,90",
       "page": "Pág 6",
       "options": [
         {
@@ -3901,7 +3901,7 @@ const CARDAPIO_DATA = {
       "price": 44.9,
       "basePrice": 43.9,
       "maxPrice": 49.9,
-      "priceLabel": "A partir de R$ 43,90",
+      "priceLabel": "A partir de R$ 44,90",
       "page": "Pág 6",
       "options": [
         {
@@ -3973,7 +3973,7 @@ const CARDAPIO_DATA = {
       "price": 43.9,
       "basePrice": 42.9,
       "maxPrice": 50.9,
-      "priceLabel": "A partir de R$ 42,90",
+      "priceLabel": "A partir de R$ 43,90",
       "page": "Pág 7",
       "options": [
         {
@@ -4045,7 +4045,7 @@ const CARDAPIO_DATA = {
       "price": 43.9,
       "basePrice": 42.9,
       "maxPrice": 50.9,
-      "priceLabel": "A partir de R$ 42,90",
+      "priceLabel": "A partir de R$ 43,90",
       "page": "Pág 7",
       "options": [
         {
@@ -4126,7 +4126,7 @@ const CARDAPIO_DATA = {
       "price": 50.9,
       "basePrice": 49.9,
       "maxPrice": 51.9,
-      "priceLabel": "A partir de R$ 49,90",
+      "priceLabel": "A partir de R$ 50,90",
       "page": "Pág 7",
       "options": [
         {
@@ -4171,7 +4171,7 @@ const CARDAPIO_DATA = {
       "price": 34.9,
       "basePrice": 33.9,
       "maxPrice": 44.9,
-      "priceLabel": "A partir de R$ 33,90",
+      "priceLabel": "A partir de R$ 34,90",
       "page": "Pág 7",
       "options": [
         {
@@ -4270,7 +4270,7 @@ const CARDAPIO_DATA = {
       "price": 62.9,
       "basePrice": 61.9,
       "maxPrice": 72.9,
-      "priceLabel": "A partir de R$ 61,90",
+      "priceLabel": "A partir de R$ 62,90",
       "page": "Pág 8",
       "options": [
         {
@@ -4450,7 +4450,7 @@ const CARDAPIO_DATA = {
       "price": 40.9,
       "basePrice": 39.9,
       "maxPrice": 77.9,
-      "priceLabel": "A partir de R$ 39,90",
+      "priceLabel": "A partir de R$ 40,90",
       "page": "Pág 8",
       "options": [
         {
@@ -4504,7 +4504,7 @@ const CARDAPIO_DATA = {
       "price": 46.9,
       "basePrice": 45.9,
       "maxPrice": 62.9,
-      "priceLabel": "A partir de R$ 45,90",
+      "priceLabel": "A partir de R$ 46,90",
       "page": "Pág 8",
       "options": [
         {
@@ -4944,7 +4944,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_177_omaki.png",
       "description": "04 Sashimi salmão, 02 Joy cebolinha, 04 Niguiri salmão, 05 Uramaki joy salmão geleia de pimenta, 05 Uramaki joy camarão geleia de pimenta, 10 Uramaki skin, 10 Uramaki salmão",
       "price": 134.0,
-      "priceLabel": "R$ 132,00",
+      "priceLabel": "R$ 134,00",
       "page": "Pág 10",
       "isNew": false,
       "rawItem": {
@@ -4981,7 +4981,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_178_chapada.jpeg",
       "description": "10 Hossomaki, 10 Uramaki skin, 10 Uramaki salmão, 05 Hot poró, 05 Hot Filadélfia",
       "price": 120.0,
-      "priceLabel": "R$ 118,00",
+      "priceLabel": "R$ 120,00",
       "page": "Pág 10",
       "isNew": false,
       "rawItem": {
@@ -5017,8 +5017,8 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_179_oriental.jpeg",
       "image": "assets/images/raw_combo_179_oriental.jpeg",
       "description": "04 Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
-      "price": 109.0,
-      "priceLabel": "R$ 107,00",
+      "price": 121.0,
+      "priceLabel": "R$ 121,00",
       "page": "Pág 10",
       "isNew": false,
       "rawItem": {
@@ -5030,7 +5030,7 @@ const CARDAPIO_DATA = {
         "description": "Sashimi salmão, 02 Joy cebolinha, 10 Uramaki skin, 10 Uramaki salmão, 10 Hot Filadélfia",
         "portion": "36 peças",
         "page": "Pág 10",
-        "price": 107.0,
+        "price": 121.0,
         "photo": "assets/images/raw_combo_179_oriental.jpeg"
       },
       "complements": [
@@ -5055,7 +5055,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_180_guia.jpeg",
       "description": "04 Sashimi salmão, 04 Joy cebolinha, 02 Niguiri salmão, 10 Uramaki salmão, 10 Uramaki skin",
       "price": 121.0,
-      "priceLabel": "R$ 119,00",
+      "priceLabel": "R$ 121,00",
       "page": "Pág 10",
       "isNew": false,
       "rawItem": {
@@ -5092,7 +5092,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_camarao_imp_25pc.jpeg",
       "description": "05 Uramaki joy camarão geleia de pimenta e furikake, 04 Camarão imperial, 04 Sashimis salmão, 04 Sashimi de tilápia com geleia de pimenta e furikake, 04 Joy de cebolinha e Philaldelphia, 02 Niguiri de salmão, 02 Niguiri de tilápia com geleia de pimenta e furikake",
       "price": 140.9,
-      "priceLabel": "R$ 138,90",
+      "priceLabel": "R$ 140,90",
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
@@ -5130,7 +5130,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_camarao_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 04 Sashimi de salmão, 04 Sashimi de tilápia com geleia de pimenta e furikake, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de tilápia com geleia de pimenta e furikake, 04 Camarão imperial",
       "price": 146.9,
-      "priceLabel": "R$ 144,90",
+      "priceLabel": "R$ 146,90",
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
@@ -5168,7 +5168,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_joy_28pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy salmão geleia de pimenta furikake, 05 Uramaki joy camarão geleia de pimenta furikake, 04 Sashimis salmão, 04 Joy cebolinha",
       "price": 138.9,
-      "priceLabel": "R$ 136,90",
+      "priceLabel": "R$ 138,90",
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
@@ -5206,7 +5206,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_misto_28pc.jpeg",
       "description": "05 Uramaki joy de camarão geleia de pimenta e furikake, 05 Uramaki joy salmão geleia de pimenta e furikake, 04 Sashimi de salmão, 04 Sashimi de tilápia, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de tilápia com geleia pimenta e furikake, 02 Niguiri de salmão",
       "price": 140.9,
-      "priceLabel": "R$ 138,90",
+      "priceLabel": "R$ 140,90",
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
@@ -5244,7 +5244,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_salmao_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 10 Hossomaki Philadelphia, 04 Sashimi de salmão, 04 Joy de cebolinha, 02 Niguiri de salmão",
       "price": 131.9,
-      "priceLabel": "R$ 129,90",
+      "priceLabel": "R$ 131,90",
       "page": "Pág 12",
       "isNew": true,
       "rawItem": {
@@ -5282,7 +5282,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_hot_30pc.jpeg",
       "description": "10 Uramaki skin Philadelphia, 05 Uramaki joy camarão com geleia de pimenta e furikake, 05 Uramaki joy salmão com geleia de pimenta e furikake, 05 Hot couve crispy, 05 Hot Philadelphia",
       "price": 131.9,
-      "priceLabel": "R$ 129,90",
+      "priceLabel": "R$ 131,90",
       "page": "Pág 12",
       "isNew": true,
       "rawItem": {
@@ -5320,7 +5320,7 @@ const CARDAPIO_DATA = {
       "image": "assets/images/raw_combo_hossomaki_28pc.jpeg",
       "description": "10 Hossomaki Philadelphia, 04 Sashimi de salmão, 04 Sashimi de tilápia, 04 Joy cebolinha, 02 Gunkan alho poró, 02 Niguiri de salmão, 02 Niguiri de tilápia com geleia de pimenta e furikake",
       "price": 128.9,
-      "priceLabel": "R$ 126,90",
+      "priceLabel": "R$ 128,90",
       "page": "Pág 12",
       "isNew": true,
       "rawItem": {
