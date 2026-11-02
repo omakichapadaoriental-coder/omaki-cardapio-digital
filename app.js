@@ -3076,31 +3076,46 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMenu('', currentActiveCategory);
   }
 
+  function getBrasiliaMinutes() {
+    try {
+      const formatter = new Intl.DateTimeFormat('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        hour: 'numeric',
+        minute: 'numeric',
+        hourCycle: 'h23'
+      });
+      const parts = formatter.formatToParts(new Date());
+      const hour = parseInt(parts.find(p => p.type === 'hour')?.value || '0', 10);
+      const minute = parseInt(parts.find(p => p.type === 'minute')?.value || '0', 10);
+      return hour * 60 + minute;
+    } catch (e) {
+      const now = new Date();
+      return now.getHours() * 60 + now.getMinutes();
+    }
+  }
+
   function checkDeliveryAvailability() {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const curMins = hours * 60 + minutes;
+    const curMins = getBrasiliaMinutes();
     const startMins = 18 * 60 + 20; // 18:20
     const cutoffMins = 22 * 60 + 30; // 22:30
 
     let isDeliveryAllowed = true;
     let reasonText = '';
 
-    if (adminState.manualDeliveryOverride === false) {
+    // LIMITADOR ABSOLUTO DE HORÁRIO ("de 22:30 não passa"):
+    // Passou das 22:30 ou antes das 18:20, o corte é AUTOMÁTICO e IMEDIATO
+    if (curMins >= cutoffMins) {
+      isDeliveryAllowed = false;
+      reasonText = 'Entregas por motoboy encerradas às 22:30';
+    } else if (curMins < startMins) {
+      isDeliveryAllowed = false;
+      reasonText = 'Entregas iniciam a partir das 18:20';
+    } else if (adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) {
+      // Dentro da janela permitida (18:20 às 22:30), a equipe pode pausar manualmente se necessário
       isDeliveryAllowed = false;
       reasonText = adminState.deliveryClosedReason || 'Pausado temporariamente pela equipe';
-    } else if (adminState.manualDeliveryOverride === true) {
-      isDeliveryAllowed = true;
     } else {
-      // Regra padrão de horário (18:20 às 22:30)
-      if (curMins >= cutoffMins) {
-        isDeliveryAllowed = false;
-        reasonText = 'Entregas por motoboy encerradas às 22:30';
-      } else if (curMins < startMins) {
-        isDeliveryAllowed = false;
-        reasonText = 'Entregas iniciam após as 18:20';
-      }
+      isDeliveryAllowed = true;
     }
 
     // Atualiza o selo do cabeçalho
