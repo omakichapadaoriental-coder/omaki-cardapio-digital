@@ -828,7 +828,7 @@
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="/data/cardapio.js?v=20261102_omaki_v38"></script>
+  <script src="/data/cardapio.js?v=20261102_omaki_v39"></script>
   <script>
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
@@ -1190,7 +1190,7 @@
           </div>
 
           <div class="order-total-row">
-            <span style="font-size:0.82rem; color:#94a3b8;">💳 ${order.paymentMethod || 'PIX'} ${order.changeFor ? `(Troco para R$ ${order.changeFor})` : ''}</span>
+            <span style="font-size:0.82rem; color:#94a3b8;">💳 ${order.paymentMethod || 'PIX'} ${order.changeFor ? `(Troco para R$ ${order.changeFor})` : ''} ${order.packagingFee ? `• Emb: R$ ${order.packagingFee.toFixed(2).replace('.', ',')}` : ''}</span>
             <span style="color:var(--accent-gold);">Total: R$ ${(order.total || order.subtotal || 0).toFixed(2).replace('.', ',')}</span>
           </div>
         `;

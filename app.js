@@ -2395,57 +2395,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  function calculatePackagingFee() {
+    if (!cart || cart.length === 0) return 0;
+    let fee = 0;
+    cart.forEach(entry => {
+      const item = entry.item;
+      const cat = (item.category || '').toLowerCase();
+      const name = (item.name || item.title || '').toLowerCase();
+
+      // Isenções: bebidas, doses, sucos, cervejas, sakês, águas, descartáveis e complementos
+      const isExempt = ['sak', 'cerveja', 'refrigerante', 'bebida', 'suco', 'dose', 'agua', 'água', 'adicionais', 'molho', 'acompanhamento', 'descart'].some(k => cat.includes(k) || name.includes(k));
+      if (isExempt) return;
+
+      // Se for combo: 2 reais por combo
+      const isCombo = cat.includes('combo') || name.includes('combo');
+      if (isCombo) {
+        fee += 2.0 * entry.qty;
+      } else {
+        // Demais itens de comida: 1 real por item
+        fee += 1.0 * entry.qty;
+      }
+    });
+    return fee;
+  }
+
   // Update Cart Totals & UI Badges
 
   function updateTotals() {
-
     let subtotal = 0;
-
     cart.forEach(entry => {
-
       let unit = entry.item.price;
-
       (entry.complements || []).forEach(c => unit += c.price * (c.qty || 1));
-
       subtotal += unit * entry.qty;
-
     });
 
-
-
     const isDelivery = deliveryType === 'delivery';
+    const packagingFee = calculatePackagingFee();
+    const grandTotal = subtotal + packagingFee;
 
     if (summarySubtotal) summarySubtotal.textContent = formatMoney(subtotal);
+
+    const packagingLine = document.getElementById('packagingFeeSummaryLine');
+    const summaryPackaging = document.getElementById('summaryPackagingFee');
+    if (packagingLine) {
+      packagingLine.style.display = packagingFee > 0 ? 'flex' : 'none';
+    }
+    if (summaryPackaging) {
+      summaryPackaging.textContent = formatMoney(packagingFee);
+    }
 
     if (deliveryFeeSummaryLine) {
       deliveryFeeSummaryLine.style.display = isDelivery ? 'flex' : 'none';
     }
-
     if (summaryDeliveryFee && isDelivery) {
       summaryDeliveryFee.innerHTML = '<span class="delivery-fee-badge">A combinar (~R$ 12 a R$ 15)</span>';
     }
 
     if (summaryGrandTotal) {
       if (isDelivery) {
-        summaryGrandTotal.innerHTML = `${formatMoney(subtotal)} <small style="font-size:0.72rem; color:#94a3b8; font-weight:normal;">+ taxa</small>`;
+        summaryGrandTotal.innerHTML = `${formatMoney(grandTotal)} <small style="font-size:0.72rem; color:#94a3b8; font-weight:normal;">+ taxa</small>`;
       } else {
-        summaryGrandTotal.textContent = formatMoney(subtotal);
+        summaryGrandTotal.textContent = formatMoney(grandTotal);
       }
     }
 
     if (footerBtnTotal) {
       if (isDelivery) {
-        footerBtnTotal.innerHTML = `${formatMoney(subtotal)} <small style="font-size:0.75rem; font-weight:normal; opacity:0.8;">+ taxa</small>`;
+        footerBtnTotal.innerHTML = `${formatMoney(grandTotal)} <small style="font-size:0.75rem; font-weight:normal; opacity:0.8;">+ taxa</small>`;
       } else {
-        footerBtnTotal.textContent = formatMoney(subtotal);
+        footerBtnTotal.textContent = formatMoney(grandTotal);
       }
     }
 
-    if (floatingCartSubtotal) floatingCartSubtotal.textContent = formatMoney(subtotal);
-
+    if (floatingCartSubtotal) floatingCartSubtotal.textContent = formatMoney(grandTotal);
   }
-
-
 
   function updateCartUI() {
 
@@ -2585,7 +2608,7 @@ document.addEventListener('DOMContentLoaded', () => {
       (entry.drinks || []).forEach(d => unit += d.price * (d.qty || 1));
       sub += unit * entry.qty;
     });
-    return sub; // Taxa de entrega é combinada com o entregador, o restaurante cobra subtotal dos itens
+    return sub + calculatePackagingFee();
   }
 
   function updateSplitBalance() {
@@ -2930,8 +2953,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      const grandTotal = subtotal;
-
+      
 
 
       // Build formatted WhatsApp Message with canonical tags [#007]
@@ -3101,13 +3123,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// Packaging & grandTotal already computed above
+
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
       msg += `💰 *RESUMO DO PEDIDO:*\n`;
       msg += `• *Subtotal dos Itens:* ${formatMoney(subtotal)}\n`;
+      if (packagingFee > 0) {
+        msg += `• *Embalagem:* ${formatMoney(packagingFee)}\n`;
+      }
 
       if (deliveryType === 'delivery') {
         msg += `• *Taxa de Entrega:* A combinar (Média: R$ 12 a R$ 15)\n`;
-        msg += `👉 *Total a Pagar:* ${formatMoney(subtotal)} + taxa de entrega\n`;
+        msg += `👉 *Total a Pagar:* ${formatMoney(grandTotal)} + taxa de entrega\n`;
       } else {
         msg += `• *Modalidade:* Retirada no Balcão\n`;
         msg += `👉 *Total a Pagar:* ${formatMoney(grandTotal)}\n`;
@@ -3134,7 +3161,8 @@ document.addEventListener('DOMContentLoaded', () => {
             paymentMethod: (typeof paymentMethod !== 'undefined' && paymentMethod === 'pix') ? 'PIX' : ((typeof paymentMethod !== 'undefined' && paymentMethod === 'card') ? 'Cartão' : 'Dinheiro'),
             changeFor: (typeof changeFor !== 'undefined' ? changeFor : '') || '',
             subtotal,
-            total: subtotal,
+            packagingFee: calculatePackagingFee(),
+            total: subtotal + calculatePackagingFee(),
             notes: (typeof orderNotes !== 'undefined' && orderNotes) ? orderNotes.value.trim() : '',
             items: cart.map(e => ({
               name: e.item.name || e.item.title,
