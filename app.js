@@ -87,8 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let deliveryType = 'delivery'; // 'delivery' | 'takeaway'
 
   let selectedNeighborhood = { name: 'Alto Paraíso', fee: 0 };
-  let capturedCoordinates = null;
-  let adminState = {
+    let adminState = {
     deliveryActive: true,
     manualDeliveryOverride: null,
     deliveryClosedReason: '',
@@ -2907,15 +2906,7 @@ document.addEventListener('DOMContentLoaded', () => {
         msg += `${WA_ICONS.moto} *Modalidade:* Entrega (Delivery)\n`;
         msg += `${WA_ICONS.pin} *Endereço:* ${fullAddress}\n`;
         if (complement) msg += `${WA_ICONS.ref} *Ponto de Ref / Pousada:* ${complement}\n`;
-
-        if (capturedCoordinates && capturedCoordinates.lat && capturedCoordinates.lng) {
-          msg += `🗺️ *Localização no Google Maps:*\n`;
-          msg += `   ├ 📍 *Ponto Exato:* https://maps.google.com/?q=loc:${capturedCoordinates.lat},${capturedCoordinates.lng}&z=19\n`;
-          msg += `   └ 🛵 *Rota do Motoboy:* https://www.google.com/maps/dir/?api=1&destination=${capturedCoordinates.lat},${capturedCoordinates.lng}&travelmode=driving\n`;
-          msg += `💡 _Dica: Se preferir, compartilhe sua localização atual aqui no WhatsApp (📎 > Localização)._` + '\n';
-        } else {
-          msg += `💡 *Dica de Entrega:* Se estiver em pousada ou chalé, compartilhe sua localização atual aqui no WhatsApp (clique no 📎 e escolha "Localização") para o motoboy chegar sem erro.\n`;
-        }
+        msg += `💡 *Dica de Entrega:* Se estiver em pousada, chalé ou área rural, compartilhe sua localização atual aqui no WhatsApp (📎 > Localização) para o motoboy chegar sem erro.\n`;
       } else {
 
         msg += `${WA_ICONS.takeaway} *Modalidade:* Retirada no Balcão\n`;
@@ -3170,8 +3161,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- BOOTSTRAP INITIALIZATION ---
-
-  initGeolocation();
   initDisposables();
   initCategories();
 
@@ -3226,101 +3215,5 @@ document.addEventListener('DOMContentLoaded', () => {
           if (itemWrap) itemWrap.classList.add('has-qty');
         }
       });
-    });
-  }
-
-  // --- GEOLOCALIZAÇÃO GPS DO CLIENTE ---
-  function initGeolocation() {
-    const btnGetLocation = document.getElementById('btnGetLocation');
-    const gpsStatusBadge = document.getElementById('gpsStatusBadge');
-    const gpsStatusText = document.getElementById('gpsStatusText');
-    const gpsMapsLink = document.getElementById('gpsMapsLink');
-    const gpsCoordHint = document.getElementById('gpsCoordHint');
-    const orderStreet = document.getElementById('orderStreet');
-    const orderNumber = document.getElementById('orderNumber');
-    const orderNeighborhood = document.getElementById('orderNeighborhood');
-
-    if (!btnGetLocation) return;
-
-    btnGetLocation.addEventListener('click', () => {
-      if (!navigator.geolocation) {
-        showCustomAlert('Navegador Incompatível', 'Seu aparelho ou navegador não suporta geolocalização. Por favor, digite o endereço manualmente.', orderStreet);
-        return;
-      }
-
-      btnGetLocation.classList.add('loading');
-      btnGetLocation.innerHTML = '<span class="gps-icon spinner">📡</span> Conectando aos satélites GPS...';
-
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
-          capturedCoordinates = { lat, lng };
-
-          btnGetLocation.classList.remove('loading');
-          btnGetLocation.classList.add('success');
-          btnGetLocation.innerHTML = '<span class="gps-icon">✓</span> Localização GPS Capturada!';
-
-          const mapsUrl = `https://maps.google.com/?q=loc:${lat},${lng}&z=19`;
-          if (gpsStatusBadge && gpsMapsLink) {
-            gpsStatusBadge.style.display = 'flex';
-            gpsMapsLink.href = mapsUrl;
-          }
-          if (gpsCoordHint) {
-            gpsCoordHint.style.display = 'block';
-          }
-
-          // Busca reversa detalhada via Nominatim OpenStreetMap
-          try {
-            const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1&namedetails=1`, {
-              headers: { 'Accept-Language': 'pt-BR', 'User-Agent': 'OmakiSushiApp/1.0' }
-            });
-            if (res.ok) {
-              const data = await res.json();
-              const addr = data.address || {};
-
-              // 1. Rua / Avenida / Pousada
-              const detectedStreet = addr.road || addr.pedestrian || addr.footway || addr.avenue || addr.street || addr.amenity || '';
-              if (detectedStreet && orderStreet && !orderStreet.value.trim()) {
-                orderStreet.value = detectedStreet;
-              }
-
-              // 2. Bairro / Setor
-              const detectedNeighborhood = addr.neighbourhood || addr.suburb || addr.quarter || addr.residential || addr.city_district || addr.hamlet || '';
-              if (detectedNeighborhood && orderNeighborhood && !orderNeighborhood.value.trim()) {
-                orderNeighborhood.value = detectedNeighborhood;
-              }
-
-              // 3. Número (se existir na base)
-              if (addr.house_number && orderNumber && !orderNumber.value.trim()) {
-                orderNumber.value = addr.house_number;
-              }
-            }
-          } catch (e) {
-            // Continua normalmente com as coordenadas salvas
-          }
-
-          // Se a Quadra/Lote/Número estiver vazia, posiciona o foco para o cliente preencher em 1 segundo
-          if (orderNumber && !orderNumber.value.trim()) {
-            setTimeout(() => {
-              orderNumber.focus();
-            }, 300);
-          }
-        },
-        (error) => {
-          btnGetLocation.classList.remove('loading');
-          btnGetLocation.innerHTML = '<span class="gps-icon">📍</span> Usar minha localização atual (GPS)';
-
-          let msg = 'Não foi possível capturar sua posição GPS. Por favor, digite seu endereço ou nome da pousada.';
-          if (error.code === 1) { // PERMISSION_DENIED
-            msg = 'A permissão de localização foi negada no navegador. Para enviar o link GPS ao motoboy, permita o acesso à localização nas configurações do site ou digite o endereço manualmente.';
-          } else if (error.code === 3) { // TIMEOUT
-            msg = 'O sinal do GPS demorou a responder. Você pode tentar novamente ou digitar o endereço manualmente.';
-          }
-
-          showCustomAlert('Localização GPS', msg, orderStreet);
-        },
-        { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 }
-      );
     });
   }
