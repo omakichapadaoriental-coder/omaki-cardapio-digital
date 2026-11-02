@@ -621,8 +621,64 @@
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="data/cardapio.js?v=20261101_omaki_v23"></script>
+  <script src="/data/cardapio.js?v=20261102_omaki_v36"></script>
   <script>
+    const DISH_CODES = {
+      'harumaki_group': '#001–#004',
+      'item_5': '#005',
+      'item_6': '#006',
+      'tataki_group': '#007–#011',
+      'ceviche_group': '#012–#015',
+      'camarao_imperial_group': '#016–#017',
+      'carpaccio_group': '#018–#020',
+      'oishi_group': '#021–#022',
+      'kobachi_group': '#023–#024',
+      'gunkan_group': '#025–#030',
+      'vegano_group': '#031–#032',
+      'sashimi_especial_group': '#033–#040',
+      'item_41': '#041',
+      'item_42': '#042',
+      'item_43': '#043',
+      'item_44': '#044',
+      'item_45': '#045',
+      'item_46': '#046',
+      'item_47': '#047',
+      'temaki_group': '#048–#056',
+      'item_57': '#057',
+      'item_58': '#058',
+      'item_59': '#059',
+      'item_60': '#060',
+      'bighot_group': '#061–#062',
+      'hotrolls_group': '#063–#069',
+      'sashimi_trad_group': '#070–#076',
+      'joy_trad_group': '#077–#082',
+      'joy_ebifry_group': '#083–#085',
+      'hossomaki_group': '#086–#091',
+      'uramaki_trad_group': '#092–#098',
+      'uramaki_joy_group': '#099–#104',
+      'poke_group': '#105–#109',
+      'niguiri_group': '#110–#118',
+      'molhos_group': '#131–#136',
+      'teppan_group': '#137–#142',
+      'yakisoba_group': '#143–#146',
+      'sucos_group': '#147–#154',
+      'sake_group': '#155–#164',
+      'refrigerantes_group': '#165–#171',
+      'cervejas_group': '#172–#176',
+      'item_177': '#177',
+      'item_178': '#178',
+      'item_179': '#179',
+      'item_180': '#180',
+      // Os últimos 7 combos promocionais NÃO têm código numérico:
+      'item_combo_camarão_imperial_-_25_peças': '',
+      'item_combo_camarão_-_30_peças': '',
+      'item_combo_joy_-_28_peças': '',
+      'item_combo_misto_-_28_peças': '',
+      'item_combo_salmão_-_30_peças': '',
+      'item_combo_hot_-_30_peças': '',
+      'item_combo_hossomaki_-_28_peças': ''
+    };
+
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
       deliveryActive: true,
@@ -698,61 +754,7 @@
       bindEvents();
     }
 
-    const DISH_CODES = {
-      'harumaki_group': '#001–#004',
-      'item_5': '#005',
-      'item_6': '#006',
-      'tataki_group': '#007–#011',
-      'ceviche_group': '#012–#015',
-      'camarao_imperial_group': '#016–#017',
-      'carpaccio_group': '#018–#020',
-      'oishi_group': '#021–#022',
-      'kobachi_group': '#023–#024',
-      'gunkan_group': '#025–#030',
-      'vegano_group': '#031–#032',
-      'sashimi_especial_group': '#033–#040',
-      'item_41': '#041',
-      'item_42': '#042',
-      'item_43': '#043',
-      'item_44': '#044',
-      'item_45': '#045',
-      'item_46': '#046',
-      'item_47': '#047',
-      'temaki_group': '#048–#056',
-      'item_57': '#057',
-      'item_58': '#058',
-      'item_59': '#059',
-      'item_60': '#060',
-      'bighot_group': '#061–#062',
-      'hotrolls_group': '#063–#069',
-      'sashimi_trad_group': '#070–#076',
-      'joy_trad_group': '#077–#082',
-      'joy_ebifry_group': '#083–#085',
-      'hossomaki_group': '#086–#091',
-      'uramaki_trad_group': '#092–#098',
-      'uramaki_joy_group': '#099–#104',
-      'poke_group': '#105–#109',
-      'niguiri_group': '#110–#118',
-      'molhos_group': '#131–#136',
-      'teppan_group': '#137–#142',
-      'yakisoba_group': '#143–#146',
-      'sucos_group': '#147–#154',
-      'sake_group': '#155–#164',
-      'refrigerantes_group': '#165–#171',
-      'cervejas_group': '#172–#176',
-      'item_177': '#177',
-      'item_178': '#178',
-      'item_179': '#179',
-      'item_180': '#180',
-      // Os últimos 7 combos promocionais NÃO têm código numérico:
-      'item_combo_camarão_imperial_-_25_peças': '',
-      'item_combo_camarão_-_30_peças': '',
-      'item_combo_joy_-_28_peças': '',
-      'item_combo_misto_-_28_peças': '',
-      'item_combo_salmão_-_30_peças': '',
-      'item_combo_hot_-_30_peças': '',
-      'item_combo_hossomaki_-_28_peças': ''
-    };
+    
 
     function flattenItems() {
       allItems = [];
@@ -775,7 +777,7 @@
           number: dish.num || '',
           code: code,
           price: dish.price || dish.minPrice || 0,
-          image: dish.photo || dish.image || 'assets/images/raw_sashimi_tradicional.png',
+          image: dish.photo || dish.image || '/assets/images/raw_sashimi_tradicional.png',
           category: dish.category || 'Geral',
           categoryName: dish.category || 'Geral'
         });
@@ -792,7 +794,7 @@
               number: item.num,
               code: item.num ? '#' + String(item.num).padStart(3, '0') : '',
               price: item.price || 0,
-              image: item.photo || item.image || 'assets/images/real_cervejas.jpg',
+              image: item.photo || item.image || '/assets/images/real_cervejas.jpg',
               category: item.category,
               categoryName: item.category
             });
@@ -938,7 +940,7 @@
 
         row.innerHTML = `
           <div class="item-info">
-            <img src="${item.image || 'assets/images/raw_sashimi_tradicional.png'}" class="item-thumb" alt="${item.name}" onerror="this.src='assets/images/raw_sashimi_tradicional.png'">
+            <img src="${item.image || '/assets/images/raw_sashimi_tradicional.png'}" class="item-thumb" alt="${item.name}" onerror="this.src='/assets/images/raw_sashimi_tradicional.png'">
             <div class="item-texts">
               <div class="item-name-row">
                 ${badgeHtml}
