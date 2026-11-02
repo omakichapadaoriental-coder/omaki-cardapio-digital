@@ -2494,6 +2494,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnTypeDelivery) {
     btnTypeDelivery.addEventListener('click', () => {
       if (btnTypeDelivery.classList.contains('btn-delivery-disabled')) {
+        const curMinsD = getBrasiliaMinutes();
+        if (curMinsD >= 23*60 || curMinsD < 18*60+20) {
+          showCustomAlert('Restaurante Fechado', 'Nosso horário de funcionamento encerrou às 23:00. Reabriremos hoje às 18:20.');
+        } else {
+          showCustomAlert('Entregas Encerradas', 'Entregas por motoboy encerram às 22:30. Selecione Retirada no Balcão para concluir seu pedido.');
+        }
+        return;
+      }
+      if (btnTypeDelivery.classList.contains('btn-delivery-disabled')) {
         showCustomAlert('Entregas Encerradas', 'As entregas por motoboy estão indisponíveis no momento. Por favor, selecione Retirada no Balcão.');
         return;
       }
@@ -2509,6 +2518,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnTypeTakeaway) {
     btnTypeTakeaway.addEventListener('click', () => {
+      if (btnTypeTakeaway.classList.contains('btn-delivery-disabled')) {
+        showCustomAlert('Restaurante Fechado', 'Nosso horário de funcionamento encerrou às 23:00. Reabriremos hoje às 18:20.');
+        return;
+      }
       deliveryType = 'takeaway';
       btnTypeTakeaway.classList.add('active');
       btnTypeDelivery.classList.remove('active');
@@ -3097,48 +3110,54 @@ document.addEventListener('DOMContentLoaded', () => {
   function checkDeliveryAvailability() {
     const curMins = getBrasiliaMinutes();
     const startMins = 18 * 60 + 20; // 18:20
-    const cutoffMins = 22 * 60 + 30; // 22:30
+    const deliveryCutoffMins = 22 * 60 + 30; // 22:30
+    const storeCloseMins = 23 * 60; // 23:00 (Fechamento total)
 
-    let isDeliveryAllowed = true;
-    let reasonText = '';
+    // Determina o estado operacional da loja:
+    // 'open' (18:20 - 22:30) | 'takeaway_only' (22:30 - 23:00) | 'closed' (23:00 - 18:20)
+    let storeState = 'open';
+    let statusReason = '';
 
-    // LIMITADOR ABSOLUTO DE HORÁRIO ("de 22:30 não passa"):
-    // Passou das 22:30 ou antes das 18:20, o corte é AUTOMÁTICO e IMEDIATO
-    if (curMins >= cutoffMins) {
-      isDeliveryAllowed = false;
-      reasonText = 'Entregas por motoboy encerradas às 22:30';
-    } else if (curMins < startMins) {
-      isDeliveryAllowed = false;
-      reasonText = 'Entregas iniciam a partir das 18:20';
+    if (curMins >= storeCloseMins || curMins < startMins) {
+      storeState = 'closed';
+      statusReason = 'Nosso atendimento encerrou às 23:00. O cardápio está aberto para consulta e reabriremos para pedidos hoje às 18:20!';
+    } else if (curMins >= deliveryCutoffMins) {
+      storeState = 'takeaway_only';
+      statusReason = 'Entregas por motoboy encerradas às 22:30. Pedidos disponíveis exclusivamente para Retirada no Balcão até as 23:00.';
     } else if (adminState.manualDeliveryOverride === false || adminState.deliveryActive === false) {
-      // Dentro da janela permitida (18:20 às 22:30), a equipe pode pausar manualmente se necessário
-      isDeliveryAllowed = false;
-      reasonText = adminState.deliveryClosedReason || 'Pausado temporariamente pela equipe';
+      storeState = 'takeaway_only';
+      statusReason = adminState.deliveryClosedReason || 'Entregas pausadas temporariamente pela equipe. Pedidos disponíveis para Retirada no Balcão.';
     } else {
-      isDeliveryAllowed = true;
+      storeState = 'open';
     }
 
-    // Atualiza o selo do cabeçalho
+    // 1. Atualiza o selo do cabeçalho
     const headerStatusBadge = document.getElementById('headerStatusBadge');
     const headerStatusText = document.getElementById('headerStatusText');
 
     if (headerStatusBadge && headerStatusText) {
-      if (isDeliveryAllowed) {
+      if (storeState === 'open') {
         headerStatusBadge.className = 'status-badge';
         headerStatusBadge.style.borderColor = 'rgba(34, 197, 94, 0.3)';
         headerStatusBadge.style.background = 'rgba(34, 197, 94, 0.12)';
         headerStatusBadge.style.color = '#4ade80';
         headerStatusText.innerHTML = '<span class="status-label">Aberto</span><span class="status-suffix"> para Pedidos</span>';
-      } else {
+      } else if (storeState === 'takeaway_only') {
         headerStatusBadge.className = 'status-badge';
         headerStatusBadge.style.borderColor = 'rgba(245, 158, 11, 0.35)';
         headerStatusBadge.style.background = 'rgba(245, 158, 11, 0.12)';
         headerStatusBadge.style.color = '#fbbf24';
         headerStatusText.innerHTML = '<span class="status-label">Só Retirada</span><span class="status-suffix"> no Balcão</span>';
+      } else {
+        headerStatusBadge.className = 'status-badge';
+        headerStatusBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+        headerStatusBadge.style.background = 'rgba(239, 68, 68, 0.14)';
+        headerStatusBadge.style.color = '#f87171';
+        headerStatusText.innerHTML = '<span class="status-label">Fechado</span><span class="status-suffix"> • Abre às 18:20</span>';
       }
     }
 
-    // Atualiza botões no drawer
+    // 2. Banner de corte / aviso no drawer
     let cutoffBanner = document.getElementById('deliveryCutoffBanner');
     if (!cutoffBanner && btnTypeDelivery && btnTypeDelivery.parentNode) {
       cutoffBanner = document.createElement('div');
@@ -3147,15 +3166,48 @@ document.addEventListener('DOMContentLoaded', () => {
       btnTypeDelivery.parentNode.parentNode.insertBefore(cutoffBanner, btnTypeDelivery.parentNode);
     }
 
-    if (!isDeliveryAllowed) {
+    if (storeState === 'closed') {
       if (cutoffBanner) {
         cutoffBanner.style.display = 'block';
-        cutoffBanner.innerHTML = `⚠️ <strong>Aviso:</strong> ${reasonText}. Pedidos disponíveis exclusivamente para <strong>Retirada no Balcão</strong>.`;
+        cutoffBanner.style.background = 'rgba(239, 68, 68, 0.12)';
+        cutoffBanner.style.borderColor = 'rgba(239, 68, 68, 0.35)';
+        cutoffBanner.style.color = '#fca5a5';
+        cutoffBanner.innerHTML = `🔴 <strong>Restaurante Fechado:</strong> Atendimento encerrou às 23:00. O cardápio permanece disponível para consulta e reabriremos para pedidos às <strong>18:20</strong>!`;
+      }
+      if (btnTypeDelivery) {
+        btnTypeDelivery.classList.add('btn-delivery-disabled');
+        btnTypeDelivery.style.opacity = '0.4';
+        btnTypeDelivery.style.cursor = 'not-allowed';
+      }
+      if (btnTypeTakeaway) {
+        btnTypeTakeaway.classList.add('btn-delivery-disabled');
+        btnTypeTakeaway.style.opacity = '0.4';
+        btnTypeTakeaway.style.cursor = 'not-allowed';
+      }
+      if (sendWhatsAppOrderBtn) {
+        sendWhatsAppOrderBtn.disabled = true;
+        sendWhatsAppOrderBtn.style.opacity = '0.6';
+        sendWhatsAppOrderBtn.style.cursor = 'not-allowed';
+        sendWhatsAppOrderBtn.style.background = '#334155';
+        sendWhatsAppOrderBtn.innerHTML = '🔒 Restaurante Fechado (Abre hoje às 18:20)';
+      }
+    } else if (storeState === 'takeaway_only') {
+      if (cutoffBanner) {
+        cutoffBanner.style.display = 'block';
+        cutoffBanner.style.background = 'rgba(245, 158, 11, 0.1)';
+        cutoffBanner.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+        cutoffBanner.style.color = '#fcd34d';
+        cutoffBanner.innerHTML = `⚠️ <strong>Aviso:</strong> ${statusReason}`;
       }
       if (btnTypeDelivery) {
         btnTypeDelivery.classList.add('btn-delivery-disabled');
         btnTypeDelivery.style.opacity = '0.5';
         btnTypeDelivery.style.cursor = 'not-allowed';
+      }
+      if (btnTypeTakeaway) {
+        btnTypeTakeaway.classList.remove('btn-delivery-disabled');
+        btnTypeTakeaway.style.opacity = '1';
+        btnTypeTakeaway.style.cursor = 'pointer';
       }
       if (deliveryType === 'delivery') {
         deliveryType = 'takeaway';
@@ -3163,19 +3215,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnTypeDelivery) btnTypeDelivery.classList.remove('active');
         if (deliveryFieldsGroup) deliveryFieldsGroup.style.display = 'none';
         if (takeawayInfoGroup) takeawayInfoGroup.style.display = 'block';
+        if (deliveryFeeSummaryLine) deliveryFeeSummaryLine.style.display = 'none';
         updateTotals();
       }
+      if (sendWhatsAppOrderBtn) {
+        sendWhatsAppOrderBtn.disabled = false;
+        sendWhatsAppOrderBtn.style.opacity = '1';
+        sendWhatsAppOrderBtn.style.cursor = 'pointer';
+        sendWhatsAppOrderBtn.style.background = '';
+        sendWhatsAppOrderBtn.innerHTML = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido via WhatsApp';
+      }
     } else {
+      // Aberto Total (Delivery e Retirada)
       if (cutoffBanner) cutoffBanner.style.display = 'none';
       if (btnTypeDelivery) {
         btnTypeDelivery.classList.remove('btn-delivery-disabled');
         btnTypeDelivery.style.opacity = '1';
         btnTypeDelivery.style.cursor = 'pointer';
       }
+      if (btnTypeTakeaway) {
+        btnTypeTakeaway.classList.remove('btn-delivery-disabled');
+        btnTypeTakeaway.style.opacity = '1';
+        btnTypeTakeaway.style.cursor = 'pointer';
+      }
+      if (sendWhatsAppOrderBtn) {
+        sendWhatsAppOrderBtn.disabled = false;
+        sendWhatsAppOrderBtn.style.opacity = '1';
+        sendWhatsAppOrderBtn.style.cursor = 'pointer';
+        sendWhatsAppOrderBtn.style.background = '';
+        sendWhatsAppOrderBtn.innerHTML = '<span class="whatsapp-btn-icon">💬</span> Enviar Pedido via WhatsApp';
+      }
     }
   }
 
-  // --- BOOTSTRAP INITIALIZATION ---
+    // --- BOOTSTRAP INITIALIZATION ---
   initDisposables();
   initCategories();
 
