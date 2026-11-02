@@ -2910,8 +2910,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (capturedCoordinates && capturedCoordinates.lat && capturedCoordinates.lng) {
           msg += `🗺️ *Localização no Google Maps:*\n`;
-          msg += `   ├ 📍 *Ponto Exato:* https://maps.google.com/?q=${capturedCoordinates.lat},${capturedCoordinates.lng}\n`;
-          msg += `   └ 🛵 *Rota do Motoboy:* https://www.google.com/maps/dir/?api=1&destination=${capturedCoordinates.lat},${capturedCoordinates.lng}\n`;
+          msg += `   ├ 📍 *Ponto Exato:* https://maps.google.com/?q=loc:${capturedCoordinates.lat},${capturedCoordinates.lng}&z=19\n`;
+          msg += `   └ 🛵 *Rota do Motoboy:* https://www.google.com/maps/dir/?api=1&destination=${capturedCoordinates.lat},${capturedCoordinates.lng}&travelmode=driving\n`;
           msg += `💡 _Dica: Se preferir, compartilhe sua localização atual aqui no WhatsApp (📎 > Localização)._` + '\n';
         } else {
           msg += `💡 *Dica de Entrega:* Se estiver em pousada ou chalé, compartilhe sua localização atual aqui no WhatsApp (clique no 📎 e escolha "Localização") para o motoboy chegar sem erro.\n`;
@@ -3261,7 +3261,7 @@ document.addEventListener('DOMContentLoaded', () => {
           btnGetLocation.classList.add('success');
           btnGetLocation.innerHTML = '<span class="gps-icon">✓</span> Localização GPS Capturada!';
 
-          const mapsUrl = `https://maps.google.com/?q=${lat},${lng}`;
+          const mapsUrl = `https://maps.google.com/?q=loc:${lat},${lng}&z=19`;
           if (gpsStatusBadge && gpsMapsLink) {
             gpsStatusBadge.style.display = 'flex';
             gpsMapsLink.href = mapsUrl;

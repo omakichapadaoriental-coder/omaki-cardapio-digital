@@ -1415,10 +1415,10 @@ const CARDAPIO_DATA = {
       "num": 105,
       "code": "105",
       "category": "Pokes",
-      "name": "Poke Imperial",
-      "fullName": "Poke Imperial",
-      "description": "150g arroz shari, camarão imperial empanado, mix acompanhamentos e molho",
-      "portion": "80g Proteína",
+      "name": "Poke Salmão Imperial",
+      "fullName": "Poke Salmão Imperial",
+      "description": "150g arroz shari, salmão fresco em cubos, mix rico de acompanhamentos e molho",
+      "portion": "80g Salmão",
       "page": "Pág 8",
       "price": 71.9,
       "photo": "assets/images/raw_poke.jpeg"
@@ -4256,11 +4256,11 @@ const CARDAPIO_DATA = {
         {
           "num": 105,
           "code": "105",
-          "name": "Poke Imperial",
-          "fullName": "Poke Imperial",
-          "description": "150g arroz shari, camarão imperial empanado, mix acompanhamentos e molho",
+          "name": "Poke Salmão Imperial",
+          "fullName": "Poke Salmão Imperial",
+          "description": "150g arroz shari, salmão fresco em cubos, mix rico de acompanhamentos e molho",
           "price": 71.9,
-          "portion": "80g Proteína"
+          "portion": "80g Salmão"
         },
         {
           "num": 106,
