@@ -1076,9 +1076,17 @@
     <!-- TAB 2: ORDERS HISTORY -->
     <div class="tab-content" id="tabContentOrders">
       <section class="control-card">
-        <div class="card-title-row">
-          <h2 class="card-title">📋 Pedidos Recebidos pelo Cardápio</h2>
-          <button type="button" class="cat-pill active" id="btnRefreshOrders">🔄 Atualizar Lista</button>
+        <div class="card-title-row" style="flex-wrap:wrap; gap:12px;">
+          <h2 class="card-title">🧾 Pedidos Recebidos pelo Cardápio</h2>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <button type="button" class="btn-create-dish" id="btnSimulateTestOrder" style="border-radius:8px; font-size:0.75rem; padding:6px 12px; background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.4); color:var(--accent-gold);">
+              🧪 Simular Pedido de Teste
+            </button>
+            <button type="button" class="btn-action-exhaust" id="btnClearTestOrders" style="border-radius:8px; font-size:0.75rem; padding:6px 12px; height:auto;">
+              🗑️ Limpar Todos
+            </button>
+            <button type="button" class="cat-pill active" id="btnRefreshOrders">🔄 Atualizar</button>
+          </div>
         </div>
 
         <div id="ordersListContainer" style="display:flex; flex-direction:column; gap:12px;">
@@ -1099,6 +1107,10 @@
         <div class="kpi-card">
           <span class="kpi-label">💰 Faturamento Estimado</span>
           <span class="kpi-value gold" id="metricTotalRevenue">R$ 0,00</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">🏷️ Ticket Médio</span>
+          <span class="kpi-value" id="metricAvgTicket" style="color:#38bdf8;">R$ 0,00</span>
         </div>
         <div class="kpi-card">
           <span class="kpi-label">🛒 Carrinhos Abandonados</span>
@@ -1223,7 +1235,7 @@
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="/data/cardapio.js?v=20261103_omaki_v44"></script>
+  <script src="/data/cardapio.js?v=20261103_omaki_v45"></script>
   <script>
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
@@ -1661,10 +1673,21 @@
         const waLink = phoneClean ? `https://wa.me/55${phoneClean}?text=Ol%C3%A1%20${encodeURIComponent(order.customerName)}!%20Recebemos%20seu%20pedido%20no%20Omaki%20Sushi.` : '#';
 
         card.innerHTML = `
-          <div class="order-header-row">
-            <span class="order-id">${order.id || 'OMK-0000'}</span>
-            <span class="order-delivery-pill">${isDelivery ? '🛵 Entrega' : '🛍️ Retirada no Balcão'}</span>
-            <span class="order-time">⏰ ${dateStr} às ${timeStr}</span>
+          <div class="order-header-row" style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="order-id">${order.id || 'OMK-0000'}</span>
+              <span class="order-delivery-pill">${isDelivery ? '🛵 Entrega' : '🥡 Retirada no Balcão'}</span>
+              <span class="status-indicator status-available" style="padding:2px 8px; font-size:0.68rem;">
+                <span class="status-pulse"></span>
+                <span>Recebido</span>
+              </span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="order-time">⏰ ${dateStr} às ${timeStr}</span>
+              <button type="button" class="btn-delete-order" data-id="${order.id}" title="Excluir este pedido" style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); color:#fca5a5; border-radius:6px; padding:3px 8px; font-size:0.72rem; cursor:pointer; font-weight:600; transition:all 0.2s;">
+                🗑️ Excluir
+              </button>
+            </div>
           </div>
 
           <div class="order-customer-row">
@@ -1684,6 +1707,14 @@
           </div>
         `;
 
+        const btnDel = card.querySelector('.btn-delete-order');
+        if (btnDel) {
+          btnDel.addEventListener('click', (e) => {
+            e.stopPropagation();
+            deleteOrder(order.id);
+          });
+        }
+
         container.appendChild(card);
       });
     }
@@ -1698,11 +1729,19 @@
       const totalAbandonedCount = abandoned.length;
       const totalLeads = totalOrdersCount + totalAbandonedCount;
       const convRate = totalLeads > 0 ? Math.round((totalOrdersCount / totalLeads) * 100) : 0;
+      const avgTicket = totalOrdersCount > 0 ? (totalRevenue / totalOrdersCount) : 0;
 
-      document.getElementById('metricTotalOrders').textContent = totalOrdersCount;
-      document.getElementById('metricTotalRevenue').textContent = `R$ ${totalRevenue.toFixed(2).replace('.', ',')}`;
-      document.getElementById('metricAbandonedCarts').textContent = totalAbandonedCount;
-      document.getElementById('metricConversionRate').textContent = `${convRate}%`;
+      const totalOrdersEl = document.getElementById('metricTotalOrders');
+      const totalRevenueEl = document.getElementById('metricTotalRevenue');
+      const avgTicketEl = document.getElementById('metricAvgTicket');
+      const abandonedCartsEl = document.getElementById('metricAbandonedCarts');
+      const convRateEl = document.getElementById('metricConversionRate');
+
+      if (totalOrdersEl) totalOrdersEl.textContent = totalOrdersCount;
+      if (totalRevenueEl) totalRevenueEl.textContent = `R$ ${totalRevenue.toFixed(2).replace('.', ',')}`;
+      if (avgTicketEl) avgTicketEl.textContent = `R$ ${avgTicket.toFixed(2).replace('.', ',')}`;
+      if (abandonedCartsEl) abandonedCartsEl.textContent = totalAbandonedCount;
+      if (convRateEl) convRateEl.textContent = `${convRate}%`;
 
       // Render Abandoned Carts List
       const container = document.getElementById('abandonedListContainer');
@@ -1729,18 +1768,25 @@
         const dateStr = dateObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', timeZone: 'America/Sao_Paulo' });
 
         const phoneClean = (abn.customerPhone || '').replace(/\D/g, '');
-        const recoveryMsg = `Ol%C3%A1${abn.customerName !== 'Não informado' ? ' ' + encodeURIComponent(abn.customerName) : ''}!%20Vi%20que%20voc%C3%AA%20estava%20montando%20um%20pedido%20no%20Omaki%20Sushi.%20Ficou%20com%20alguma%20d%C3%BAvida%20ou%20gostaria%20que%20eu%20finalizasse%20por%20aqui%20para%20voc%C3%AA%3F`;
-        const waLink = phoneClean ? `https://wa.me/55${phoneClean}?text=${recoveryMsg}` : '#';
+        const recoveryMsg = `Olá${abn.customerName !== 'Não informado' ? ' ' + encodeURIComponent(abn.customerName) : ''}! Vi que você estava montando um pedido no Omaki Sushi. Ficou com alguma dúvida ou gostaria que eu finalizasse por aqui para você?`;
+        const waLink = phoneClean ? `https://wa.me/55${phoneClean}?text=${encodeURIComponent(recoveryMsg)}` : '#';
 
         card.innerHTML = `
-          <div class="order-header-row">
-            <span style="font-weight:800; color:#fbbf24;">${abn.id || 'ABN-0000'}</span>
-            <span style="font-size:0.74rem; background:rgba(245, 158, 11, 0.15); color:#fbbf24; padding:3px 8px; border-radius:6px; font-weight:700;">Abandonou no Checkout</span>
-            <span class="order-time">⏰ ${dateStr} às ${timeStr}</span>
+          <div class="order-header-row" style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-weight:800; color:#fbbf24;">${abn.id || 'ABN-0000'}</span>
+              <span style="font-size:0.74rem; background:rgba(245, 158, 11, 0.15); color:#fbbf24; padding:3px 8px; border-radius:6px; font-weight:700;">Abandonou no Checkout</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="order-time">⏰ ${dateStr} às ${timeStr}</span>
+              <button type="button" class="btn-delete-abandoned" data-id="${abn.id}" title="Descartar este lead" style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); color:#fca5a5; border-radius:6px; padding:3px 8px; font-size:0.72rem; cursor:pointer; font-weight:600; transition:all 0.2s;">
+                🗑️ Descartar
+              </button>
+            </div>
           </div>
 
           <div class="order-customer-row">
-            <span class="order-customer-info">👤 ${abn.customerName} ${abn.customerPhone ? `• ${abn.customerPhone}` : '<small style=\"color:#94a3b8;\">(Não informou WhatsApp)</small>'}</span>
+            <span class="order-customer-info">👤 ${abn.customerName} ${abn.customerPhone ? `• ${abn.customerPhone}` : '<small style="color:#94a3b8;">(Não informou WhatsApp)</small>'}</span>
             ${phoneClean ? `<a href="${waLink}" target="_blank" class="btn-wa-direct">💬 Recuperar no WhatsApp</a>` : ''}
           </div>
 
@@ -1754,11 +1800,18 @@
           </div>
         `;
 
+        const btnDelAbn = card.querySelector('.btn-delete-abandoned');
+        if (btnDelAbn) {
+          btnDelAbn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            deleteAbandonedCart(abn.id);
+          });
+        }
+
         container.appendChild(card);
       });
     }
 
-    
     // --- MODAL DE EDIÇÃO & REFORMULAÇÃO DE ITENS (ADMIN ENGINE) ---
     function openEditModal(item) {
       currentEditingItem = item;
@@ -1907,6 +1960,117 @@
       await saveState();
     }
 
+
+    // --- GESTÃO DE PEDIDOS & MÉTRICAS (EXCLUIR, LIMPAR & SIMULAR) ---
+    async function deleteOrder(orderId) {
+      if (!confirm(`Deseja realmente excluir o pedido ${orderId}?`)) return;
+      try {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'delete_order', orderId, pin: adminPin })
+        });
+        if (res.ok) {
+          showToast(`Pedido ${orderId} excluído com sucesso!`);
+          await loadOrders();
+        } else {
+          showToast('Erro ao excluir pedido.');
+        }
+      } catch (err) {
+        showToast('Erro de conexão ao excluir.');
+      }
+    }
+
+    async function deleteAbandonedCart(cartId) {
+      if (!confirm(`Deseja descartar este lead de carrinho abandonado?`)) return;
+      try {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'delete_abandoned', cartId, pin: adminPin })
+        });
+        if (res.ok) {
+          showToast('Lead descartado com sucesso!');
+          await loadOrders();
+        } else {
+          showToast('Erro ao descartar lead.');
+        }
+      } catch (err) {
+        showToast('Erro de conexão.');
+      }
+    }
+
+    async function clearAllOrders() {
+      if (!confirm('Deseja realmente limpar TODOS os pedidos e carrinhos abandonados? Esta ação não pode ser desfeita.')) return;
+      try {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'clear', pin: adminPin })
+        });
+        if (res.ok) {
+          showToast('Histórico de pedidos zerado com sucesso!');
+          await loadOrders();
+        } else {
+          showToast('Erro ao limpar pedidos.');
+        }
+      } catch (err) {
+        showToast('Erro de conexão.');
+      }
+    }
+
+    async function simulateTestOrder() {
+      const sampleOrders = [
+        {
+          customerName: 'André (Teste Sistema)',
+          customerPhone: '61999998888',
+          deliveryType: 'delivery',
+          address: 'Rua das Flores, Qd. 14, Lt. 05',
+          neighborhood: 'Setor Sul',
+          paymentMethod: 'PIX',
+          subtotal: 107.0,
+          total: 111.0,
+          packagingFee: 4.0,
+          notes: 'Pedido de teste para validação de métricas',
+          items: [
+            { name: 'Combo do Guia - 30 peças', qty: 1, price: 107.0 }
+          ]
+        },
+        {
+          customerName: 'Mariana Silva (Teste)',
+          customerPhone: '62988887777',
+          deliveryType: 'takeaway',
+          address: '',
+          neighborhood: '',
+          paymentMethod: 'Cartão',
+          subtotal: 58.9,
+          total: 60.9,
+          packagingFee: 2.0,
+          notes: 'Retirada no balcão',
+          items: [
+            { name: 'Uramaki Elegância do Oriente (10 un)', qty: 1, price: 58.9 }
+          ]
+        }
+      ];
+
+      const sample = sampleOrders[Math.floor(Math.random() * sampleOrders.length)];
+      try {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'new_order', order: sample })
+        });
+        if (res.ok) {
+          showToast('Pedido de teste criado e contabilizado!');
+          await loadOrders();
+        } else {
+          showToast('Erro ao criar pedido de teste.');
+        }
+      } catch (err) {
+        showToast('Erro de conexão.');
+      }
+    }
+
     function bindEvents() {
             // Modal de Reformulação / Edição
       const btnCloseModal = document.getElementById('btnCloseEditModal');
@@ -1974,6 +2138,16 @@
           loadOrders();
           showToast('Lista de pedidos atualizada!');
         });
+      }
+
+      const btnSimulate = document.getElementById('btnSimulateTestOrder');
+      if (btnSimulate) {
+        btnSimulate.addEventListener('click', simulateTestOrder);
+      }
+
+      const btnClearOrders = document.getElementById('btnClearTestOrders');
+      if (btnClearOrders) {
+        btnClearOrders.addEventListener('click', clearAllOrders);
       }
 
       // Tab Switching

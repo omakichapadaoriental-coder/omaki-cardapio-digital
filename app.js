@@ -2852,7 +2852,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (sendWhatsAppOrderBtn) {
 
-    sendWhatsAppOrderBtn.addEventListener('click', () => {
+    sendWhatsAppOrderBtn.addEventListener('click', async () => {
 
       if (cart.length === 0) {
 
@@ -3209,22 +3209,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-      // Envio de registro silencioso para /api/orders
+      // Envio garantido e auditável para /api/orders
       try {
+        const orderNeighborhoodEl = document.getElementById('orderNeighborhood');
+        const neighborhoodStr = orderNeighborhoodEl ? orderNeighborhoodEl.value.trim() : '';
+
         const orderPayload = {
           action: 'new_order',
           order: {
-            customerName,
-            customerPhone,
-            deliveryType,
-            address: fullAddress,
-            neighborhood: (typeof neighborhood !== 'undefined' ? neighborhood : '') || '',
-            paymentMethod: (typeof paymentMethod !== 'undefined' && paymentMethod === 'pix') ? 'PIX' : ((typeof paymentMethod !== 'undefined' && paymentMethod === 'card') ? 'Cartão' : 'Dinheiro'),
-            changeFor: (typeof changeFor !== 'undefined' ? changeFor : '') || '',
-            subtotal,
+            customerName: customerName || 'Cliente',
+            customerPhone: customerPhone || '',
+            deliveryType: deliveryType || 'takeaway',
+            address: fullAddress || '',
+            neighborhood: neighborhoodStr || '',
+            paymentMethod: selectedPayment || 'PIX',
+            changeFor: (typeof changeVal !== 'undefined' ? changeVal : '') || '',
+            subtotal: subtotal || 0,
             packagingFee: calculatePackagingFee(),
-            total: subtotal + calculatePackagingFee(),
-            notes: (typeof orderNotes !== 'undefined' && orderNotes) ? orderNotes.value.trim() : '',
+            total: grandTotal || (subtotal + calculatePackagingFee()),
+            notes: (typeof generalNotes !== 'undefined' ? generalNotes : '') || '',
             items: cart.map(e => ({
               name: e.item.name || e.item.title,
               qty: e.qty,
@@ -3233,12 +3236,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }))
           }
         };
-        fetch('/api/orders', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(orderPayload)
-        }).catch(err => console.warn('Order logging error:', err));
-      } catch (err) {}
+
+        const jsonBody = JSON.stringify(orderPayload);
+        await Promise.race([
+          fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: jsonBody,
+            keepalive: true
+          }),
+          new Promise(r => setTimeout(r, 450))
+        ]);
+      } catch (err) {
+        console.warn('Erro ao registrar pedido:', err);
+      }
 
       window.open(waUrl, '_blank');
 
@@ -3633,6 +3644,43 @@ document.addEventListener('DOMContentLoaded', () => {
   loadOperationalStatus();
 
   // Periodic check every 60 seconds
+  // --- CAPTURA INTELIGENTE DE CARRINHOS ABANDONADOS (LEADS) ---
+  let abandonedCartTimer = null;
+  function scheduleAbandonedCartPing() {
+    clearTimeout(abandonedCartTimer);
+    abandonedCartTimer = setTimeout(() => {
+      if (!cart || cart.length === 0) return;
+      const cName = orderCustomerName ? orderCustomerName.value.trim() : '';
+      const cPhone = orderCustomerPhone ? orderCustomerPhone.value.trim() : '';
+      const phoneClean = cPhone.replace(/\D/g, '');
+      if (phoneClean.length < 8) return;
+
+      const sub = cart.reduce((acc, e) => acc + (e.item.price * e.qty), 0);
+      const payload = {
+        action: 'abandoned_cart',
+        abandonedCart: {
+          sessionId: sessionStorage.getItem('omaki_cart_session') || ('sess_' + Date.now()),
+          customerName: cName || 'Não informado',
+          customerPhone: cPhone,
+          subtotal: sub,
+          itemsCount: cart.reduce((acc, e) => acc + e.qty, 0),
+          itemsSummary: cart.map(e => `${e.qty}x ${e.item.name || e.item.title}`).join(', '),
+          stepReached: 'checkout'
+        }
+      };
+
+      fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(() => {});
+    }, 3500);
+  }
+
+  if (orderCustomerPhone) orderCustomerPhone.addEventListener('input', scheduleAbandonedCartPing);
+  if (orderCustomerName) orderCustomerName.addEventListener('input', scheduleAbandonedCartPing);
+
   setInterval(loadOperationalStatus, 60000);
 
 });

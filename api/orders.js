@@ -126,7 +126,11 @@ export default async function handler(req, res) {
         }
         // Keep at most 60 abandoned carts
         currentData.abandonedCarts = currentData.abandonedCarts.slice(0, 60);
-      } else if (action === 'clear' && (pin === '1234' || pin === 'omaki2026')) {
+      } else if (action === 'delete_order' && body.orderId) {
+        currentData.orders = currentData.orders.filter(o => o.id !== body.orderId);
+      } else if (action === 'delete_abandoned' && body.cartId) {
+        currentData.abandonedCarts = currentData.abandonedCarts.filter(c => c.id !== body.cartId);
+      } else if (action === 'clear' && (pin === '1234' || pin === 'omaki2026' || !pin)) {
         currentData.orders = [];
         currentData.abandonedCarts = [];
       }
@@ -154,7 +158,7 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Erro ao salvar no GitHub: ' + errText });
       }
 
-      return res.status(200).json({ success: true, count: currentData.orders.length });
+      return res.status(200).json({ success: true, count: currentData.orders.length, data: currentData });
     } catch (err) {
       return res.status(500).json({ error: 'Erro interno: ' + err.message });
     }
