@@ -685,6 +685,223 @@
     .toast.show {
       transform: translateX(-50%) translateY(0);
     }
+  
+    /* Modal de Edição & Reformulação de Item */
+    .edit-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 6, 12, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .edit-modal-card {
+      background: #0f172a;
+      border: 1px solid rgba(229, 192, 123, 0.35);
+      border-radius: 16px;
+      max-width: 620px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.65);
+      display: flex;
+      flex-direction: column;
+    }
+    .edit-modal-header {
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .edit-modal-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .edit-modal-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+    }
+    .edit-modal-code {
+      background: rgba(229, 192, 123, 0.15);
+      border: 1px solid #e5c07b;
+      color: #e5c07b;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .btn-close-modal {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+    .btn-close-modal:hover {
+      color: #fff;
+    }
+    .edit-modal-body {
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .original-notice-box {
+      background: rgba(229, 192, 123, 0.07);
+      border: 1px solid rgba(229, 192, 123, 0.22);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.80rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+    .edit-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-size: 0.80rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+    .form-input {
+      background: #070a11;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #fff;
+      font-size: 0.86rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus {
+      border-color: #e5c07b;
+    }
+    .form-textarea {
+      resize: vertical;
+      font-family: inherit;
+    }
+    .edit-photo-preview {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #1e293b;
+      border: 1px solid rgba(229, 192, 123, 0.3);
+      flex-shrink: 0;
+    }
+    .edit-modal-footer {
+      padding: 16px 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      background: #0a0f1d;
+      border-radius: 0 0 16px 16px;
+    }
+    .btn-modal-action {
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+    .btn-cancel {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #94a3b8;
+    }
+    .btn-cancel:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .btn-restore-default {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+    }
+    .btn-restore-default:hover {
+      background: #dc2626;
+      color: #fff;
+    }
+    .btn-save-edit {
+      background: linear-gradient(135deg, #8b1e3f, #4a0e17);
+      border: 1.5px solid #e5c07b;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(229, 192, 123, 0.25);
+    }
+    .btn-save-edit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(229, 192, 123, 0.35);
+    }
+    .btn-edit-item {
+      background: rgba(229, 192, 123, 0.12);
+      border: 1px solid rgba(229, 192, 123, 0.4);
+      color: #e5c07b;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.80rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-edit-item:hover {
+      background: #e5c07b;
+      color: #070a11;
+    }
+    .badge-edited {
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid #60a5fa;
+      color: #93c5fd;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+    .btn-create-dish {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(22, 101, 52, 0.3));
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      color: #4ade80;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.80rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-create-dish:hover {
+      background: #16a34a;
+      color: #fff;
+    }
+
   </style>
 </head>
 <body>
@@ -750,8 +967,15 @@
       <!-- Granular 187 Items Sold Out Section -->
       <section class="control-card">
         <div class="card-title-row">
-          <h2 class="card-title">🍱 Controle Granular de Itens Esgotados</h2>
-          <span style="font-size:0.82rem; color:var(--text-muted);" id="soldOutCount">0 itens esgotados</span>
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <h2 class="card-title">🍱 Cardápio & Reformulação de Itens</h2>
+            <button type="button" class="btn-create-dish" id="btnOpenCreateDish">+ Criar Novo Prato</button>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <span style="font-size:0.82rem; color:var(--accent-gold);" id="editedCount">0 editados</span>
+            <span style="font-size:0.82rem; color:var(--text-muted);">•</span>
+            <span style="font-size:0.82rem; color:var(--text-muted);" id="soldOutCount">0 esgotados</span>
+          </div>
         </div>
 
         <div class="search-box">
@@ -825,21 +1049,117 @@
 
   </main>
 
+  
+  <!-- Modal de Edição / Reformulação de Item -->
+  <div class="edit-modal-overlay" id="editModalOverlay" style="display: none;">
+    <div class="edit-modal-card">
+      <div class="edit-modal-header">
+        <div class="edit-modal-title-wrap">
+          <h3 class="edit-modal-title" id="modalEditTitle">✏️ Reformular Item</h3>
+          <span class="edit-modal-code" id="modalItemCodeBadge">#000</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="btnCloseEditModal">&times;</button>
+      </div>
+
+      <div class="edit-modal-body">
+        <div class="original-notice-box" id="modalOriginalNotice">
+          💡 <strong>Padrão original do PDV:</strong> <span id="modalOriginalText">-</span>
+        </div>
+
+        <div class="edit-form-grid">
+          <!-- Nome -->
+          <div class="form-group full-width">
+            <label class="form-label" for="editFormName">Nome do Item / Prato *</label>
+            <input type="text" id="editFormName" class="form-input" placeholder="Ex: Combo Oriental - 36 Peças">
+          </div>
+
+          <!-- Preço & Porção -->
+          <div class="form-group">
+            <label class="form-label" for="editFormPrice">Preço de Venda (R$) *</label>
+            <input type="number" id="editFormPrice" class="form-input" step="0.50" min="0" placeholder="0.00">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editFormPortion">Porção / Peças</label>
+            <input type="text" id="editFormPortion" class="form-input" placeholder="Ex: 30 peças, 200g, 2 un">
+          </div>
+
+          <!-- Categoria -->
+          <div class="form-group full-width">
+            <label class="form-label" for="editFormCategory">Categoria no Cardápio</label>
+            <select id="editFormCategory" class="form-input">
+              <option value="Combos Promocionais">Combos Promocionais</option>
+              <option value="Combos Especiais">Combos Especiais</option>
+              <option value="Entradas e Petiscos">Entradas e Petiscos</option>
+              <option value="Sashimis">Sashimis</option>
+              <option value="Uramakis">Uramakis</option>
+              <option value="Hossomakis">Hossomakis</option>
+              <option value="Hot Rolls">Hot Rolls</option>
+              <option value="Niguiris">Niguiris</option>
+              <option value="Joys Especiais">Joys Especiais</option>
+              <option value="Temakis Tradicionais e Especiais">Temakis Tradicionais e Especiais</option>
+              <option value="Pokes Havaianos">Pokes Havaianos</option>
+              <option value="Pratos Quentes">Pratos Quentes</option>
+              <option value="Sobremesas">Sobremesas</option>
+              <option value="Bebidas">Bebidas</option>
+              <option value="Cervejas Especiais">Cervejas Especiais</option>
+              <option value="Doses & Sakês">Doses & Sakês</option>
+              <option value="Adicionais & Molhos">Adicionais & Molhos</option>
+            </select>
+          </div>
+
+          <!-- Descrição -->
+          <div class="form-group full-width">
+            <label class="form-label" for="editFormDesc">Descrição dos Ingredientes & Composição</label>
+            <textarea id="editFormDesc" class="form-input form-textarea" rows="3" placeholder="Ex: 8 Uramaki Salmão Especial, 8 Hot Roll, 8 Hossomaki..."></textarea>
+          </div>
+
+          <!-- Imagem / Foto -->
+          <div class="form-group full-width">
+            <label class="form-label" for="editFormPhoto">URL da Imagem / Foto</label>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <input type="text" id="editFormPhoto" class="form-input" style="flex: 1;" placeholder="/assets/images/...">
+              <img id="editModalPreview" class="edit-photo-preview" src="/assets/images/raw_sashimi_tradicional.png" alt="Preview">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="edit-modal-footer">
+        <button type="button" class="btn-modal-action btn-restore-default" id="btnRestoreItemDefault" style="display: none;">
+          🔄 Restaurar Padrão
+        </button>
+        <div style="display: flex; gap: 10px; margin-left: auto;">
+          <button type="button" class="btn-modal-action btn-cancel" id="btnCancelEditModal">
+            Cancelar
+          </button>
+          <button type="button" class="btn-modal-action btn-save-edit" id="btnSaveItemEdit">
+            💾 Salvar Alterações
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="/data/cardapio.js?v=20261102_omaki_v41"></script>
+  <script src="/data/cardapio.js?v=20261102_omaki_v42"></script>
   <script>
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
       deliveryActive: true,
       manualDeliveryOverride: null,
       deliveryClosedReason: '',
-      soldOutIds: []
+      soldOutIds: [],
+      itemOverrides: {},
+      customItems: []
     };
     let allItems = [];
     let currentCategory = 'all';
     let searchQuery = '';
+    let currentEditingItem = null;
+    let isCreatingNew = false;
     let ordersData = { orders: [], abandonedCarts: [] };
 
     const authOverlay = document.getElementById('authOverlay');
@@ -896,11 +1216,12 @@
       bindEvents();
     }
 
-    // Build the 187 items directly from cardapio.js
+    // Build the items directly from cardapio.js and merge with overrides & custom dishes
     function flattenItems() {
       allItems = [];
       const cData = (typeof CARDAPIO_DATA !== "undefined" ? CARDAPIO_DATA : window.OMAKI_DATA) || {};
       const rawItems = cData.items || [];
+      const overrides = adminState.itemOverrides || {};
 
       rawItems.forEach(it => {
         const num = it.num;
@@ -908,25 +1229,85 @@
         const code = codeRaw ? '#' + codeRaw : '';
         const itemId = num ? `item_${num}` : 'item_' + (it.name || '').toLowerCase().replace(/ /g, '_');
 
+        const ov = overrides[itemId] || (num ? overrides[String(num)] : null) || (it.code ? overrides[String(it.code)] : null);
+        const isEdited = !!ov;
+
         allItems.push({
           id: itemId,
           number: num || '',
           code: code,
-          name: it.name || it.fullName,
-          fullName: it.fullName || it.name,
-          category: it.category || 'Geral',
-          price: it.price || 0,
-          portion: it.portion || '',
-          image: it.photo || it.image || '/assets/images/raw_sashimi_tradicional.png'
+          name: ov && ov.name ? ov.name : (it.name || it.fullName),
+          fullName: ov && ov.name ? ov.name : (it.fullName || it.name),
+          category: ov && ov.category ? ov.category : (it.category || 'Geral'),
+          price: ov && ov.price !== undefined ? parseFloat(ov.price) : (it.price || 0),
+          portion: ov && ov.portion !== undefined ? ov.portion : (it.portion || ''),
+          description: ov && ov.description !== undefined ? ov.description : (it.description || ''),
+          image: ov && ov.image ? ov.image : (it.photo || it.image || '/assets/images/raw_sashimi_tradicional.png'),
+          isEdited: isEdited,
+          isCustom: false,
+          original: {
+            name: it.name || it.fullName,
+            price: it.price || 0,
+            portion: it.portion || '',
+            description: it.description || '',
+            category: it.category || 'Geral',
+            image: it.photo || it.image || '/assets/images/raw_sashimi_tradicional.png'
+          }
         });
       });
 
+      // Append customItems
+      if (Array.isArray(adminState.customItems)) {
+        adminState.customItems.forEach(ci => {
+          allItems.push({
+            id: ci.id,
+            number: ci.number || '',
+            code: ci.code ? '#' + ci.code : '#NOVO',
+            name: ci.name,
+            fullName: ci.name,
+            category: ci.category || 'Combos Especiais',
+            price: parseFloat(ci.price) || 0,
+            portion: ci.portion || '',
+            description: ci.description || '',
+            image: ci.image || '/assets/images/raw_sashimi_tradicional.png',
+            isEdited: true,
+            isCustom: true,
+            original: {
+              name: ci.name,
+              price: parseFloat(ci.price) || 0,
+              portion: ci.portion || '',
+              description: ci.description || '',
+              category: ci.category || 'Combos Especiais',
+              image: ci.image || '/assets/images/raw_sashimi_tradicional.png'
+            }
+          });
+        });
+      }
+
       const tabCount = document.getElementById('tabItemsCount');
       if (tabCount) tabCount.textContent = allItems.length;
+
+      const editedCountEl = document.getElementById('editedCount');
+      if (editedCountEl) {
+        const totalEdited = allItems.filter(i => i.isEdited).length;
+        editedCountEl.textContent = `${totalEdited} editados`;
+      }
     }
 
     function renderCategoryPills() {
-      categoryPills.innerHTML = '<button type="button" class="cat-pill active" data-cat="all">Todos (' + allItems.length + ')</button>';
+      const editedCount = allItems.filter(i => i.isEdited).length;
+      categoryPills.innerHTML = `
+        <button type="button" class="cat-pill active" data-cat="all">Todos (${allItems.length})</button>
+        <button type="button" class="cat-pill" data-cat="__edited__" style="color:var(--accent-gold); border-color:rgba(229,192,123,0.4);">✏️ Reformulados (${editedCount})</button>
+      `;
+
+      categoryPills.querySelector('[data-cat="__edited__"]').addEventListener('click', (e) => {
+        document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        currentCategory = '__edited__';
+        renderItems();
+      });
+
       const uniqueCats = Array.from(new Set(allItems.map(i => i.category))).filter(Boolean).sort();
       uniqueCats.forEach(cat => {
         const count = allItems.filter(i => i.category === cat).length;
@@ -1023,12 +1404,15 @@
       const soldOutIds = adminState.soldOutIds || [];
 
       const filtered = allItems.filter(item => {
-        const matchCat = currentCategory === 'all' || item.category === currentCategory;
+        const matchCat = currentCategory === 'all' 
+          ? true 
+          : (currentCategory === '__edited__' ? item.isEdited : item.category === currentCategory);
         const q = searchQuery.toLowerCase().trim();
         const matchSearch = !q || 
                             item.name.toLowerCase().includes(q) || 
                             (item.code && item.code.toLowerCase().includes(q)) || 
-                            (item.number && item.number.toString().includes(q));
+                            (item.number && item.number.toString().includes(q)) ||
+                            (item.description && item.description.toLowerCase().includes(q));
         return matchCat && matchSearch;
       });
 
@@ -1046,6 +1430,7 @@
         const badgeHtml = item.code 
           ? `<span class="item-code-badge">${item.code}</span>` 
           : `<span class="item-promo-badge">PROMO</span>`;
+        const editedBadgeHtml = item.isEdited ? `<span class="badge-edited">✏️ Editado</span>` : '';
 
         row.innerHTML = `
           <div class="item-info">
@@ -1053,14 +1438,19 @@
             <div class="item-texts">
               <div class="item-name-row">
                 ${badgeHtml}
+                ${editedBadgeHtml}
                 <span class="item-name" title="${item.fullName}">${item.name}</span>
               </div>
               <div class="item-meta">
                 <span class="item-price">${priceFmt}</span> ${item.portion ? `• <span>${item.portion}</span>` : ''} • <span>${item.category}</span>
+                ${item.description ? `<p style="margin:2px 0 0; font-size:0.72rem; color:#64748b; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:380px;">${item.description}</p>` : ''}
               </div>
             </div>
           </div>
           <div class="item-actions">
+            <button type="button" class="btn-edit-item" data-id="${item.id}">
+              ✏️ Reformular
+            </button>
             <span class="tag-status ${isSoldOut ? 'tag-sold-out' : 'tag-available'}">
               ${isSoldOut ? 'Esgotado' : 'Disponível'}
             </span>
@@ -1069,6 +1459,10 @@
             </button>
           </div>
         `;
+
+        row.querySelector('.btn-edit-item').addEventListener('click', () => {
+          openEditModal(item);
+        });
 
         row.querySelector('.btn-toggle-sold-out').addEventListener('click', () => {
           toggleSoldOut(item.id);
@@ -1108,7 +1502,9 @@
           deliveryActive: adminState.deliveryActive,
           manualDeliveryOverride: adminState.manualDeliveryOverride,
           deliveryClosedReason: adminState.deliveryClosedReason || '',
-          soldOutIds: adminState.soldOutIds || []
+          soldOutIds: adminState.soldOutIds || [],
+          itemOverrides: adminState.itemOverrides || {},
+          customItems: adminState.customItems || []
         };
         const res = await fetch('/api/status', {
           method: 'POST',

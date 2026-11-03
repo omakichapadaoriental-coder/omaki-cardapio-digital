@@ -26,11 +26,15 @@ export default async function handler(req, res) {
           manualDeliveryOverride: null,
           deliveryClosedReason: '',
           soldOutIds: [],
+          itemOverrides: {},
+          customItems: [],
           lastUpdated: new Date().toISOString()
         });
       }
       const fileData = await getRes.json();
       const content = JSON.parse(Buffer.from(fileData.content, 'base64').toString('utf-8'));
+      if (!content.itemOverrides) content.itemOverrides = {};
+      if (!content.customItems) content.customItems = [];
       return res.status(200).json(content);
     } catch (err) {
       return res.status(200).json({
@@ -38,6 +42,8 @@ export default async function handler(req, res) {
         manualDeliveryOverride: null,
         deliveryClosedReason: '',
         soldOutIds: [],
+        itemOverrides: {},
+        customItems: [],
         lastUpdated: new Date().toISOString(),
         error: err.message
       });
@@ -47,7 +53,7 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-      const { pin, deliveryActive, manualDeliveryOverride, deliveryClosedReason, soldOutIds } = body || {};
+      const { pin, deliveryActive, manualDeliveryOverride, deliveryClosedReason, soldOutIds, itemOverrides, customItems } = body || {};
 
       if (pin !== '1234' && pin !== 'omaki2026') {
         return res.status(401).json({ error: 'PIN de segurança incorreto. Tente novamente.' });
@@ -70,12 +76,19 @@ export default async function handler(req, res) {
       const fileData = await getRes.json();
       const currentSha = fileData.sha;
 
-      // 2. Prepare new status
+      let currentContent = {};
+      try {
+        currentContent = JSON.parse(Buffer.from(fileData.content, 'base64').toString('utf-8'));
+      } catch (e) {}
+
+      // 2. Prepare new status with item overrides and custom items
       const newStatus = {
-        deliveryActive: typeof deliveryActive === 'boolean' ? deliveryActive : true,
-        manualDeliveryOverride: manualDeliveryOverride !== undefined ? manualDeliveryOverride : null,
-        deliveryClosedReason: deliveryClosedReason || '',
-        soldOutIds: Array.isArray(soldOutIds) ? soldOutIds : [],
+        deliveryActive: typeof deliveryActive === 'boolean' ? deliveryActive : (currentContent.deliveryActive !== undefined ? currentContent.deliveryActive : true),
+        manualDeliveryOverride: manualDeliveryOverride !== undefined ? manualDeliveryOverride : (currentContent.manualDeliveryOverride !== undefined ? currentContent.manualDeliveryOverride : null),
+        deliveryClosedReason: deliveryClosedReason !== undefined ? deliveryClosedReason : (currentContent.deliveryClosedReason || ''),
+        soldOutIds: Array.isArray(soldOutIds) ? soldOutIds : (currentContent.soldOutIds || []),
+        itemOverrides: (itemOverrides && typeof itemOverrides === 'object') ? itemOverrides : (currentContent.itemOverrides || {}),
+        customItems: Array.isArray(customItems) ? customItems : (currentContent.customItems || []),
         lastUpdated: new Date().toISOString()
       };
 

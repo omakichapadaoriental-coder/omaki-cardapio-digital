@@ -3231,6 +3231,115 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- GESTÃO OPERACIONAL, HORÁRIOS & CORTE 22:30 ---
 
+  // --- REFORMULAÇÃO DINÂMICA DE ITENS & PREÇOS (ADMIN OVERRIDES) ---
+  function applyItemOverrides() {
+    if (!adminState) return;
+    const overrides = adminState.itemOverrides || {};
+    const customItems = adminState.customItems || [];
+    const hasOverrides = Object.keys(overrides).length > 0;
+    const hasCustom = customItems.length > 0;
+
+    if (!hasOverrides && !hasCustom) return;
+
+    function findOverride(target) {
+      if (!target) return null;
+      const num = target.num || target.number;
+      const code = target.code;
+      const id = target.id;
+      if (id && overrides[id]) return overrides[id];
+      if (num && overrides['item_' + num]) return overrides['item_' + num];
+      if (num && overrides[String(num)]) return overrides[String(num)];
+      if (code && overrides['item_' + code]) return overrides['item_' + code];
+      if (code && overrides[String(code)]) return overrides[String(code)];
+      return null;
+    }
+
+    // 1. Atualiza pratos principais em data.dishes
+    if (data && Array.isArray(data.dishes)) {
+      data.dishes.forEach(dish => {
+        const ov = findOverride(dish);
+        if (ov) {
+          if (ov.name) {
+            dish.name = ov.name;
+            dish.title = ov.name;
+          }
+          if (ov.price !== undefined && ov.price !== null && ov.price !== '') {
+            dish.price = parseFloat(ov.price);
+            dish.priceLabel = formatMoney(dish.price);
+          }
+          if (ov.description !== undefined) dish.description = ov.description;
+          if (ov.portion !== undefined) dish.portion = ov.portion;
+          if (ov.category) dish.category = ov.category;
+          if (ov.image) {
+            dish.photo = ov.image;
+            dish.image = ov.image;
+          }
+        }
+
+        // Se for prato agrupado, atualiza também as opções internas
+        if (dish.isGrouped && Array.isArray(dish.options)) {
+          dish.options.forEach(opt => {
+            const optOv = findOverride(opt);
+            if (optOv) {
+              if (optOv.name) opt.name = optOv.name;
+              if (optOv.price !== undefined && optOv.price !== null && optOv.price !== '') {
+                opt.price = parseFloat(optOv.price);
+              }
+              if (optOv.description !== undefined) opt.description = optOv.description;
+              if (optOv.portion !== undefined) opt.portion = optOv.portion;
+            }
+          });
+          const prices = dish.options.map(o => o.price).filter(p => typeof p === 'number');
+          if (prices.length > 0) {
+            const minP = Math.min(...prices);
+            const maxP = Math.max(...prices);
+            dish.minPrice = minP;
+            dish.maxPrice = maxP;
+            dish.basePrice = minP;
+            dish.priceLabel = minP === maxP ? formatMoney(minP) : `A partir de ${formatMoney(minP)}`;
+          }
+        }
+      });
+
+      // 2. Adiciona pratos customizados criados no Admin se ainda não existirem
+      customItems.forEach(ci => {
+        if (!data.dishes.some(d => d.id === ci.id)) {
+          data.dishes.push({
+            id: ci.id,
+            num: ci.number || null,
+            code: ci.code || '',
+            name: ci.name,
+            title: ci.name,
+            price: parseFloat(ci.price) || 0,
+            priceLabel: formatMoney(parseFloat(ci.price) || 0),
+            description: ci.description || '',
+            portion: ci.portion || '',
+            category: ci.category || 'Combos Especiais',
+            photo: ci.image || '/assets/images/raw_sashimi_tradicional.png',
+            image: ci.image || '/assets/images/raw_sashimi_tradicional.png',
+            isGrouped: false,
+            isNew: true
+          });
+        }
+      });
+    }
+
+    // 3. Atualiza catálogo bruto (data.items)
+    if (data && Array.isArray(data.items)) {
+      data.items.forEach(it => {
+        const ov = findOverride(it);
+        if (ov) {
+          if (ov.name) { it.name = ov.name; it.fullName = ov.name; }
+          if (ov.price !== undefined && ov.price !== null && ov.price !== '') it.price = parseFloat(ov.price);
+          if (ov.description !== undefined) it.description = ov.description;
+          if (ov.portion !== undefined) it.portion = ov.portion;
+          if (ov.category) it.category = ov.category;
+          if (ov.image) it.photo = ov.image;
+        }
+      });
+    }
+  }
+
   async function loadOperationalStatus() {
     try {
       const res = await fetch('/api/status?t=' + Date.now());
@@ -3247,6 +3356,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (local) adminState = JSON.parse(local);
       } catch (err) {}
     }
+    applyItemOverrides();
     checkDeliveryAvailability();
     renderMenu('', currentActiveCategory);
   }
