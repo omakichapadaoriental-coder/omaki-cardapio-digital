@@ -480,54 +480,133 @@
       font-weight: 700;
     }
 
+    /* Ações & Status do Item - Design Premium & Coeso */
     .item-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       flex-shrink: 0;
     }
 
-    .tag-status {
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 6px;
-    }
-    .tag-available {
-      background: rgba(34, 197, 94, 0.1);
-      color: #4ade80;
-    }
-    .tag-sold-out {
-      background: rgba(239, 68, 68, 0.15);
-      color: #f87171;
+    .item-status-wrapper {
+      display: inline-flex;
+      align-items: center;
     }
 
-    .btn-toggle-sold-out {
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 0.80rem;
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
       font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
+      letter-spacing: 0.02em;
+      user-select: none;
+      transition: all 0.2s ease;
     }
-    .btn-mark-sold-out {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      color: #f87171;
-    }
-    .btn-mark-sold-out:hover {
-      background: #dc2626;
-      color: #fff;
-    }
-    .btn-restore {
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid rgba(34, 197, 94, 0.35);
+
+    .status-indicator.status-available {
+      background: rgba(34, 197, 94, 0.10);
       color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.22);
     }
-    .btn-restore:hover {
-      background: #16a34a;
-      color: #fff;
+
+    .status-indicator.status-sold-out {
+      background: rgba(239, 68, 68, 0.10);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.22);
+    }
+
+    .status-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-available .status-pulse {
+      background: #22c55e;
+      box-shadow: 0 0 6px rgba(34, 197, 94, 0.85);
+    }
+
+    .status-sold-out .status-pulse {
+      background: #ef4444;
+      box-shadow: 0 0 6px rgba(239, 68, 68, 0.85);
+    }
+
+    .btn-group-actions {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-action-edit, .btn-action-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 28px;
+      padding: 0 11px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .btn-action-edit {
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-action-edit:hover {
+      background: rgba(229, 192, 123, 0.16);
+      color: #f6d28b;
+      border-color: rgba(229, 192, 123, 0.45);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(229, 192, 123, 0.2);
+    }
+
+    .btn-action-exhaust {
+      background: rgba(239, 68, 68, 0.08);
+      color: #fca5a5;
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-action-exhaust:hover {
+      background: rgba(239, 68, 68, 0.22);
+      color: #fee2e2;
+      border-color: rgba(239, 68, 68, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-action-reactivate {
+      background: rgba(34, 197, 94, 0.12);
+      color: #86efac;
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .btn-action-reactivate:hover {
+      background: rgba(34, 197, 94, 0.25);
+      color: #bbf7d0;
+      border-color: rgba(34, 197, 94, 0.6);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 640px) {
+      .item-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
     }
 
     /* KPI Cards for Metrics */
@@ -1144,7 +1223,7 @@
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="/data/cardapio.js?v=20261102_omaki_v42"></script>
+  <script src="/data/cardapio.js?v=20261102_omaki_v43"></script>
   <script>
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
@@ -1338,6 +1417,8 @@
         const res = await fetch('/api/status?t=' + Date.now());
         if (res.ok) {
           adminState = await res.json();
+          flattenItems();
+          renderCategoryPills();
         }
       } catch (e) {
         console.warn('Erro ao carregar status operacional:', e);
@@ -1448,23 +1529,35 @@
             </div>
           </div>
           <div class="item-actions">
-            <button type="button" class="btn-edit-item" data-id="${item.id}">
-              ✏️ Reformular
-            </button>
-            <span class="tag-status ${isSoldOut ? 'tag-sold-out' : 'tag-available'}">
-              ${isSoldOut ? 'Esgotado' : 'Disponível'}
-            </span>
-            <button type="button" class="btn-toggle-sold-out ${isSoldOut ? 'btn-restore' : 'btn-mark-sold-out'}" data-id="${item.id}">
-              ${isSoldOut ? '✓ Reativar' : '✕ Esgotar'}
-            </button>
+            <div class="item-status-wrapper">
+              <span class="status-indicator ${isSoldOut ? 'status-sold-out' : 'status-available'}">
+                <span class="status-pulse"></span>
+                <span>${isSoldOut ? 'Esgotado' : 'Disponível'}</span>
+              </span>
+            </div>
+            <div class="btn-group-actions">
+              <button type="button" class="btn-action-edit" data-id="${item.id}" title="Editar nome, preço e ingredientes">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                <span>Editar</span>
+              </button>
+              <button type="button" class="btn-action-toggle ${isSoldOut ? 'btn-action-reactivate' : 'btn-action-exhaust'}" data-id="${item.id}" title="${isSoldOut ? 'Reativar no cardápio' : 'Marcar como esgotado temporariamente'}">
+                ${isSoldOut ? `
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Reativar</span>
+                ` : `
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  <span>Esgotar</span>
+                `}
+              </button>
+            </div>
           </div>
         `;
 
-        row.querySelector('.btn-edit-item').addEventListener('click', () => {
+        row.querySelector('.btn-action-edit').addEventListener('click', () => {
           openEditModal(item);
         });
 
-        row.querySelector('.btn-toggle-sold-out').addEventListener('click', () => {
+        row.querySelector('.btn-action-toggle').addEventListener('click', () => {
           toggleSoldOut(item.id);
         });
 
@@ -1665,7 +1758,203 @@
       });
     }
 
+    
+    // --- MODAL DE EDIÇÃO & REFORMULAÇÃO DE ITENS (ADMIN ENGINE) ---
+    function openEditModal(item) {
+      currentEditingItem = item;
+      const modal = document.getElementById('editModalOverlay');
+      if (!modal) return;
+
+      const titleEl = document.getElementById('modalEditTitle');
+      const codeBadgeEl = document.getElementById('modalItemCodeBadge');
+      const origNoticeEl = document.getElementById('modalOriginalNotice');
+      const origTextEl = document.getElementById('modalOriginalText');
+      const nameInput = document.getElementById('editFormName');
+      const priceInput = document.getElementById('editFormPrice');
+      const portionInput = document.getElementById('editFormPortion');
+      const catSelect = document.getElementById('editFormCategory');
+      const descInput = document.getElementById('editFormDesc');
+      const photoInput = document.getElementById('editFormPhoto');
+      const previewImg = document.getElementById('editModalPreview');
+      const btnRestore = document.getElementById('btnRestoreItemDefault');
+
+      if (titleEl) titleEl.textContent = item.isCustom ? '✨ Novo Prato Personalizado' : '✏️ Editar Item';
+      if (codeBadgeEl) codeBadgeEl.textContent = item.code || '#NOVO';
+
+      if (origNoticeEl && origTextEl) {
+        if (item.original && !item.isCustom) {
+          origNoticeEl.style.display = 'block';
+          origTextEl.textContent = `${item.original.name} — R$ ${Number(item.original.price).toFixed(2).replace('.', ',')} (${item.original.portion || 'sem porção'})`;
+        } else {
+          origNoticeEl.style.display = 'none';
+        }
+      }
+
+      if (nameInput) nameInput.value = item.name || '';
+      if (priceInput) priceInput.value = (typeof item.price === 'number' && !isNaN(item.price) && item.price > 0) ? item.price : '';
+      if (portionInput) portionInput.value = item.portion || '';
+      if (catSelect && item.category) catSelect.value = item.category;
+      if (descInput) descInput.value = item.description || '';
+      if (photoInput) photoInput.value = item.image || '';
+      if (previewImg) previewImg.src = item.image || '/assets/images/raw_sashimi_tradicional.png';
+
+      if (btnRestore) {
+        btnRestore.style.display = (item.isEdited && !item.isCustom) ? 'inline-block' : 'none';
+      }
+
+      modal.style.display = 'flex';
+      setTimeout(() => { if (nameInput) nameInput.focus(); }, 100);
+    }
+
+    function closeEditModal() {
+      const modal = document.getElementById('editModalOverlay');
+      if (modal) modal.style.display = 'none';
+      currentEditingItem = null;
+    }
+
+    async function saveItemEdit() {
+      if (!currentEditingItem) return;
+
+      const nameInput = document.getElementById('editFormName');
+      const priceInput = document.getElementById('editFormPrice');
+      const portionInput = document.getElementById('editFormPortion');
+      const catSelect = document.getElementById('editFormCategory');
+      const descInput = document.getElementById('editFormDesc');
+      const photoInput = document.getElementById('editFormPhoto');
+
+      const newName = nameInput ? nameInput.value.trim() : '';
+      const newPrice = priceInput ? parseFloat(priceInput.value) : 0;
+      const newPortion = portionInput ? portionInput.value.trim() : '';
+      const newCat = catSelect ? catSelect.value : 'Combos Especiais';
+      const newDesc = descInput ? descInput.value.trim() : '';
+      const newPhoto = photoInput ? photoInput.value.trim() : '';
+
+      if (!newName) {
+        alert('Por favor, informe o nome do item.');
+        return;
+      }
+      if (isNaN(newPrice) || newPrice < 0) {
+        alert('Por favor, informe um preço válido.');
+        return;
+      }
+
+      if (!adminState.itemOverrides) adminState.itemOverrides = {};
+      if (!adminState.customItems) adminState.customItems = [];
+
+      const overrideData = {
+        name: newName,
+        price: newPrice,
+        portion: newPortion,
+        category: newCat,
+        description: newDesc,
+        image: newPhoto || '/assets/images/raw_sashimi_tradicional.png'
+      };
+
+      if (currentEditingItem.isCustom) {
+        const cIdx = adminState.customItems.findIndex(ci => ci.id === currentEditingItem.id);
+        if (cIdx > -1) {
+          adminState.customItems[cIdx] = { ...adminState.customItems[cIdx], ...overrideData };
+        } else {
+          adminState.customItems.push({
+            id: currentEditingItem.id,
+            code: currentEditingItem.code ? currentEditingItem.code.replace('#', '') : 'NOVO',
+            ...overrideData
+          });
+        }
+      } else {
+        adminState.itemOverrides[currentEditingItem.id] = overrideData;
+      }
+
+      // Atualiza o objeto em memória
+      currentEditingItem.name = newName;
+      currentEditingItem.fullName = newName;
+      currentEditingItem.price = newPrice;
+      currentEditingItem.portion = newPortion;
+      currentEditingItem.category = newCat;
+      currentEditingItem.description = newDesc;
+      currentEditingItem.image = overrideData.image;
+      currentEditingItem.isEdited = true;
+
+      closeEditModal();
+      renderCategoryPills();
+      renderItems();
+      showToast('Item atualizado com sucesso no cardápio!');
+      await saveState();
+    }
+
+    async function restoreItemDefault() {
+      if (!currentEditingItem || !currentEditingItem.original) return;
+      if (!confirm(`Deseja restaurar as configurações originais de "${currentEditingItem.original.name}"?`)) return;
+
+      if (adminState.itemOverrides && adminState.itemOverrides[currentEditingItem.id]) {
+        delete adminState.itemOverrides[currentEditingItem.id];
+      }
+
+      const orig = currentEditingItem.original;
+      currentEditingItem.name = orig.name;
+      currentEditingItem.fullName = orig.name;
+      currentEditingItem.price = orig.price;
+      currentEditingItem.portion = orig.portion;
+      currentEditingItem.category = orig.category;
+      currentEditingItem.description = orig.description;
+      currentEditingItem.image = orig.image;
+      currentEditingItem.isEdited = false;
+
+      closeEditModal();
+      renderCategoryPills();
+      renderItems();
+      showToast('Configurações originais restauradas!');
+      await saveState();
+    }
+
     function bindEvents() {
+            // Modal de Reformulação / Edição
+      const btnCloseModal = document.getElementById('btnCloseEditModal');
+      const btnCancelModal = document.getElementById('btnCancelEditModal');
+      const btnSaveModal = document.getElementById('btnSaveItemEdit');
+      const btnRestoreModal = document.getElementById('btnRestoreItemDefault');
+      const editModalOverlay = document.getElementById('editModalOverlay');
+      const editFormPhoto = document.getElementById('editFormPhoto');
+      const editModalPreview = document.getElementById('editModalPreview');
+      const btnOpenCreateDish = document.getElementById('btnOpenCreateDish');
+
+      if (btnCloseModal) btnCloseModal.addEventListener('click', closeEditModal);
+      if (btnCancelModal) btnCancelModal.addEventListener('click', closeEditModal);
+      if (btnSaveModal) btnSaveModal.addEventListener('click', saveItemEdit);
+      if (btnRestoreModal) btnRestoreModal.addEventListener('click', restoreItemDefault);
+
+      if (editModalOverlay) {
+        editModalOverlay.addEventListener('click', (e) => {
+          if (e.target === editModalOverlay) closeEditModal();
+        });
+      }
+
+      if (editFormPhoto && editModalPreview) {
+        editFormPhoto.addEventListener('input', (e) => {
+          const val = e.target.value.trim();
+          if (val) editModalPreview.src = val;
+        });
+      }
+
+      if (btnOpenCreateDish) {
+        btnOpenCreateDish.addEventListener('click', () => {
+          const newItem = {
+            id: 'custom_' + Date.now(),
+            code: '#NOVO',
+            name: '',
+            price: 0,
+            portion: '',
+            category: 'Combos Especiais',
+            description: '',
+            image: '/assets/images/raw_sashimi_tradicional.png',
+            isCustom: true,
+            isEdited: false
+          };
+          allItems.unshift(newItem);
+          openEditModal(newItem);
+        });
+      }
+
       btnStopDelivery.addEventListener('click', () => {
         setDeliveryState(false, 'Entregas encerradas mais cedo pela equipe.');
       });
