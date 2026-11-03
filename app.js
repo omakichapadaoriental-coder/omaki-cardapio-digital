@@ -3282,6 +3282,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (num && overrides[String(num)]) return overrides[String(num)];
       if (code && overrides['item_' + code]) return overrides['item_' + code];
       if (code && overrides[String(code)]) return overrides[String(code)];
+      const rawName = (target.name || target.title || target.fullName || '').trim().toLowerCase();
+      if (rawName && overrides['name_' + rawName]) return overrides['name_' + rawName];
       return null;
     }
 
