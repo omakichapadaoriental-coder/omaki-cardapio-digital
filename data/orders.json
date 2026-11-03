@@ -1,55 +1,5 @@
 {
-  "orders": [
-    {
-      "id": "OMK-4829",
-      "createdAt": "2026-11-03T23:39:04.705Z",
-      "customerName": "ddd",
-      "customerPhone": "1111111111",
-      "deliveryType": "delivery",
-      "address": "Rua 4, 30 — Alto",
-      "neighborhood": "Alto",
-      "paymentMethod": "Pix",
-      "changeFor": "",
-      "subtotal": 144.9,
-      "total": 148.9,
-      "notes": "",
-      "items": [
-        {
-          "name": "[#112] Combo Camarão - 30 Peças",
-          "qty": 1,
-          "price": 144.9,
-          "option": null
-        }
-      ]
-    },
-    {
-      "id": "OMK-7305",
-      "createdAt": "2026-11-03T21:29:27.470Z",
-      "customerName": "Teste André",
-      "customerPhone": "",
-      "deliveryType": "takeaway",
-      "address": "",
-      "neighborhood": "",
-      "paymentMethod": "PIX",
-      "changeFor": "",
-      "subtotal": 0,
-      "total": 100,
-      "notes": "",
-      "items": []
-    }
-  ],
-  "abandonedCarts": [
-    {
-      "id": "ABN-5488",
-      "createdAt": "2026-11-03T23:21:02.335Z",
-      "sessionId": "sess_1793748063326",
-      "customerName": "ddd",
-      "customerPhone": "61998815857",
-      "subtotal": 144.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Camarão - 30 Peças",
-      "stepReached": "checkout"
-    }
-  ],
-  "lastUpdated": "2026-11-03T23:39:04.705Z"
+  "orders": [],
+  "abandonedCarts": [],
+  "lastUpdated": "2026-11-03T23:41:24.651Z"
 }
