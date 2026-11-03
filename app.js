@@ -2409,6 +2409,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const exemptKeywords = ['sak', 'cerveja', 'refrigerante', 'bebida', 'suco', 'dose', 'agua', 'água', 'adicionais', 'molho', 'acompanhamento', 'descart'];
     let hasFood = false;
     let maxComboPieces = 0;
+    let maxItemPieces = 0;
+    let totalFoodPieces = 0;
 
     cart.forEach(entry => {
       const item = entry.item;
@@ -2422,31 +2424,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
       hasFood = true;
       const isCombo = cat.includes('combo') || name.includes('combo') || (item.num && item.num >= 57 && item.num <= 60) || (item.num && item.num >= 177 && item.num <= 187);
-      if (isCombo) {
-        const text = `${name} ${portion} ${desc}`;
-        const match = text.match(/(\d+)\s*(?:peças|pecas|pçs|pcs|un)/i);
-        let pieces = match ? parseInt(match[1], 10) : 0;
-        if (!pieces) {
-          if (name.includes('combo 8')) pieces = 60;
-          else if (name.includes('combo 5') || name.includes('omaki') || name.includes('chapada')) pieces = 40;
-          else if (name.includes('oriental')) pieces = 36;
-          else if (name.includes('combo 4')) pieces = 35;
-          else if (name.includes('combo 1') || name.includes('imperial')) pieces = 25;
-          else if (name.includes('joy') || name.includes('misto') || name.includes('hossomaki')) pieces = 28;
-          else if (name.includes('camarão') || name.includes('salmão') || name.includes('hot') || name.includes('guia')) pieces = 30;
-          else pieces = 25;
-        }
-        if (pieces > maxComboPieces) maxComboPieces = pieces;
+
+      const text = name + ' ' + portion + ' ' + desc;
+      const match = text.match(/(\d+)\s*(?:pe[çc]as|p[çc]s|pcs|un|fatias)/i);
+      let pieces = match ? parseInt(match[1], 10) : 0;
+      if (!pieces && isCombo) {
+        if (name.includes('combo 8')) pieces = 60;
+        else if (name.includes('combo 5') || name.includes('omaki') || name.includes('chapada')) pieces = 40;
+        else if (name.includes('oriental')) pieces = 36;
+        else if (name.includes('combo 4')) pieces = 35;
+        else if (name.includes('combo 1') || name.includes('imperial')) pieces = 25;
+        else if (name.includes('joy') || name.includes('misto') || name.includes('hossomaki')) pieces = 28;
+        else if (name.includes('camar') || name.includes('salm') || name.includes('hot') || name.includes('guia')) pieces = 30;
+        else pieces = 25;
       }
+
+      if (isCombo && pieces > maxComboPieces) {
+        maxComboPieces = pieces;
+      }
+      if (pieces > maxItemPieces) {
+        maxItemPieces = pieces;
+      }
+      totalFoodPieces += (pieces || 1) * (entry.qty || 1);
     });
 
     if (!hasFood) return { fee: 0, label: '', tier: 'exempt' };
-    // Regra Omaki:
-    // Combos acima de 35 peças é a embalagem grande que custa 4 reais (>= 35)
-    // Entre 25 a 34 peças é a média e custa 3 reais
-    // Para menos que isso (< 25 peças ou itens normais) é a embalagem pequena que custa 2 reais
-    if (maxComboPieces >= 35) return { fee: 4.0, label: 'Embalagem (Grande)', tier: 'large' };
-    if (maxComboPieces >= 25) return { fee: 3.0, label: 'Embalagem (Média)', tier: 'medium' };
+
+    // Regra Omaki (Atualizada - Novembro 2026):
+    // 1. Acima de 30 peças (>= 30): Embalagem Grande (R$ 4,00)
+    // 2. Entre 21 e 29 peças: Embalagem Média (R$ 3,00)
+    // 3. Menores que isso (< 21 peças ou itens individuais/entradas): Embalagem Pequena (R$ 2,00)
+    // Princípio do item subordinado: O item maior dita a embalagem principal (itens menores vão junto).
+    let referencePieces = maxComboPieces;
+    if (referencePieces === 0) {
+      referencePieces = totalFoodPieces;
+    } else {
+      referencePieces = Math.max(maxComboPieces, maxItemPieces);
+      if (totalFoodPieces >= 30 && maxComboPieces >= 21 && (totalFoodPieces - maxComboPieces) >= 15) {
+        referencePieces = totalFoodPieces;
+      }
+    }
+
+    if (referencePieces >= 30) return { fee: 4.0, label: 'Embalagem (Grande)', tier: 'large' };
+    if (referencePieces >= 21) return { fee: 3.0, label: 'Embalagem (Média)', tier: 'medium' };
     return { fee: 2.0, label: 'Embalagem (Pequena)', tier: 'small' };
   }
 
