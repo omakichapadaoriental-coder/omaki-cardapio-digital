@@ -898,6 +898,112 @@
       resize: vertical;
       font-family: inherit;
     }
+    .edit-photo-uploader-box {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: #070a11;
+      border: 1.5px dashed rgba(229, 192, 123, 0.35);
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: all 0.2s ease;
+    }
+    .edit-photo-uploader-box:hover {
+      border-color: #e5c07b;
+      background: rgba(229, 192, 123, 0.03);
+    }
+    .edit-photo-preview-wrap {
+      width: 78px;
+      height: 78px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1e293b;
+      border: 1.5px solid rgba(229, 192, 123, 0.4);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .edit-photo-preview-large {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .edit-photo-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .edit-photo-empty small {
+      font-size: 0.68rem;
+      margin-top: 3px;
+      color: #64748b;
+    }
+    .edit-photo-actions-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .edit-photo-btn-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-photo-action {
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      border: none;
+    }
+    .btn-upload-photo {
+      background: linear-gradient(135deg, rgba(229, 192, 123, 0.2), rgba(229, 192, 123, 0.05));
+      border: 1px solid #e5c07b;
+      color: #e5c07b;
+    }
+    .btn-upload-photo:hover {
+      background: #e5c07b;
+      color: #0b0f19;
+    }
+    .btn-remove-photo {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #f87171;
+    }
+    .btn-remove-photo:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+    .photo-hint-text {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      line-height: 1.3;
+    }
+    .photo-link-details {
+      margin-top: 4px;
+      font-size: 0.74rem;
+      color: #64748b;
+    }
+    .photo-link-details summary {
+      cursor: pointer;
+      user-select: none;
+      color: #94a3b8;
+    }
+    .photo-link-details summary:hover {
+      color: #e5c07b;
+    }
     .edit-photo-preview {
       width: 46px;
       height: 46px;
@@ -1205,12 +1311,36 @@
             <textarea id="editFormDesc" class="form-input form-textarea" rows="3" placeholder="Ex: 8 Uramaki Salmão Especial, 8 Hot Roll, 8 Hossomaki..."></textarea>
           </div>
 
-          <!-- Imagem / Foto -->
+          <!-- Imagem / Foto com Upload Direto e Remoção -->
           <div class="form-group full-width">
-            <label class="form-label" for="editFormPhoto">URL da Imagem / Foto</label>
-            <div style="display: flex; gap: 10px; align-items: center;">
-              <input type="text" id="editFormPhoto" class="form-input" style="flex: 1;" placeholder="/assets/images/...">
-              <img id="editModalPreview" class="edit-photo-preview" src="/assets/images/raw_sashimi_tradicional.png" alt="Preview">
+            <label class="form-label">Foto do Prato / Item</label>
+            <div class="edit-photo-uploader-box">
+              <div class="edit-photo-preview-wrap" id="editPhotoPreviewWrap">
+                <img id="editModalPreview" class="edit-photo-preview-large" src="/assets/images/raw_sashimi_tradicional.png" alt="Preview da Foto">
+                <div id="editPhotoEmptyState" class="edit-photo-empty" style="display: none;">
+                  <span style="font-size: 1.8rem;">🍣</span>
+                  <small>Sem foto</small>
+                </div>
+              </div>
+              <div class="edit-photo-actions-wrap">
+                <input type="file" id="editFormFileInput" accept="image/*" style="display: none;">
+                <input type="hidden" id="editFormPhoto" value="">
+                <div class="edit-photo-btn-group">
+                  <button type="button" class="btn-photo-action btn-upload-photo" id="btnTriggerPhotoUpload">
+                    📷 Escolher Foto do Aparelho
+                  </button>
+                  <button type="button" class="btn-photo-action btn-remove-photo" id="btnRemovePhoto">
+                    🗑️ Remover Foto
+                  </button>
+                </div>
+                <div class="photo-hint-text">
+                  Selecione qualquer foto do celular ou computador. Compressão e otimização HD automáticas para o cardápio.
+                </div>
+                <details class="photo-link-details" id="photoLinkDetails">
+                  <summary>Ou vincular link / URL externa</summary>
+                  <input type="text" id="editFormPhotoUrlInput" class="form-input" style="width: 100%; margin-top: 6px;" placeholder="https://... ou /assets/images/...">
+                </details>
+              </div>
             </div>
           </div>
         </div>
@@ -1235,7 +1365,7 @@
   <div class="toast" id="toastMessage">Alteração salva com sucesso!</div>
 
   <!-- Scripts -->
-  <script src="/data/cardapio.js?v=20261103_omaki_v48"></script>
+  <script src="/data/cardapio.js?v=20261103_omaki_v49"></script>
   <script>
     let adminPin = localStorage.getItem('omaki_admin_pin') || '';
     let adminState = {
@@ -1874,8 +2004,32 @@
       populateCategorySelect(item.category || 'Combos Especiais');
 
       if (descInput) descInput.value = item.description || '';
-      if (photoInput) photoInput.value = item.image || '';
-      if (previewImg) previewImg.src = item.image || '/assets/images/raw_sashimi_tradicional.png';
+      const fileInput = document.getElementById('editFormFileInput');
+      const photoUrlInput = document.getElementById('editFormPhotoUrlInput');
+      const emptyState = document.getElementById('editPhotoEmptyState');
+      const detailsEl = document.getElementById('photoLinkDetails');
+
+      if (fileInput) fileInput.value = '';
+      if (detailsEl) detailsEl.open = false;
+
+      const currentImg = (item.image !== undefined && item.image !== null) ? item.image : (item.original && item.original.image ? item.original.image : '');
+      if (currentImg && currentImg !== 'null') {
+        if (photoInput) photoInput.value = currentImg;
+        if (photoUrlInput) photoUrlInput.value = currentImg.startsWith('data:') ? '' : currentImg;
+        if (previewImg) {
+          previewImg.src = currentImg;
+          previewImg.style.display = 'block';
+        }
+        if (emptyState) emptyState.style.display = 'none';
+      } else {
+        if (photoInput) photoInput.value = '';
+        if (photoUrlInput) photoUrlInput.value = '';
+        if (previewImg) {
+          previewImg.src = '';
+          previewImg.style.display = 'none';
+        }
+        if (emptyState) emptyState.style.display = 'flex';
+      }
 
       if (btnRestore) {
         btnRestore.style.display = (item.isEdited && !item.isCustom) ? 'inline-block' : 'none';
@@ -2160,10 +2314,100 @@
         });
       }
 
-      if (editFormPhoto && editModalPreview) {
-        editFormPhoto.addEventListener('input', (e) => {
+      // Uploader de fotos do item (Upload, Compressão Canvas e Remoção)
+      const btnTriggerUpload = document.getElementById('btnTriggerPhotoUpload');
+      const btnRemovePhoto = document.getElementById('btnRemovePhoto');
+      const fileInput = document.getElementById('editFormFileInput');
+      const photoInput = document.getElementById('editFormPhoto');
+      const photoUrlInput = document.getElementById('editFormPhotoUrlInput');
+      const previewImg = document.getElementById('editModalPreview');
+      const emptyState = document.getElementById('editPhotoEmptyState');
+
+      if (btnTriggerUpload && fileInput) {
+        btnTriggerUpload.addEventListener('click', () => fileInput.click());
+      }
+
+      if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (!file) return;
+
+          showToast('Processando e otimizando imagem...');
+
+          const reader = new FileReader();
+          reader.onload = (re) => {
+            const img = new Image();
+            img.onload = () => {
+              // Canvas compression to max 800x800, quality 0.85
+              const maxDim = 800;
+              let width = img.width;
+              let height = img.height;
+
+              if (width > maxDim || height > maxDim) {
+                if (width > height) {
+                  height = Math.round((height * maxDim) / width);
+                  width = maxDim;
+                } else {
+                  width = Math.round((width * maxDim) / height);
+                  height = maxDim;
+                }
+              }
+
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+
+              const optimizedDataUri = canvas.toDataURL('image/jpeg', 0.85);
+
+              if (photoInput) photoInput.value = optimizedDataUri;
+              if (photoUrlInput) photoUrlInput.value = '';
+              if (previewImg) {
+                previewImg.src = optimizedDataUri;
+                previewImg.style.display = 'block';
+              }
+              if (emptyState) emptyState.style.display = 'none';
+
+              showToast('Foto do item carregada com sucesso!');
+            };
+            img.src = re.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      if (btnRemovePhoto) {
+        btnRemovePhoto.addEventListener('click', () => {
+          if (fileInput) fileInput.value = '';
+          if (photoInput) photoInput.value = '';
+          if (photoUrlInput) photoUrlInput.value = '';
+          if (previewImg) {
+            previewImg.src = '';
+            previewImg.style.display = 'none';
+          }
+          if (emptyState) emptyState.style.display = 'flex';
+          showToast('Foto removida!');
+        });
+      }
+
+      if (photoUrlInput) {
+        photoUrlInput.addEventListener('input', (e) => {
           const val = e.target.value.trim();
-          if (val) editModalPreview.src = val;
+          if (photoInput) photoInput.value = val;
+          if (val) {
+            if (previewImg) {
+              previewImg.src = val;
+              previewImg.style.display = 'block';
+            }
+            if (emptyState) emptyState.style.display = 'none';
+          } else {
+            if (previewImg) {
+              previewImg.src = '';
+              previewImg.style.display = 'none';
+            }
+            if (emptyState) emptyState.style.display = 'flex';
+          }
         });
       }
 

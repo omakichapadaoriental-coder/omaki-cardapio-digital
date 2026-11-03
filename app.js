@@ -3293,7 +3293,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (ov.description !== undefined) dish.description = ov.description;
           if (ov.portion !== undefined) dish.portion = ov.portion;
           if (ov.category) dish.category = ov.category;
-          if (ov.image) {
+          if (ov.image !== undefined) {
             dish.photo = ov.image;
             dish.image = ov.image;
           }
@@ -3338,8 +3338,8 @@ document.addEventListener('DOMContentLoaded', () => {
             description: ci.description || '',
             portion: ci.portion || '',
             category: ci.category || 'Combos Especiais',
-            photo: ci.image || '/assets/images/raw_sashimi_tradicional.png',
-            image: ci.image || '/assets/images/raw_sashimi_tradicional.png',
+            photo: (ci.image !== undefined) ? ci.image : '/assets/images/raw_sashimi_tradicional.png',
+            image: (ci.image !== undefined) ? ci.image : '/assets/images/raw_sashimi_tradicional.png',
             isGrouped: false,
             isNew: true
           });
@@ -3357,7 +3357,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (ov.description !== undefined) it.description = ov.description;
           if (ov.portion !== undefined) it.portion = ov.portion;
           if (ov.category) it.category = ov.category;
-          if (ov.image) it.photo = ov.image;
+          if (ov.image !== undefined) { it.photo = ov.image; it.image = ov.image; }
         }
       });
     }
