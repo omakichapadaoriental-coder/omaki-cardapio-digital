@@ -1,5 +1,21 @@
 {
-  "orders": [],
+  "orders": [
+    {
+      "id": "OMK-7305",
+      "createdAt": "2026-11-03T21:29:27.470Z",
+      "customerName": "Teste André",
+      "customerPhone": "",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "PIX",
+      "changeFor": "",
+      "subtotal": 0,
+      "total": 100,
+      "notes": "",
+      "items": []
+    }
+  ],
   "abandonedCarts": [],
-  "lastUpdated": "2026-11-02T19:35:00.000Z"
+  "lastUpdated": "2026-11-03T21:29:27.470Z"
 }
