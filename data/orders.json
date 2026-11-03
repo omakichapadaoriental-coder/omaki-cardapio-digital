@@ -18,6 +18,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-8076",
+      "createdAt": "2026-11-03T23:38:58.356Z",
+      "sessionId": "sess_1793749139329",
+      "customerName": "ddd",
+      "customerPhone": "1111111111",
+      "subtotal": 144.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Combo Camarão - 30 Peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5488",
       "createdAt": "2026-11-03T23:21:02.335Z",
       "sessionId": "sess_1793748063326",
@@ -29,5 +40,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-03T23:21:02.335Z"
+  "lastUpdated": "2026-11-03T23:38:58.356Z"
 }
