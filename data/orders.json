@@ -1,5 +1,17 @@
 {
   "orders": [],
-  "abandonedCarts": [],
-  "lastUpdated": "2026-11-03T23:41:24.651Z"
+  "abandonedCarts": [
+    {
+      "id": "ABN-4178",
+      "createdAt": "2026-11-03T23:49:53.971Z",
+      "sessionId": "sess_1793749793672",
+      "customerName": "Emanuely",
+      "customerPhone": "62998314262",
+      "subtotal": 94.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Uramakis Tradicionais • Uramaki Salmão, 1x Hot Rolls • Hot Roll Camarão",
+      "stepReached": "checkout"
+    }
+  ],
+  "lastUpdated": "2026-11-03T23:49:53.971Z"
 }
