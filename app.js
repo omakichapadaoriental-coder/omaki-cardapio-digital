@@ -3081,11 +3081,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
       msg += `${WA_ICONS.cart} *ITENS DO PEDIDO:*\n\n`;
 
+      const PROMO_COMBO_WHATSAPP_CODES = {
+        'item_combo_camarão_imperial_-_25_peças': 111,
+        'camarão imperial - 25 peças': 111,
+        'combo camarão imperial - 25 peças': 111,
+        'camarao imperial - 25 pecas': 111,
+        'combo camarao imperial - 25 pecas': 111,
 
+        'item_combo_camarão_-_30_peças': 112,
+        'combo camarão - 30 peças': 112,
+        'combo camarao - 30 pecas': 112,
+
+        'item_combo_joy_-_28_peças': 113,
+        'combo joy - 28 peças': 113,
+        'combo joy - 28 pecas': 113,
+
+        'item_combo_misto_-_28_peças': 114,
+        'combo misto - 28 peças': 114,
+        'combo misto - 28 pecas': 114,
+
+        'item_combo_salmão_-_30_peças': 115,
+        'combo salmão - 30 peças': 115,
+        'combo salmao - 30 pecas': 115,
+
+        'item_combo_hot_-_30_peças': 116,
+        'combo hot - 30 peças': 116,
+        'combo hot - 30 pecas': 116,
+
+        'item_combo_hossomaki_-_28_peças': 117,
+        'combo hossomaki - 28 peças': 117,
+        'combo hossomaki - 28 pecas': 117
+      };
+
+      function getItemNumForWhatsApp(item) {
+        if (!item) return null;
+        if (item.num) return item.num;
+        if (item.id && PROMO_COMBO_WHATSAPP_CODES[item.id]) return PROMO_COMBO_WHATSAPP_CODES[item.id];
+        const cleanName = (item.name || item.title || '').trim().toLowerCase();
+        if (PROMO_COMBO_WHATSAPP_CODES[cleanName]) return PROMO_COMBO_WHATSAPP_CODES[cleanName];
+        return null;
+      }
 
       cart.forEach(entry => {
 
-        const itemTag = entry.item.num ? `[#${String(entry.item.num).padStart(3, '0')}] ` : '';
+        const itemNum = getItemNumForWhatsApp(entry.item);
+        const itemTag = itemNum ? `[#${String(itemNum).padStart(3, '0')}] ` : '';
 
         let itemPriceUnit = entry.item.price;
 
@@ -3228,12 +3268,16 @@ document.addEventListener('DOMContentLoaded', () => {
             packagingFee: calculatePackagingFee(),
             total: grandTotal || (subtotal + calculatePackagingFee()),
             notes: (typeof generalNotes !== 'undefined' ? generalNotes : '') || '',
-            items: cart.map(e => ({
-              name: e.item.name || e.item.title,
-              qty: e.qty,
-              price: e.item.price,
-              option: e.option ? e.option.name : null
-            }))
+            items: cart.map(e => {
+              const itemNum = getItemNumForWhatsApp(e.item);
+              const tagStr = itemNum ? `[#${String(itemNum).padStart(3, '0')}] ` : '';
+              return {
+                name: tagStr + (e.item.name || e.item.title),
+                qty: e.qty,
+                price: e.item.price,
+                option: e.option ? e.option.name : null
+              };
+            })
           }
         };
 
