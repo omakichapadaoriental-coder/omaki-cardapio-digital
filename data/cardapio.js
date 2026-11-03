@@ -2324,8 +2324,8 @@ const CARDAPIO_DATA = {
       "photo": "assets/images/raw_combo_180_guia.jpeg"
     },
     {
-      "num": null,
-      "code": null,
+      "num": 111,
+      "code": "111",
       "category": "Combos Promocionais",
       "name": "Combo Camarão Imperial - 25 Peças",
       "fullName": "Combo Camarão Imperial - 25 Peças",
@@ -2337,8 +2337,8 @@ const CARDAPIO_DATA = {
       "isNew": true
     },
     {
-      "num": null,
-      "code": null,
+      "num": 112,
+      "code": "112",
       "category": "Combos Promocionais",
       "name": "Combo Camarão - 30 Peças",
       "fullName": "Combo Camarão - 30 Peças",
@@ -2350,8 +2350,8 @@ const CARDAPIO_DATA = {
       "isNew": true
     },
     {
-      "num": null,
-      "code": null,
+      "num": 113,
+      "code": "113",
       "category": "Combos Promocionais",
       "name": "Combo Joy - 28 Peças",
       "fullName": "Combo Joy - 28 Peças",
@@ -2363,8 +2363,8 @@ const CARDAPIO_DATA = {
       "isNew": true
     },
     {
-      "num": null,
-      "code": null,
+      "num": 114,
+      "code": "114",
       "category": "Combos Promocionais",
       "name": "Combo Misto - 28 Peças",
       "fullName": "Combo Misto - 28 Peças",
@@ -2376,8 +2376,8 @@ const CARDAPIO_DATA = {
       "isNew": true
     },
     {
-      "num": null,
-      "code": null,
+      "num": 115,
+      "code": "115",
       "category": "Combos Promocionais",
       "name": "Combo Salmão - 30 Peças",
       "fullName": "Combo Salmão - 30 Peças",
@@ -2389,8 +2389,8 @@ const CARDAPIO_DATA = {
       "isNew": true
     },
     {
-      "num": null,
-      "code": null,
+      "num": 116,
+      "code": "116",
       "category": "Combos Promocionais",
       "name": "Combo Hot - 30 Peças",
       "fullName": "Combo Hot - 30 Peças",
@@ -2402,8 +2402,8 @@ const CARDAPIO_DATA = {
       "isNew": true
     },
     {
-      "num": null,
-      "code": null,
+      "num": 117,
+      "code": "117",
       "category": "Combos Promocionais",
       "name": "Combo Hossomaki - 28 Peças",
       "fullName": "Combo Hossomaki - 28 Peças",
@@ -5082,8 +5082,8 @@ const CARDAPIO_DATA = {
     {
       "id": "item_combo_camarão_imperial_-_25_peças",
       "isGrouped": false,
-      "num": null,
-      "code": null,
+      "num": 111,
+      "code": "111",
       "title": "Combo Camarão Imperial - 25 Peças",
       "name": "Camarão Imperial - 25 Peças",
       "category": "Combos Promocionais",
@@ -5096,8 +5096,8 @@ const CARDAPIO_DATA = {
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
-        "num": null,
-        "code": null,
+        "num": 111,
+        "code": "111",
         "category": "Combos Promocionais",
         "name": "Combo Camarão Imperial - 25 Peças",
         "fullName": "Combo Camarão Imperial - 25 Peças",
@@ -5120,8 +5120,8 @@ const CARDAPIO_DATA = {
     {
       "id": "item_combo_camarão_-_30_peças",
       "isGrouped": false,
-      "num": null,
-      "code": null,
+      "num": 112,
+      "code": "112",
       "title": "Combo Camarão - 30 Peças",
       "name": "Combo Camarão - 30 Peças",
       "category": "Combos Promocionais",
@@ -5134,8 +5134,8 @@ const CARDAPIO_DATA = {
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
-        "num": null,
-        "code": null,
+        "num": 112,
+        "code": "112",
         "category": "Combos Promocionais",
         "name": "Combo Camarão - 30 Peças",
         "fullName": "Combo Camarão - 30 Peças",
@@ -5158,8 +5158,8 @@ const CARDAPIO_DATA = {
     {
       "id": "item_combo_joy_-_28_peças",
       "isGrouped": false,
-      "num": null,
-      "code": null,
+      "num": 113,
+      "code": "113",
       "title": "Combo Joy - 28 Peças",
       "name": "Combo Joy - 28 Peças",
       "category": "Combos Promocionais",
@@ -5172,8 +5172,8 @@ const CARDAPIO_DATA = {
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
-        "num": null,
-        "code": null,
+        "num": 113,
+        "code": "113",
         "category": "Combos Promocionais",
         "name": "Combo Joy - 28 Peças",
         "fullName": "Combo Joy - 28 Peças",
@@ -5196,8 +5196,8 @@ const CARDAPIO_DATA = {
     {
       "id": "item_combo_misto_-_28_peças",
       "isGrouped": false,
-      "num": null,
-      "code": null,
+      "num": 114,
+      "code": "114",
       "title": "Combo Misto - 28 Peças",
       "name": "Combo Misto - 28 Peças",
       "category": "Combos Promocionais",
@@ -5210,8 +5210,8 @@ const CARDAPIO_DATA = {
       "page": "Pág 11",
       "isNew": true,
       "rawItem": {
-        "num": null,
-        "code": null,
+        "num": 114,
+        "code": "114",
         "category": "Combos Promocionais",
         "name": "Combo Misto - 28 Peças",
         "fullName": "Combo Misto - 28 Peças",
@@ -5234,8 +5234,8 @@ const CARDAPIO_DATA = {
     {
       "id": "item_combo_salmão_-_30_peças",
       "isGrouped": false,
-      "num": null,
-      "code": null,
+      "num": 115,
+      "code": "115",
       "title": "Combo Salmão - 30 Peças",
       "name": "Combo Salmão - 30 Peças",
       "category": "Combos Promocionais",
@@ -5248,8 +5248,8 @@ const CARDAPIO_DATA = {
       "page": "Pág 12",
       "isNew": true,
       "rawItem": {
-        "num": null,
-        "code": null,
+        "num": 115,
+        "code": "115",
         "category": "Combos Promocionais",
         "name": "Combo Salmão - 30 Peças",
         "fullName": "Combo Salmão - 30 Peças",
@@ -5272,8 +5272,8 @@ const CARDAPIO_DATA = {
     {
       "id": "item_combo_hot_-_30_peças",
       "isGrouped": false,
-      "num": null,
-      "code": null,
+      "num": 116,
+      "code": "116",
       "title": "Combo Hot - 30 Peças",
       "name": "Combo Hot - 30 Peças",
       "category": "Combos Promocionais",
@@ -5286,8 +5286,8 @@ const CARDAPIO_DATA = {
       "page": "Pág 12",
       "isNew": true,
       "rawItem": {
-        "num": null,
-        "code": null,
+        "num": 116,
+        "code": "116",
         "category": "Combos Promocionais",
         "name": "Combo Hot - 30 Peças",
         "fullName": "Combo Hot - 30 Peças",
@@ -5310,8 +5310,8 @@ const CARDAPIO_DATA = {
     {
       "id": "item_combo_hossomaki_-_28_peças",
       "isGrouped": false,
-      "num": null,
-      "code": null,
+      "num": 117,
+      "code": "117",
       "title": "Combo Hossomaki - 28 Peças",
       "name": "Combo Hossomaki - 28 Peças",
       "category": "Combos Promocionais",
@@ -5324,8 +5324,8 @@ const CARDAPIO_DATA = {
       "page": "Pág 12",
       "isNew": true,
       "rawItem": {
-        "num": null,
-        "code": null,
+        "num": 117,
+        "code": "117",
         "category": "Combos Promocionais",
         "name": "Combo Hossomaki - 28 Peças",
         "fullName": "Combo Hossomaki - 28 Peças",

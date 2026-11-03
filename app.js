@@ -624,81 +624,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Filter categories to show ONLY the selected one (or all if 'all')
+    // Filter categories to show ONLY the selected one (or all if 'all' or searching)
+    const targetCategories = (term || !categoryFilter || categoryFilter === 'all')
+      ? CATEGORY_MAP
+      : CATEGORY_MAP.filter(c => c.id === categoryFilter);
 
-    const targetCategories = (categoryFilter && categoryFilter !== 'all')
-
-      ? CATEGORY_MAP.filter(c => c.id === categoryFilter)
-
-      : CATEGORY_MAP;
-
-
+    const cleanTerm = term.replace(/^#/, '').trim();
 
     targetCategories.forEach(catDef => {
-
       let filteredDishes = dishesList.filter(dish => {
-
         const matchesCategory = catDef.match(dish);
-
         if (!matchesCategory) return false;
-
-
 
         if (!term) return true;
 
-
-
         // Search in dish properties
-
         const numStr = dish.num ? String(dish.num) : '';
-
-        const codeStr = String(dish.code || '');
-
+        const paddedNum = dish.num ? String(dish.num).padStart(3, '0') : '';
+        const codeStr = String(dish.code || '').toLowerCase();
         const titleStr = (dish.title || dish.name || '').toLowerCase();
-
         const descStr = (dish.description || '').toLowerCase();
-
         const catStr = (dish.category || '').toLowerCase();
-
         const isNewMatch = dish.isNew && (term === 'novo' || term === 'novos' || term === 'promo');
 
+        const directNumMatch = cleanTerm && (
+          numStr === cleanTerm ||
+          paddedNum === cleanTerm ||
+          codeStr === cleanTerm ||
+          numStr.includes(cleanTerm) ||
+          codeStr.includes(cleanTerm)
+        );
 
-
-        if (numStr.includes(term) || codeStr.includes(term) || titleStr.includes(term) || descStr.includes(term) || catStr.includes(term) || isNewMatch) {
-
+        if (directNumMatch || titleStr.includes(term) || descStr.includes(term) || catStr.includes(term) || isNewMatch) {
           return true;
-
         }
-
-
 
         // Search inside options of grouped dishes
-
         if (dish.isGrouped && dish.options && dish.options.length > 0) {
-
           return dish.options.some(opt => {
-
             const optNum = opt.num ? String(opt.num) : '';
-
-            const optCode = String(opt.code || '');
-
+            const optPadded = opt.num ? String(opt.num).padStart(3, '0') : '';
+            const optCode = String(opt.code || '').toLowerCase();
             const optName = (opt.name || '').toLowerCase();
-
             const optDesc = (opt.description || '').toLowerCase();
 
-            return optNum.includes(term) || optCode.includes(term) || optName.includes(term) || optDesc.includes(term);
+            const optNumMatch = cleanTerm && (
+              optNum === cleanTerm ||
+              optPadded === cleanTerm ||
+              optCode === cleanTerm ||
+              optNum.includes(cleanTerm) ||
+              optCode.includes(cleanTerm)
+            );
 
+            return optNumMatch || optName.includes(term) || optDesc.includes(term);
           });
-
         }
 
-
-
         return false;
-
       });
-
-
 
       if (filteredDishes.length === 0) return;
 
@@ -755,24 +738,18 @@ document.addEventListener('DOMContentLoaded', () => {
         let matchedOptionCode = null;
 
         if (term && dish.isGrouped && dish.options) {
-
           const matchOpt = dish.options.find(opt => {
-
             const optNum = opt.num ? String(opt.num) : '';
-
-            const optCode = String(opt.code || '');
-
+            const optPadded = opt.num ? String(opt.num).padStart(3, '0') : '';
+            const optCode = String(opt.code || '').toLowerCase();
             const optName = (opt.name || '').toLowerCase();
-
-            return optNum.includes(term) || optCode.includes(term) || optName.includes(term);
-
+            const optNumMatch = cleanTerm && (
+              optNum === cleanTerm || optPadded === cleanTerm || optCode === cleanTerm || optNum.includes(cleanTerm) || optCode.includes(cleanTerm)
+            );
+            return optNumMatch || optName.includes(term);
           });
-
           if (matchOpt) matchedOptionCode = matchOpt.code || matchOpt.num;
-
         }
-
-
 
         const card = createProductCard(dish, matchedOptionCode);
 
@@ -839,18 +816,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // For grouped item: show portion (e.g. 200g, 2 un) or options count
 
     let tagBadge = '';
-
-    if (dish.num) {
-
-      tagBadge = `<span class="badge-item-num">#${String(dish.num).padStart(3, '0')}</span>`;
-
-    } else if (dish.isNew) {
-
+    if (dish.isNew) {
       tagBadge = `<span class="badge-item-num" style="background:#8b1e3f; border-color:#e5c07b; color:#fff;">NOVO</span>`;
-
+    } else if (dish.num) {
+      tagBadge = `<span class="badge-item-num">#${String(dish.num).padStart(3, '0')}</span>`;
     }
-
-
 
     const isCombo = dish.category.toLowerCase().includes('combo') || (dish.num && dish.num >= 57 && dish.num <= 60) || (dish.num && dish.num >= 177 && dish.num <= 187) || dish.isNew;
 
@@ -2938,6 +2908,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       }
 
+      // Calculate final prices and packaging fee upfront
+      let subtotal = 0;
+      cart.forEach(entry => {
+        let unit = entry.item.price;
+        (entry.complements || []).forEach(c => unit += c.price * (c.qty || 1));
+        (entry.drinks || []).forEach(d => unit += d.price * (d.qty || 1));
+        subtotal += unit * entry.qty;
+      });
+
+      const pkgInfo = getPackagingInfo();
+      const packagingFee = pkgInfo.fee || 0;
+      const grandTotal = subtotal + packagingFee;
+
       let splitVal1 = 0;
       let splitVal2 = 0;
       let splitM1 = 'Pix';
@@ -2972,49 +2955,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       let cashNote = '';
-
       if (selectedPayment === 'Dinheiro') {
-
         const changeVal = cashChangeValue ? cashChangeValue.value.trim() : '';
-
         if (changeVal) {
-
           cashNote = ` (Troco para: ${changeVal})`;
-
         } else {
-
           cashNote = ' (Não precisa de troco)';
-
         }
-
       }
 
-
-
       const generalNotes = orderGeneralNotes ? orderGeneralNotes.value.trim() : '';
-
-
-
-      // Calculate final prices
-
-      let subtotal = 0;
-
-      cart.forEach(entry => {
-
-        let unit = entry.item.price;
-
-        (entry.complements || []).forEach(c => unit += c.price * (c.qty || 1));
-
-        (entry.drinks || []).forEach(d => unit += d.price * (d.qty || 1));
-
-        subtotal += unit * entry.qty;
-
-      });
-
-
-
-      
-
 
       // Build formatted WhatsApp Message with canonical tags [#007]
       const { day: dtDay, curMins: dtCurMins } = getBrasiliaDateTime();
@@ -3223,9 +3173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Packaging & grandTotal computed
-      const pkgInfo = getPackagingInfo();
-
+// Packaging & grandTotal summary
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
       msg += `💰 *RESUMO DO PEDIDO:*\n`;
       msg += `• *Subtotal dos Itens:* ${formatMoney(subtotal)}\n`;
@@ -3244,12 +3192,9 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
       const storeWhatsApp = data.store.whatsapp || '5562991749928';
-
       const waUrl = `https://api.whatsapp.com/send?phone=${storeWhatsApp}&text=${encodeURIComponent(msg)}`;
 
-
-
-      // Envio garantido e auditável para /api/orders
+      // Envio garantido e auditável para /api/orders (não bloqueia redirecionamento do WhatsApp)
       try {
         const orderNeighborhoodEl = document.getElementById('orderNeighborhood');
         const neighborhoodStr = orderNeighborhoodEl ? orderNeighborhoodEl.value.trim() : '';
@@ -3265,9 +3210,9 @@ document.addEventListener('DOMContentLoaded', () => {
             paymentMethod: selectedPayment || 'PIX',
             changeFor: (typeof changeVal !== 'undefined' ? changeVal : '') || '',
             subtotal: subtotal || 0,
-            packagingFee: calculatePackagingFee(),
-            total: grandTotal || (subtotal + calculatePackagingFee()),
-            notes: (typeof generalNotes !== 'undefined' ? generalNotes : '') || '',
+            packagingFee: packagingFee,
+            total: grandTotal,
+            notes: generalNotes || '',
             items: cart.map(e => {
               const itemNum = getItemNumForWhatsApp(e.item);
               const tagStr = itemNum ? `[#${String(itemNum).padStart(3, '0')}] ` : '';
@@ -3282,25 +3227,26 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const jsonBody = JSON.stringify(orderPayload);
-        await Promise.race([
-          fetch('/api/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: jsonBody,
-            keepalive: true
-          }),
-          new Promise(r => setTimeout(r, 450))
-        ]);
+        fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: jsonBody,
+          keepalive: true
+        }).catch(err => console.warn('Erro ao registrar pedido:', err));
       } catch (err) {
-        console.warn('Erro ao registrar pedido:', err);
+        console.warn('Erro ao preparar payload:', err);
       }
 
-      window.open(waUrl, '_blank');
+      const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = waUrl;
+      } else {
+        window.open(waUrl, '_blank');
+      }
 
     });
 
   }
-
 
 
 
