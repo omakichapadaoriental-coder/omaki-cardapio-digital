@@ -3142,9 +3142,9 @@ document.addEventListener('DOMContentLoaded', () => {
       msg += `🥢 *DESCARTÁVEIS & SACHÊS:*\n`;
       msg += `• Hashis: ${hQty > 0 ? `${hQty} ${hQty === 1 ? 'par' : 'pares'}` : 'Não preciso'}\n`;
       msg += `• Guardanapos: ${nQty > 0 ? `${nQty} un` : 'Não preciso'}\n`;
-      msg += `• Sachê de Shoyu: ${sQty > 0 ? `${sQty} un` : 'Não quero'}\n`;
-      msg += `• Sachê de Tarê: ${tQty > 0 ? `${tQty} un` : 'Não quero'}\n`;
-      msg += `• Sachê de Wasabi: ${wQty > 0 ? `${wQty} un` : 'Não quero'}\n`;
+      msg += `• Sachê de Shoyu (8ml): ${sQty > 0 ? `${sQty} un` : 'Não quero'}\n`;
+      msg += `• Sachê de Tarê (8g): ${tQty > 0 ? `${tQty} un` : 'Não quero'}\n`;
+      msg += `• Sachê de Wasabi (2,5g): ${wQty > 0 ? `${wQty} un` : 'Não quero'}\n`;
 
       if (selectedPayment === 'Dividido') {
         msg += `${WA_ICONS.card} *Pagamento:* Dividido em 2 formas:\n`;
