@@ -1,6 +1,70 @@
 {
   "orders": [
     {
+      "id": "OMK-3555",
+      "createdAt": "2026-11-04T00:08:48.186Z",
+      "customerName": "Hélio vinicios Alves Siqueira",
+      "customerPhone": "62996426575",
+      "deliveryType": "delivery",
+      "address": "Rua luiz Gonzaga, Quadra 41 lote 12 — Monte Sinai",
+      "neighborhood": "Monte Sinai",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 314.29999999999995,
+      "total": 316.29999999999995,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#054] Temakis Tradicionais & Especiais • Salmão e Cebolinha",
+          "qty": 1,
+          "price": 47.9,
+          "option": null
+        },
+        {
+          "name": "[#071] Sashimis Tradicionais • Sashimi de Salmão",
+          "qty": 1,
+          "price": 38.9,
+          "option": null
+        },
+        {
+          "name": "[#074] Joys Tradicionais (Sem Arroz) • Joy Cebolinha",
+          "qty": 1,
+          "price": 36.9,
+          "option": null
+        },
+        {
+          "name": "[#161] Refrigerantes, Águas & Energético • Coca Cola Lata 310ml",
+          "qty": 2,
+          "price": 8,
+          "option": null
+        },
+        {
+          "name": "[#102] Niguiris • Niguiri de Salmão",
+          "qty": 1,
+          "price": 35.9,
+          "option": null
+        },
+        {
+          "name": "[#069] Hot Rolls • Hot Roll Philadelphia",
+          "qty": 1,
+          "price": 46.9,
+          "option": null
+        },
+        {
+          "name": "[#086] Hossomakis • Hossomaki Salmão e Philadelphia",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-8552",
       "createdAt": "2026-11-03T23:50:08.643Z",
       "customerName": "Emanuely",
@@ -29,18 +93,6 @@
       ]
     }
   ],
-  "abandonedCarts": [
-    {
-      "id": "ABN-9188",
-      "createdAt": "2026-11-04T00:08:36.320Z",
-      "sessionId": "sess_1793750914248",
-      "customerName": "Hélio vinicios Alves Siqueira",
-      "customerPhone": "62996426575",
-      "subtotal": 314.29999999999995,
-      "itemsCount": 9,
-      "itemsSummary": "1x Temakis Tradicionais & Especiais • Salmão e Cebolinha, 1x Sashimis Tradicionais • Sashimi de Salmão, 1x Joys Tradicionais (Sem Arroz) • Joy Cebolinha, 2x Refrigerantes, Águas & Energético • Coca Cola Lata 310ml, 1x Niguiris • Niguiri de Salmão, 1x Hot Rolls • Hot Roll Philadelphia, 1x Hossomakis • Hossomaki Salmão e Philadelphia, 1x Uramakis Tradicionais • Uramaki Salmão",
-      "stepReached": "checkout"
-    }
-  ],
-  "lastUpdated": "2026-11-04T00:08:36.320Z"
+  "abandonedCarts": [],
+  "lastUpdated": "2026-11-04T00:08:48.187Z"
 }
