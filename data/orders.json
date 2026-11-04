@@ -29,6 +29,18 @@
       ]
     }
   ],
-  "abandonedCarts": [],
-  "lastUpdated": "2026-11-03T23:50:08.643Z"
+  "abandonedCarts": [
+    {
+      "id": "ABN-9188",
+      "createdAt": "2026-11-04T00:08:36.320Z",
+      "sessionId": "sess_1793750914248",
+      "customerName": "Hélio vinicios Alves Siqueira",
+      "customerPhone": "62996426575",
+      "subtotal": 314.29999999999995,
+      "itemsCount": 9,
+      "itemsSummary": "1x Temakis Tradicionais & Especiais • Salmão e Cebolinha, 1x Sashimis Tradicionais • Sashimi de Salmão, 1x Joys Tradicionais (Sem Arroz) • Joy Cebolinha, 2x Refrigerantes, Águas & Energético • Coca Cola Lata 310ml, 1x Niguiris • Niguiri de Salmão, 1x Hot Rolls • Hot Roll Philadelphia, 1x Hossomakis • Hossomaki Salmão e Philadelphia, 1x Uramakis Tradicionais • Uramaki Salmão",
+      "stepReached": "checkout"
+    }
+  ],
+  "lastUpdated": "2026-11-04T00:08:36.320Z"
 }
