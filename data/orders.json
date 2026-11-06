@@ -93,6 +93,18 @@
       ]
     }
   ],
-  "abandonedCarts": [],
-  "lastUpdated": "2026-11-04T00:08:48.187Z"
+  "abandonedCarts": [
+    {
+      "id": "ABN-2696",
+      "createdAt": "2026-11-06T23:38:55.029Z",
+      "sessionId": "sess_1794008332724",
+      "customerName": "JOANA BONADIMAN",
+      "customerPhone": "62999271501",
+      "subtotal": 187.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Hot Rolls • Hot Roll Couve crispy, 1x Camarão Imperial - 25 Peças",
+      "stepReached": "checkout"
+    }
+  ],
+  "lastUpdated": "2026-11-06T23:38:55.030Z"
 }
