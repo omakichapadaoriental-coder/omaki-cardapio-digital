@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-3224",
+      "createdAt": "2026-11-07T22:20:58.509Z",
+      "customerName": "Mariana",
+      "customerPhone": "62999360659",
+      "deliveryType": "delivery",
+      "address": "Rua B Quadra 01 Lote 15, 15 — Vila Bandeira",
+      "neighborhood": "Vila Bandeira",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 178.8,
+      "total": 182.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#001] Harumakis Crocantes • Camarão, Philadelphia e alho-poró",
+          "qty": 1,
+          "price": 33.9,
+          "option": null
+        },
+        {
+          "name": "[#112] Combo Camarão - 30 Peças",
+          "qty": 1,
+          "price": 144.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-7564",
       "createdAt": "2026-11-07T22:16:00.637Z",
       "customerName": "rosane mariellen alves",
@@ -173,17 +201,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-2873",
-      "createdAt": "2026-11-07T22:20:44.672Z",
-      "sessionId": "sess_1794090042352",
-      "customerName": "Mariana",
-      "customerPhone": "62999360659",
-      "subtotal": 178.8,
-      "itemsCount": 2,
-      "itemsSummary": "1x Harumakis Crocantes • Camarão, Philadelphia e alho-poró, 1x Combo Camarão - 30 Peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -217,5 +234,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-07T22:20:44.672Z"
+  "lastUpdated": "2026-11-07T22:20:58.509Z"
 }
