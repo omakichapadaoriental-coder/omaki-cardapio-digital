@@ -95,6 +95,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-7830",
+      "createdAt": "2026-11-07T21:32:54.781Z",
+      "sessionId": "sess_1794087173965",
+      "customerName": "Dharany Martins",
+      "customerPhone": "62993243674",
+      "subtotal": 320.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Combo 8 - 60 peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-7693",
       "createdAt": "2026-11-07T20:30:24.096Z",
       "sessionId": "sess_1794083422947",
@@ -117,5 +128,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-07T20:30:24.096Z"
+  "lastUpdated": "2026-11-07T21:32:54.781Z"
 }
