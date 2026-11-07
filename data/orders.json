@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-7564",
+      "createdAt": "2026-11-07T22:16:00.637Z",
+      "customerName": "rosane mariellen alves",
+      "customerPhone": "62999107536",
+      "deliveryType": "delivery",
+      "address": "Rua balbino paulino, Qd 73 lt 1 — Setor paraísinho",
+      "neighborhood": "Setor paraísinho",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 107.8,
+      "total": 109.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#041] Uramaki elegância do oriente",
+          "qty": 1,
+          "price": 58.9,
+          "option": null
+        },
+        {
+          "name": "[#065] Hot Rolls • Hot Roll Couve crispy",
+          "qty": 1,
+          "price": 48.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4999",
       "createdAt": "2026-11-07T22:13:44.126Z",
       "customerName": "rosane mariellen alves",
@@ -167,5 +195,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-07T22:13:44.126Z"
+  "lastUpdated": "2026-11-07T22:16:00.637Z"
 }
