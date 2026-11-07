@@ -173,6 +173,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-5647",
+      "createdAt": "2026-11-07T22:16:02.585Z",
+      "sessionId": "sess_1794089762322",
+      "customerName": "rosane mariellen alves",
+      "customerPhone": "62999107536",
+      "subtotal": 107.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Uramaki elegância do oriente, 1x Hot Rolls • Hot Roll Couve crispy",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-7693",
       "createdAt": "2026-11-07T20:30:24.096Z",
       "sessionId": "sess_1794083422947",
@@ -195,5 +206,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-07T22:16:00.637Z"
+  "lastUpdated": "2026-11-07T22:16:02.585Z"
 }
