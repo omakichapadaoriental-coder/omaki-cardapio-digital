@@ -95,6 +95,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-7693",
+      "createdAt": "2026-11-07T20:30:24.096Z",
+      "sessionId": "sess_1794083422947",
+      "customerName": "Hiasmine",
+      "customerPhone": "62998781732",
+      "subtotal": 253.8,
+      "itemsCount": 2,
+      "itemsSummary": "2x Combo Hossomaki - 28 Peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-2696",
       "createdAt": "2026-11-06T23:38:55.029Z",
       "sessionId": "sess_1794008332724",
@@ -106,5 +117,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-06T23:38:55.030Z"
+  "lastUpdated": "2026-11-07T20:30:24.096Z"
 }
