@@ -173,6 +173,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-2873",
+      "createdAt": "2026-11-07T22:20:44.672Z",
+      "sessionId": "sess_1794090042352",
+      "customerName": "Mariana",
+      "customerPhone": "62999360659",
+      "subtotal": 178.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Harumakis Crocantes • Camarão, Philadelphia e alho-poró, 1x Combo Camarão - 30 Peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -206,5 +217,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-07T22:16:02.585Z"
+  "lastUpdated": "2026-11-07T22:20:44.672Z"
 }
