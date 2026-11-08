@@ -469,6 +469,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6554",
+      "createdAt": "2026-11-08T23:13:32.402Z",
+      "sessionId": "sess_1794179611607",
+      "customerName": "Cecilyanme Seravali",
+      "customerPhone": "11943365917",
+      "subtotal": 51.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Temakis Tradicionais & Especiais • Hot Philadelphia empanado por fora e cortado ao meio",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -502,5 +513,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T22:58:56.726Z"
+  "lastUpdated": "2026-11-08T23:13:32.402Z"
 }
