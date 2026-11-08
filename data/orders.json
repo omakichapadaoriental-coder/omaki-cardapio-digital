@@ -385,6 +385,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-8945",
+      "createdAt": "2026-11-08T22:54:12.390Z",
+      "sessionId": "sess_1794178451513",
+      "customerName": "JOSE OTALIBAS ROCHA FILH",
+      "customerPhone": "85986050179",
+      "subtotal": 116.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim, 1x Uramaki elegância do oriente",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -418,5 +429,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T22:07:40.617Z"
+  "lastUpdated": "2026-11-08T22:54:12.390Z"
 }
