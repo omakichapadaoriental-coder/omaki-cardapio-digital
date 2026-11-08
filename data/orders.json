@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-5656",
+      "createdAt": "2026-11-08T01:34:39.728Z",
+      "customerName": "Fernanda De carvalho soares",
+      "customerPhone": "62996997507",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Dinheiro",
+      "changeFor": "",
+      "subtotal": 64.9,
+      "total": 66.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#109] Monte seu Poke (300g) • Poke Camarão Imperial (4un)",
+          "qty": 1,
+          "price": 64.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-5019",
       "createdAt": "2026-11-08T00:44:06.693Z",
       "customerName": "Erika Thawana",
@@ -257,17 +279,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-8548",
-      "createdAt": "2026-11-08T01:34:07.796Z",
-      "sessionId": "sess_1794101646749",
-      "customerName": "Fernanda De carvalho soares",
-      "customerPhone": "62996997507",
-      "subtotal": 64.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Monte seu Poke (300g) • Poke Camarão Imperial (4un)",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -301,5 +312,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T01:34:07.796Z"
+  "lastUpdated": "2026-11-08T01:34:39.728Z"
 }
