@@ -257,6 +257,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-8548",
+      "createdAt": "2026-11-08T01:34:07.796Z",
+      "sessionId": "sess_1794101646749",
+      "customerName": "Fernanda De carvalho soares",
+      "customerPhone": "62996997507",
+      "subtotal": 64.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Monte seu Poke (300g) • Poke Camarão Imperial (4un)",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -290,5 +301,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T00:44:06.693Z"
+  "lastUpdated": "2026-11-08T01:34:07.796Z"
 }
