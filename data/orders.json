@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-9647",
+      "createdAt": "2026-11-08T22:58:29.349Z",
+      "customerName": "Renata",
+      "customerPhone": "62997011571",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 102.8,
+      "total": 102.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#055] Temakis Tradicionais & Especiais • Salmão, geleia de pimenta e furikake",
+          "qty": 1,
+          "price": 47.9,
+          "option": null
+        },
+        {
+          "name": "[#014] Ceviches Tradicionais • Ceviche Misto",
+          "qty": 1,
+          "price": 54.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-9301",
       "createdAt": "2026-11-08T22:54:17.315Z",
       "customerName": "JOSE OTALIBAS ROCHA FILH",
@@ -413,17 +441,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6660",
-      "createdAt": "2026-11-08T22:58:22.184Z",
-      "sessionId": "sess_1794178701740",
-      "customerName": "Renata",
-      "customerPhone": "62997011571",
-      "subtotal": 102.8,
-      "itemsCount": 2,
-      "itemsSummary": "1x Temakis Tradicionais & Especiais • Salmão, geleia de pimenta e furikake, 1x Ceviches Tradicionais • Ceviche Misto",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -457,5 +474,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T22:58:22.184Z"
+  "lastUpdated": "2026-11-08T22:58:29.349Z"
 }
