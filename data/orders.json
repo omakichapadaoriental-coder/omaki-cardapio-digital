@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-6345",
+      "createdAt": "2026-11-08T23:13:55.152Z",
+      "customerName": "Cecilyanme Seravali",
+      "customerPhone": "11943365917",
+      "deliveryType": "delivery",
+      "address": "Rua Luiz Gonzaga, 44",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 51.9,
+      "total": 51.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#051] Temakis Tradicionais & Especiais • Hot Philadelphia empanado por fora e cortado ao meio",
+          "qty": 1,
+          "price": 51.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-6821",
       "createdAt": "2026-11-08T22:58:56.726Z",
       "customerName": "Renata",
@@ -469,17 +491,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6554",
-      "createdAt": "2026-11-08T23:13:32.402Z",
-      "sessionId": "sess_1794179611607",
-      "customerName": "Cecilyanme Seravali",
-      "customerPhone": "11943365917",
-      "subtotal": 51.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Temakis Tradicionais & Especiais • Hot Philadelphia empanado por fora e cortado ao meio",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -513,5 +524,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T23:13:32.402Z"
+  "lastUpdated": "2026-11-08T23:13:55.152Z"
 }
