@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-5019",
+      "createdAt": "2026-11-08T00:44:06.693Z",
+      "customerName": "Erika Thawana",
+      "customerPhone": "62999851692",
+      "deliveryType": "delivery",
+      "address": "Avenida João Bernardes Rabelo, Qd 23",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 106.8,
+      "total": 106.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#052] Temakis Tradicionais & Especiais • Hot Philadelphia",
+          "qty": 1,
+          "price": 48.9,
+          "option": null
+        },
+        {
+          "name": "[#045] Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-2926",
       "createdAt": "2026-11-08T00:14:54.464Z",
       "customerName": "Maiara",
@@ -229,17 +257,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-7934",
-      "createdAt": "2026-11-08T00:43:59.650Z",
-      "sessionId": "sess_1794098638676",
-      "customerName": "Erika Thawana",
-      "customerPhone": "62999851692",
-      "subtotal": 106.8,
-      "itemsCount": 2,
-      "itemsSummary": "1x Temakis Tradicionais & Especiais • Hot Philadelphia, 1x Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -273,5 +290,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T00:43:59.650Z"
+  "lastUpdated": "2026-11-08T00:44:06.693Z"
 }
