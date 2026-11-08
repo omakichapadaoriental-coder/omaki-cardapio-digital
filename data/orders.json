@@ -201,6 +201,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6768",
+      "createdAt": "2026-11-08T00:14:46.582Z",
+      "sessionId": "sess_1794096885718",
+      "customerName": "Maiara",
+      "customerPhone": "62999564317",
+      "subtotal": 105.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Hot Rolls • Hot Philadelphia sem arroz, 1x Temakis Tradicionais & Especiais • Hot Philadelphia",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -234,5 +245,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-07T22:20:58.509Z"
+  "lastUpdated": "2026-11-08T00:14:46.582Z"
 }
