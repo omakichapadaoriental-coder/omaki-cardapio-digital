@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-8966",
+      "createdAt": "2026-11-08T21:58:26.918Z",
+      "customerName": "ALANA LUCIA CARDOSO DE MOURA PAULINO",
+      "customerPhone": "62996411344",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 138.9,
+      "total": 141.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#114] Combo Misto - 28 Peças",
+          "qty": 1,
+          "price": 138.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-5656",
       "createdAt": "2026-11-08T01:34:39.728Z",
       "customerName": "Fernanda De carvalho soares",
@@ -279,17 +301,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-4042",
-      "createdAt": "2026-11-08T21:58:24.509Z",
-      "sessionId": "sess_1794175102824",
-      "customerName": "ALANA LUCIA CARDOSO DE MOURA PAULINO",
-      "customerPhone": "62996411344",
-      "subtotal": 138.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Misto - 28 Peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -323,5 +334,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T21:58:24.509Z"
+  "lastUpdated": "2026-11-08T21:58:26.918Z"
 }
