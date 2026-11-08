@@ -413,6 +413,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6660",
+      "createdAt": "2026-11-08T22:58:22.184Z",
+      "sessionId": "sess_1794178701740",
+      "customerName": "Renata",
+      "customerPhone": "62997011571",
+      "subtotal": 102.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Temakis Tradicionais & Especiais • Salmão, geleia de pimenta e furikake, 1x Ceviches Tradicionais • Ceviche Misto",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -446,5 +457,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T22:54:17.315Z"
+  "lastUpdated": "2026-11-08T22:58:22.184Z"
 }
