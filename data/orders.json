@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-6016",
+      "createdAt": "2026-11-08T22:06:13.969Z",
+      "customerName": "Roberta Alice Santos",
+      "customerPhone": "99985499346",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 95.8,
+      "total": 97.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#089] Uramakis Tradicionais • Uramaki Camarão imperial",
+          "qty": 1,
+          "price": 49.9,
+          "option": null
+        },
+        {
+          "name": "[#086] Hossomakis • Hossomaki Salmão e Philadelphia",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-8966",
       "createdAt": "2026-11-08T21:58:26.918Z",
       "customerName": "ALANA LUCIA CARDOSO DE MOURA PAULINO",
@@ -334,5 +362,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T21:58:26.918Z"
+  "lastUpdated": "2026-11-08T22:06:13.969Z"
 }
