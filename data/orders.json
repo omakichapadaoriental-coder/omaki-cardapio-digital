@@ -229,6 +229,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-7934",
+      "createdAt": "2026-11-08T00:43:59.650Z",
+      "sessionId": "sess_1794098638676",
+      "customerName": "Erika Thawana",
+      "customerPhone": "62999851692",
+      "subtotal": 106.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Temakis Tradicionais & Especiais • Hot Philadelphia, 1x Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -262,5 +273,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T00:14:54.464Z"
+  "lastUpdated": "2026-11-08T00:43:59.650Z"
 }
