@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-2926",
+      "createdAt": "2026-11-08T00:14:54.464Z",
+      "customerName": "Maiara",
+      "customerPhone": "62999564317",
+      "deliveryType": "delivery",
+      "address": "Rua avenida dos jatobares, Q.3 L14 — Cidade Alta",
+      "neighborhood": "Cidade Alta",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 105.8,
+      "total": 107.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#064] Hot Rolls • Hot Philadelphia sem arroz",
+          "qty": 1,
+          "price": 56.9,
+          "option": null
+        },
+        {
+          "name": "[#052] Temakis Tradicionais & Especiais • Hot Philadelphia",
+          "qty": 1,
+          "price": 48.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-3224",
       "createdAt": "2026-11-07T22:20:58.509Z",
       "customerName": "Mariana",
@@ -201,17 +229,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6768",
-      "createdAt": "2026-11-08T00:14:46.582Z",
-      "sessionId": "sess_1794096885718",
-      "customerName": "Maiara",
-      "customerPhone": "62999564317",
-      "subtotal": 105.8,
-      "itemsCount": 2,
-      "itemsSummary": "1x Hot Rolls • Hot Philadelphia sem arroz, 1x Temakis Tradicionais & Especiais • Hot Philadelphia",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -245,5 +262,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T00:14:46.582Z"
+  "lastUpdated": "2026-11-08T00:14:54.464Z"
 }
