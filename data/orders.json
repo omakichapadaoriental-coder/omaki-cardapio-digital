@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-6500",
+      "createdAt": "2026-11-09T00:58:06.424Z",
+      "customerName": "Thaisa Lopes",
+      "customerPhone": "62996965209",
+      "deliveryType": "delivery",
+      "address": "Vila Azaleia Chales, Chalé 2 — Azaleia",
+      "neighborhood": "Azaleia",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 110.80000000000001,
+      "total": 112.80000000000001,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#048] Temakis Tradicionais & Especiais • Supremo de camarão, cebolinha, tarê, alho-poró e gergelim",
+          "qty": 1,
+          "price": 66.9,
+          "option": null
+        },
+        {
+          "name": "[#005] Guioza",
+          "qty": 1,
+          "price": 43.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-6345",
       "createdAt": "2026-11-08T23:13:55.152Z",
       "customerName": "Cecilyanme Seravali",
@@ -491,17 +519,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6720",
-      "createdAt": "2026-11-09T00:56:43.536Z",
-      "sessionId": "sess_1794185802506",
-      "customerName": "Thaisa Lopes",
-      "customerPhone": "62996965209",
-      "subtotal": 110.80000000000001,
-      "itemsCount": 2,
-      "itemsSummary": "1x Temakis Tradicionais & Especiais • Supremo de camarão, cebolinha, tarê, alho-poró e gergelim, 1x Guioza",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -535,5 +552,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-09T00:56:43.536Z"
+  "lastUpdated": "2026-11-09T00:58:06.424Z"
 }
