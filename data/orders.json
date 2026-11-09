@@ -519,6 +519,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-5352",
+      "createdAt": "2026-11-09T23:09:03.016Z",
+      "sessionId": "sess_1794265742137",
+      "customerName": "Talita",
+      "customerPhone": "62996282720",
+      "subtotal": 116.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Yakisoba Tradicional (400g) • Misto (carne e frango), 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4669",
       "createdAt": "2026-11-09T20:34:00.788Z",
       "sessionId": "sess_1794256441405",
@@ -563,5 +574,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-09T20:34:00.788Z"
+  "lastUpdated": "2026-11-09T23:09:03.016Z"
 }
