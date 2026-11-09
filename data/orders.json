@@ -491,6 +491,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6720",
+      "createdAt": "2026-11-09T00:56:43.536Z",
+      "sessionId": "sess_1794185802506",
+      "customerName": "Thaisa Lopes",
+      "customerPhone": "62996965209",
+      "subtotal": 110.80000000000001,
+      "itemsCount": 2,
+      "itemsSummary": "1x Temakis Tradicionais & Especiais • Supremo de camarão, cebolinha, tarê, alho-poró e gergelim, 1x Guioza",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -524,5 +535,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-08T23:13:55.152Z"
+  "lastUpdated": "2026-11-09T00:56:43.536Z"
 }
