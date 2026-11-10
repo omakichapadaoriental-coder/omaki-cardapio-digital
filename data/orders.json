@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-4855",
+      "createdAt": "2026-11-10T22:49:01.223Z",
+      "customerName": "Kell",
+      "customerPhone": "62 99975-7277",
+      "deliveryType": "delivery",
+      "address": "Rua Abílio Domingues, Qd 18 lt 16 — Novo horizonte",
+      "neighborhood": "Novo horizonte",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 144.9,
+      "total": 148.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#112] Combo Camarão - 30 Peças",
+          "qty": 1,
+          "price": 144.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-1474",
       "createdAt": "2026-11-09T23:09:46.315Z",
       "customerName": "Talita",
@@ -547,17 +569,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-5863",
-      "createdAt": "2026-11-10T22:47:46.205Z",
-      "sessionId": "sess_1794350865187",
-      "customerName": "Kell",
-      "customerPhone": "62 99975-7277",
-      "subtotal": 144.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Camarão - 30 Peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4669",
       "createdAt": "2026-11-09T20:34:00.788Z",
       "sessionId": "sess_1794256441405",
@@ -602,5 +613,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-10T22:47:46.205Z"
+  "lastUpdated": "2026-11-10T22:49:01.223Z"
 }
