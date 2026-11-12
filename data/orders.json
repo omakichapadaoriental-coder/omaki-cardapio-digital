@@ -569,6 +569,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-5121",
+      "createdAt": "2026-11-12T02:10:09.521Z",
+      "sessionId": "sess_1794449408521",
+      "customerName": "helena",
+      "customerPhone": "6294407392",
+      "subtotal": 45.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Uramakis Tradicionais • Uramaki Salmão",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4669",
       "createdAt": "2026-11-09T20:34:00.788Z",
       "sessionId": "sess_1794256441405",
@@ -613,5 +624,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-10T22:49:01.223Z"
+  "lastUpdated": "2026-11-12T02:10:09.522Z"
 }
