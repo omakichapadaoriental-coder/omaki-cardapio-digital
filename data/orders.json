@@ -563,6 +563,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6892",
+      "createdAt": "2026-11-13T23:06:04.589Z",
+      "sessionId": "sess_1794611164252",
+      "customerName": "Ana Jessyca Fonseca",
+      "customerPhone": "62998298537",
+      "subtotal": 242.39999999999998,
+      "itemsCount": 6,
+      "itemsSummary": "1x Sashimis Especiais • Sashimi Tesouro do Chef, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal, 1x Hot Rolls • Hot Roll Philadelphia, 1x Uramakis Tradicionais • Uramaki Salmão, 2x Sucos Naturais & Polpa de Fruta (330ml) • Suco de Polpa de Maracujá 330ml",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-9621",
       "createdAt": "2026-11-13T23:04:06.394Z",
       "sessionId": "sess_1794611045581",
@@ -629,5 +640,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-13T23:04:06.394Z"
+  "lastUpdated": "2026-11-13T23:06:04.589Z"
 }
