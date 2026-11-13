@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-9918",
+      "createdAt": "2026-11-13T22:43:55.019Z",
+      "customerName": "Cristiane da Paixão Fraga",
+      "customerPhone": "62998615605",
+      "deliveryType": "delivery",
+      "address": "Rua 12 de dezembro  S/N, Quadra 61 lote 01 kit — Paraisinho",
+      "neighborhood": "Paraisinho",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 65.9,
+      "total": 67.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#108] Monte seu Poke (300g) • Poke Tártare de salmão com Philadelphia",
+          "qty": 1,
+          "price": 65.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4855",
       "createdAt": "2026-11-10T22:49:01.223Z",
       "customerName": "Kell",
@@ -541,17 +563,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-8796",
-      "createdAt": "2026-11-13T22:43:50.977Z",
-      "sessionId": "sess_1794609830150",
-      "customerName": "Cristiane da Paixão Fraga",
-      "customerPhone": "62998615605",
-      "subtotal": 65.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Monte seu Poke (300g) • Poke Tártare de salmão com Philadelphia",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-7052",
       "createdAt": "2026-11-13T22:25:10.330Z",
       "sessionId": "sess_1794608709142",
@@ -607,5 +618,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-13T22:43:50.977Z"
+  "lastUpdated": "2026-11-13T22:43:55.019Z"
 }
