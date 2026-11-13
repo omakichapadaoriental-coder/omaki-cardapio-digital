@@ -1,6 +1,52 @@
 {
   "orders": [
     {
+      "id": "OMK-4184",
+      "createdAt": "2026-11-13T23:06:13.705Z",
+      "customerName": "Ana Jessyca Fonseca",
+      "customerPhone": "62998298537",
+      "deliveryType": "delivery",
+      "address": "Rua Ilario Moura quadra 07 lote 10, 10 — Novo horizonte",
+      "neighborhood": "Novo horizonte",
+      "paymentMethod": "Cartão de Débito",
+      "changeFor": "",
+      "subtotal": 242.39999999999998,
+      "total": 244.39999999999998,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#040] Sashimis Especiais • Sashimi Tesouro do Chef",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        },
+        {
+          "name": "[#043] Uramaki salmão, azeite trufado limão siciliano e flor de sal",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        },
+        {
+          "name": "[#069] Hot Rolls • Hot Roll Philadelphia",
+          "qty": 1,
+          "price": 46.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        },
+        {
+          "name": "[#150] Sucos Naturais & Polpa de Fruta (330ml) • Suco de Polpa de Maracujá 330ml",
+          "qty": 2,
+          "price": 16.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-9918",
       "createdAt": "2026-11-13T22:43:55.019Z",
       "customerName": "Cristiane da Paixão Fraga",
@@ -563,17 +609,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6892",
-      "createdAt": "2026-11-13T23:06:04.589Z",
-      "sessionId": "sess_1794611164252",
-      "customerName": "Ana Jessyca Fonseca",
-      "customerPhone": "62998298537",
-      "subtotal": 242.39999999999998,
-      "itemsCount": 6,
-      "itemsSummary": "1x Sashimis Especiais • Sashimi Tesouro do Chef, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal, 1x Hot Rolls • Hot Roll Philadelphia, 1x Uramakis Tradicionais • Uramaki Salmão, 2x Sucos Naturais & Polpa de Fruta (330ml) • Suco de Polpa de Maracujá 330ml",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-9621",
       "createdAt": "2026-11-13T23:04:06.394Z",
       "sessionId": "sess_1794611045581",
@@ -640,5 +675,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-13T23:06:04.589Z"
+  "lastUpdated": "2026-11-13T23:06:13.705Z"
 }
