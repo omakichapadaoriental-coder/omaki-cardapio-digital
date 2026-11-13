@@ -580,17 +580,6 @@
       "stepReached": "checkout"
     },
     {
-      "id": "ABN-4669",
-      "createdAt": "2026-11-09T20:34:00.788Z",
-      "sessionId": "sess_1794256441405",
-      "customerName": "Teste",
-      "customerPhone": "99999999999",
-      "subtotal": 138.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Misto - 28 Peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-5647",
       "createdAt": "2026-11-07T22:16:02.585Z",
       "sessionId": "sess_1794089762322",
@@ -624,5 +613,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-12T02:10:09.522Z"
+  "lastUpdated": "2026-11-13T01:19:28.306Z"
 }
