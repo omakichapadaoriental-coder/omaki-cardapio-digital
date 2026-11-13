@@ -609,6 +609,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-4783",
+      "createdAt": "2026-11-13T23:14:50.101Z",
+      "sessionId": "sess_1794611689207",
+      "customerName": "Sabrina Coelho",
+      "customerPhone": "61998792849",
+      "subtotal": 102.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Hot Rolls • Hot Philadelphia sem arroz, 1x Hossomakis • Hossomaki Salmão e Philadelphia",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-9621",
       "createdAt": "2026-11-13T23:04:06.394Z",
       "sessionId": "sess_1794611045581",
@@ -675,5 +686,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-13T23:06:13.705Z"
+  "lastUpdated": "2026-11-13T23:14:50.101Z"
 }
