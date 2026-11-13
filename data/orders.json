@@ -541,6 +541,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-7052",
+      "createdAt": "2026-11-13T22:25:10.330Z",
+      "sessionId": "sess_1794608709142",
+      "customerName": "Jaciara evangelista",
+      "customerPhone": "62998430955",
+      "subtotal": 58.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Uramaki elegância do oriente",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-5121",
       "createdAt": "2026-11-12T02:10:09.521Z",
       "sessionId": "sess_1794449408521",
@@ -585,5 +596,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-13T01:26:18.684Z"
+  "lastUpdated": "2026-11-13T22:25:10.330Z"
 }
