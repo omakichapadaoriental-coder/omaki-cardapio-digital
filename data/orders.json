@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-2641",
+      "createdAt": "2026-11-14T00:01:46.086Z",
+      "customerName": "Susana",
+      "customerPhone": "62997017377",
+      "deliveryType": "delivery",
+      "address": "Rua sao jose Operário, Q 51  L 17 — Paraisinho",
+      "neighborhood": "Paraisinho",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 83.8,
+      "total": 85.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#143] Yakisoba Tradicional (400g) • Frango",
+          "qty": 1,
+          "price": 54.9,
+          "option": null
+        },
+        {
+          "name": "[#003] Harumakis Crocantes • Romeu e Julieta",
+          "qty": 1,
+          "price": 28.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4184",
       "createdAt": "2026-11-13T23:06:13.705Z",
       "customerName": "Ana Jessyca Fonseca",
@@ -609,17 +637,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-4151",
-      "createdAt": "2026-11-14T00:00:26.582Z",
-      "sessionId": "sess_1794614425895",
-      "customerName": "Susana",
-      "customerPhone": "62997017377",
-      "subtotal": 54.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Yakisoba Tradicional (400g) • Frango",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -697,5 +714,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-14T00:00:26.582Z"
+  "lastUpdated": "2026-11-14T00:01:46.086Z"
 }
