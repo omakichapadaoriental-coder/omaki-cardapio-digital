@@ -609,6 +609,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-4151",
+      "createdAt": "2026-11-14T00:00:26.582Z",
+      "sessionId": "sess_1794614425895",
+      "customerName": "Susana",
+      "customerPhone": "62997017377",
+      "subtotal": 54.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Yakisoba Tradicional (400g) • Frango",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -686,5 +697,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-13T23:14:50.101Z"
+  "lastUpdated": "2026-11-14T00:00:26.582Z"
 }
