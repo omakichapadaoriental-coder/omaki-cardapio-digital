@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-2512",
+      "createdAt": "2026-11-14T00:04:15.681Z",
+      "customerName": "Celina",
+      "customerPhone": "66999318911",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 129.9,
+      "total": 133.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#116] Combo Hot - 30 Peças",
+          "qty": 1,
+          "price": 129.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-2641",
       "createdAt": "2026-11-14T00:01:46.086Z",
       "customerName": "Susana",
@@ -637,17 +659,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6751",
-      "createdAt": "2026-11-14T00:03:48.563Z",
-      "sessionId": "sess_1794614629336",
-      "customerName": "Celina",
-      "customerPhone": "66999318911",
-      "subtotal": 129.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Hot - 30 Peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -725,5 +736,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-14T00:03:48.563Z"
+  "lastUpdated": "2026-11-14T00:04:15.681Z"
 }
