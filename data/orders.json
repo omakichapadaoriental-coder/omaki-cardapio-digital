@@ -1,6 +1,40 @@
 {
   "orders": [
     {
+      "id": "OMK-4956",
+      "createdAt": "2026-11-14T00:08:48.319Z",
+      "customerName": "Pamela",
+      "customerPhone": "62998638003",
+      "deliveryType": "delivery",
+      "address": "Rua Domingos Ferreira, Quadra 20 lote 03 — Novo horizonte",
+      "neighborhood": "Novo horizonte",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 132.7,
+      "total": 134.7,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#029] Gunkans • Gunkan Cebolinha",
+          "qty": 1,
+          "price": 38.9,
+          "option": null
+        },
+        {
+          "name": "[#054] Temakis Tradicionais & Especiais • Salmão e Cebolinha",
+          "qty": 1,
+          "price": 47.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-2512",
       "createdAt": "2026-11-14T00:04:15.681Z",
       "customerName": "Celina",
@@ -659,17 +693,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-5290",
-      "createdAt": "2026-11-14T00:06:34.586Z",
-      "sessionId": "sess_1794614794203",
-      "customerName": "Pamela",
-      "customerPhone": "62998638003",
-      "subtotal": 132.7,
-      "itemsCount": 3,
-      "itemsSummary": "1x Gunkans • Gunkan Cebolinha, 1x Temakis Tradicionais & Especiais • Salmão e Cebolinha, 1x Uramakis Tradicionais • Uramaki Salmão",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -747,5 +770,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-14T00:06:34.586Z"
+  "lastUpdated": "2026-11-14T00:08:48.319Z"
 }
