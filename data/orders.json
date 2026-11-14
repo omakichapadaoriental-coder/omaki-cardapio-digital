@@ -637,6 +637,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6751",
+      "createdAt": "2026-11-14T00:03:48.563Z",
+      "sessionId": "sess_1794614629336",
+      "customerName": "Celina",
+      "customerPhone": "66999318911",
+      "subtotal": 129.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Combo Hot - 30 Peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -714,5 +725,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-14T00:01:46.086Z"
+  "lastUpdated": "2026-11-14T00:03:48.563Z"
 }
