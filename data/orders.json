@@ -1,6 +1,46 @@
 {
   "orders": [
     {
+      "id": "OMK-1138",
+      "createdAt": "2026-11-14T00:22:42.853Z",
+      "customerName": "Charles Leal Coragem",
+      "customerPhone": "62996723524",
+      "deliveryType": "delivery",
+      "address": "Rua Palipalã, 95 — Centro",
+      "neighborhood": "Centro",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 469.6,
+      "total": 473.6,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#113] Combo Joy - 28 Peças",
+          "qty": 1,
+          "price": 136.9,
+          "option": null
+        },
+        {
+          "name": "[#111] Camarão Imperial - 25 Peças",
+          "qty": 1,
+          "price": 138.9,
+          "option": null
+        },
+        {
+          "name": "[#037] Sashimis Especiais • Sashimi Mistério do Chef",
+          "qty": 1,
+          "price": 54.9,
+          "option": null
+        },
+        {
+          "name": "[#114] Combo Misto - 28 Peças",
+          "qty": 1,
+          "price": 138.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4956",
       "createdAt": "2026-11-14T00:08:48.319Z",
       "customerName": "Pamela",
@@ -693,17 +733,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-7955",
-      "createdAt": "2026-11-14T00:21:48.096Z",
-      "sessionId": "sess_1794615707103",
-      "customerName": "Charles Leal Coragem",
-      "customerPhone": "62996723524",
-      "subtotal": 469.6,
-      "itemsCount": 4,
-      "itemsSummary": "1x Combo Joy - 28 Peças, 1x Camarão Imperial - 25 Peças, 1x Sashimis Especiais • Sashimi Mistério do Chef, 1x Combo Misto - 28 Peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -781,5 +810,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-14T00:21:48.096Z"
+  "lastUpdated": "2026-11-14T00:22:42.853Z"
 }
