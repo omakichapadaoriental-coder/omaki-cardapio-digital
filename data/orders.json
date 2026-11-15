@@ -1,6 +1,52 @@
 {
   "orders": [
     {
+      "id": "OMK-2328",
+      "createdAt": "2026-11-15T22:46:04.561Z",
+      "customerName": "Douglas Eloi Santos",
+      "customerPhone": "62998215822",
+      "deliveryType": "delivery",
+      "address": "Rua rui barbosa qd a lt 18, 18",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 213.5,
+      "total": 215.5,
+      "notes": "Nenhuma",
+      "items": [
+        {
+          "name": "[#025] Kobachi — Entradas Japonesas • Sunomono",
+          "qty": 1,
+          "price": 24.9,
+          "option": null
+        },
+        {
+          "name": "[#052] Temakis Tradicionais & Especiais • Hot Philadelphia",
+          "qty": 1,
+          "price": 48.9,
+          "option": null
+        },
+        {
+          "name": "[#064] Hot Rolls • Hot Philadelphia sem arroz",
+          "qty": 1,
+          "price": 56.9,
+          "option": null
+        },
+        {
+          "name": "[#004] Harumakis Crocantes • Banana com Canela e açúcar",
+          "qty": 1,
+          "price": 27.9,
+          "option": null
+        },
+        {
+          "name": "[#026] Gunkans • Gunkan Furikake",
+          "qty": 1,
+          "price": 39.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-2853",
       "createdAt": "2026-11-15T20:40:20.020Z",
       "customerName": "Jade",
@@ -773,17 +819,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-3971",
-      "createdAt": "2026-11-15T22:45:56.320Z",
-      "sessionId": "sess_1794782755358",
-      "customerName": "Douglas Eloi Santos",
-      "customerPhone": "62998215822",
-      "subtotal": 198.5,
-      "itemsCount": 5,
-      "itemsSummary": "1x Kobachi — Entradas Japonesas • Sunomono, 1x Temakis Tradicionais & Especiais • Hot Philadelphia, 1x Hot Rolls • Hot Philadelphia sem arroz, 1x Harumakis Crocantes • Banana com Canela e açúcar, 1x Gunkans • Gunkan Furikake",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -861,5 +896,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-15T22:45:56.320Z"
+  "lastUpdated": "2026-11-15T22:46:04.561Z"
 }
