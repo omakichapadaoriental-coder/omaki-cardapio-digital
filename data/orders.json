@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-5769",
+      "createdAt": "2026-11-15T23:04:01.869Z",
+      "customerName": "VERA LUCIA MARIANO DE SOUSA",
+      "customerPhone": "61999898471",
+      "deliveryType": "delivery",
+      "address": "Rua 02, Quadra 02 lote 02 — Setor Planalto",
+      "neighborhood": "Setor Planalto",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 136.9,
+      "total": 139.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#113] Combo Joy - 28 Peças",
+          "qty": 1,
+          "price": 136.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-8910",
       "createdAt": "2026-11-15T22:46:21.697Z",
       "customerName": "Douglas Eloi Santos",
@@ -865,17 +887,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-5471",
-      "createdAt": "2026-11-15T22:58:21.288Z",
-      "sessionId": "sess_1794783500099",
-      "customerName": "VERA LUCIA MARIANO DE SOUSA",
-      "customerPhone": "61999898471",
-      "subtotal": 136.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Joy - 28 Peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -953,5 +964,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-15T22:58:21.288Z"
+  "lastUpdated": "2026-11-15T23:04:01.869Z"
 }
