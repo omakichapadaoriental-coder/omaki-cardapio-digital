@@ -733,6 +733,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6349",
+      "createdAt": "2026-11-15T20:40:14.553Z",
+      "sessionId": "sess_1794775213766",
+      "customerName": "Jade",
+      "customerPhone": "62996753587",
+      "subtotal": 205.6,
+      "itemsCount": 4,
+      "itemsSummary": "1x Temakis Tradicionais & Especiais • Hot Philadelphia, 1x Hot Rolls • Hot Roll Couve crispy, 1x Uramaki elegância do oriente, 1x Hot Rolls • Hot Roll Alho-poró",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -810,5 +821,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-14T00:22:42.853Z"
+  "lastUpdated": "2026-11-15T20:40:14.553Z"
 }
