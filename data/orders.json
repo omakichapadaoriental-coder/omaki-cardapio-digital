@@ -865,6 +865,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-5471",
+      "createdAt": "2026-11-15T22:58:21.288Z",
+      "sessionId": "sess_1794783500099",
+      "customerName": "VERA LUCIA MARIANO DE SOUSA",
+      "customerPhone": "61999898471",
+      "subtotal": 136.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Combo Joy - 28 Peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -942,5 +953,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-15T22:46:21.697Z"
+  "lastUpdated": "2026-11-15T22:58:21.288Z"
 }
