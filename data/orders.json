@@ -1019,6 +1019,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-1808",
+      "createdAt": "2026-11-16T00:15:53.870Z",
+      "sessionId": "sess_1794788153073",
+      "customerName": "Thiago Goncalves",
+      "customerPhone": "47999581436",
+      "subtotal": 134.7,
+      "itemsCount": 3,
+      "itemsSummary": "1x Hot Rolls • Hot Roll Alho-poró, 1x Uramakis Tradicionais • Uramaki Salmão, 1x Gunkans • Gunkan Couve crispy",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1096,5 +1107,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-15T23:07:17.696Z"
+  "lastUpdated": "2026-11-16T00:15:53.870Z"
 }
