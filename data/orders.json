@@ -1053,6 +1053,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-9195",
+      "createdAt": "2026-11-16T23:34:19.712Z",
+      "sessionId": "sess_1794872058874",
+      "customerName": "Deisiane",
+      "customerPhone": "62999716116",
+      "subtotal": 178.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Combo Hot - 30 Peças, 1x Temakis Tradicionais & Especiais • Hot Philadelphia",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1130,5 +1141,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-16T00:15:56.518Z"
+  "lastUpdated": "2026-11-16T23:34:19.712Z"
 }
