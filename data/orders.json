@@ -1,6 +1,40 @@
 {
   "orders": [
     {
+      "id": "OMK-5255",
+      "createdAt": "2026-11-16T00:15:56.518Z",
+      "customerName": "Thiago Goncalves",
+      "customerPhone": "47999581436",
+      "deliveryType": "delivery",
+      "address": "Rua Prefeitura Salviano Ferreira, Quadra 47 — Lote 7",
+      "neighborhood": "Lote 7",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 134.7,
+      "total": 136.7,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#066] Hot Rolls • Hot Roll Alho-poró",
+          "qty": 1,
+          "price": 48.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        },
+        {
+          "name": "[#027] Gunkans • Gunkan Couve crispy",
+          "qty": 1,
+          "price": 39.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4093",
       "createdAt": "2026-11-15T23:07:17.696Z",
       "customerName": "VERA LUCIA MARIANO DE SOUSA",
@@ -1019,17 +1053,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-1808",
-      "createdAt": "2026-11-16T00:15:53.870Z",
-      "sessionId": "sess_1794788153073",
-      "customerName": "Thiago Goncalves",
-      "customerPhone": "47999581436",
-      "subtotal": 134.7,
-      "itemsCount": 3,
-      "itemsSummary": "1x Hot Rolls • Hot Roll Alho-poró, 1x Uramakis Tradicionais • Uramaki Salmão, 1x Gunkans • Gunkan Couve crispy",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1107,5 +1130,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-16T00:15:53.870Z"
+  "lastUpdated": "2026-11-16T00:15:56.518Z"
 }
