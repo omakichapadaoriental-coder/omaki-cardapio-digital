@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-4450",
+      "createdAt": "2026-11-17T23:49:32.719Z",
+      "customerName": "Luna",
+      "customerPhone": "6296073034",
+      "deliveryType": "delivery",
+      "address": "Luna, Lt18 — Novo horizonte",
+      "neighborhood": "Novo horizonte",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 184.8,
+      "total": 188.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#116] Combo Hot - 30 Peças",
+          "qty": 1,
+          "price": 129.9,
+          "option": null
+        },
+        {
+          "name": "[#016] Camarão Imperial Crocante • Camarão crocante, Philadelphia, tarê e cebolinha",
+          "qty": 1,
+          "price": 54.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-9032",
       "createdAt": "2026-11-17T23:33:40.367Z",
       "customerName": "Luiz Carlos",
@@ -1125,17 +1153,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-1908",
-      "createdAt": "2026-11-17T23:49:04.301Z",
-      "sessionId": "sess_1794959343491",
-      "customerName": "Luna",
-      "customerPhone": "6296073034",
-      "subtotal": 184.8,
-      "itemsCount": 2,
-      "itemsSummary": "1x Combo Hot - 30 Peças, 1x Camarão Imperial Crocante • Camarão crocante, Philadelphia, tarê e cebolinha",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1213,5 +1230,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-17T23:49:04.301Z"
+  "lastUpdated": "2026-11-17T23:49:32.719Z"
 }
