@@ -1125,6 +1125,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-1908",
+      "createdAt": "2026-11-17T23:49:04.301Z",
+      "sessionId": "sess_1794959343491",
+      "customerName": "Luna",
+      "customerPhone": "6296073034",
+      "subtotal": 184.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Combo Hot - 30 Peças, 1x Camarão Imperial Crocante • Camarão crocante, Philadelphia, tarê e cebolinha",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1202,5 +1213,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-17T23:33:40.367Z"
+  "lastUpdated": "2026-11-17T23:49:04.301Z"
 }
