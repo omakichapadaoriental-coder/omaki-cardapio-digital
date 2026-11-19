@@ -1153,6 +1153,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-8919",
+      "createdAt": "2026-11-19T22:00:58.921Z",
+      "sessionId": "sess_1795125657460",
+      "customerName": "Ana Jessyca Fonseca",
+      "customerPhone": "62998298537",
+      "subtotal": 277.5,
+      "itemsCount": 5,
+      "itemsSummary": "1x Sashimis Especiais • Sashimi Tesouro do Chef, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal, 1x Uramakis Tradicionais • Uramaki Salmão, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal, 1x Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1230,5 +1241,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-19T21:59:41.150Z"
+  "lastUpdated": "2026-11-19T22:00:58.921Z"
 }
