@@ -1,6 +1,52 @@
 {
   "orders": [
     {
+      "id": "OMK-7745",
+      "createdAt": "2026-11-19T22:01:01.882Z",
+      "customerName": "Ana Jessyca Fonseca",
+      "customerPhone": "62998298537",
+      "deliveryType": "delivery",
+      "address": "Rua Ilario Moura quadra 07 lote 10, 10 — Novo horizonte",
+      "neighborhood": "Novo horizonte",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 277.5,
+      "total": 279.5,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#040] Sashimis Especiais • Sashimi Tesouro do Chef",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        },
+        {
+          "name": "[#043] Uramaki salmão, azeite trufado limão siciliano e flor de sal",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        },
+        {
+          "name": "[#043] Uramaki salmão, azeite trufado limão siciliano e flor de sal",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        },
+        {
+          "name": "[#045] Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4450",
       "createdAt": "2026-11-17T23:49:32.719Z",
       "customerName": "Luna",
@@ -1153,17 +1199,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-8919",
-      "createdAt": "2026-11-19T22:00:58.921Z",
-      "sessionId": "sess_1795125657460",
-      "customerName": "Ana Jessyca Fonseca",
-      "customerPhone": "62998298537",
-      "subtotal": 277.5,
-      "itemsCount": 5,
-      "itemsSummary": "1x Sashimis Especiais • Sashimi Tesouro do Chef, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal, 1x Uramakis Tradicionais • Uramaki Salmão, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal, 1x Uramaki Ebi avocado, salmão, tarê, molho de ostra, cebolinha e gergelim",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1241,5 +1276,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-19T22:00:58.921Z"
+  "lastUpdated": "2026-11-19T22:01:01.882Z"
 }
