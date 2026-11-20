@@ -1,6 +1,70 @@
 {
   "orders": [
     {
+      "id": "OMK-5065",
+      "createdAt": "2026-11-20T23:13:55.817Z",
+      "customerName": "Amanda Cardoso",
+      "customerPhone": "62996861584",
+      "deliveryType": "delivery",
+      "address": "Rua Gabriel Gomes, 438 — Novo Horizonte",
+      "neighborhood": "Novo Horizonte",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 414.1,
+      "total": 416.1,
+      "notes": "Não ter contato com camarão",
+      "items": [
+        {
+          "name": "[#051] Temakis Tradicionais & Especiais • Hot Philadelphia empanado por fora e cortado ao meio",
+          "qty": 1,
+          "price": 51.9,
+          "option": null
+        },
+        {
+          "name": "[#073] Joys Tradicionais (Sem Arroz) • Joy Geléia de pimenta",
+          "qty": 2,
+          "price": 36.9,
+          "option": null
+        },
+        {
+          "name": "[#025] Kobachi — Entradas Japonesas • Sunomono",
+          "qty": 1,
+          "price": 24.9,
+          "option": null
+        },
+        {
+          "name": "[#054] Temakis Tradicionais & Especiais • Salmão e Cebolinha",
+          "qty": 1,
+          "price": 47.9,
+          "option": null
+        },
+        {
+          "name": "[#019] Carpaccios Nobres • Carpaccio de Salmão Tradicional",
+          "qty": 1,
+          "price": 56.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        },
+        {
+          "name": "[#108] Monte seu Poke (300g) • Poke Tártare de salmão com Philadelphia",
+          "qty": 1,
+          "price": 65.9,
+          "option": null
+        },
+        {
+          "name": "[#069] Hot Rolls • Hot Roll Philadelphia",
+          "qty": 1,
+          "price": 46.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-8187",
       "createdAt": "2026-11-20T01:05:04.911Z",
       "customerName": "Andrea",
@@ -1221,17 +1285,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-2672",
-      "createdAt": "2026-11-20T23:12:54.822Z",
-      "sessionId": "sess_1795216374013",
-      "customerName": "Amanda Cardoso",
-      "customerPhone": "62996861584",
-      "subtotal": 414.1,
-      "itemsCount": 9,
-      "itemsSummary": "1x Temakis Tradicionais & Especiais • Hot Philadelphia empanado por fora e cortado ao meio, 2x Joys Tradicionais (Sem Arroz) • Joy Geléia de pimenta, 1x Kobachi — Entradas Japonesas • Sunomono, 1x Temakis Tradicionais & Especiais • Salmão e Cebolinha, 1x Carpaccios Nobres • Carpaccio de Salmão Tradicional, 1x Uramakis Tradicionais • Uramaki Salmão, 1x Monte seu Poke (300g) • Poke Tártare de salmão com Philadelphia, 1x Hot Rolls • Hot Roll Philadelphia",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1309,5 +1362,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-20T23:12:54.822Z"
+  "lastUpdated": "2026-11-20T23:13:55.817Z"
 }
