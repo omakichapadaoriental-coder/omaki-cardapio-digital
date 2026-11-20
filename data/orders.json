@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-8187",
+      "createdAt": "2026-11-20T01:05:04.911Z",
+      "customerName": "Andrea",
+      "customerPhone": "62997013912",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Cartão de Débito",
+      "changeFor": "",
+      "subtotal": 48.9,
+      "total": 50.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#067] Hot Rolls • Hot Roll Camarão",
+          "qty": 1,
+          "price": 48.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-7745",
       "createdAt": "2026-11-19T22:01:01.882Z",
       "customerName": "Ana Jessyca Fonseca",
@@ -1199,17 +1221,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-5834",
-      "createdAt": "2026-11-20T01:04:52.513Z",
-      "sessionId": "sess_1795136691608",
-      "customerName": "Andrea",
-      "customerPhone": "62997013912",
-      "subtotal": 48.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Hot Rolls • Hot Roll Camarão",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1287,5 +1298,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-20T01:04:52.513Z"
+  "lastUpdated": "2026-11-20T01:05:04.911Z"
 }
