@@ -1373,14 +1373,14 @@
       "stepReached": "checkout"
     },
     {
-      "id": "ABN-9435",
-      "createdAt": "2026-11-19T21:59:41.150Z",
-      "sessionId": "sess_1795125579412",
+      "id": "ABN-6407",
+      "createdAt": "2026-11-21T23:11:01.673Z",
+      "sessionId": "sess_1795302661585",
       "customerName": "IGOR HENRIQUE MELO RINCO",
       "customerPhone": "61998150059",
-      "subtotal": 219.6,
+      "subtotal": 212.8,
       "itemsCount": 4,
-      "itemsSummary": "1x Sashimis Especiais • Sashimi Tesouro do Chef, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal, 1x Uramakis Tradicionais • Uramaki Salmão, 1x Uramaki salmão, azeite trufado limão siciliano e flor de sal",
+      "itemsSummary": "1x Combo 4 - 35 peças, 1x Sashimis Tradicionais • Sashimi de Salmão, 2x Refrigerantes, Águas & Energético • Guaraná 350ml",
       "stepReached": "checkout"
     },
     {
@@ -1439,5 +1439,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-21T23:08:18.831Z"
+  "lastUpdated": "2026-11-21T23:11:01.673Z"
 }
