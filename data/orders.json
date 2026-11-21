@@ -1329,6 +1329,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-2009",
+      "createdAt": "2026-11-21T22:11:40.352Z",
+      "sessionId": "sess_1795299099528",
+      "customerName": "Carol Caggiani",
+      "customerPhone": "61981300140",
+      "subtotal": 162.70000000000002,
+      "itemsCount": 3,
+      "itemsSummary": "1x Monte seu Poke (300g) • Poke Salmão, 1x Temakis Tradicionais & Especiais • Salmão, Camarão e Cebolinha, 1x Uramakis Tradicionais • Uramaki Salmão",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1406,5 +1417,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-21T20:15:12.635Z"
+  "lastUpdated": "2026-11-21T22:11:40.352Z"
 }
