@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-6548",
+      "createdAt": "2026-11-21T01:09:54.120Z",
+      "customerName": "Pamela",
+      "customerPhone": "62998638003",
+      "deliveryType": "delivery",
+      "address": "Rua Domingos Ferreira quadra 20 lote 03, 20 — Novo horizonte",
+      "neighborhood": "Novo horizonte",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 47.9,
+      "total": 47.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#054] Temakis Tradicionais & Especiais • Salmão e Cebolinha",
+          "qty": 1,
+          "price": 47.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-5065",
       "createdAt": "2026-11-20T23:13:55.817Z",
       "customerName": "Amanda Cardoso",
@@ -1285,17 +1307,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-3668",
-      "createdAt": "2026-11-21T01:06:17.889Z",
-      "sessionId": "sess_1795223177012",
-      "customerName": "Pamela",
-      "customerPhone": "62998638003",
-      "subtotal": 71.8,
-      "itemsCount": 2,
-      "itemsSummary": "1x Gunkans • Gunkan Cebolinha, 1x Joys Tradicionais (Sem Arroz) • Joy Philadelphia",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1373,5 +1384,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-21T01:06:17.889Z"
+  "lastUpdated": "2026-11-21T01:09:54.120Z"
 }
