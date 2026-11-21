@@ -1,6 +1,40 @@
 {
   "orders": [
     {
+      "id": "OMK-4293",
+      "createdAt": "2026-11-21T23:11:40.580Z",
+      "customerName": "Ana Jessyca Fonseca",
+      "customerPhone": "62998298537",
+      "deliveryType": "delivery",
+      "address": "Rua Ilario Moura quadra 07 lote 10, 10 — Novo horizonte",
+      "neighborhood": "Novo horizonte",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 212.8,
+      "total": 216.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#058] Combo 4 - 35 peças",
+          "qty": 1,
+          "price": 161.9,
+          "option": null
+        },
+        {
+          "name": "[#071] Sashimis Tradicionais • Sashimi de Salmão",
+          "qty": 1,
+          "price": 38.9,
+          "option": null
+        },
+        {
+          "name": "[#163] Refrigerantes, Águas & Energético • Guaraná 350ml",
+          "qty": 2,
+          "price": 6,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-2729",
       "createdAt": "2026-11-21T23:08:18.831Z",
       "customerName": "Cristiane da Paixão Fraga",
@@ -1439,5 +1473,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-21T23:11:01.673Z"
+  "lastUpdated": "2026-11-21T23:11:40.580Z"
 }
