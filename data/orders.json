@@ -1329,6 +1329,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-5822",
+      "createdAt": "2026-11-21T23:07:59.841Z",
+      "sessionId": "sess_1795302479052",
+      "customerName": "Cristiane da Paixão Fraga",
+      "customerPhone": "62998615605",
+      "subtotal": 65.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Monte seu Poke (300g) • Poke Tártare de salmão com Philadelphia",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-2009",
       "createdAt": "2026-11-21T22:11:40.352Z",
       "sessionId": "sess_1795299099528",
@@ -1417,5 +1428,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-21T22:11:40.352Z"
+  "lastUpdated": "2026-11-21T23:07:59.841Z"
 }
