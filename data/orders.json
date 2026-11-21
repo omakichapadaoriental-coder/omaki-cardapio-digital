@@ -1285,6 +1285,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-3668",
+      "createdAt": "2026-11-21T01:06:17.889Z",
+      "sessionId": "sess_1795223177012",
+      "customerName": "Pamela",
+      "customerPhone": "62998638003",
+      "subtotal": 71.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Gunkans • Gunkan Cebolinha, 1x Joys Tradicionais (Sem Arroz) • Joy Philadelphia",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1362,5 +1373,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-20T23:13:55.817Z"
+  "lastUpdated": "2026-11-21T01:06:17.889Z"
 }
