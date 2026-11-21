@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-8935",
+      "createdAt": "2026-11-21T20:15:12.635Z",
+      "customerName": "Sandeesh",
+      "customerPhone": "61993451414",
+      "deliveryType": "delivery",
+      "address": "Rua das mangabeiras quadra 07 lote 08, Quadra 07 lote 08 — Setor planalto",
+      "neighborhood": "Setor planalto",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 132,
+      "total": 136,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#177] Combo Omaki - 40 peças",
+          "qty": 1,
+          "price": 132,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-6548",
       "createdAt": "2026-11-21T01:09:54.120Z",
       "customerName": "Pamela",
@@ -1307,17 +1329,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-8940",
-      "createdAt": "2026-11-21T20:14:02.033Z",
-      "sessionId": "sess_1795292041164",
-      "customerName": "Sandeesh",
-      "customerPhone": "61993451414",
-      "subtotal": 132,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Omaki - 40 peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-4783",
       "createdAt": "2026-11-13T23:14:50.101Z",
       "sessionId": "sess_1794611689207",
@@ -1395,5 +1406,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-21T20:14:02.033Z"
+  "lastUpdated": "2026-11-21T20:15:12.635Z"
 }
