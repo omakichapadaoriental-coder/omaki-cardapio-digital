@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-8231",
+      "createdAt": "2026-11-22T23:48:52.928Z",
+      "customerName": "Giselen De Oliveira",
+      "customerPhone": "6299701131",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 188.8,
+      "total": 192.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#116] Combo Hot - 30 Peças",
+          "qty": 1,
+          "price": 129.9,
+          "option": null
+        },
+        {
+          "name": "[#062] Big Hot • Big Hot Misto Salmão e Camarão Imperial, Philadelphia, tarê, cebolinha e gergelim",
+          "qty": 1,
+          "price": 58.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4476",
       "createdAt": "2026-11-22T23:39:19.810Z",
       "customerName": "Giselen De Oliveira",
@@ -1557,5 +1585,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-22T23:39:19.810Z"
+  "lastUpdated": "2026-11-22T23:48:52.928Z"
 }
