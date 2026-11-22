@@ -1,6 +1,40 @@
 {
   "orders": [
     {
+      "id": "OMK-7530",
+      "createdAt": "2026-11-22T22:26:38.177Z",
+      "customerName": "Sabina",
+      "customerPhone": "71981843186",
+      "deliveryType": "delivery",
+      "address": "Arcenia Faria, Sem — Centro",
+      "neighborhood": "Centro",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 176.70000000000002,
+      "total": 178.70000000000002,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#137] Teppan Yaki (400g) • Salmão Grelhado",
+          "qty": 1,
+          "price": 76.9,
+          "option": null
+        },
+        {
+          "name": "[#065] Hot Rolls • Hot Roll Couve crispy",
+          "qty": 1,
+          "price": 48.9,
+          "option": null
+        },
+        {
+          "name": "[#030] Futomaki Vegano e Vegetariano • Futomaki Tomate seco, pepino e manga",
+          "qty": 1,
+          "price": 47.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-1621",
       "createdAt": "2026-11-22T00:40:03.953Z",
       "customerName": "Renata",
@@ -1413,17 +1447,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-2464",
-      "createdAt": "2026-11-22T22:25:38.637Z",
-      "sessionId": "sess_1795386337795",
-      "customerName": "Sabina",
-      "customerPhone": "71981843186",
-      "subtotal": 173.70000000000002,
-      "itemsCount": 3,
-      "itemsSummary": "1x Teppan Yaki (400g) • Salmão Grelhado, 1x Hot Rolls • Hot Roll Couve crispy, 1x Futomaki Vegano e Vegetariano • Futomaki Tomate seco, pepino e manga",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-2009",
       "createdAt": "2026-11-21T22:11:40.352Z",
       "sessionId": "sess_1795299099528",
@@ -1512,5 +1535,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-22T22:25:38.637Z"
+  "lastUpdated": "2026-11-22T22:26:38.177Z"
 }
