@@ -1385,6 +1385,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-9199",
+      "createdAt": "2026-11-22T00:39:56.827Z",
+      "sessionId": "sess_1795307995922",
+      "customerName": "Renata",
+      "customerPhone": "62999583166",
+      "subtotal": 75.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Harumakis Crocantes • Romeu e Julieta, 1x Hot Rolls • Hot Roll Philadelphia",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-2009",
       "createdAt": "2026-11-21T22:11:40.352Z",
       "sessionId": "sess_1795299099528",
@@ -1473,5 +1484,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-21T23:11:40.580Z"
+  "lastUpdated": "2026-11-22T00:39:56.827Z"
 }
