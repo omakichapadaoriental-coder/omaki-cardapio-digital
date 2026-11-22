@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-2605",
+      "createdAt": "2026-11-22T23:49:42.671Z",
+      "customerName": "Giselen De Oliveira",
+      "customerPhone": "6299701131",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 58.9,
+      "total": 60.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#062] Big Hot • Big Hot Misto Salmão e Camarão Imperial, Philadelphia, tarê, cebolinha e gergelim",
+          "qty": 1,
+          "price": 58.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-8231",
       "createdAt": "2026-11-22T23:48:52.928Z",
       "customerName": "Giselen De Oliveira",
@@ -1497,17 +1519,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6192",
-      "createdAt": "2026-11-22T23:49:29.919Z",
-      "sessionId": "sess_1795391369400",
-      "customerName": "Giselen De Oliveira",
-      "customerPhone": "6299701131",
-      "subtotal": 58.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Big Hot • Big Hot Misto Salmão e Camarão Imperial, Philadelphia, tarê, cebolinha e gergelim",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-2009",
       "createdAt": "2026-11-21T22:11:40.352Z",
       "sessionId": "sess_1795299099528",
@@ -1596,5 +1607,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-22T23:49:29.919Z"
+  "lastUpdated": "2026-11-22T23:49:42.671Z"
 }
