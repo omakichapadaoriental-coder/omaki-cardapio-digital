@@ -1497,6 +1497,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-9594",
+      "createdAt": "2026-11-22T23:48:54.316Z",
+      "sessionId": "sess_1795391334073",
+      "customerName": "Giselen De Oliveira",
+      "customerPhone": "6299701131",
+      "subtotal": 188.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Combo Hot - 30 Peças, 1x Big Hot • Big Hot Misto Salmão e Camarão Imperial, Philadelphia, tarê, cebolinha e gergelim",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-2009",
       "createdAt": "2026-11-21T22:11:40.352Z",
       "sessionId": "sess_1795299099528",
@@ -1585,5 +1596,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-22T23:48:52.928Z"
+  "lastUpdated": "2026-11-22T23:48:54.316Z"
 }
