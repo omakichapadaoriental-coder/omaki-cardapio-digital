@@ -1569,6 +1569,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-3274",
+      "createdAt": "2026-11-23T22:44:59.817Z",
+      "sessionId": "sess_1795473898988",
+      "customerName": "Yuval Shani",
+      "customerPhone": "21997678826",
+      "subtotal": 219.8,
+      "itemsCount": 3,
+      "itemsSummary": "1x Yakisoba Tradicional (400g) • Carne, 1x Combo do Guia - 30 peças, 1x Camarão Imperial Crocante • Camarão crocante, Philadelphia, tarê e cebolinha",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1668,5 +1679,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-23T22:36:34.559Z"
+  "lastUpdated": "2026-11-23T22:44:59.817Z"
 }
