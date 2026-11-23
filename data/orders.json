@@ -1637,6 +1637,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-8927",
+      "createdAt": "2026-11-23T23:48:47.810Z",
+      "sessionId": "sess_1795477726991",
+      "customerName": "Victor Rodrigues de Freitas",
+      "customerPhone": "11936185957",
+      "subtotal": 84.80000000000001,
+      "itemsCount": 2,
+      "itemsSummary": "1x Monte seu Poke (300g) • Poke Salmão, 1x Sucos Naturais & Polpa de Fruta (330ml) • Suco Natural de Laranja",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1736,5 +1747,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-23T22:51:49.937Z"
+  "lastUpdated": "2026-11-23T23:48:47.810Z"
 }
