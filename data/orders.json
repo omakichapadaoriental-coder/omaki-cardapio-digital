@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-9487",
+      "createdAt": "2026-11-23T22:36:34.559Z",
+      "customerName": "JOYCE ESTEVES",
+      "customerPhone": "13981619850",
+      "deliveryType": "delivery",
+      "address": "RUA DAS SUCUPIRAS, Qd 07 lote 19 — Setor planalto",
+      "neighborhood": "Setor planalto",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 46.9,
+      "total": 46.9,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#056] Temakis Tradicionais & Especiais • Salmão e alho-poró",
+          "qty": 1,
+          "price": 46.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-4520",
       "createdAt": "2026-11-23T00:34:14.551Z",
       "customerName": "Leticia Albuquerque",
@@ -1547,17 +1569,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-8328",
-      "createdAt": "2026-11-23T22:36:22.488Z",
-      "sessionId": "sess_1795473381599",
-      "customerName": "JOYCE ESTEVES",
-      "customerPhone": "13981619850",
-      "subtotal": 46.9,
-      "itemsCount": 1,
-      "itemsSummary": "1x Temakis Tradicionais & Especiais • Salmão e alho-poró",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1657,5 +1668,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-23T22:36:22.488Z"
+  "lastUpdated": "2026-11-23T22:36:34.559Z"
 }
