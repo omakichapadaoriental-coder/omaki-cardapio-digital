@@ -1519,6 +1519,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6854",
+      "createdAt": "2026-11-23T00:32:29.777Z",
+      "sessionId": "sess_1795393948923",
+      "customerName": "Leticia Albuquerque",
+      "customerPhone": "62991121563",
+      "subtotal": 99.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Joy de goiaba com Philadelphia e Nutella com raspas de limão, 1x Yakisoba Tradicional (400g) • Camarão",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-2009",
       "createdAt": "2026-11-21T22:11:40.352Z",
       "sessionId": "sess_1795299099528",
@@ -1607,5 +1618,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-22T23:49:42.671Z"
+  "lastUpdated": "2026-11-23T00:32:29.777Z"
 }
