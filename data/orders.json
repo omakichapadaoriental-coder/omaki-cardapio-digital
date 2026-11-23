@@ -1,6 +1,40 @@
 {
   "orders": [
     {
+      "id": "OMK-6647",
+      "createdAt": "2026-11-23T22:51:49.937Z",
+      "customerName": "Yuval Shani",
+      "customerPhone": "21997678826",
+      "deliveryType": "delivery",
+      "address": "Rua Av. João Bernardes Rabelo, Avenida João Bernardes Rabelo Quadra 2 Lote 4 — Novo Horizonte",
+      "neighborhood": "Novo Horizonte",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 219.8,
+      "total": 223.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#142] Yakisoba Tradicional (400g) • Carne",
+          "qty": 1,
+          "price": 57.9,
+          "option": null
+        },
+        {
+          "name": "[#180] Combo do Guia - 30 peças",
+          "qty": 1,
+          "price": 107,
+          "option": null
+        },
+        {
+          "name": "[#016] Camarão Imperial Crocante • Camarão crocante, Philadelphia, tarê e cebolinha",
+          "qty": 1,
+          "price": 54.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-3226",
       "createdAt": "2026-11-23T22:45:06.269Z",
       "customerName": "Yuval Shani",
@@ -1702,5 +1736,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-23T22:45:06.269Z"
+  "lastUpdated": "2026-11-23T22:51:49.937Z"
 }
