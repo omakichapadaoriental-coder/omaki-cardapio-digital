@@ -1547,6 +1547,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-8328",
+      "createdAt": "2026-11-23T22:36:22.488Z",
+      "sessionId": "sess_1795473381599",
+      "customerName": "JOYCE ESTEVES",
+      "customerPhone": "13981619850",
+      "subtotal": 46.9,
+      "itemsCount": 1,
+      "itemsSummary": "1x Temakis Tradicionais & Especiais • Salmão e alho-poró",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1646,5 +1657,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-23T22:24:27.131Z"
+  "lastUpdated": "2026-11-23T22:36:22.488Z"
 }
