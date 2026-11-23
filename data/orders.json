@@ -1547,6 +1547,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-3512",
+      "createdAt": "2026-11-23T22:24:27.131Z",
+      "sessionId": "sess_1795472666169",
+      "customerName": "Lorena Sayuri dos Santos kamiguchi",
+      "customerPhone": "62998791866",
+      "subtotal": 186.6,
+      "itemsCount": 4,
+      "itemsSummary": "1x Hot Rolls • Hot Roll Alho-poró, 2x Uramakis Tradicionais • Uramaki Salmão, 1x Hossomakis • Hossomaki Salmão e Philadelphia",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-2009",
       "createdAt": "2026-11-21T22:11:40.352Z",
       "sessionId": "sess_1795299099528",
@@ -1635,5 +1646,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-23T00:34:14.551Z"
+  "lastUpdated": "2026-11-23T22:24:27.131Z"
 }
