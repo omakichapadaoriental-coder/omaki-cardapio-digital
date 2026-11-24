@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-4077",
+      "createdAt": "2026-11-24T00:50:44.724Z",
+      "customerName": "Alef",
+      "customerPhone": "62999826403",
+      "deliveryType": "delivery",
+      "address": "Rua arcenia de Faria, 52 — Centro",
+      "neighborhood": "Centro",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 132,
+      "total": 136,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#177] Combo Omaki - 40 peças",
+          "qty": 1,
+          "price": 132,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-1743",
       "createdAt": "2026-11-23T23:51:24.563Z",
       "customerName": "Victor Rodrigues de Freitas",
@@ -1665,17 +1687,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-1999",
-      "createdAt": "2026-11-24T00:50:10.272Z",
-      "sessionId": "sess_1795481409535",
-      "customerName": "Alef",
-      "customerPhone": "62999826403",
-      "subtotal": 132,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Omaki - 40 peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1775,5 +1786,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-24T00:50:10.272Z"
+  "lastUpdated": "2026-11-24T00:50:44.724Z"
 }
