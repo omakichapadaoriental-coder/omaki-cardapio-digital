@@ -1687,6 +1687,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-3683",
+      "createdAt": "2026-11-24T21:31:43.780Z",
+      "sessionId": "sess_1795555902953",
+      "customerName": "Willian",
+      "customerPhone": "61998438589",
+      "subtotal": 188.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Yakisoba Tradicional (400g) • Camarão, 1x Combo Hossomaki - 28 Peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1786,5 +1797,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-24T00:50:44.724Z"
+  "lastUpdated": "2026-11-24T21:31:43.780Z"
 }
