@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-5650",
+      "createdAt": "2026-11-25T01:07:01.977Z",
+      "customerName": "Kamila da Silva Pereira",
+      "customerPhone": "62999019611",
+      "deliveryType": "takeaway",
+      "address": "",
+      "neighborhood": "",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 118,
+      "total": 122,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#178] Combo Chapada - 40 peças",
+          "qty": 1,
+          "price": 118,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-8609",
       "createdAt": "2026-11-25T00:12:09.065Z",
       "customerName": "Paulla Jezuino",
@@ -1737,17 +1759,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-2260",
-      "createdAt": "2026-11-25T01:06:57.077Z",
-      "sessionId": "sess_1795568815974",
-      "customerName": "Kamila da Silva Pereira",
-      "customerPhone": "62999019611",
-      "subtotal": 118,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Chapada - 40 peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1847,5 +1858,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-25T01:06:57.077Z"
+  "lastUpdated": "2026-11-25T01:07:01.977Z"
 }
