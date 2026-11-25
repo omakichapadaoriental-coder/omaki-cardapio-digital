@@ -1715,6 +1715,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-3050",
+      "createdAt": "2026-11-25T00:11:54.456Z",
+      "sessionId": "sess_1795565513649",
+      "customerName": "Paulla Jezuino",
+      "customerPhone": "61991191073",
+      "subtotal": 118,
+      "itemsCount": 1,
+      "itemsSummary": "1x Combo Chapada - 40 peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1814,5 +1825,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-24T21:31:47.793Z"
+  "lastUpdated": "2026-11-25T00:11:54.456Z"
 }
