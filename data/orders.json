@@ -1,6 +1,34 @@
 {
   "orders": [
     {
+      "id": "OMK-8937",
+      "createdAt": "2026-11-26T23:44:34.822Z",
+      "customerName": "Daniel Teolfe",
+      "customerPhone": "61996074821",
+      "deliveryType": "delivery",
+      "address": "Rua Palipalã Qd 15 lt 05, 05 — Centro",
+      "neighborhood": "Centro",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 90.8,
+      "total": 92.8,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#087] Hossomakis • Shakemaki - Salmão",
+          "qty": 1,
+          "price": 44.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-6605",
       "createdAt": "2026-11-26T23:03:05.611Z",
       "customerName": "Nayara Neves",
@@ -1793,17 +1821,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-4928",
-      "createdAt": "2026-11-26T23:44:28.899Z",
-      "sessionId": "sess_1795736669558",
-      "customerName": "Daniel Teolfe",
-      "customerPhone": "61996074821",
-      "subtotal": 90.8,
-      "itemsCount": 2,
-      "itemsSummary": "1x Hossomakis • Shakemaki - Salmão, 1x Uramakis Tradicionais • Uramaki Salmão",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1903,5 +1920,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-26T23:44:28.899Z"
+  "lastUpdated": "2026-11-26T23:44:34.822Z"
 }
