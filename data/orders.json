@@ -1,6 +1,40 @@
 {
   "orders": [
     {
+      "id": "OMK-6007",
+      "createdAt": "2026-11-26T23:50:56.910Z",
+      "customerName": "Daniel Teolfe",
+      "customerPhone": "61996074821",
+      "deliveryType": "delivery",
+      "address": "Rua Palipalã Qd 15 lt 05, 05 — Centro",
+      "neighborhood": "Centro",
+      "paymentMethod": "Cartão de Crédito",
+      "changeFor": "",
+      "subtotal": 137.7,
+      "total": 139.7,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#087] Hossomakis • Shakemaki - Salmão",
+          "qty": 1,
+          "price": 44.9,
+          "option": null
+        },
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        },
+        {
+          "name": "[#056] Temakis Tradicionais & Especiais • Salmão e alho-poró",
+          "qty": 1,
+          "price": 46.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-8937",
       "createdAt": "2026-11-26T23:44:34.822Z",
       "customerName": "Daniel Teolfe",
@@ -1920,5 +1954,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-26T23:44:34.822Z"
+  "lastUpdated": "2026-11-26T23:50:56.911Z"
 }
