@@ -1759,6 +1759,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6485",
+      "createdAt": "2026-11-26T23:02:55.461Z",
+      "sessionId": "sess_1795734174751",
+      "customerName": "Nayara Neves",
+      "customerPhone": "62982281157",
+      "subtotal": 128.7,
+      "itemsCount": 3,
+      "itemsSummary": "1x Uramakis Tradicionais • Uramaki Salmão, 1x Hot Rolls • Hot Roll Philadelphia, 1x Joys Tradicionais (Sem Arroz) • Joy Maçaricado com tarê",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1858,5 +1869,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-25T01:07:01.977Z"
+  "lastUpdated": "2026-11-26T23:02:55.461Z"
 }
