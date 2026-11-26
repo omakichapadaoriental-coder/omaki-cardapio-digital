@@ -1793,6 +1793,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-4928",
+      "createdAt": "2026-11-26T23:44:28.899Z",
+      "sessionId": "sess_1795736669558",
+      "customerName": "Daniel Teolfe",
+      "customerPhone": "61996074821",
+      "subtotal": 90.8,
+      "itemsCount": 2,
+      "itemsSummary": "1x Hossomakis • Shakemaki - Salmão, 1x Uramakis Tradicionais • Uramaki Salmão",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1892,5 +1903,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-26T23:03:05.611Z"
+  "lastUpdated": "2026-11-26T23:44:28.899Z"
 }
