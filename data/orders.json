@@ -1,6 +1,40 @@
 {
   "orders": [
     {
+      "id": "OMK-6605",
+      "createdAt": "2026-11-26T23:03:05.611Z",
+      "customerName": "Nayara Neves",
+      "customerPhone": "62982281157",
+      "deliveryType": "delivery",
+      "address": "RUA DO JOAO DE BARRO, 58 — Estância paraiso",
+      "neighborhood": "Estância paraiso",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 128.7,
+      "total": 130.7,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#091] Uramakis Tradicionais • Uramaki Salmão",
+          "qty": 1,
+          "price": 45.9,
+          "option": null
+        },
+        {
+          "name": "[#069] Hot Rolls • Hot Roll Philadelphia",
+          "qty": 1,
+          "price": 46.9,
+          "option": null
+        },
+        {
+          "name": "[#077] Joys Tradicionais (Sem Arroz) • Joy Maçaricado com tarê",
+          "qty": 1,
+          "price": 35.9,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-5650",
       "createdAt": "2026-11-25T01:07:01.977Z",
       "customerName": "Kamila da Silva Pereira",
@@ -1759,17 +1793,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6485",
-      "createdAt": "2026-11-26T23:02:55.461Z",
-      "sessionId": "sess_1795734174751",
-      "customerName": "Nayara Neves",
-      "customerPhone": "62982281157",
-      "subtotal": 128.7,
-      "itemsCount": 3,
-      "itemsSummary": "1x Uramakis Tradicionais • Uramaki Salmão, 1x Hot Rolls • Hot Roll Philadelphia, 1x Joys Tradicionais (Sem Arroz) • Joy Maçaricado com tarê",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1869,5 +1892,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-26T23:02:55.461Z"
+  "lastUpdated": "2026-11-26T23:03:05.611Z"
 }
