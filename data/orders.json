@@ -1855,6 +1855,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-7902",
+      "createdAt": "2026-11-27T00:45:05.980Z",
+      "sessionId": "sess_1795740305049",
+      "customerName": "Santiago Teixeira",
+      "customerPhone": "32988047046",
+      "subtotal": 101.80000000000001,
+      "itemsCount": 2,
+      "itemsSummary": "1x Monte seu Poke (300g) • Poke Tártare de salmão com Philadelphia, 1x Joys Tradicionais (Sem Arroz) • Joy Maçaricado com tarê",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1954,5 +1965,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-26T23:50:56.911Z"
+  "lastUpdated": "2026-11-27T00:45:05.980Z"
 }
