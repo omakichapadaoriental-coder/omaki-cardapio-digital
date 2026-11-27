@@ -1905,6 +1905,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-6238",
+      "createdAt": "2026-11-27T23:59:43.730Z",
+      "sessionId": "sess_1795823982910",
+      "customerName": "Leticia Albuquerque",
+      "customerPhone": "62991121563",
+      "subtotal": 119,
+      "itemsCount": 1,
+      "itemsSummary": "1x Combo Oriental - 36 peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -2004,5 +2015,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-27T21:38:04.995Z"
+  "lastUpdated": "2026-11-27T23:59:43.730Z"
 }
