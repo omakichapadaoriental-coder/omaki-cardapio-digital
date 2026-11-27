@@ -1883,6 +1883,17 @@
   ],
   "abandonedCarts": [
     {
+      "id": "ABN-3736",
+      "createdAt": "2026-11-27T21:37:57.983Z",
+      "sessionId": "sess_1795815477214",
+      "customerName": "Gustavo Pimenta",
+      "customerPhone": "62996538496",
+      "subtotal": 132,
+      "itemsCount": 1,
+      "itemsSummary": "1x Combo Omaki - 40 peças",
+      "stepReached": "checkout"
+    },
+    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -1982,5 +1993,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-27T00:45:09.149Z"
+  "lastUpdated": "2026-11-27T21:37:57.983Z"
 }
