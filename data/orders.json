@@ -1,6 +1,28 @@
 {
   "orders": [
     {
+      "id": "OMK-1186",
+      "createdAt": "2026-11-28T00:01:13.353Z",
+      "customerName": "Leticia Albuquerque",
+      "customerPhone": "62991121563",
+      "deliveryType": "delivery",
+      "address": "Rua das samambaias, QUADRA 26 LOTE 2 — eldorado 3",
+      "neighborhood": "eldorado 3",
+      "paymentMethod": "Pix",
+      "changeFor": "",
+      "subtotal": 127,
+      "total": 131,
+      "notes": "",
+      "items": [
+        {
+          "name": "[#179] Combo Oriental - 36 peças",
+          "qty": 1,
+          "price": 119,
+          "option": null
+        }
+      ]
+    },
+    {
       "id": "OMK-9502",
       "createdAt": "2026-11-27T21:38:04.995Z",
       "customerName": "Gustavo Pimenta",
@@ -1905,17 +1927,6 @@
   ],
   "abandonedCarts": [
     {
-      "id": "ABN-6238",
-      "createdAt": "2026-11-27T23:59:43.730Z",
-      "sessionId": "sess_1795823982910",
-      "customerName": "Leticia Albuquerque",
-      "customerPhone": "62991121563",
-      "subtotal": 119,
-      "itemsCount": 1,
-      "itemsSummary": "1x Combo Oriental - 36 peças",
-      "stepReached": "checkout"
-    },
-    {
       "id": "ABN-3512",
       "createdAt": "2026-11-23T22:24:27.131Z",
       "sessionId": "sess_1795472666169",
@@ -2015,5 +2026,5 @@
       "stepReached": "checkout"
     }
   ],
-  "lastUpdated": "2026-11-27T23:59:43.730Z"
+  "lastUpdated": "2026-11-28T00:01:13.353Z"
 }
